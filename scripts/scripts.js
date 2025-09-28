@@ -162,7 +162,7 @@ function populateShowcase() {
     console.log('=== populateShowcase() called ===');
     const showcaseContainer = document.querySelector('.work-showcase-container');
     const galleryGrid = document.querySelector('.gallery-grid');
-    const isPortfolioPage = window.location.pathname.includes('portfolio.html');
+    const isPortfolioPage = window.location.pathname.includes('portfolio');
     
     console.log('Showcase container found:', !!showcaseContainer);
     console.log('Gallery grid found:', !!galleryGrid);
