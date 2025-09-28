@@ -28,8 +28,35 @@ class Header {
 
       // Now setup event listeners
       this.setupEventListeners();
+
+      // Adjust navigation links based on current page
+      this.adjustNavigationForCurrentPage();
     } catch (error) {
       console.error('Error loading header component:', error);
+    }
+  }
+
+  adjustNavigationForCurrentPage() {
+    // Detect current page
+    const currentPath = window.location.pathname;
+    const isPortfolioPage = currentPath.includes('portfolio.html');
+
+    if (isPortfolioPage) {
+      // Modify navigation links to point to main page sections
+      const navLinks = [
+        { selector: '.header__nav-link[href*="personal-details"]', href: 'index.html#personal-details', text: 'About' },
+        { selector: '.header__nav-link[href*="education-profession"]', href: 'index.html#education-profession', text: 'Experience' },
+        { selector: '.header__nav-link[href*="hobbies-interests"]', href: 'index.html#hobbies-interests', text: 'Interests' },
+        { selector: '.header__nav-link[href*="contact"]', href: 'index.html#contact', text: 'Contact' }
+      ];
+
+      navLinks.forEach(({ selector, href, text }) => {
+        const link = document.querySelector(selector);
+        if (link) {
+          link.href = href;
+          link.textContent = text;
+        }
+      });
     }
   }
 
