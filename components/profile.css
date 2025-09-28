@@ -65,18 +65,43 @@
   cursor: zoom-out;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   z-index: 1000;
+  will-change: transform;
 }
 
 .photo-stack.expanded .photo-frame.left {
   transform: translate(calc(-50% - 160px), calc(-50% + 20px)) scale(0.7);
   opacity: 0.8;
   z-index: 1; /* Always keep below center */
+  will-change: transform;
 }
 
 .photo-stack.expanded .photo-frame.right {
   transform: translate(calc(-50% + 320px), calc(-50% + 20px)) scale(0.7);
   opacity: 0.8;
   z-index: 1; /* Always keep below center */
+  will-change: transform;
+}
+
+/* Ensure proper stacking order during transitions */
+.photo-frame {
+  z-index: inherit;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.photo-frame.center {
+  z-index: 10;
+}
+
+.photo-frame.left,
+.photo-frame.right {
+  z-index: 1;
+}
+
+/* Critical: Ensure center frame always stays on top during expansion */
+.photo-stack.expanded .photo-frame.center {
+  z-index: 1000 !important;
+  position: relative;
 }
 
 /* Hover effect for non-expanded state */

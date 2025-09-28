@@ -1,0 +1,166 @@
+/* ===== INSTAGRAM FRAME COMPONENT CSS ===== */
+
+/* CSS Variables for theming */
+:root {
+  /* Indian Color Palette */
+  --primary-maroon: #8B0000;
+  --gold: #FFD700;
+  --saffron: #FF9933;
+  --peacock-blue: #005F73;
+  --peacock-green: #0A9396;
+  --cream: #FFF8DC;
+  --sandalwood: #F5E6D3;
+  --deep-purple: #4A148C;
+  --rose-gold: #B76E79;
+  --text-dark: #2C1810;
+  --border-gold: #D4AF37;
+
+  /* Typography */
+  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --text-dark: #F8F9FA;
+  --cream: #1E1E1E;
+  --sandalwood: #2C2C2C;
+  --peacock-blue: #4ECDC4;
+  --primary-maroon: #FF6B6B;
+  --gold: #FFE66D;
+}
+
+/* ==================== INSTAGRAM FRAMES CONTAINER ==================== */
+.instagram-frames-container {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  justify-content: center;
+  display: grid;
+  gap: 30px;
+  place-items: center;
+}
+
+/* ==================== WORK ITEM FRAMES ==================== */
+.instagram-frame-component .work-item,
+.work-item {
+  position: relative;
+  background: var(--cream);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  aspect-ratio: 1;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+/* Dark theme for work items */
+[data-theme="dark"] .work-item {
+  background: var(--sandalwood);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.work-item:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark theme hover effect */
+[data-theme="dark"] .work-item:hover {
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+}
+
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  border-radius: 15px;
+}
+
+.work-item:hover img {
+  transform: scale(1.1);
+}
+
+.work-item-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 30px 20px 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 0 0 15px 15px;
+}
+
+.work-item:hover .work-item-caption {
+  opacity: 1;
+}
+
+.work-item-caption p {
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Heart icon overlay */
+.work-item::before {
+  content: '♡';
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--primary-maroon);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Dark theme for heart icon */
+[data-theme="dark"] .work-item::before {
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--gold);
+}
+
+.work-item:hover::before {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (min-width: 1200px) {
+  .instagram-frames-container {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .instagram-frames-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 767px) {
+  .instagram-frames-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 30px 15px;
+  }
+}

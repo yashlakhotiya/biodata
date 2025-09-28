@@ -1,0 +1,139 @@
+/* ===== PORTFOLIO INTRODUCTION COMPONENT CSS ===== */
+
+/* CSS Variables for theming */
+:root {
+  /* Indian Color Palette */
+  --primary-maroon: #8B0000;
+  --gold: #FFD700;
+  --saffron: #FF9933;
+  --peacock-blue: #005F73;
+  --peacock-green: #0A9396;
+  --cream: #FFF8DC;
+  --sandalwood: #F5E6D3;
+  --deep-purple: #4A148C;
+  --rose-gold: #B76E79;
+  --text-dark: #2C1810;
+  --border-gold: #D4AF37;
+
+  /* Typography */
+  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --text-dark: #F8F9FA;
+  --cream: #1E1E1E;
+  --sandalwood: #2C2C2C;
+  --peacock-blue: #4ECDC4;
+  --primary-maroon: #FF6B6B;
+  --gold: #FFE66D;
+}
+
+/* ==================== PORTFOLIO INTRODUCTION SECTION ==================== */
+.portfolio-intro-section {
+  text-align: center;
+  padding: 40px 30px;
+  margin: 30px 0;
+  background: var(--cream);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dark theme for portfolio intro */
+[data-theme="dark"] .portfolio-intro-section {
+  background: var(--sandalwood);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.intro-title {
+  color: var(--peacock-blue);
+  margin-bottom: 20px;
+  font-size: 2.2em;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+/* Dark theme for intro title */
+[data-theme="dark"] .intro-title {
+  color: var(--peacock-green);
+}
+
+.intro-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-maroon), var(--saffron));
+  border-radius: 2px;
+}
+
+/* Dark theme for intro title decoration */
+[data-theme="dark"] .intro-title::after {
+  background: linear-gradient(90deg, var(--gold), var(--saffron));
+}
+
+.intro-text {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: var(--text-dark);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Dark theme for intro text */
+[data-theme="dark"] .intro-text {
+  color: var(--cream);
+}
+
+/* Add subtle animation on hover */
+.portfolio-intro-section:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .portfolio-intro-section {
+    padding: 30px 20px;
+    margin: 20px 10px;
+  }
+
+  .intro-title {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+  }
+
+  .intro-text {
+    font-size: 1.1em;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .intro-title::after {
+    width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-intro-section {
+    padding: 25px 15px;
+    margin: 15px 5px;
+  }
+
+  .intro-title {
+    font-size: 1.6em;
+  }
+
+  .intro-text {
+    font-size: 1em;
+    line-height: 1.6;
+  }
+}
