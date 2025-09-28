@@ -1,0 +1,179 @@
+{
+  "personalDetails": {
+    "title": "Personal Details",
+    "items": [
+      {
+        "label": "Date of Birth",
+        "value": "15 April 1999"
+      },
+      {
+        "label": "Time of Birth",
+        "value": "[HH:MM AM/PM]"
+      },
+      {
+        "label": "Place of Birth",
+        "value": "Bundi, Rajasthan"
+      },
+      {
+        "label": "Height",
+        "value": "5'8\""
+      },
+      {
+        "label": "Complexion",
+        "value": "Wheatish"
+      },
+      {
+        "label": "Blood Group",
+        "value": "B+"
+      },
+      {
+        "label": "Rashi (Moon Sign)",
+        "value": "[Your Rashi]"
+      },
+      {
+        "label": "Nakshatra",
+        "value": "[Your Nakshatra]"
+      },
+      {
+        "label": "Gotra",
+        "value": "Phaphadansh"
+      },
+      {
+        "label": "Manglik",
+        "value": "No"
+      },
+      {
+        "label": "Habits",
+        "value": "Non-drinker, Non-smoker"
+      }
+    ]
+  },
+  "familyDetails": {
+    "title": "Family Details",
+    "items": [
+      {
+        "label": "Father's Name",
+        "value": "Shailendra Lakhotiya"
+      },
+      {
+        "label": "Father's Occupation",
+        "value": "Business"
+      },
+      {
+        "label": "Mother's Name",
+        "value": "Uma Maheshwari"
+      },
+      {
+        "label": "Mother's Occupation",
+        "value": "Vice Principal"
+      },
+      {
+        "label": "Brothers",
+        "value": "1 - Married"
+      },
+      {
+        "label": "Family Type",
+        "value": "Joint"
+      },
+      {
+        "label": "Native Place",
+        "value": "Bundi, Rajasthan"
+      }
+    ]
+  },
+  "educationProfession": {
+    "title": "Education & Professional Details",
+    "items": [
+      {
+        "label": "Highest Education",
+        "value": "B.Tech in Computer Science and Engineering"
+      },
+      {
+        "label": "College/University",
+        "value": "Manipal Institute of Technology"
+      },
+      {
+        "label": "Occupation",
+        "value": "Software Engineer"
+      },
+      {
+        "label": "Company",
+        "value": "Angelone Broking"
+      },
+      {
+        "label": "Designation",
+        "value": "SDE-2"
+      },
+      {
+        "label": "Work Location",
+        "value": "Bangalore - Remote"
+      },
+      {
+        "label": "Annual Income",
+        "value": "25-40 LPA"
+      }
+    ]
+  },
+  "partnerPreferences": {
+    "title": "Partner Preferences",
+    "items": [
+      {
+        "label": "Age",
+        "value": "23-26 years"
+      },
+      {
+        "label": "Height",
+        "value": "[5'2\" - 5'7\"]"
+      },
+      {
+        "label": "Education",
+        "value": "Graduate / Post-Graduate"
+      },
+      {
+        "label": "Occupation",
+        "value": "[Any / Working Professional preferred]"
+      },
+      {
+        "label": "Family Background",
+        "value": "Cultured and educated family"
+      },
+      {
+        "label": "Values",
+        "value": "Traditional with modern outlook"
+      },
+      {
+        "label": "Location Preference",
+        "value": "[Any metropolitan city in India]"
+      },
+      {
+        "label": "Other Preferences",
+        "value": "Understanding, caring, and family-oriented"
+      },
+      {
+        "label": "Habits",
+        "value": "Prefers a non-smoker and non-drinker."
+      }
+    ]
+  },
+  "hobbiesInterests": {
+    "title": "Hobbies & Interests",
+    "items": [
+      {
+        "label": "Photography",
+        "value": "Wildlife, landscape, and astrophotography (deep sky, moon/sun alignments)"
+      },
+      {
+        "label": "Music",
+        "value": "Cinematic storytelling and producing EDM music"
+      },
+      {
+        "label": "Instruments",
+        "value": "Playing flute, guitar, and piano; aspiring to learn Indian classical music"
+      },
+      {
+        "label": "Other Interests",
+        "value": "Passionate about understanding animal behaviour and stargazing"
+      }
+    ]
+  }
+}

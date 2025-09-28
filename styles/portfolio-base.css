@@ -1,4 +1,6 @@
-/* Portfolio-specific styles */
+/* ==================== PORTFOLIO BASE STYLES (ALL SCREEN SIZES) ==================== */
+/* Portfolio-specific base styles that apply to all devices */
+
 .portfolio-header {
     text-align: center;
     padding: 40px 20px;
@@ -168,65 +170,4 @@
     padding: 40px 20px;
     position: relative;
     justify-content: center;
-}
-
-/* For larger screens, show items in a 3-column layout */
-@media (min-width: 1200px) {
-    .portfolio-section .work-showcase-container {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1200px;
-    }
-}
-
-/* For medium screens, show in 2 columns */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .portfolio-section .work-showcase-container {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 900px;
-    }
-}
-
-/* ==================== RESPONSIVE PORTFOLIO NAVIGATION ==================== */
-/* Stack navigation buttons vertically on smaller screens */
-@media (max-width: 768px) {
-    .portfolio-nav {
-        padding: 20px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .portfolio-nav a {
-        width: 100%;
-        max-width: 250px;
-        margin: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .portfolio-nav {
-        padding: 15px 10px;
-        gap: 12px;
-    }
-
-    .portfolio-nav a {
-        max-width: 200px;
-        font-size: 0.9em;
-        padding: 8px 16px;
-    }
-}
-
-@media (max-width: 360px) {
-    .portfolio-nav {
-        padding: 12px 8px;
-        gap: 10px;
-    }
-
-    .portfolio-nav a {
-        max-width: 180px;
-        font-size: 0.85em;
-        padding: 6px 14px;
-    }
 }

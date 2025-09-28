@@ -1,0 +1,10 @@
+/* ==================== PORTFOLIO DESKTOP STYLES (1200px+) ==================== */
+/* Desktop-specific portfolio styles */
+
+/* ==================== PORTFOLIO WORK GRID - DESKTOP ==================== */
+@media (min-width: 1200px) {
+    .portfolio-section .work-showcase-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}

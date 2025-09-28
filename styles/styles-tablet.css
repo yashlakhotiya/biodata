@@ -1,0 +1,56 @@
+/* ==================== TABLET STYLES (768px to 1024px) ==================== */
+/* Styles for tablet and medium screen devices */
+
+/* ==================== PHOTO SECTION - TABLET ==================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .photo-carousel-container {
+        max-width: 320px;
+    }
+
+    .photo-stack {
+        width: 250px;
+    }
+
+    .photo-frame {
+        width: 150px;
+        height: 150px;
+    }
+
+    .carousel-arrow.left-arrow {
+        left: -40px;
+    }
+
+    .carousel-arrow.right-arrow {
+        right: -40px;
+    }
+
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .name-display {
+        font-size: 1.5em;
+    }
+}
+
+/* ==================== HEADER - TABLET ==================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+}
+
+/* ==================== PORTFOLIO WORK GRID - TABLET ==================== */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .portfolio-section .work-showcase-container {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+}

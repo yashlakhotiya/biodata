@@ -1,0 +1,24 @@
+/* ==================== DESKTOP STYLES (1024px+) ==================== */
+/* Styles for desktop and large screen devices */
+
+/* ==================== PHOTO SECTION - DESKTOP ==================== */
+@media (min-width: 1200px) {
+    .portfolio-section .work-showcase-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1200px;
+    }
+}
+
+/* ==================== WORK SHOWCASE - DESKTOP ==================== */
+@media (min-width: 1300px) {
+    .work-showcase-container {
+        display: block;
+        padding: 0 20px;
+    }
+
+    .work-item {
+        position: absolute;
+        width: 200px;
+        transform: none;
+    }
+}

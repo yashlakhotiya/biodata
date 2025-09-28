@@ -1,0 +1,339 @@
+/* ==================== MOBILE STYLES (up to 768px) ==================== */
+/* Mobile-first responsive design */
+
+/* ==================== PHOTO SECTION - MOBILE ==================== */
+/* Medium screens - show 3 photos (hide the far hidden ones) */
+@media (max-width: 900px) {
+    .photo-frame.hidden-left,
+    .photo-frame.hidden-right {
+        display: none;
+    }
+
+    .photo-frame.center {
+        width: 200px;
+        height: 200px;
+    }
+
+    .photo-frame.left,
+    .photo-frame.right {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/* Small screens - show only 1 photo (center only) */
+@media (max-width: 600px) {
+    .photo-frame.left,
+    .photo-frame.right {
+        display: none;
+    }
+
+    .photo-frame.center {
+        width: 180px;
+        height: 180px;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .photo-carousel-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .photo-stack .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .photo-stack .carousel-arrow.left-arrow {
+        left: calc(50% - 120px);
+    }
+
+    .photo-stack .carousel-arrow.right-arrow {
+        right: calc(50% - 120px);
+    }
+}
+
+/* Very small screens - even smaller center photo with closer arrows */
+@media (max-width: 400px) {
+    .photo-carousel-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    .photo-frame.center {
+        width: 140px;
+        height: 140px;
+    }
+
+    .photo-stack .carousel-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .photo-stack .carousel-arrow.left-arrow {
+        left: calc(50% - 100px);
+    }
+
+    .photo-stack .carousel-arrow.right-arrow {
+        right: calc(50% - 100px);
+    }
+
+    .photo-indicators {
+        bottom: -40px;
+        gap: 8px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Hide indicators when photo is expanded */
+.photo-stack.expanded ~ .photo-indicators {
+    display: none;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Extra small screens - even smaller expansion */
+@media (max-width: 480px) {
+    .photo-frame.expanded {
+        width: min(250px, 70vw) !important;
+        height: min(250px, 70vw) !important;
+        max-width: min(250px, 70vw) !important;
+        max-height: min(250px, 70vw) !important;
+    }
+}
+
+/* Very small screens - smallest expansion */
+@media (max-width: 360px) {
+    .photo-frame.expanded {
+        width: min(200px, 60vw) !important;
+        height: min(200px, 60vw) !important;
+        max-width: min(200px, 60vw) !important;
+        max-height: min(200px, 60vw) !important;
+    }
+}
+
+/* For very small screens, move arrows below photo-stack */
+@media (max-width: 480px) {
+    .photo-section {
+        padding: 40px 20px 180px 20px;
+    }
+
+    .photo-carousel-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 60px auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .photo-stack {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .photo-stack .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .photo-stack .carousel-arrow.left-arrow {
+        left: -50px;
+    }
+
+    .photo-stack .carousel-arrow.right-arrow {
+        right: -50px;
+    }
+
+    .photo-indicators {
+        bottom: -60px;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .indicator.active {
+        transform: scale(1.3);
+    }
+}
+
+/* ==================== INFO GRID - MOBILE ==================== */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================== HEADER - MOBILE ==================== */
+@media (max-width: 768px) {
+    .header h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+
+    .photo-carousel-container {
+        max-width: 320px;
+    }
+
+    .photo-stack {
+        width: 250px;
+    }
+
+    .photo-frame {
+        width: 150px;
+        height: 150px;
+    }
+
+    .carousel-arrow.left-arrow {
+        left: -40px;
+    }
+
+    .carousel-arrow.right-arrow {
+        right: -40px;
+    }
+
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .name-display {
+        font-size: 1.5em;
+    }
+}
+
+/* ==================== CONTACT SECTION - MOBILE ==================== */
+@media (max-width: 600px) {
+    .contact-info {
+        padding: 20px 15px;
+        margin: 15px 10px 20px 10px;
+    }
+
+    .contact-item {
+        font-size: 1em;
+        margin: 12px 0;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        padding: 15px 10px;
+        margin: 10px 5px 15px 5px;
+    }
+
+    .contact-item {
+        font-size: 0.95em;
+        margin: 10px 0;
+    }
+
+    .contact-item strong {
+        display: block;
+        margin-bottom: 3px;
+    }
+}
+
+@media (max-width: 360px) {
+    .contact-info {
+        padding: 12px 8px;
+    }
+
+    .contact-item {
+        font-size: 0.9em;
+        margin: 8px 0;
+    }
+}
+
+/* ==================== PORTFOLIO NAVIGATION - MOBILE ==================== */
+@media (max-width: 768px) {
+    .portfolio-nav {
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .portfolio-nav a {
+        width: 100%;
+        max-width: 250px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-nav {
+        padding: 15px 10px;
+        gap: 12px;
+    }
+
+    .portfolio-nav a {
+        max-width: 200px;
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 360px) {
+    .portfolio-nav {
+        padding: 12px 8px;
+        gap: 10px;
+    }
+
+    .portfolio-nav a {
+        max-width: 180px;
+        font-size: 0.85em;
+        padding: 6px 14px;
+    }
+}
+
+/* ==================== PORTFOLIO WORK GRID - MOBILE ==================== */
+@media (max-width: 768px) {
+    .portfolio-section .work-showcase-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 30px 15px;
+    }
+
+    .portfolio-section .work-item {
+        max-width: 300px;
+    }
+}
+
+/* ==================== WORK SHOWCASE MOBILE ==================== */
+@media (max-width: 1300px) {
+    .work-showcase-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .work-item {
+        position: relative !important;
+        width: auto;
+        transform: none !important;
+    }
+}
