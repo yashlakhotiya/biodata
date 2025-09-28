@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Header Component CSS -->
+    <link rel="stylesheet" href="components/header.css" />
     <!-- External CSS -->
     <link rel="stylesheet" href="styles/styles.css" />
 
@@ -17,12 +19,14 @@
     <div class="container">
         <!-- ==================== HEADER SECTION ==================== -->
         <!-- Edit the title and subtitle text below -->
-        <header class="header">
-            <span class="om-symbol">ॐ</span>
-            <h1 style="display: inline;">Biodata</h1>
-            <span class="om-symbol">ॐ</span>
-            <p style="margin-top: 15px; font-size: 1.2em; opacity: 0.9;">श्री गणेशाय नमः</p>
-        </header>
+<!--        <header class="header">-->
+<!--            <span class="om-symbol">ॐ</span>-->
+<!--            <h1 style="display: inline;">Biodata</h1>-->
+<!--            <span class="om-symbol">ॐ</span>-->
+<!--            <p style="margin-top: 15px; font-size: 1.2em; opacity: 0.9;">श्री गणेशाय नमः</p>-->
+<!--        </header>-->
+
+        <div id="header-container"></div>
 
         <!-- ==================== MAIN BIODATA CARD ==================== -->
         <div class="biodata-card">
@@ -197,6 +201,7 @@
     <div id="gallery-trigger">
         <div class="arrow">›</div>
     </div>
+    <script src="components/header.js"></script>
     <script src="styles/instagram-frame.js"></script>
     <script src="assets/workData.js"></script>
     <script src="assets/biodataData.js"></script>
