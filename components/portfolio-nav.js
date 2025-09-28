@@ -34,20 +34,33 @@ class PortfolioNav {
   }
 
   initializeNavigation() {
-    // Add smooth scrolling for anchor links
+    // Add smooth scrolling for INTERNAL anchor links only
     const navLinks = document.querySelectorAll('#portfolio-nav-container a[href^="#"]');
 
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
         const targetId = link.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+        const targetElement = document.querySelector(targetId.substring(1)); // Remove # prefix
 
         if (targetElement) {
+          e.preventDefault(); // Only prevent default for internal anchors
           targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
+        } else {
+          // If target element doesn't exist yet, try again after a short delay
+          // This handles cases where components are loaded asynchronously
+          setTimeout(() => {
+            const retryElement = document.querySelector(targetId.substring(1));
+            if (retryElement) {
+              e.preventDefault();
+              retryElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }, 100);
         }
       });
     });
