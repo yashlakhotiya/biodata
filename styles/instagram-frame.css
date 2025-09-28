@@ -1,0 +1,96 @@
+/* Component-specific styles */
+.instagram-frame-component .work-item {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    aspect-ratio: 1;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.instagram-frame-component .work-item:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.instagram-frame-component .work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    border-radius: 15px;
+}
+
+.instagram-frame-component .work-item:hover img {
+    transform: scale(1.1);
+}
+
+.instagram-frame-component .work-item-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--primary-maroon);
+    padding: 12px 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 15px 15px;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.instagram-frame-component .work-item:hover .work-item-caption {
+    opacity: 1;
+}
+
+.instagram-frame-component .work-item-caption p {
+    font-size: 0.9em;
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.instagram-frame-component .work-item::before {
+    content: '♡';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--primary-maroon);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.instagram-frame-component .work-item:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Responsive design for component */
+@media (max-width: 768px) {
+    .instagram-frame-component .work-item {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .instagram-frame-component .work-item {
+        max-width: 250px;
+    }
+}

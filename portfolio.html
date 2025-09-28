@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Prakirti Lakhotiya</title>
+
+    <!-- Google Fonts for Indian Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/portfolio_styles.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== PORTFOLIO HEADER ==================== -->
+        <header class="portfolio-header">
+            <span class="om-symbol">ॐ</span>
+            <h1 style="display: inline;">Creative Portfolio</h1>
+            <span class="om-symbol">ॐ</span>
+            <p style="margin-top: 15px; font-size: 1.2em; opacity: 0.9;">Photography • Music • Cinematography</p>
+        </header>
+
+        <!-- ==================== NAVIGATION ==================== -->
+        <nav class="portfolio-nav">
+            <a href="index.html">← Back to Biodata</a>
+            <a href="#work-showcase">View Work</a>
+            <a href="#skills">Skills & Technologies</a>
+        </nav>
+
+        <!-- ==================== PORTFOLIO INTRODUCTION ==================== -->
+        <section class="portfolio-section">
+            <div class="portfolio-intro">
+                <h2 style="color: var(--peacock-blue); margin-bottom: 20px;">Creative Journey</h2>
+                <p style="font-size: 1.2em; line-height: 1.8; color: var(--text-dark); max-width: 800px; margin: 0 auto;">
+                    Welcome to my creative world! I'm Prakirti Lakhotiya, a software engineer by profession and a creative artist at heart.
+                    My passion lies in capturing the beauty of nature through photography, creating immersive musical experiences,
+                    and telling stories through visual media. Each piece of work reflects my unique perspective on life, culture, and creativity.
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== WORK SHOWCASE SECTION ==================== -->
+        <section id="work-showcase" class="portfolio-section">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="work-showcase-container">
+                <!-- This container will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS & TECHNOLOGIES ==================== -->
+        <section id="skills" class="portfolio-section">
+            <h2 class="section-title">Skills & Technologies</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>🎨 Creative Arts</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Photography</span>
+                        <span class="skill-tag">Music Production</span>
+                        <span class="skill-tag">Cinematography</span>
+                        <span class="skill-tag">Photo Editing</span>
+                        <span class="skill-tag">Audio Engineering</span>
+                        <span class="skill-tag">Storytelling</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Technical Skills</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🎵 Music Production</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">FL Studio</span>
+                        <span class="skill-tag">Ableton Live</span>
+                        <span class="skill-tag">Guitar</span>
+                        <span class="skill-tag">Flute</span>
+                        <span class="skill-tag">Piano</span>
+                        <span class="skill-tag">EDM Production</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📸 Photography Specializations</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Wildlife</span>
+                        <span class="skill-tag">Landscape</span>
+                        <span class="skill-tag">Astrophotography</span>
+                        <span class="skill-tag">Portrait</span>
+                        <span class="skill-tag">Street</span>
+                        <span class="skill-tag">Nature</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer style="text-align: center; padding: 40px; margin-top: 50px; background: #fdfcfa; border-radius: 15px;">
+            <div style="font-size: 2em; color: var(--primary-maroon); margin: 10px 0;">❋ ❋ ❋</div>
+            <p style="color: var(--text-dark); opacity: 0.7; font-style: italic; font-size: 1.1em;">
+                ॥ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥<br>
+                May all beings be happy, may all be free from illness
+            </p>
+            <div style="font-size: 2em; color: var(--primary-maroon); margin: 10px 0;">❋ ❋ ❋</div>
+        </footer>
+    </div>
+
+    <!-- ==================== FULL-SCREEN WORK GALLERY ==================== -->
+    <div id="work-gallery-screen">
+        <button id="close-gallery-btn">&times;</button>
+        <div class="gallery-grid">
+            <!-- This grid will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- ==================== GALLERY TRIGGER ==================== -->
+    <div id="gallery-trigger">
+        <div class="arrow">‹</div>
+    </div>
+    <script src="styles/instagram-frame.js"></script>
+    <script src="assets/workData.js"></script>
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

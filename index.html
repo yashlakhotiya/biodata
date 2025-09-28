@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata - Prakirti Lakhotiya</title>
+
+    <!-- Google Fonts for Indian Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles/styles.css" />
+
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== HEADER SECTION ==================== -->
+        <!-- Edit the title and subtitle text below -->
+        <header class="header">
+            <span class="om-symbol">ॐ</span>
+            <h1 style="display: inline;">Biodata</h1>
+            <span class="om-symbol">ॐ</span>
+            <p style="margin-top: 15px; font-size: 1.2em; opacity: 0.9;">श्री गणेशाय नमः</p>
+        </header>
+
+        <!-- ==================== MAIN BIODATA CARD ==================== -->
+        <div class="biodata-card">
+            <div class="corner-decoration top-left">卐</div>
+            <div class="corner-decoration top-right">卐</div>
+            <div class="corner-decoration bottom-left">卐</div>
+            <div class="corner-decoration bottom-right">卐</div>
+
+            <div class="ethnic-border"></div>
+
+            <!-- ==================== PHOTO & NAME SECTION ==================== -->
+            <!-- Replace the photo URLs and name below -->
+            <section class="photo-section">
+                <div class="photo-carousel-container">
+                    <!-- Photo Stack -->
+                    <div class="photo-stack">
+                        <button class="carousel-arrow left-arrow" onclick="changePhoto(-1)">‹</button>
+
+                        <!-- Add your photo URLs in the data-photos array below -->
+                        <div class="photo-frame center" id="photo-0">
+                            <img src="assets/images/photo1.png" alt="Profile Photo 1">
+                        </div>
+                        <div class="photo-frame right" id="photo-1">
+                            <img src="assets/images/photo1.png" alt="Profile Photo 2">
+                        </div>
+                        <div class="photo-frame hidden-right" id="photo-2">
+                            <img src="assets/images/photo1.png" alt="Profile Photo 3">
+                        </div>
+                        <div class="photo-frame hidden-right" id="photo-3">
+                            <img src="assets/images/photo1.png" alt="Profile Photo 4">
+                        </div>
+                        <div class="photo-frame hidden-right" id="photo-4">
+                            <img src="assets/images/photo1.png" alt="Profile Photo 5">
+                        </div>
+
+                        <button class="carousel-arrow right-arrow" onclick="changePhoto(1)">›</button>
+                    </div>
+
+                    <!-- Photo Indicators -->
+                    <div class="photo-indicators">
+                        <span class="indicator active" onclick="goToPhoto(0)"></span>
+                        <span class="indicator" onclick="goToPhoto(1)"></span>
+                        <span class="indicator" onclick="goToPhoto(2)"></span>
+                        <span class="indicator" onclick="goToPhoto(3)"></span>
+                        <span class="indicator" onclick="goToPhoto(4)"></span>
+                    </div>
+                </div>
+
+                <h2 class="name-display">PRAKIRTI LAKHOTIYA</h2>
+                <p style="color: var(--peacock-blue); font-style: italic;">"Software Engineer crafting life with code and culture"</p>
+            </section>
+
+            <!-- ==================== SOCIAL PROFILES SECTION ==================== -->
+            <section id="social-profiles">
+                <div class="social-links">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/praxybeats" target="_blank" class="social-link" aria-label="LinkedIn Profile" data-tooltip="LinkedIn">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram Photography -->
+                    <a href="https://www.instagram.com/realmonreels" target="_blank" class="social-link" aria-label="Instagram Profile" data-tooltip="Photography">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="#E1306C" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.28.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram Personal -->
+                    <a href="https://www.instagram.com/prakirtilakhotiya" target="_blank" class="social-link" aria-label="Instagram Profile" data-tooltip="Personal & Music Production">
+                        <svg class="social-icon" viewBox="0 0 24 24" fill="#C13584" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.28-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.28.059 1.689.073 4.948.073s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.78-1.28-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/>
+                        </svg>
+                    </a>
+                    <!-- Add more social links here by copying the <a> block above -->
+                </div>
+            </section>
+
+            <!-- ==================== PERSONAL DETAILS SECTION ==================== -->
+            <!-- Edit all the placeholder values below with your information -->
+            <section id="personal-details">
+                <h3 class="section-title">Personal Details</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Date of Birth</div>
+                        <div class="info-value">15 April 1999</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Time of Birth</div>
+                        <div class="info-value">[HH:MM AM/PM]</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Place of Birth</div>
+                        <div class="info-value">Bundi, Rajasthan</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Height</div>
+                        <div class="info-value">5'8"</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Complexion</div>
+                        <div class="info-value">Wheatish</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Blood Group</div>
+                        <div class="info-value">B+</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Rashi (Moon Sign)</div>
+                        <div class="info-value">[Your Rashi]</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Nakshatra</div>
+                        <div class="info-value">[Your Nakshatra]</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Gotra</div>
+                        <div class="info-value">Phaphadansh</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Manglik</div>
+                        <div class="info-value">No</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Habits</div>
+                        <div class="info-value">Non-drinker, Non-smoker</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== FAMILY DETAILS SECTION ==================== -->
+            <!-- Edit family information below -->
+            <section id="family-details">
+                <h3 class="section-title">Family Details</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Father's Name</div>
+                        <div class="info-value">Shailendra Lakhotiya</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Father's Occupation</div>
+                        <div class="info-value">Business</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Mother's Name</div>
+                        <div class="info-value">Uma Maheshwari</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Mother's Occupation</div>
+                        <div class="info-value">Vice Principal</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Brothers</div>
+                        <div class="info-value">1 - Married</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Family Type</div>
+                        <div class="info-value">Joint</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Native Place</div>
+                        <div class="info-value">Bundi, Rajasthan</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== EDUCATION & PROFESSION SECTION ==================== -->
+            <!-- Update with your educational and professional details -->
+            <section id="education-profession">
+                <h3 class="section-title">Education & Professional Details</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">Highest Education</div>
+                        <div class="info-value">B.Tech in Computer Science and Engineering</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">College/University</div>
+                        <div class="info-value">Manipal Institute of Technology</div>
+                    </div>
+<!--                    <div class="info-item">-->
+<!--                        <div class="info-label">Additional Qualifications</div>-->
+<!--                        <div class="info-value">[Certifications / Courses]</div>-->
+<!--                    </div>-->
+                    <div class="info-item">
+                        <div class="info-label">Occupation</div>
+                        <div class="info-value">Software Engineer</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Company</div>
+                        <div class="info-value">Angelone Broking</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Designation</div>
+                        <div class="info-value">SDE-2</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Work Location</div>
+                        <div class="info-value">Bangalore - Remote</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Annual Income</div>
+                        <div class="info-value">25-40 LPA</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==================== PARTNER PREFERENCES SECTION ==================== -->
+            <!-- Modify the preferences list items as needed -->
+            <section id="partner-preferences">
+                <h3 class="section-title">Partner Preferences</h3>
+                <ul class="preferences-list">
+                    <li>Age: 23-26 years</li>
+                    <li>Height: [5'2" - 5'7"]</li>
+                    <li>Education: Graduate / Post-Graduate</li>
+                    <li>Occupation: [Any / Working Professional preferred]</li>
+                    <li>Family Background: Cultured and educated family</li>
+                    <li>Values: Traditional with modern outlook</li>
+                    <li>Location Preference: [Any metropolitan city in India]</li>
+                    <li>Other Preferences: Understanding, caring, and family-oriented</li>
+                    <li>Habits: Prefers a non-smoker and non-drinker.</li>
+                </ul>
+            </section>
+
+            <!-- ==================== HOBBIES & INTERESTS SECTION ==================== -->
+            <section id="hobbies-interests">
+                <h3 class="section-title">Hobbies & Interests</h3>
+                <ul class="preferences-list">
+                    <li>Wildlife, landscape, and astrophotography (deep sky, moon/sun alignments).</li>
+                    <li>Cinematic storytelling and producing EDM music.</li>
+                    <li>Playing flute, guitar, and piano; aspiring to learn Indian classical music.</li>
+                    <li>Passionate about understanding animal behaviour and stargazing.</li>
+                </ul>
+            </section>
+            <!-- END OF SECTION TO ADD -->
+
+            <!-- ==================== CONTACT INFORMATION SECTION ==================== -->
+            <!-- Update with your contact details -->
+            <section id="contact">
+                <h3 class="section-title">Contact Information</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Primary Contact:</strong> Uma Maheshwari
+                    </div>
+                    <div class="contact-item">
+                        <strong>Mobile:</strong> <a href="tel:+919461122111">+91 94611 22111</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong> <a href="mailto:umamaheshwari100170@gmail.com">umamaheshwari100170@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Address:</strong> Bundi, Rajasthan - 323001
+                    </div>
+                </div>
+            </section>
+
+            <div class="ethnic-border"></div>
+        </div>
+
+        <!-- ==================== FOOTER SECTION ==================== -->
+        <footer>
+            <div class="footer-decoration">❋ ❋ ❋</div>
+            <p class="footer-text">
+                ॥ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ॥<br>
+                May all beings be happy, may all be free from illness
+            </p>
+            <div class="footer-decoration">❋ ❋ ❋</div>
+        </footer>
+    </div>
+
+    <!-- ==================== WORK SHOWCASE SECTION ==================== -->
+    <!-- This container will be populated by JavaScript -->
+    <div class="work-showcase-container"></div>
+
+    <!-- ==================== FULL-SCREEN WORK GALLERY ==================== -->
+    <div id="work-gallery-screen">
+        <button id="close-gallery-btn">&times;</button>
+        <div class="gallery-grid">
+            <!-- This grid will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- ==================== GALLERY TRIGGER ==================== -->
+    <div id="gallery-trigger">
+        <div class="arrow">›</div>
+    </div>
+    <script src="assets/workData.js"></script>
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>
