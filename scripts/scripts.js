@@ -120,7 +120,7 @@ if (closeGalleryBtn) {
 
 // --- TOUCH/SWIPE & KEYBOARD FOR CAROUSEL ---
 document.addEventListener('keydown', (e) => {
-    const isPortfolioPage = window.location.pathname.includes('portfolio.html');
+    const isPortfolioPage = window.location.pathname.includes('portfolio');
 
     if (isPortfolioPage) {
         // On portfolio page - handle navigation back to biodata
