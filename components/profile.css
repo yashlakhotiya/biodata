@@ -1,0 +1,629 @@
+:root {
+  /* Indian Color Palette */
+  --primary-maroon: #8B0000;
+  --gold: #FFD700;
+  --saffron: #FF9933;
+  --peacock-blue: #005F73;
+  --peacock-green: #0A9396;
+  --cream: #FFF8DC;
+  --sandalwood: #F5E6D3;
+  --deep-purple: #4A148C;
+  --rose-gold: #B76E79;
+  --text-dark: #2C1810;
+  --border-gold: #D4AF37;
+
+  /* Typography */
+  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+  --text-dark: #F8F9FA;
+  --cream: #1E1E1E;
+  --sandalwood: #2C2C2C;
+  --peacock-blue: #4ECDC4;
+  --primary-maroon: #FF6B6B;
+  --gold: #FFE66D;
+}
+
+/* ==================== PROFILE SECTION ==================== */
+.profile-section {
+  text-align: center;
+  padding: 40px 30px;
+}
+
+/* ==================== PHOTO CAROUSEL ==================== */
+.photo-carousel-container {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  margin: 0 auto 80px auto;
+  perspective: 1000px;
+  transition: all 0.5s ease;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-stack {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Expanded state for the carousel */
+.photo-stack.expanded {
+  /* No transform needed on the stack itself */
+}
+
+.photo-stack.expanded .photo-frame.center {
+  transform: translate(-50%, -50%) scale(1.5);
+  cursor: zoom-out;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.photo-stack.expanded .photo-frame.left {
+  transform: translate(calc(-50% - 160px), calc(-50% + 20px)) scale(0.7);
+  opacity: 0.8;
+  z-index: 1; /* Always keep below center */
+}
+
+.photo-stack.expanded .photo-frame.right {
+  transform: translate(calc(-50% + 320px), calc(-50% + 20px)) scale(0.7);
+  opacity: 0.8;
+  z-index: 1; /* Always keep below center */
+}
+
+/* Hover effect for non-expanded state */
+.photo-stack:not(.expanded) .photo-frame:hover img {
+  transform: scale(1.1);
+}
+
+/* Disable all hover effects when carousel is expanded */
+.photo-stack.expanded .photo-frame img {
+  transform: none !important;
+}
+
+.photo-frame {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border: 5px solid white;
+  backface-visibility: hidden;
+  transform: translate(-50%, -50%);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+/* Large screens - show 5 photos (center + left + right + 2 hidden) */
+.photo-frame.center {
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 10;
+  opacity: 1;
+  width: 220px;
+  height: 220px;
+}
+
+.photo-frame.left {
+  left: 0;
+  right: auto;
+  top: 50%;
+  transform: translate(-30%, -50%) scale(0.85);
+  z-index: 1;
+  opacity: 0.7;
+  filter: brightness(0.7);
+  width: 180px;
+  height: 180px;
+}
+
+.photo-frame.right {
+  right: 0;
+  top: 50%;
+  left: auto;
+  transform: translate(30%, -50%) scale(0.85);
+  z-index: 1;
+  opacity: 0.7;
+  filter: brightness(0.7);
+  width: 180px;
+  height: 180px;
+}
+
+.photo-frame.hidden-left {
+  left: 0;
+  top: 50%;
+  transform: translate(-100%, -50%) scale(0.5);
+  opacity: 0;
+  z-index: 0;
+  width: 100px;
+  height: 100px;
+}
+
+.photo-frame.hidden-right {
+  right: 0;
+  top: 50%;
+  left: auto;
+  transform: translate(100%, -50%) scale(0.5);
+  opacity: 0;
+  z-index: 0;
+  width: 100px;
+  height: 100px;
+}
+
+/* Medium screens - show 3 photos (hide the far hidden ones) */
+@media (max-width: 900px) {
+  .photo-frame.hidden-left,
+  .photo-frame.hidden-right {
+    display: none;
+  }
+
+  .photo-frame.center {
+    width: 200px;
+    height: 200px;
+  }
+
+  .photo-frame.left,
+  .photo-frame.right {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Small screens - show only 1 photo (center only) */
+@media (max-width: 600px) {
+  .photo-frame.left,
+  .photo-frame.right {
+    display: none;
+  }
+
+  .photo-frame.center {
+    width: 180px;
+    height: 180px;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .photo-carousel-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Position arrows relative to center frame */
+  .photo-stack .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .photo-stack .carousel-arrow.left-arrow {
+    left: calc(50% - 120px); /* Position left of center frame with margin */
+  }
+
+  .photo-stack .carousel-arrow.right-arrow {
+    right: calc(50% - 120px); /* Position right of center frame with margin */
+  }
+}
+
+/* Very small screens - even smaller center photo with closer arrows */
+@media (max-width: 400px) {
+  .photo-carousel-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .photo-frame.center {
+    width: 140px;
+    height: 140px;
+  }
+
+  /* Position arrows even closer to center frame */
+  .photo-stack .carousel-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .photo-stack .carousel-arrow.left-arrow {
+    left: calc(50% - 100px); /* Closer positioning for smaller screens */
+  }
+
+  .photo-stack .carousel-arrow.right-arrow {
+    right: calc(50% - 100px); /* Closer positioning for smaller screens */
+  }
+
+  /* Make indicators more compact */
+  .photo-indicators {
+    bottom: -50px;
+    gap: 6px;
+    padding: 6px 10px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Hide indicators when photo is expanded */
+.photo-stack.expanded ~ .photo-indicators {
+  display: none;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Very small screens - smallest expansion */
+@media (max-width: 360px) {
+  .photo-frame.expanded {
+    width: min(200px, 60vw) !important;
+    height: min(200px, 60vw) !important;
+    max-width: min(200px, 60vw) !important;
+    max-height: min(200px, 60vw) !important;
+  }
+}
+
+.photo-frame.expanded img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none !important;
+}
+
+/* Hidden photos */
+.photo-frame.hidden-left {
+  left: 0;
+  top: 50%;
+  transform: translate(-100%, -50%) scale(0.5);
+  opacity: 0;
+  z-index: 0;
+}
+
+/* Photo indicators - enhanced styling */
+.photo-indicators {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 4;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+}
+
+/* Dark theme for photo indicators */
+[data-theme="dark"] .photo-indicators {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--gold);
+}
+
+/* Dark theme indicator styles */
+[data-theme="dark"] .indicator {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .indicator.active {
+  background: var(--gold);
+  border: 2px solid var(--primary-maroon);
+  box-shadow: 0 4px 10px rgba(255, 224, 109, 0.4);
+}
+
+[data-theme="dark"] .indicator:hover {
+  background: var(--saffron);
+  border: 2px solid var(--primary-maroon);
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(160, 160, 160, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.indicator.active {
+  background: var(--primary-maroon);
+  transform: scale(1.4);
+  border: 2px solid var(--gold);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.indicator:hover {
+  background: var(--saffron);
+  transform: scale(1.2);
+  border: 2px solid var(--primary-maroon);
+}
+
+/* Hide indicators on very small screens */
+@media (max-width: 400px) {
+  .photo-indicators {
+    bottom: -40px;
+    gap: 8px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.photo-stack .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.photo-stack .carousel-arrow:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, var(--saffron), var(--gold));
+}
+
+.photo-stack .carousel-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.photo-stack .carousel-arrow.left-arrow {
+  left: -60px;
+}
+
+.photo-stack .carousel-arrow.right-arrow {
+  right: -60px;
+}
+
+.photo-stack .carousel-arrow::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  animation: pulseRing 2s infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* ==================== BASIC INFO SECTION ==================== */
+.basic-info {
+  margin-bottom: 40px;
+}
+
+.name-display {
+  font-family: var(--font-heading);
+  font-size: 2.2em;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  letter-spacing: 1px;
+}
+
+.tagline {
+  font-family: var(--font-sans);
+  font-size: 1.1em;
+  color: var(--peacock-blue);
+  font-style: italic;
+  margin-top: 8px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* ==================== SOCIAL PROFILES SECTION ==================== */
+.social-profiles .social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; /* Space between icons */
+  margin-top: 10px;
+}
+
+.social-link {
+  position: relative; /* For tooltip positioning */
+  color: var(--peacock-blue);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.social-link:hover {
+  transform: translateY(-3px) scale(1.1);
+  color: var(--primary-maroon);
+}
+
+/* Tooltip on hover */
+.social-link::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-dark);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+.social-link:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .profile-section {
+    padding: 30px 20px;
+  }
+
+  .name-display {
+    font-size: 1.8em;
+  }
+
+  .tagline {
+    font-size: 1em;
+  }
+
+  .photo-carousel-container {
+    max-width: 320px;
+  }
+
+  .photo-stack {
+    width: 250px;
+  }
+
+  .photo-frame {
+    width: 150px;
+    height: 150px;
+  }
+
+  .carousel-arrow.left-arrow {
+    left: -40px;
+  }
+
+  .carousel-arrow.right-arrow {
+    right: -40px;
+  }
+
+  .carousel-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .social-links {
+    gap: 20px;
+  }
+
+  .social-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* For very small screens, move arrows below photo-stack */
+@media (max-width: 480px) {
+  .profile-section {
+    padding: 40px 20px 20px 20px; /* Increased bottom padding to prevent overlap with name */
+  }
+
+  .photo-carousel-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 60px auto; /* Increased bottom margin */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .photo-stack {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .photo-stack .carousel-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .photo-stack .carousel-arrow.left-arrow {
+    left: -20px;
+  }
+
+  .photo-stack .carousel-arrow.right-arrow {
+    right: -20px;
+  }
+
+  /* Enhanced indicators positioning */
+  .photo-indicators {
+    bottom: -60px; /* Moved further down */
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  .indicator.active {
+    transform: scale(1.3);
+  }
+
+  .name-display {
+    font-size: 1.6em;
+  }
+
+  .tagline {
+    font-size: 0.95em;
+  }
+
+  .social-links {
+    gap: 18px;
+  }
+
+  .social-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
