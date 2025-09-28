@@ -91,7 +91,7 @@ const closeGalleryBtn = document.getElementById('close-gallery-btn');
 if (galleryTrigger) {
     galleryTrigger.addEventListener('click', () => {
         console.log('Gallery trigger clicked on page:', window.location.pathname);
-        const isPortfolioPage = window.location.pathname.includes('portfolio.html');
+        const isPortfolioPage = window.location.pathname.includes('portfolio');
         console.log('Is portfolio page:', isPortfolioPage);
 
         if (isPortfolioPage) {
