@@ -84,7 +84,7 @@
 
 /* Dark theme for contact info */
 [data-theme="dark"] .contact-info {
-  background: linear-gradient(135deg, var(--peacock-green), var(--primary-maroon));
+  background: linear-gradient(120deg, var(--primary-maroon), var(--saffron));
 }
 
 .contact-item {
