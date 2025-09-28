@@ -1,3 +1,7 @@
+// Debug logging
+console.log('=== Scripts.js loaded ===');
+console.log('workData available at load:', typeof workData !== 'undefined' ? workData : 'Not loaded yet');
+
 // Photo carousel functionality
 const totalPhotos = 6;
 let currentPhotoIndex = 0;
@@ -155,27 +159,51 @@ function generateWorkItemHTML(item) {
 }
 
 function populateShowcase() {
+    console.log('=== populateShowcase() called ===');
     const showcaseContainer = document.querySelector('.work-showcase-container');
     const galleryGrid = document.querySelector('.gallery-grid');
     const isPortfolioPage = window.location.pathname.includes('portfolio.html');
+    
+    console.log('Showcase container found:', !!showcaseContainer);
+    console.log('Gallery grid found:', !!galleryGrid);
+    console.log('Is portfolio page:', isPortfolioPage);
+    console.log('workData available:', !!workData);
+    
+    if (workData) {
+        console.log('workData length:', workData.length);
+        console.log('First work item:', workData[0]);
+    }
 
     // Initialize Instagram Frame Component for portfolio page
     if (showcaseContainer && isPortfolioPage) {
+        console.log('Initializing Instagram Frame Component for portfolio page');
         // Clear existing content
         showcaseContainer.innerHTML = '';
 
-        // Create Instagram Frame Component instance
-        const instagramComponent = new InstagramFrameComponent(showcaseContainer, {
-            maxWidth: '350px',
-            enableLazyLoading: true
-        });
+        try {
+            // Create Instagram Frame Component instance
+            const instagramComponent = new InstagramFrameComponent(showcaseContainer, {
+                maxWidth: '350px',
+                enableLazyLoading: true
+            });
+            console.log('Instagram Frame Component created successfully');
 
-        // Render all work items using the component
-        instagramComponent.renderFrames(workData);
+            // Render all work items using the component
+            if (workData && workData.length > 0) {
+                console.log('Rendering work items:', workData.length);
+                instagramComponent.renderFrames(workData);
+                console.log('Work items rendered successfully');
+            } else {
+                console.warn('No work data available to render');
+            }
 
-        // Store component reference for potential updates
-        window.instagramComponent = instagramComponent;
+            // Store component reference for potential updates
+            window.instagramComponent = instagramComponent;
+        } catch (error) {
+            console.error('Error initializing Instagram Frame Component:', error);
+        }
     } else if (showcaseContainer) {
+        console.log('Clearing showcase container on non-portfolio page');
         // Clear showcase container on non-portfolio pages
         showcaseContainer.innerHTML = '';
     }

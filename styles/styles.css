@@ -555,16 +555,6 @@ section:not(:last-child)::after {
     transition: opacity 0.3s ease;
 }
 
-/* Extra small screens - even smaller expansion */
-@media (max-width: 480px) {
-  .photo-frame.expanded {
-    width: min(250px, 70vw) !important;
-    height: min(250px, 70vw) !important;
-    max-width: min(250px, 70vw) !important;
-    max-height: min(250px, 70vw) !important;
-  }
-}
-
 /* Very small screens - smallest expansion */
 @media (max-width: 360px) {
   .photo-frame.expanded {
@@ -704,7 +694,7 @@ section:not(:last-child)::after {
 /* For very small screens, move arrows below photo-stack */
 @media (max-width: 480px) {
     .photo-section {
-        padding: 40px 20px 180px 20px; /* Increased bottom padding to prevent overlap with name */
+        padding: 40px 20px 20px 20px; /* Increased bottom padding to prevent overlap with name */
     }
 
     .photo-carousel-container {
@@ -729,11 +719,11 @@ section:not(:last-child)::after {
     }
 
     .photo-stack .carousel-arrow.left-arrow {
-        left: -50px;
+        left: -20px;
     }
 
     .photo-stack .carousel-arrow.right-arrow {
-        right: -50px;
+        right: -20px;
     }
 
     /* Enhanced indicators positioning */
@@ -750,6 +740,28 @@ section:not(:last-child)::after {
 
     .indicator.active {
         transform: scale(1.3);
+    }
+
+    .contact-info {
+        padding: 15px 10px;
+        margin: 10px 5px 15px 5px;
+    }
+
+    .contact-item {
+        font-size: 0.95em;
+        margin: 10px 0;
+    }
+
+    .contact-item strong {
+        display: block;
+        margin-bottom: 3px;
+    }
+
+    .photo-frame.expanded {
+        width: min(250px, 70vw) !important;
+        height: min(250px, 70vw) !important;
+        max-width: min(250px, 70vw) !important;
+        max-height: min(250px, 70vw) !important;
     }
 }
 
@@ -866,23 +878,6 @@ section:not(:last-child)::after {
         margin: 12px 0;
         word-break: break-word;
         overflow-wrap: break-word;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-info {
-        padding: 15px 10px;
-        margin: 10px 5px 15px 5px;
-    }
-
-    .contact-item {
-        font-size: 0.95em;
-        margin: 10px 0;
-    }
-
-    .contact-item strong {
-        display: block;
-        margin-bottom: 3px;
     }
 }
 
