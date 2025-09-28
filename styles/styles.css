@@ -853,6 +853,50 @@ section:not(:last-child)::after {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+/* ==================== RESPONSIVE CONTACT SECTION ==================== */
+/* Fix text overflow on small screens */
+@media (max-width: 600px) {
+    .contact-info {
+        padding: 20px 15px;
+        margin: 15px 10px 20px 10px;
+    }
+
+    .contact-item {
+        font-size: 1em;
+        margin: 12px 0;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        padding: 15px 10px;
+        margin: 10px 5px 15px 5px;
+    }
+
+    .contact-item {
+        font-size: 0.95em;
+        margin: 10px 0;
+    }
+
+    .contact-item strong {
+        display: block;
+        margin-bottom: 3px;
+    }
+}
+
+@media (max-width: 360px) {
+    .contact-info {
+        padding: 12px 8px;
+    }
+
+    .contact-item {
+        font-size: 0.9em;
+        margin: 8px 0;
+    }
+}
+
 /* ==================== SOCIAL PROFILES SECTION ==================== */
 #social-profiles .social-links {
     display: flex;
