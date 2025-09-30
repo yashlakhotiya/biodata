@@ -38,6 +38,8 @@
     <!-- Particles.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
+    <!-- Particles CSS -->
+    <link rel="stylesheet" href="styles/particles.css" />
     <!-- Header Component CSS -->
     <link rel="stylesheet" href="components/header.css" />
     <!-- Profile Component CSS -->
@@ -58,47 +60,6 @@
     <link rel="stylesheet" href="components/footer.css" />
     <!-- External CSS -->
     <link rel="stylesheet" href="styles/styles.css" />
-
-    <style>
-        /* Ensure particles.js covers full screen */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            filter: blur(1px);
-            opacity: 0.7;
-        }
-
-        /* Allow pointer events on the particles.js canvas */
-        #particles-js canvas {
-            pointer-events: auto !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-        }
-
-        /* Ensure body and html take full height */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background: transparent !important;
-        }
-
-        /* Remove background from all containers and cards */
-        .container,
-        .biodata-card,
-        .portfolio-card,
-        .header-section,
-        .footer-section {
-            background: transparent !important;
-        }
-    </style>
 
 </head>
 <body>
@@ -151,6 +112,7 @@
         <div class="arrow">›</div>
     </div>
 
+    <script src="scripts/particles.js"></script>
     <script src="components/header.js"></script>
     <script src="components/profile.js"></script>
     <script src="components/personal-details.js"></script>
@@ -165,101 +127,5 @@
     <script src="assets/biodataData.js"></script>
     <script src="scripts/modules/biodata-generator.js"></script>
     <script src="scripts/scripts.js"></script>
-    <script>
-        // Particles.js configuration for twinkle effect with Indian theme
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 150,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": ["#FFD700", "#FF9933", "#005F73", "#0A9396", "#B76E79"]
-                },
-                "shape": {
-                    "type": ["circle", "triangle", "polygon", "star"],
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.9,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.3,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 4,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 2,
-                        "size_min": 2,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 120,
-                    "color": "#FF9933",
-                    "opacity": 0.6,
-                    "width": 1.5
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 1.2,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": true,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "window",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "bubble"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "repulse"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "bubble": {
-                        "distance": 150,
-                        "size": 10,
-                        "duration": 2,
-                        "opacity": 1,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 150,
-                        "duration": 0.4
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
 </body>
 </html>
