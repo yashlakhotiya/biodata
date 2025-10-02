@@ -254,17 +254,33 @@ class GalleryFrameComponent {
             @media (max-width: 480px) {
                 .gallery-frames-container {
                     grid-template-columns: 1fr;
-                    gap: 10px;
-                    padding: 20px 10px;
+                    gap: 50px;
+                    padding: 30px 15px;
+                    grid-auto-rows: auto;
+                }
+
+                .instagram-frame-item {
+                    height: 200px;
+                    margin-bottom: 20px;
+                    position: relative;
                 }
 
                 .instagram-frame-item.size-large,
                 .instagram-frame-item.size-wide,
                 .instagram-frame-item.size-tall,
                 .instagram-frame-item.size-medium {
-                    grid-column: span 1;
-                    grid-row: span 1;
-                    height: 180px;
+                    height: 200px;
+                }
+
+                /* Ensure titles stay within frame boundaries */
+                .instagram-frame-item .work-item-caption {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 40px;
+                    background: rgba(255, 255, 255, 0.95);
+                    border-radius: 0;
                 }
             }
         `;
