@@ -2,11 +2,14 @@
 /* Masonry-style layout with random frame sizes */
 
 .gallery-frames-container {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    grid-auto-flow: dense;
+    gap: 20px;  /* Add gap between items */
+    width: 100%; /* Ensure full width */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 /* Gallery frame component styles */

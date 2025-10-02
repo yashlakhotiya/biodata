@@ -93,6 +93,8 @@ class GalleryFrameComponent {
 
             .instagram-frame-item {
                 position: relative;
+                box-sizing: border-box;
+                margin: 0;
                 width: 100%;
                 height: 100%;
                 background: white;
@@ -114,6 +116,8 @@ class GalleryFrameComponent {
             .instagram-frame-item.size-wide {
                 grid-column: span 2;
                 grid-row: span 1;
+                justify-self: stretch;
+                margin: 0;
             }
 
             .instagram-frame-item.size-tall {
@@ -124,6 +128,8 @@ class GalleryFrameComponent {
             .instagram-frame-item.size-large {
                 grid-column: span 2;
                 grid-row: span 2;
+                justify-self: stretch; 
+                margin: 0;
             }
 
             .instagram-frame-item.size-medium {
@@ -165,6 +171,7 @@ class GalleryFrameComponent {
 
             @media (max-width: 767px) {
                 .gallery-frames-container {
+                    grid-template-columns: repeat(2, 1fr);
                     gap: 15px;
                 }
             }
@@ -174,7 +181,7 @@ class GalleryFrameComponent {
                     grid-template-columns: 100%;
                     gap: 15px;
                 }
-                
+                .instagram-frame-item.size-medium,
                 .instagram-frame-item.size-large,
                 .instagram-frame-item.size-wide,
                 .instagram-frame-item.size-tall {

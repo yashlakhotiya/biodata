@@ -3,7 +3,7 @@
 const workData = [
     {
         title: "#TimeLapse of the Night sky",
-        size: "tall",
+        size: "medium",
         description: "I dont know But Time Lapses are so satisfying to watch. what say?\n" +
             "Try counting the stars May be⭐\n" +
             "\n" +
@@ -47,8 +47,44 @@ const workData = [
     },
     {
         title: "Wildlife",
-        size: "medium",
+        size: "wide",
         image: "assets/images/wildlife.gif",
         link: "https://www.instagram.com/reel/Cv3tHXstDJJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    }
+    },
+    {
+        title: "Solar Eclipse1",
+        size: "wide",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+        title: "Solar Eclipse2",
+        size: "wide",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+        title: "Solar Eclipse1",
+        size: "large",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+        title: "Solar Eclipse2",
+        size: "large",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+        title: "Solar Eclipse1",
+        size: "wide",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+        title: "Solar Eclipse2",
+        size: "wide",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
 ];
