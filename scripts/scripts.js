@@ -149,10 +149,12 @@ document.addEventListener('keydown', (e) => {
 
 function generateWorkItemHTML(item) {
     return `
-        <div class="work-item" title="${item.title}">
-            <img src="${item.image}" alt="${item.title}">
-            <div class="work-item-caption">
-                <p>${item.title}</p>
+        <div class="work-item">
+            ${item.image ? `<img src="${item.image}" alt="${item.title}">` : ''}
+            <div class="work-info">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+                <a href="${item.link}" target="_blank">View Project</a>
             </div>
         </div>
     `;

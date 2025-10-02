@@ -30,15 +30,13 @@ const workData = [
         link: "https://www.youtube.com/watch?v=aGWpIMpY3z0"
     },
     {
-        title: "Landscape Shots",
-        image: "assets/images/photo1.png",
-        description: "Exploring the mountains and valleys.",
-        link: "#"
+        title: "Lunar Eclipse",
+        image: "assets/images/lunar_eclipse.gif",
+        link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-        title: "Moon Alignment",
-        image: "assets/images/photo2.jpg",
-        description: "Planning and capturing the perfect moonrise.",
-        link: "#"
+        title: "Solar Eclipse",
+        image: "assets/images/solar_eclipse.gif",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     }
 ];

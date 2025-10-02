@@ -52,6 +52,11 @@ class FamilyDetails {
   }
 
   async loadScript(src) {
+    console.debug('loadScript called with src:', src);
+    if (!src) {
+      console.error('loadScript called with undefined or empty src!');
+      return;
+    }
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = src;
