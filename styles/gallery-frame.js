@@ -83,204 +83,103 @@ class GalleryFrameComponent {
             .gallery-frames-container {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                grid-auto-rows: 100px;
-                gap: 20px;
-                max-width: 1400px;
-                margin: 0 auto;
-                padding: 40px 20px;
-            }
-
-            /* Remove inline-block layout for grid */
-            .instagram-frame-item {
-                display: block;
+                grid-auto-rows: 220px;
+                grid-auto-flow: dense;
+                gap: 25px;
                 width: 100%;
-                margin-bottom: 0;
-                break-inside: auto;
-                page-break-inside: auto;
+                padding: 20px;
+                margin: 0 auto;
             }
 
-            .instagram-frame-item:hover {
-                transform: translateY(-15px) scale(1.02);
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            .instagram-frame-item {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                cursor: pointer;
             }
 
             .instagram-frame-item img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.4s ease;
-                border-radius: 15px;
+                display: block;
             }
 
-            .instagram-frame-item:hover img {
-                transform: scale(1.1);
-            }
-
-            .instagram-frame-item .work-item-caption {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                color: var(--primary-maroon);
-                padding: 12px 20px;
-                opacity: 1;
-                transition: all 0.3s ease;
-                border-radius: 0 0 15px 15px;
-                min-height: 35px;
-                display: flex;
-                align-items: center;
-            }
-
-            .instagram-frame-item:hover .work-item-caption {
-                opacity: 0.8;
-                transform: scale(1.02);
-                background: rgba(255, 255, 255, 0.98);
-            }
-
-            .instagram-frame-item .work-item-caption p {
-                font-size: 0.9em;
-                line-height: 1.3;
-                margin: 0;
-                font-weight: 600;
-                text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-            }
-
-            .instagram-frame-item::before {
-                content: '♡';
-                position: absolute;
-                top: 15px;
-                right: 15px;
-                background: rgba(255, 255, 255, 0.9);
-                border-radius: 50%;
-                width: 35px;
-                height: 35px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 16px;
-                color: var(--primary-maroon);
-                opacity: 0;
-                transform: scale(0.8);
-                transition: all 0.3s ease;
-                z-index: 10;
-            }
-
-            .instagram-frame-item:hover::before {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-
-            /* Balanced masonry sizing - tall + 2 mediums per conceptual row */
-            .instagram-frame-item.size-small {
-                grid-column: span 1;
+            /* Size variations */
+            .instagram-frame-item.size-wide {
+                grid-column: span 2;
                 grid-row: span 1;
-                height: 100px;
             }
 
-            .instagram-frame-item.size-medium {
+            .instagram-frame-item.size-tall {
                 grid-column: span 1;
                 grid-row: span 2;
-                height: 220px;
             }
 
             .instagram-frame-item.size-large {
                 grid-column: span 2;
                 grid-row: span 2;
-                height: 220px;
             }
 
-            .instagram-frame-item.size-tall {
+            .instagram-frame-item.size-medium {
                 grid-column: span 1;
-                grid-row: span 4;
-                height: 440px;
-            }
-
-            .instagram-frame-item.size-wide {
-                grid-column: span 2;
                 grid-row: span 1;
-                height: 100px;
             }
 
-            /* Responsive design for component */
-            @media (min-width: 1200px) {
+            .work-item-caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.95);
+                color: var(--primary-maroon);
+                transition: all 0.3s ease;
+            }
+
+            .instagram-frame-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            .instagram-frame-item:hover img {
+                transform: scale(1.05);
+            }
+
+            @media (min-width: 1400px) {
                 .gallery-frames-container {
                     grid-template-columns: repeat(5, 1fr);
-                    max-width: 1600px;
                 }
             }
 
-            @media (min-width: 768px) and (max-width: 1199px) {
+            @media (max-width: 1199px) {
                 .gallery-frames-container {
                     grid-template-columns: repeat(3, 1fr);
-                    max-width: 1000px;
-                }
-
-                .instagram-frame-item.size-large,
-                .instagram-frame-item.size-wide {
-                    grid-column: span 1;
-                    grid-row: span 2;
-                    height: 220px;
-                }
-
-                .instagram-frame-item.size-tall {
-                    grid-column: span 1;
-                    grid-row: span 3;
-                    height: 320px;
                 }
             }
 
             @media (max-width: 767px) {
                 .gallery-frames-container {
-                    grid-template-columns: repeat(2, 1fr);
                     gap: 15px;
-                    padding: 30px 15px;
-                }
-
-                .instagram-frame-item.size-large,
-                .instagram-frame-item.size-wide {
-                    grid-column: span 1;
-                    grid-row: span 2;
-                    height: 220px;
-                }
-
-                .instagram-frame-item.size-tall {
-                    grid-column: span 1;
-                    grid-row: span 2;
-                    height: 220px;
                 }
             }
 
             @media (max-width: 480px) {
                 .gallery-frames-container {
-                    grid-template-columns: 1fr;
-                    gap: 50px;
-                    padding: 30px 15px;
-                    grid-auto-rows: auto;
+                    grid-template-columns: 100%;
+                    gap: 15px;
                 }
-
-                .instagram-frame-item {
-                    height: 200px;
-                    margin-bottom: 20px;
-                    position: relative;
-                }
-
+                
                 .instagram-frame-item.size-large,
                 .instagram-frame-item.size-wide,
-                .instagram-frame-item.size-tall,
-                .instagram-frame-item.size-medium {
-                    height: 200px;
-                }
-
-                /* Ensure titles stay within frame boundaries */
-                .instagram-frame-item .work-item-caption {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    height: 40px;
-                    background: rgba(255, 255, 255, 0.95);
-                    border-radius: 0;
+                .instagram-frame-item.size-tall {
+                    grid-column: span 1;
+                    grid-row: span 1;
                 }
             }
         `;

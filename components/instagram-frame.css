@@ -97,14 +97,10 @@
   -webkit-backdrop-filter: blur(10px);
   color: white;
   padding: 30px 20px 20px;
-  opacity: 0;
+  opacity: 1; /* Always visible */
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   border-radius: 0 0 15px 15px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.work-item:hover .work-item-caption {
-  opacity: 1;
 }
 
 .work-item-caption p {

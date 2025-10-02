@@ -28,21 +28,27 @@ const workData = [
         link: "https://www.youtube.com/watch?v=VG2KpTLl2bA"
     },
     {
-        title: "Lunar Eclipse",
-        size: "medium",
-        image: "assets/images/lunar_eclipse.gif",
-        link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
         title: "EDM Music",
         size: "medium",
         description: "A short film about the beauty of nature.",
         link: "https://www.youtube.com/watch?v=aGWpIMpY3z0"
     },
     {
+        title: "Lunar Eclipse",
+        size: "tall",
+        image: "assets/images/lunar_eclipse.gif",
+        link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
         title: "Solar Eclipse",
         size: "medium",
         image: "assets/images/solar_eclipse.gif",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+    },
+    {
+        title: "Wildlife",
+        size: "medium",
+        image: "assets/images/wildlife.gif",
+        link: "https://www.instagram.com/reel/Cv3tHXstDJJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     }
 ];

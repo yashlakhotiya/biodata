@@ -117,15 +117,9 @@ class InstagramFrameComponent {
                 transform: scale(1.1);
             }
 
-            .instagram-frame-component .work-item-caption {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-                color: white;
-                padding: 30px 20px 20px;
-                opacity: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 transition: opacity 0.3s ease;
                 border-radius: 0 0 15px 15px;
             }

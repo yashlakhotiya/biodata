@@ -43,6 +43,7 @@
     min-height: 35px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .instagram-frame-component .work-item:hover .work-item-caption {
@@ -53,6 +54,7 @@
     font-size: 0.9em;
     line-height: 1.3;
     margin: 0;
+    text-align: center;
     font-weight: 600;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }

@@ -160,16 +160,12 @@
 
 /* ==================== PORTFOLIO FEATURED WORK - INSTAGRAM STYLE ==================== */
 .portfolio-section .work-showcase-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1400px;
     margin: 0 auto;
     padding: 40px 20px;
     position: relative;
-    justify-content: center;
 }
 
+/* Remove conflicting media queries */
 /* For larger screens, show items in a 3-column layout */
 @media (min-width: 1200px) {
     .portfolio-section .work-showcase-container {
