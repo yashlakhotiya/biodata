@@ -3,6 +3,7 @@
 const workData = [
     {
         title: "#TimeLapse of the Night sky",
+        size: "tall",
         description: "I dont know But Time Lapses are so satisfying to watch. what say?\n" +
             "Try counting the stars May be⭐\n" +
             "\n" +
@@ -16,26 +17,31 @@ const workData = [
     },
     {
         title: "Polaris and the Night sky",
+        size: "medium",
         description: "New EDM track 'Celestial Dreams' out now!",
         link: "https://www.youtube.com/watch?v=GKhfCNnFkTc"
     },
     {
         title: "Prayashit",
+        size: "medium",
         description: "Under the stars. Capturing the Milky Way.",
         link: "https://www.youtube.com/watch?v=VG2KpTLl2bA"
     },
     {
-        title: "EDM Music",
-        description: "A short film about the beauty of nature.",
-        link: "https://www.youtube.com/watch?v=aGWpIMpY3z0"
-    },
-    {
         title: "Lunar Eclipse",
+        size: "medium",
         image: "assets/images/lunar_eclipse.gif",
         link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
+        title: "EDM Music",
+        size: "medium",
+        description: "A short film about the beauty of nature.",
+        link: "https://www.youtube.com/watch?v=aGWpIMpY3z0"
+    },
+    {
         title: "Solar Eclipse",
+        size: "medium",
         image: "assets/images/solar_eclipse.gif",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     }

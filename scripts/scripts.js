@@ -183,26 +183,28 @@ function populateShowcase() {
         showcaseContainer.innerHTML = '';
 
         try {
-            // Create Instagram Frame Component instance
-            const instagramComponent = new InstagramFrameComponent(showcaseContainer, {
+            // Create Gallery Frame Component instance
+            const galleryComponent = new GalleryFrameComponent(showcaseContainer, {
+                minWidth: '200px',
                 maxWidth: '350px',
+                gap: '20px',
                 enableLazyLoading: true
             });
-            console.log('Instagram Frame Component created successfully');
+            console.log('Gallery Frame Component created successfully');
 
             // Render all work items using the component
             if (workData && workData.length > 0) {
                 console.log('Rendering work items:', workData.length);
-                instagramComponent.renderFrames(workData);
+                galleryComponent.renderFrames(workData);
                 console.log('Work items rendered successfully');
             } else {
                 console.warn('No work data available to render');
             }
 
             // Store component reference for potential updates
-            window.instagramComponent = instagramComponent;
+            window.galleryComponent = galleryComponent;
         } catch (error) {
-            console.error('Error initializing Instagram Frame Component:', error);
+            console.error('Error initializing Gallery Frame Component:', error);
         }
     } else if (showcaseContainer) {
         console.log('Clearing showcase container on non-portfolio page');
