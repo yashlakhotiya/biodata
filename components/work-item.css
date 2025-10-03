@@ -6,7 +6,7 @@
 .work-items-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);  /* strict 4 equal columns */
-    grid-auto-rows: 220px;
+    grid-auto-rows: 250px;
     grid-auto-flow: dense;
     gap: 10px;
 }

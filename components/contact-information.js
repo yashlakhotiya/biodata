@@ -40,27 +40,35 @@ class ContactInformation {
       return;
     }
 
-    // Define contact information data
+    // Define contact information data with additional details
     const contactData = [
       {
         label: 'Primary Contact',
-        value: 'Uma Maheshwari'
+        value: 'Uma Maheshwari',
+        description: 'Mother',
+        icon: 'user-tie'
       },
       {
         label: 'Mobile',
         value: '+91 94611 22111',
         isLink: true,
-        href: 'tel:+919461122111'
+        href: 'tel:+919461122111',
+        icon: 'phone-alt',
+        description: 'Available on WhatsApp'
       },
       {
         label: 'Email',
         value: 'umamaheshwari100170@gmail.com',
         isLink: true,
-        href: 'mailto:umamaheshwari100170@gmail.com'
+        href: 'mailto:umamaheshwari100170@gmail.com',
+        icon: 'envelope',
+        description: 'For formal inquiries'
       },
       {
         label: 'Address',
-        value: 'Bundi, Rajasthan - 323001'
+        value: 'Bundi, Rajasthan - 323001',
+        icon: 'map-marker-alt',
+        description: 'Near City Palace, Bundi'
       }
     ];
 
@@ -77,14 +85,28 @@ class ContactInformation {
   createContactItem(item) {
     const contactItem = document.createElement('div');
     contactItem.className = 'contact-item';
-
+    
+    // Map labels to Font Awesome icons
+    const iconMap = {
+      'Primary Contact': 'user-tie',
+      'Mobile': 'phone-alt',
+      'Email': 'envelope',
+      'Address': 'map-marker-alt'
+    };
+    
+    const icon = iconMap[item.label] || 'info-circle';
+    
     if (item.isLink) {
       contactItem.innerHTML = `
-        <strong>${item.label}:</strong> <a href="${item.href}">${item.value}</a>
+        <i class="fas fa-${icon}"></i>
+        <strong>${item.label}</strong>
+        <a href="${item.href}" class="contact-link">${item.value}</a>
       `;
     } else {
       contactItem.innerHTML = `
-        <strong>${item.label}:</strong> ${item.value}
+        <i class="fas fa-${icon}"></i>
+        <strong>${item.label}</strong>
+        <span>${item.value}</span>
       `;
     }
 
