@@ -208,6 +208,35 @@ section:not(:last-child)::after {
         transparent 100%);
 }
 
+/* Ensure separators render inside card layouts as well */
+.biodata-card section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 2px; /* increased for visibility */
+    background: var(--border-gold); /* solid for stronger contrast */
+    pointer-events: none;
+}
+
+/* Keep portfolio separators as subtle gradient */
+.portfolio-card section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--border-gold) 50%,
+        transparent 100%);
+    pointer-events: none;
+}
+
 .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.8em;

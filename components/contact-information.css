@@ -4,7 +4,7 @@
 
 /* Contact container - matches biodata-card styling */
 #contact-container {
-  background: white !important; /* Same as biodata-card - force white background */
+  background: var(--card-bg, var(--bg-card)); /* Theme-aware card background */
   border-radius: 15px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139, 0, 0, 0.1);
   overflow: hidden;
@@ -25,7 +25,7 @@
 
 /* Dark theme for contact container */
 [data-theme="dark"] #contact-container {
-  background: var(--bg-card) !important; /* Force dark theme background */
+  background: var(--card-bg); /* Theme variable for dark mode too */
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 8px 40px rgba(0,0,0,0.4), var(--shadow-lg), var(--card-glow);
 }
