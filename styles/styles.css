@@ -513,21 +513,6 @@ section:not(:last-child)::after {
         padding: 40px 20px 20px 20px; /* Increased bottom padding to prevent overlap with name */
     }
 
-    .contact-info {
-        padding: 15px 10px;
-        margin: 10px 5px 15px 5px;
-    }
-
-    .contact-item {
-        font-size: 0.95em;
-        margin: 10px 0;
-    }
-
-    .contact-item strong {
-        display: block;
-        margin-bottom: 3px;
-    }
-
     .photo-frame.expanded {
         width: min(250px, 70vw) !important;
         height: min(250px, 70vw) !important;
@@ -602,65 +587,7 @@ section:not(:last-child)::after {
     50% { transform: translateY(-5px); }
 }
 
-/* ==================== CONTACT SECTION ==================== */
-.contact-info {
-    background: linear-gradient(135deg, var(--peacock-blue), var(--peacock-green));
-    color: white;
-    padding: 30px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.contact-item {
-    margin: 15px 0;
-    font-size: 1.1em;
-    transition: transform 0.3s ease;
-}
-
-.contact-item:hover {
-    transform: scale(1.05);
-}
-
-.contact-item a {
-    color: var(--gold);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-item a:hover {
-    color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-/* ==================== RESPONSIVE CONTACT SECTION ==================== */
-/* Fix text overflow on small screens */
-@media (max-width: 600px) {
-    .contact-info {
-        padding: 20px 15px;
-        margin: 15px 10px 20px 10px;
-    }
-
-    .contact-item {
-        font-size: 1em;
-        margin: 12px 0;
-        word-break: break-word;
-        overflow-wrap: break-word;
-    }
-}
-
-@media (max-width: 360px) {
-    .contact-info {
-        padding: 12px 8px;
-    }
-
-    .contact-item {
-        font-size: 0.9em;
-        margin: 8px 0;
-    }
-}
+/* ==================== RESPONSIVE STYLES ==================== */
 
 /* ==================== SOCIAL PROFILES SECTION ==================== */
 #social-profiles .social-links {

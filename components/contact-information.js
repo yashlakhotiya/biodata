@@ -21,15 +21,32 @@ class ContactInformation {
     try {
       // Fetch the contact information HTML
       const response = await fetch('components/contact-information.html');
-      const html = await response.text();
-
       // Insert the contact information HTML
-      this.contactContainer.innerHTML = html;
+      this.contactContainer.innerHTML = await response.text();
+
+      // Add ethnic border at the top
+      this.addEthnicBorder();
 
       // Populate with contact information
       this.populateContactInformation();
     } catch (error) {
       console.error('Error loading contact information component:', error);
+    }
+  }
+
+  addEthnicBorder() {
+    // Add ethnic borders at the top and bottom of contact section
+    const contactSection = this.contactContainer.querySelector('.contact-section');
+    if (contactSection) {
+      // Add ethnic border at the top
+      const ethnicBorderTop = document.createElement('div');
+      ethnicBorderTop.className = 'ethnic-border';
+      contactSection.insertBefore(ethnicBorderTop, contactSection.firstChild);
+
+      // Add ethnic border at the bottom
+      const ethnicBorderBottom = document.createElement('div');
+      ethnicBorderBottom.className = 'ethnic-border';
+      contactSection.appendChild(ethnicBorderBottom);
     }
   }
 

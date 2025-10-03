@@ -1,24 +1,74 @@
 /* ===== CONTACT INFORMATION COMPONENT ===== */
-.contact-section {
-  padding: var(--space-2xl) var(--space-lg);
+
+/* No local variable definitions. All theme variables come from global theme files. */
+
+/* Contact container - matches biodata-card styling */
+#contact-container {
+  background: white !important; /* Same as biodata-card - force white background */
+  border-radius: 15px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 30px;
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: var(--bg-primary);
-  border-radius: 12px;
-  box-shadow: var(--shadow-md);
-  margin-bottom: var(--space-2xl);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Ensure ethnic border is visible at the top */
+#contact-container .ethnic-border {
+  margin: 0;
+}
+
+#contact-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(139, 0, 0, 0.25), 0 0 40px rgba(139, 0, 0, 0.2);
+}
+
+/* Dark theme for contact container */
+[data-theme="dark"] #contact-container {
+  background: var(--bg-card) !important; /* Force dark theme background */
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), var(--shadow-lg), var(--card-glow);
+}
+
+[data-theme="dark"] #contact-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(139, 0, 0, 0.4), var(--shadow-xl), var(--hover-glow);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+}
+
+.contact-section {
+  padding: 0;
+  position: relative;
+  background: transparent;
+}
+
+/* Add padding to the content area between borders */
+.contact-section .section-title {
+  padding-top: var(--space-2xl);
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.contact-section .contact-info {
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+  padding-bottom: var(--space-2xl);
+}
+
+/* Section title */
 .contact-section .section-title {
   font-family: var(--font-heading);
   font-size: 2.25rem;
   color: var(--primary-maroon);
-  margin: 0 0 var(--space-2xl) 0;
+  margin: 0 0 var(--space-2xl);
   text-align: center;
   position: relative;
   padding-bottom: var(--space-sm);
-  transition: all 0.3s ease;
+  transition: color var(--transition-normal);
+}
+
+.contact-section .section-title:hover {
+  color: var(--saffron);
 }
 
 .contact-section .section-title::after {
@@ -30,30 +80,32 @@
   width: 80px;
   height: 3px;
   background: linear-gradient(90deg, var(--primary-maroon), var(--saffron));
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
 }
 
+/* Dark theme title underline */
 [data-theme="dark"] .contact-section .section-title::after {
   background: linear-gradient(90deg, var(--gold), var(--saffron));
 }
 
-/* ==================== CONTACT CARDS ==================== */
+/* ==================== CONTACT INFO GRID ==================== */
 .contact-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-lg);
   margin: var(--space-xl) 0;
-  padding: 0 var(--space-md);
+  background: transparent;
 }
 
+/* Contact item cards */
 .contact-item {
   background: var(--bg-card);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   text-align: center;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all var(--transition-normal) cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.1));
+  border: 1px solid var(--border-gold);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,6 +115,13 @@
   overflow: hidden;
 }
 
+/* Dark theme for contact items */
+[data-theme="dark"] .contact-item {
+  background: var(--bg-card);
+  border-color: var(--border-gold);
+}
+
+/* Accent line at top of card */
 .contact-item::before {
   content: '';
   position: absolute;
@@ -71,29 +130,34 @@
   width: 100%;
   height: 4px;
   background: linear-gradient(90deg, var(--primary-maroon), var(--saffron));
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
+/* Dark theme accent line */
 [data-theme="dark"] .contact-item::before {
   background: linear-gradient(90deg, var(--gold), var(--saffron));
 }
 
+/* Hover effects */
 .contact-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
 
+/* Icons */
 .contact-item i {
   font-size: 2rem;
   color: var(--primary-maroon);
   margin-bottom: var(--space-md);
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
+/* Dark theme icons */
 [data-theme="dark"] .contact-item i {
   color: var(--gold);
 }
 
+/* Labels */
 .contact-item strong {
   display: block;
   font-size: 0.9rem;
@@ -104,12 +168,13 @@
   text-transform: uppercase;
 }
 
-.contact-item a, 
+/* Text and links */
+.contact-item a,
 .contact-item span {
   color: var(--text-primary);
   font-size: 1.1rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   word-break: break-word;
   width: 100%;
 }
@@ -121,10 +186,12 @@
   display: inline-block;
 }
 
+/* Dark theme links */
 [data-theme="dark"] .contact-item a {
   color: var(--gold);
 }
 
+/* Link underline animation */
 .contact-item a::after {
   content: '';
   position: absolute;
@@ -133,56 +200,141 @@
   bottom: -2px;
   left: 0;
   background-color: var(--primary-maroon);
-  transition: width 0.3s ease;
+  transition: width var(--transition-normal);
 }
 
+/* Dark theme link underline */
 [data-theme="dark"] .contact-item a::after {
   background-color: var(--gold);
-}
-
-.contact-item a:hover::after {
-  width: 100%;
 }
 
 .contact-item a:hover {
   color: var(--saffron);
 }
 
-[data-theme="dark"] .contact-item a:hover {
-  color: var(--saffron);
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+.contact-item a:hover::after {
+  width: 100%;
+  background-color: var(--saffron);
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */
-@media (max-width: 768px) {
-  .contact-section {
-    padding: 25px 20px;
-  }
 
-  .contact-section .section-title {
-    font-size: 1.5em;
-  }
-
+/* Large desktops - 3 column layout */
+@media (min-width: 1200px) {
   .contact-info {
-    padding: 20px 15px;
-    margin: 15px 10px 20px 10px;
-  }
-
-  .contact-item {
-    font-size: 1em;
-    margin: 12px 0;
-    word-break: break-word;
-    overflow-wrap: break-word;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 360px) {
+/* Tablets and small desktops */
+@media (max-width: 1199px) {
+  .contact-section .section-title {
+    font-size: 1.8rem;
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .contact-section .contact-info {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
   .contact-info {
-    padding: 12px 8px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--space-md);
+  }
+}
+
+/* Tablets - single column layout */
+@media (max-width: 768px) {
+  .contact-section .section-title {
+    font-size: 1.6rem;
+    margin-bottom: var(--space-xl);
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .contact-section .contact-info {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  .contact-info {
+    margin: var(--space-lg) 0;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
   }
 
   .contact-item {
-    font-size: 0.9em;
-    margin: 8px 0;
+    margin: 0;
+    padding: var(--space-lg);
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  #contact-container {
+    border-radius: var(--radius-md);
+  }
+
+  .contact-section .section-title {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+
+  .contact-section .contact-info {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+
+  .contact-info {
+    margin: var(--space-md) 0;
+    gap: var(--space-sm);
+  }
+
+  .contact-item {
+    padding: var(--space-lg) var(--space-md);
+    min-height: 100px;
+  }
+
+  .contact-item i {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .contact-item strong {
+    font-size: 0.85rem;
+  }
+
+  .contact-item a,
+  .contact-item span {
+    font-size: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+  .contact-section .section-title {
+    padding-left: var(--space-xs);
+    padding-right: var(--space-xs);
+  }
+
+  .contact-section .contact-info {
+    padding-left: var(--space-xs);
+    padding-right: var(--space-xs);
+  }
+
+  .contact-item {
+    padding: var(--space-md);
+  }
+
+  .contact-item i {
+    font-size: 1.5rem;
+  }
+
+  .contact-item strong {
+    font-size: 0.8rem;
   }
 }
