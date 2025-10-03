@@ -34,28 +34,8 @@ class GalleryFrameComponent {
             console.error('GalleryFrameComponent: Container element not found');
             return;
         }
-
-        // Load component styles if not already loaded
-        this.loadComponentStyles();
-
         // Set up component container
         this.setupContainer();
-    }
-
-    /**
-     * Load component-specific styles
-     */
-    loadComponentStyles() {
-        // Check if styles are already loaded
-        if (document.querySelector('[data-component-styles="gallery-frame"]')) {
-            return;
-        }
-
-        // Create style element
-        const styleElement = document.createElement('style');
-        styleElement.setAttribute('data-component-styles', 'gallery-frame');
-        styleElement.textContent = this.getComponentStyles();
-        document.head.appendChild(styleElement);
     }
 
     /**
@@ -72,124 +52,6 @@ class GalleryFrameComponent {
         if (!this.container.style.placeItems) {
             this.container.style.placeItems = 'center';
         }
-    }
-
-    /**
-     * Get the component styles
-     * @returns {string} CSS styles for the component
-     */
-    getComponentStyles() {
-        return `
-            .gallery-frames-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-auto-rows: 220px;
-                grid-auto-flow: dense;
-                gap: 25px;
-                width: 100%;
-                padding: 20px;
-                margin: 0 auto;
-            }
-
-            .instagram-frame-item {
-                position: relative;
-                box-sizing: border-box;
-                margin: 0;
-                width: 100%;
-                height: 100%;
-                background: white;
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                cursor: pointer;
-            }
-
-            .instagram-frame-item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-
-            /* Size variations */
-            .instagram-frame-item.size-wide {
-                grid-column: span 2;
-                grid-row: span 1;
-                justify-self: stretch;
-                margin: 0;
-            }
-
-            .instagram-frame-item.size-tall {
-                grid-column: span 1;
-                grid-row: span 2;
-            }
-
-            .instagram-frame-item.size-large {
-                grid-column: span 2;
-                grid-row: span 2;
-                justify-self: stretch; 
-                margin: 0;
-            }
-
-            .instagram-frame-item.size-medium {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
-            .work-item-caption {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: 15px;
-                background: rgba(255, 255, 255, 0.95);
-                color: var(--primary-maroon);
-                transition: all 0.3s ease;
-            }
-
-            .instagram-frame-item:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-            }
-
-            .instagram-frame-item:hover img {
-                transform: scale(1.05);
-            }
-
-            @media (min-width: 1400px) {
-                .gallery-frames-container {
-                    grid-template-columns: repeat(5, 1fr);
-                }
-            }
-
-            @media (max-width: 1199px) {
-                .gallery-frames-container {
-                    grid-template-columns: repeat(3, 1fr);
-                }
-            }
-
-            @media (max-width: 767px) {
-                .gallery-frames-container {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 15px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                .gallery-frames-container {
-                    grid-template-columns: 100%;
-                    gap: 15px;
-                }
-                .instagram-frame-item.size-medium,
-                .instagram-frame-item.size-large,
-                .instagram-frame-item.size-wide,
-                .instagram-frame-item.size-tall {
-                    grid-column: span 1;
-                    grid-row: span 1;
-                }
-            }
-        `;
     }
 
     /**
@@ -310,19 +172,6 @@ class GalleryFrameComponent {
     }
 
     /**
-     * Truncate description to specified length
-     * @param {string} description - The description to truncate
-     * @param {number} maxLength - Maximum length
-     * @returns {string} Truncated description
-     */
-    truncateDescription(description, maxLength) {
-        if (!description || description.length <= maxLength) {
-            return description;
-        }
-        return description.substring(0, maxLength).trim() + '...';
-    }
-
-    /**
      * Generate YouTube thumbnail URL from video URL
      * @param {string} videoUrl - The YouTube video URL
      * @returns {string|null} Thumbnail URL or null if not a YouTube video
@@ -401,12 +250,6 @@ class GalleryFrameComponent {
      */
     destroy() {
         this.clearFrames();
-
-        // Remove component styles if they exist
-        const styleElement = document.querySelector('[data-component-styles="gallery-frame"]');
-        if (styleElement) {
-            styleElement.remove();
-        }
 
         console.log('GalleryFrameComponent: Component destroyed');
     }

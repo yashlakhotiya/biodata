@@ -3,7 +3,7 @@
 const workData = [
     {
         title: "#TimeLapse of the Night sky",
-        size: "medium",
+        size: "tall",
         description: "I dont know But Time Lapses are so satisfying to watch. what say?\n" +
             "Try counting the stars May be⭐\n" +
             "\n" +
@@ -13,78 +13,55 @@ const workData = [
             "#ISO 400\n" +
             "\n" +
             "I hope you will like my Timelapse video.\n",
+        image: "assets/images/night_startlapse.gif",
         link: "https://www.youtube.com/watch?v=BUAdIo5CKNo"
     },
     {
         title: "Polaris and the Night sky",
-        size: "medium",
+        size: "small",
         description: "New EDM track 'Celestial Dreams' out now!",
         link: "https://www.youtube.com/watch?v=GKhfCNnFkTc"
     },
     {
         title: "Prayashit",
-        size: "medium",
+        size: "tall",
         description: "Under the stars. Capturing the Milky Way.",
         link: "https://www.youtube.com/watch?v=VG2KpTLl2bA"
     },
     {
         title: "EDM Music",
-        size: "medium",
+        size: "tall",
         description: "A short film about the beauty of nature.",
         link: "https://www.youtube.com/watch?v=aGWpIMpY3z0"
     },
     {
         title: "Lunar Eclipse",
-        size: "tall",
+        size: "small",
         image: "assets/images/lunar_eclipse.gif",
         link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
         title: "Solar Eclipse",
-        size: "medium",
+        size: "tall",
         image: "assets/images/solar_eclipse.gif",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
         title: "Wildlife",
-        size: "wide",
+        size: "small",
         image: "assets/images/wildlife.gif",
         link: "https://www.instagram.com/reel/Cv3tHXstDJJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-        title: "Solar Eclipse1",
-        size: "wide",
-        image: "assets/images/solar_eclipse.gif",
+        title: "Day to Night Timelapse",
+        size: "small",
+        image: "assets/images/day_to_night_timelapse.gif",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     },
     {
-        title: "Solar Eclipse2",
-        size: "wide",
-        image: "assets/images/solar_eclipse.gif",
+        title: "Me, My device and The Universe",
+        size: "small",
+        image: "assets/images/stars_dslr.jpg",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-        title: "Solar Eclipse1",
-        size: "large",
-        image: "assets/images/solar_eclipse.gif",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-        title: "Solar Eclipse2",
-        size: "large",
-        image: "assets/images/solar_eclipse.gif",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-        title: "Solar Eclipse1",
-        size: "wide",
-        image: "assets/images/solar_eclipse.gif",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-        title: "Solar Eclipse2",
-        size: "wide",
-        image: "assets/images/solar_eclipse.gif",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
+    }
 ];
