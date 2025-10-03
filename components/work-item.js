@@ -144,6 +144,15 @@ class WorkItemsGallery {
         if (options.maxWidth) {
             itemElement.style.maxWidth = options.maxWidth;
         }
+
+        if (workItem.imagePosition) {
+            const imageContainer = itemElement.querySelector('.image-container');
+            if (imageContainer) {
+                if (workItem.imagePosition === 'moveDown') {
+                    imageContainer.classList.add('moveDown');
+                }
+            }
+        }
     }
 
     /**
@@ -187,16 +196,6 @@ class WorkItemsGallery {
         });
 
         console.log(`WorkItemsGallery: Rendered ${workData.length} items`);
-    }
-
-    /**
-     * Update gallery options and re-render if needed
-     * @param {Object} newOptions - New options to merge with existing
-     */
-    updateOptions(newOptions) {
-        this.options = { ...this.options, ...newOptions };
-        // Re-setup container with new gap setting
-        this.setupContainer();
     }
 }
 

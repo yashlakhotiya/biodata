@@ -45,6 +45,7 @@ const workData = [
         size: "small",
         image: "assets/images/lunar_eclipse.gif",
         link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        imagePosition: "moveDown",
     },
     {
         title: "Solar Eclipse",
