@@ -6,24 +6,22 @@
 }
 
 :root {
-    /* Indian Color Palette */
-    --primary-maroon: #8B0000;
-    --gold: #FFD700;
-    --saffron: #FF9933;
-    --peacock-blue: #005F73;
-    --peacock-green: #0A9396;
-    --cream: #FFF8DC;
-    --sandalwood: #F5E6D3;
-    --deep-purple: #4A148C;
-    --rose-gold: #B76E79;
-    --text-dark: #2C1810;
-    --border-gold: #D4AF37;
+  /* Import theme variables - these will be overridden by theme files */
+}
+
+/* Import theme files */
+@import url('../themes/light-theme.css');
+
+/* Dark theme override */
+[data-theme="dark"] {
+  /* Import dark theme variables */
+  @import url('../themes/dark-theme.css');
 }
 
 body {
-    font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
-    background: linear-gradient(135deg, #FFF8DC 0%, #F5E6D3 50%, #FFE4B5 100%);
-    color: var(--text-dark);
+    font-family: var(--font-sans);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     line-height: 1.6;
     position: relative;
     overflow-x: hidden;
@@ -91,7 +89,7 @@ body::before {
 .header {
     text-align: center;
     padding: 40px 20px;
-    background: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
+    background: var(--header-bg);
     color: white;
     border-radius: 15px;
     margin-bottom: 30px;
@@ -171,7 +169,7 @@ body::before {
 .biodata-card {
     background: white;
     border-radius: 15px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139, 0, 0, 0.1);
     overflow: hidden;
     margin-bottom: 30px;
     position: relative;
@@ -179,8 +177,21 @@ body::before {
 }
 
 .biodata-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.25), 0 0 40px rgba(139, 0, 0, 0.2);
+}
+
+/* Dark theme for biodata card */
+[data-theme="dark"] .biodata-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4), var(--shadow-lg), var(--card-glow);
+}
+
+[data-theme="dark"] .biodata-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.4), var(--shadow-xl), var(--hover-glow);
+    border: 1px solid rgba(255, 215, 0, 0.4);
 }
 
 /* ==================== CORNER DECORATIONS ==================== */

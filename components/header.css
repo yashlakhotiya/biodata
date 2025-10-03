@@ -1,64 +1,24 @@
-/* ===== HEADER COMPONENT CSS ===== */
+/* ===== HEADER COMPONENT CSS =====
+ * Organized theming system with global theme integration
+ * Last updated: Theme-based styling
+ */
 
-/* CSS Variables for theming */
+/* ==================== CSS VARIABLES & THEME DEFINITIONS ==================== */
+
 :root {
-  /* Colors */
-  --color-primary: #8B0000;
-  --color-primary-light: #A52A2A;
-  --color-primary-dark: #5A0000;
-  --color-secondary: #D4AF37;
-  --color-secondary-light: #FFD700;
-  --color-secondary-dark: #996515;
-  --color-white: #FFFFFF;
-  --color-light: #F8F9FA;
-  --color-gray-100: #F1F3F5;
-  --color-gray-200: #E9ECEF;
-  --color-gray-300: #DEE2E6;
-  --color-gray-400: #CED4DA;
-  --color-gray-500: #ADB5BD;
-  --color-gray-600: #6C757D;
-  --color-gray-700: #495057;
-  --color-gray-800: #343A40;
-  --color-gray-900: #212529;
-  --color-black: #000000;
-
-  /* Typography */
-  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-
-  /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 0.75rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-
-  /* Transitions */
-  --transition-fast: 150ms ease-in-out;
-  --transition-normal: 250ms ease-in-out;
-
-  /* Theme variables */
-  --color-bg: var(--color-white);
-  --color-text: var(--color-gray-900);
-  --color-text-light: var(--color-gray-600);
-  --color-border: var(--color-gray-200);
+  /* Theme variables imported from global theme files */
 }
 
-/* Dark theme */
+/* Dark theme variable overrides */
 [data-theme="dark"] {
-  --color-bg: var(--color-gray-900);
-  --color-text: var(--color-gray-100);
-  --color-text-light: var(--color-gray-400);
-  --color-border: var(--color-gray-700);
+  --color-bg: #1E1E1E;
+  --color-text: #F8F9FA;
+  --color-text-light: #ADB5BD;
+  --color-border: #495057;
 }
 
-/* Base styles */
+/* ==================== BASE STYLES ==================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -68,30 +28,36 @@
 body {
   font-family: var(--font-sans);
   line-height: 1.6;
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
   transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
-/* Header Styles */
+/* ==================== HEADER COMPONENT ====================/* Header Styles */
 .header {
-  background: var(--color-white);
+  background: var(--header-bg);
   padding: 1rem 0;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12), 0 0 12px rgba(139, 0, 0, 0.08);
   position: relative;
   z-index: 100;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 0, 0, 0.18), 0 0 25px rgba(139, 0, 0, 0.12);
 }
 
 .header__container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
 }
 
+/* Header Content */
 .header__content {
   display: flex;
   align-items: center;
@@ -100,7 +66,7 @@ body {
 
 .header__om {
   font-size: 1.8rem;
-  color: var(--color-primary);
+  color: var(--primary-maroon);
   line-height: 1;
 }
 
@@ -112,7 +78,7 @@ body {
   font-family: var(--font-heading);
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.2;
 }
@@ -120,12 +86,13 @@ body {
 .header__subtitle {
   font-family: var(--font-sans);
   font-size: 1.2rem;
-  color: var(--color-text-light);
+  color: var(--text-secondary);
   margin: 0.5rem 0 0 0;
   font-style: italic;
 }
 
-/* Navigation */
+/* ==================== NAVIGATION ==================== */
+
 .header__nav {
   display: flex;
   align-items: center;
@@ -140,7 +107,7 @@ body {
 }
 
 .header__nav-link {
-  color: var(--color-text);
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 0;
@@ -155,13 +122,15 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--color-primary);
+  background-color: var(--primary-maroon);
   transition: width var(--transition-fast);
 }
 
 .header__nav-link:hover::after {
   width: 100%;
 }
+
+/* ==================== INTERACTIVE ELEMENTS ==================== */
 
 /* Mobile menu button */
 .header__mobile-toggle {
@@ -177,7 +146,7 @@ body {
 .theme-toggle {
   background: none;
   border: none;
-  color: var(--color-text);
+  color: var(--text-primary);
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -193,7 +162,8 @@ body {
   transform: rotate(30deg);
 }
 
-/* Responsive styles */
+/* ==================== RESPONSIVE DESIGN ==================== */
+
 @media (max-width: 1023px) {
   .header__nav {
     position: fixed;
@@ -202,7 +172,7 @@ body {
     width: 80%;
     max-width: 320px;
     height: 100vh;
-    background: var(--color-white);
+    background: var(--bg-card);
     padding: 5rem 2rem 2rem;
     transition: transform 0.3s ease-in-out;
     z-index: 1000;
@@ -224,22 +194,26 @@ body {
   .header__mobile-toggle {
     display: block;
   }
-
   .menu-open {
     overflow: hidden;
   }
 }
 
-/* Dark theme styles */
+/* ==================== DARK THEME OVERRIDES ==================== */
+
+/* Dark theme for biodata card */
 [data-theme="dark"] .header {
-  background: var(--color-gray-800);
+  background: var(--header-bg);
+  box-shadow: 0 6px 35px rgba(0,0,0,0.6), var(--shadow-lg), var(--card-glow);
 }
 
-[data-theme="dark"] .header__nav {
-  background: var(--color-gray-800);
+[data-theme="dark"] .header:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 80px rgba(139, 0, 0, 0.6), var(--shadow-xl), var(--hover-glow);
 }
 
-/* Utility classes */
+/* ==================== UTILITY CLASSES ==================== */
+
 .sr-only {
   position: absolute;
   width: 1px;

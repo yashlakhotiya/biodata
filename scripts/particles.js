@@ -1,97 +1,133 @@
 // ==================== PARTICLES.JS CONFIGURATION ====================
-// Particles.js configuration for twinkle effect with Indian theme
+// Enhanced particles with better visibility for both light and dark themes
 // This configuration is used by both index.html and portfolio.html
 
-particlesJS('particles-js', {
-    "particles": {
-        "number": {
-            "value": 150,
-            "density": {
-                "enable": true,
-                "value_area": 800
-            }
-        },
-        "color": {
-            "value": ["#FFD700", "#FF9933", "#005F73", "#0A9396", "#B76E79"]
-        },
-        "shape": {
-            "type": ["circle", "triangle", "polygon", "star"],
-            "stroke": {
-                "width": 0,
-                "color": "#000000"
+// Wait for DOM to be ready and particles container to exist
+function initParticles() {
+    // Check if particles container exists
+    const particlesContainer = document.getElementById('particles-js');
+    if (!particlesContainer) {
+        console.log('Particles container not found, retrying...');
+        setTimeout(initParticles, 100);
+        return;
+    }
+
+    // Check if particles.js library is loaded
+    if (typeof particlesJS === 'undefined') {
+        console.log('Particles.js library not loaded, retrying...');
+        setTimeout(initParticles, 100);
+        return;
+    }
+
+    try {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 120,
+                    "density": {
+                        "enable": true,
+                        "value_area": 1000
+                    }
+                },
+                "color": {
+                    "value": [
+                        "#ffffff",     // Bright white stars
+                        "#e8f4fd",     // Light blue-white
+                        "#ffd60a",     // Bright gold
+                        "#ff9500",     // Orange
+                        "#ff6b6b",     // Coral red
+                        "#4ecdc4",     // Turquoise
+                        "#45b7d1",     // Sky blue
+                        "#96ceb4",     // Light green
+                        "#feca57",     // Yellow
+                        "#ff9ff3"      // Pink
+                    ]
+                },
+                "shape": {
+                    "type": ["circle", "star"],
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "star": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.9,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 0.5,
+                        "opacity_min": 0.6,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "size_min": 2,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 0.3,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false
+                    }
+                }
             },
-            "polygon": {
-                "nb_sides": 5
-            }
-        },
-        "opacity": {
-            "value": 0.9,
-            "random": true,
-            "anim": {
-                "enable": true,
-                "speed": 1,
-                "opacity_min": 0.3,
-                "sync": false
-            }
-        },
-        "size": {
-            "value": 4,
-            "random": true,
-            "anim": {
-                "enable": true,
-                "speed": 2,
-                "size_min": 2,
-                "sync": false
-            }
-        },
-        "line_linked": {
-            "enable": true,
-            "distance": 120,
-            "color": "#FF9933",
-            "opacity": 0.6,
-            "width": 1.5
-        },
-        "move": {
-            "enable": true,
-            "speed": 1.2,
-            "direction": "none",
-            "random": true,
-            "straight": false,
-            "out_mode": "out",
-            "bounce": false,
-            "attract": {
-                "enable": true,
-                "rotateX": 600,
-                "rotateY": 1200
-            }
-        }
-    },
-    "interactivity": {
-        "detect_on": "window",
-        "events": {
-            "onhover": {
-                "enable": true,
-                "mode": "bubble"
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "bubble"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "bubble": {
+                        "distance": 100,
+                        "size": 8,
+                        "duration": 2,
+                        "opacity": 0.8,
+                        "speed": 2
+                    },
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    }
+                }
             },
-            "onclick": {
-                "enable": true,
-                "mode": "repulse"
-            },
-            "resize": true
-        },
-        "modes": {
-            "bubble": {
-                "distance": 150,
-                "size": 10,
-                "duration": 2,
-                "opacity": 1,
-                "speed": 3
-            },
-            "repulse": {
-                "distance": 150,
-                "duration": 0.4
-            }
-        }
-    },
-    "retina_detect": true
-});
+            "retina_detect": true
+        });
+        console.log('Particles.js initialized successfully');
+    } catch (error) {
+        console.error('Error initializing particles.js:', error);
+        setTimeout(initParticles, 500);
+    }
+}
+
+// Initialize particles when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initParticles);
+} else {
+    initParticles();
+}

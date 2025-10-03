@@ -4,12 +4,11 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
     pointer-events: none;
-    filter: blur(1px);
-    opacity: 0.7;
+    background: transparent;
 }
 
 /* Allow pointer events on the particles.js canvas */
@@ -18,15 +17,33 @@
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
+    z-index: 0;
+    opacity: 1 !important;
+    touch-action: manipulation;
 }
 
 /* Ensure body and html take full height */
 html, body {
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background: transparent !important;
+    background: var(--bg-primary) !important;
+    position: relative;
+}
+
+/* Fallback background when particles fail to load */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 0;
+    pointer-events: none;
 }
 
 /* Remove background from all containers and cards */

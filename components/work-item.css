@@ -14,7 +14,7 @@
 .work-item {
     position: relative;
     box-sizing: border-box;
-    background: white;
+    background: var(--bg-card);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -148,8 +148,8 @@
 /* ==================== CAPTION STYLES ==================== */
 
 .work-item-caption {
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--primary-maroon);
+    background: var(--bg-card);
+    color: var(--text-primary);
     padding: 8px;
     opacity: 1;
     transition: opacity 0.3s ease;
@@ -296,13 +296,32 @@
     }
 }
 
-/* Mobile positioning override */
-@media (max-width: 1300px) {
-    .work-item {
-        position: relative !important;
-        width: auto;
-        transform: none !important;
-    }
+/* ==================== DARK THEME WORK ITEM STYLES ==================== */
+
+[data-theme="dark"] .work-item {
+    background: var(--bg-card);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), var(--card-glow);
+}
+
+[data-theme="dark"] .work-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--hover-glow);
+}
+
+[data-theme="dark"] .work-item-caption {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .work-item::before {
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--gold);
+}
+
+[data-theme="dark"] .work-item-caption::after {
+    background: rgba(0, 0, 0, 0.95);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 /* Component responsive sizing */

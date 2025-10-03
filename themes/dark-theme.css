@@ -1,0 +1,89 @@
+/* ==================== DARK THEME ==================== */
+/* Indian-inspired dark theme with rich, cosmic colors */
+
+[data-theme="dark"] {
+    /* Primary Colors - Darker Indian Flag Inspired */
+    --primary-maroon: #FF6B6B; /* Brighter coral red */
+    --saffron: #FFB74D; /* Warm amber orange */
+    --gold: #FFE66D; /* Bright lemon gold */
+    --peacock-blue: #4ECDC4; /* Bright turquoise */
+    --peacock-green: #45B7D1; /* Sky blue */
+
+    /* Supporting Colors */
+    --cream: #1E1E1E; /* Dark charcoal */
+    --sandalwood: #2C2C2C; /* Medium dark gray */
+    --deep-purple: #7B68EE; /* Medium slate blue */
+    --rose-gold: #FF8A95; /* Bright rose */
+    --text-dark: #F8F9FA; /* Off-white text */
+    --border-gold: #FFD700; /* Bright gold for borders */
+
+    /* Background Colors */
+    --bg-primary: #0D1117; /* Deep dark blue-gray */
+    --bg-secondary: #161B22; /* Dark gray-blue */
+    --bg-card: #21262D; /* Medium dark gray */
+    --bg-overlay: rgba(13, 17, 23, 0.95); /* Dark overlay */
+
+    /* Text Colors */
+    --text-primary: #F0F6FC; /* Near-white text */
+    --text-secondary: #4ECDC4; /* Bright turquoise text */
+    --text-muted: #8B949E; /* Muted gray text */
+    --text-white: #FFFFFF; /* Pure white text */
+
+    /* Interactive Colors */
+    --hover-primary: #FF8A95; /* Bright rose hover */
+    --hover-secondary: #FFB74D; /* Amber hover */
+    --focus-ring: #FFE66D; /* Bright gold focus */
+
+    /* Enhanced Shadows & Effects for Dark Mode */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.2);
+    --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.25);
+
+    /* Typography */
+    --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+    /* Spacing Scale */
+    --space-xs: 0.25rem; /* 4px */
+    --space-sm: 0.5rem; /* 8px */
+    --space-md: 1rem; /* 16px */
+    --space-lg: 1.5rem; /* 24px */
+    --space-xl: 2rem; /* 32px */
+    --space-2xl: 3rem; /* 48px */
+    --space-3xl: 4rem; /* 64px */
+
+    /* Border Radius */
+    --radius-sm: 0.25rem; /* 4px */
+    --radius-md: 0.5rem; /* 8px */
+    --radius-lg: 0.75rem; /* 12px */
+    --radius-xl: 1rem; /* 16px */
+    --radius-full: 9999px; /* Fully rounded */
+
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 250ms ease-in-out;
+    --transition-slow: 350ms ease-in-out;
+
+    /* Z-Index Scale */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-modal: 1040;
+    --z-popover: 1050;
+    --z-tooltip: 1060;
+
+    /* Component-specific theme variables */
+    --header-bg: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
+    --card-bg: var(--bg-card);
+    --button-primary: var(--primary-maroon);
+    --button-secondary: var(--saffron);
+    --input-bg: var(--bg-card);
+    --text-glow: 0 0 10px rgba(255, 215, 0, 0.3);
+    --card-glow: 0 0 20px rgba(255, 215, 0, 0.1);
+    --hover-glow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Component-specific theme variables */
+.theme-dark {
+}

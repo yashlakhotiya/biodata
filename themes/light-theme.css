@@ -1,0 +1,84 @@
+/* ==================== LIGHT THEME ==================== */
+/* Indian-inspired light theme with warm, welcoming colors */
+
+:root {
+  /* Primary Colors - Indian Flag Inspired */
+  --primary-maroon: #8B0000;      /* Deep maroon red */
+  --saffron: #FF9933;             /* Vibrant saffron orange */
+  --gold: #FFD700;                /* Rich gold */
+  --peacock-blue: #005F73;        /* Deep teal blue */
+  --peacock-green: #0A9396;       /* Complementary teal */
+
+  /* Supporting Colors */
+  --cream: #FFF8DC;               /* Warm cream */
+  --sandalwood: #F5E6D3;          /* Light sandalwood */
+  --deep-purple: #4A148C;         /* Deep purple */
+  --rose-gold: #B76E79;           /* Rose gold/pink */
+  --text-dark: #2C1810;           /* Dark brown text */
+  --border-gold: #D4AF37;         /* Darker gold for borders */
+
+  /* Background Colors */
+  --bg-primary: #FFF8DC;          /* Main cream background */
+  --bg-secondary: #F5E6D3;        /* Secondary sandalwood */
+  --bg-card: #FFFFFF;             /* White cards */
+  --bg-overlay: rgba(255, 248, 220, 0.95); /* Light overlay */
+
+  /* Text Colors */
+  --text-primary: #2C1810;        /* Main dark text */
+  --text-secondary: #005F73;      /* Secondary teal text */
+  --text-muted: #6C757D;          /* Muted text */
+  --text-white: #FFFFFF;          /* White text */
+
+  /* Interactive Colors */
+  --hover-primary: #A52A2A;       /* Hover maroon */
+  --hover-secondary: #FFAD33;     /* Hover saffron */
+  --focus-ring: #FFD700;          /* Focus ring color */
+
+  /* Shadows & Effects */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* Typography */
+  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4rem;      /* 64px */
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-full: 9999px;  /* Fully rounded */
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Z-Index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal: 1040;
+  --z-popover: 1050;
+  --z-tooltip: 1060;
+
+    /* Component-specific theme variables */
+    --header-bg: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
+    --card-bg: var(--bg-card);
+    --button-primary: var(--primary-maroon);
+    --button-secondary: var(--saffron);
+    --input-bg: var(--bg-card);
+    --input-border: var(--peacock-blue);
+}

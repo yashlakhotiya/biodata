@@ -2,7 +2,7 @@
 .portfolio-header {
     text-align: center;
     padding: 40px 20px;
-    background: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
+    background: var(--header-bg);
     color: white;
     margin-bottom: 30px;
 }
@@ -90,9 +90,9 @@
     text-align: center;
     margin-bottom: 50px;
     padding: 40px;
-    background: #fdfcfa;
+    background: var(--bg-card);
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .section-title {
@@ -124,10 +124,10 @@
 }
 
 .skill-category {
-    background: white;
+    background: var(--bg-card);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
     border-left: 5px solid var(--saffron);
 }
 
@@ -144,18 +144,21 @@
 }
 
 .skill-tag {
-    background: var(--saffron);
-    color: white;
+    background: var(--bg-card);
+    color: var(--text-primary);
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 0.9em;
     font-weight: 500;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--text-secondary);
 }
 
 .skill-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-sm);
+    background: var(--text-secondary);
+    color: var(--bg-card);
 }
 
 /* ==================== RESPONSIVE PORTFOLIO NAVIGATION ==================== */
@@ -201,4 +204,33 @@
         font-size: 0.85em;
         padding: 6px 14px;
     }
+}
+
+/* ==================== PORTFOLIO CARD ==================== */
+.portfolio-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.25), 0 0 40px rgba(139, 0, 0, 0.2);
+}
+
+/* Dark theme for portfolio card */
+[data-theme="dark"] .portfolio-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4), var(--shadow-lg), var(--card-glow);
+}
+
+[data-theme="dark"] .portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.4), var(--shadow-xl), var(--hover-glow);
+    border: 1px solid rgba(255, 215, 0, 0.4);
 }
