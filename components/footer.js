@@ -19,9 +19,24 @@ class Footer {
     if (!this.footerContainer) return;
 
     try {
-      // Fetch the footer HTML
-      const response = await fetch('components/footer.html');
-      const html = await response.text();
+      let html;
+
+      // Check if footer HTML is cached in sessionStorage
+      const cachedFooter = sessionStorage.getItem('footer-html');
+
+      if (cachedFooter) {
+        // Use cached version
+        html = cachedFooter;
+        console.log('Using cached footer HTML');
+      } else {
+        // Fetch the footer HTML
+        const response = await fetch('components/footer.html');
+        html = await response.text();
+
+        // Cache it for future page loads
+        sessionStorage.setItem('footer-html', html);
+        console.log('Fetched and cached footer HTML');
+      }
 
       // Insert the footer HTML
       this.footerContainer.innerHTML = html;

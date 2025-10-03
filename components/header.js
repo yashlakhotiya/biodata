@@ -19,9 +19,24 @@ class Header {
     if (!this.headerContainer) return;
 
     try {
-      // Fetch the header HTML
-      const response = await fetch('components/header.html');
-      const html = await response.text();
+      let html;
+
+      // Check if header HTML is cached in sessionStorage
+      const cachedHeader = sessionStorage.getItem('header-html');
+
+      if (cachedHeader) {
+        // Use cached version
+        html = cachedHeader;
+        console.log('Using cached header HTML');
+      } else {
+        // Fetch the header HTML
+        const response = await fetch('components/header.html');
+        html = await response.text();
+
+        // Cache it for future page loads
+        sessionStorage.setItem('header-html', html);
+        console.log('Fetched and cached header HTML');
+      }
 
       // Insert the header HTML
       this.headerContainer.innerHTML = html;

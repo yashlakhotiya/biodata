@@ -50,14 +50,14 @@ if (galleryTrigger) {
             document.body.classList.add('swipe-to-biodata');
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 300);
+            }, 450); // Slightly less than animation duration for smooth transition
         } else {
             console.log('Adding swipe-to-portfolio class and navigating to portfolio.html');
             // From biodata page - navigate to portfolio with swipe
             document.body.classList.add('swipe-to-portfolio');
             setTimeout(() => {
                 window.location.href = 'portfolio.html';
-            }, 300);
+            }, 450); // Slightly less than animation duration for smooth transition
         }
     });
 } else {
@@ -79,14 +79,14 @@ document.addEventListener('keydown', (e) => {
             document.body.classList.add('swipe-to-biodata');
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 300);
+            }, 450);
         }
         // Right arrow on portfolio page could also navigate back (alternative)
         if (e.key === 'ArrowRight') {
             document.body.classList.add('swipe-to-biodata');
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 300);
+            }, 450);
         }
     } else {
         // On biodata page - handle carousel navigation
