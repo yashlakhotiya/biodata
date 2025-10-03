@@ -1,23 +1,6 @@
-/* ===== HEADER COMPONENT CSS =====
- * Organized theming system with global theme integration
- * Last updated: Theme-based styling
- */
+/* ===== HEADER COMPONENT CSS ===== */
 
-/* ==================== CSS VARIABLES & THEME DEFINITIONS ==================== */
-
-:root {
-  /* Theme variables imported from global theme files */
-}
-
-/* Dark theme variable overrides */
-[data-theme="dark"] {
-  --color-bg: #1E1E1E;
-  --color-text: #F8F9FA;
-  --color-text-light: #ADB5BD;
-  --color-border: #495057;
-}
-
-/* ==================== BASE STYLES ==================== */
+/* No local variable definitions. All theme variables come from global theme files. */
 
 * {
   margin: 0;
@@ -30,12 +13,11 @@ body {
   line-height: 1.6;
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  transition: background-color var(--transition-normal, 0.3s), color var(--transition-normal, 0.3s);
 }
 
-/* ==================== HEADER COMPONENT ====================/* Header Styles */
 .header {
-  background: var(--header-bg);
+  background: var(--header-bg, var(--bg-card));
   padding: 1rem 0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.12), 0 0 12px rgba(139, 0, 0, 0.08);
   position: relative;

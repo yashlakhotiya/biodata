@@ -1,19 +1,7 @@
 /* ===== FOOTER COMPONENT CSS ===== */
 
-/* CSS Variables for theming */
-:root {
-  /* Theme variables imported from global theme files */
-}
+/* No local variable definitions. All theme variables come from global theme files. */
 
-/* Dark theme variables */
-[data-theme="dark"] {
-  --bg-primary: #0D1117;
-  --bg-card: #21262D;
-  --text-primary: #F0F6FC;
-  --text-secondary: #4ECDC4;
-}
-
-/* ==================== FOOTER SECTION ==================== */
 .footer {
   text-align: center;
   padding: 30px;
@@ -28,7 +16,6 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-/* Dark theme for footer decoration */
 [data-theme="dark"] .footer-decoration {
   color: var(--gold);
   text-shadow: var(--text-glow);
@@ -41,7 +28,6 @@
   font-style: italic;
 }
 
-/* Dark theme for footer text */
 [data-theme="dark"] .footer-text {
   color: var(--text-primary);
   opacity: 0.9;

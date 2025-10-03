@@ -3,7 +3,7 @@
     text-align: center;
     padding: 40px 20px;
     background: var(--header-bg);
-    color: white;
+    color: var(--text-white);
     margin-bottom: 30px;
 }
 
@@ -11,7 +11,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 3em;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px var(--primary-maroon, rgba(0,0,0,0.3));
 }
 
 .portfolio-nav {
@@ -25,7 +25,7 @@
     margin: 0 15px;
     padding: 10px 20px;
     background: var(--primary-maroon);
-    color: white;
+    color: var(--text-white);
     text-decoration: none;
     border-radius: 25px;
     transition: all 0.3s ease;
@@ -35,7 +35,7 @@
 .portfolio-nav a:hover {
     background: var(--saffron);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 15px var(--primary-maroon, rgba(0,0,0,0.2));
 }
 
 .portfolio-section {

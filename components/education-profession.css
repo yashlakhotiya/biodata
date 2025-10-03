@@ -1,23 +1,14 @@
 /* ===== EDUCATION & PROFESSIONAL DETAILS COMPONENT CSS ===== */
 
-/* Dark theme variables */
-[data-theme="dark"] {
-  --text-dark: #F8F9FA;
-  --cream: #1E1E1E;
-  --sandalwood: #2C2C2C;
-  --peacock-blue: #4ECDC4;
-  --primary-maroon: #FF6B6B;
-  --gold: #FFE66D;
-}
+/* No local variable definitions. All theme variables come from global theme files. */
 
-/* ==================== EDUCATION & PROFESSIONAL DETAILS SECTION ==================== */
 .education-profession-section {
   padding: 30px;
   position: relative;
 }
 
 .education-profession-section .section-title {
-    font-family: var(--font-heading), serif;
+  font-family: var(--font-heading), serif;
   font-size: 1.8em;
   color: var(--primary-maroon);
   margin-bottom: 20px;

@@ -36,9 +36,9 @@ body::before {
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 50%, rgba(255, 153, 51, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, var(--saffron, #FF9933) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, var(--primary-maroon, #8B0000) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, var(--gold, #FFD700) 0%, transparent 50%);
     animation: floatPattern 20s ease-in-out infinite;
     z-index: -1;
 }
@@ -90,12 +90,12 @@ body::before {
     text-align: center;
     padding: 40px 20px;
     background: var(--header-bg);
-    color: white;
+    color: var(--text-white);
     border-radius: 15px;
     margin-bottom: 30px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(139, 0, 0, 0.3);
+    box-shadow: 0 10px 40px var(--primary-maroon, rgba(139, 0, 0, 0.3));
     animation: headerGlow 3s ease-in-out infinite alternate;
     align-items: center;   /* vertically center them */
     justify-content: center; /* optional: center the whole line horizontally */

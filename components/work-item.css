@@ -14,10 +14,11 @@
 .work-item {
     position: relative;
     box-sizing: border-box;
-    background: var(--bg-card);
+    background: var(--cream-dark);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.15);
+    /*border: 1px solid var(--sandalwood);*/
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     aspect-ratio: 1; /* Perfect square for Instagram-style */
@@ -96,7 +97,7 @@
     flex: 1;
     width: 100%;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,8 +113,9 @@
 /* ==================== INTERACTIVE STATES ==================== */
 
 .work-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.20);
+    border-color: var(--gold);
+    background: var(--bg-secondary);
 }
 
 .work-item:hover img {
@@ -148,7 +150,7 @@
 /* ==================== CAPTION STYLES ==================== */
 
 .work-item-caption {
-    background: var(--bg-card);
+    background: var(--cream);
     color: var(--text-primary);
     padding: 8px;
     opacity: 1;
@@ -300,12 +302,14 @@
 
 [data-theme="dark"] .work-item {
     background: var(--bg-card);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), var(--card-glow);
+    border: 1px solid var(--saffron);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.22);
 }
 
 [data-theme="dark"] .work-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--hover-glow);
+    background: var(--bg-card);
+    border-color: var(--gold);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.30);
 }
 
 [data-theme="dark"] .work-item-caption {

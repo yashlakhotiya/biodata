@@ -1,36 +1,7 @@
 /* ===== CONTACT INFORMATION COMPONENT CSS ===== */
 
-/* CSS Variables for theming */
-:root {
-  /* Indian Color Palette */
-  --primary-maroon: #8B0000;
-  --gold: #FFD700;
-  --saffron: #FF9933;
-  --peacock-blue: #005F73;
-  --peacock-green: #0A9396;
-  --cream: #FFF8DC;
-  --sandalwood: #F5E6D3;
-  --deep-purple: #4A148C;
-  --rose-gold: #B76E79;
-  --text-dark: #2C1810;
-  --border-gold: #D4AF37;
+/* No local variable definitions. All theme variables come from global theme files. */
 
-  /* Typography */
-  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-heading: 'Playfair Display', Georgia, serif;
-}
-
-/* Dark theme variables */
-[data-theme="dark"] {
-  --text-dark: #F8F9FA;
-  --cream: #1E1E1E;
-  --sandalwood: #2C2C2C;
-  --peacock-blue: #4ECDC4;
-  --primary-maroon: #FF6B6B;
-  --gold: #FFE66D;
-}
-
-/* ==================== CONTACT INFORMATION SECTION ==================== */
 .contact-section {
   padding: 30px;
   position: relative;

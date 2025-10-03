@@ -1,16 +1,7 @@
-:root {
-  /* Theme variables imported from global theme files */
-}
+/* ===== PROFILE COMPONENT CSS ===== */
 
-/* Dark theme variables */
-[data-theme="dark"] {
-  --bg-primary: #0D1117;
-  --bg-card: #21262D;
-  --text-primary: #F0F6FC;
-  --text-secondary: #4ECDC4;
-}
+/* No local variable definitions. All theme variables come from global theme files. */
 
-/* ==================== PROFILE SECTION ==================== */
 .profile-section {
   text-align: center;
   padding: 40px 30px;
@@ -498,7 +489,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: var(--text-dark);
-  color: #fff;
+  color: var(--text-white);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 0.8em;
@@ -507,11 +498,16 @@
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
   pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border: 1px solid var(--border-gold);
+  z-index: 10;
 }
 
-.social-link:hover::before {
-  opacity: 1;
-  visibility: visible;
+[data-theme="dark"] .social-link::before {
+  background: var(--bg-card);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  box-shadow: 0 2px 8px rgba(255,215,0,0.15);
 }
 
 /* ==================== RESPONSIVE DESIGN ==================== */

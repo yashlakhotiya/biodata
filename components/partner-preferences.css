@@ -1,34 +1,7 @@
 /* ===== PARTNER PREFERENCES COMPONENT CSS ===== */
 
-/* CSS Variables for theming */
-:root {
-  /* Theme variables imported from global theme files */
-  --primary-maroon: #8B0000;
-  --gold: #FFD700;
-  --saffron: #FF9933;
-  --peacock-blue: #005F73;
-  --peacock-green: #0A9396;
-  --cream: #FFF8DC;
-  --sandalwood: #F5E6D3;
-  --deep-purple: #4A148C;
-  --rose-gold: #B76E79;
-  --text-dark: #2C1810;
-  --border-gold: #D4AF37;
+/* No local variable definitions. All theme variables come from global theme files. */
 
-  /* Typography */
-  --font-sans: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-heading: 'Playfair Display', Georgia, serif;
-}
-
-/* Dark theme variables */
-[data-theme="dark"] {
-  --bg-primary: #0D1117;
-  --bg-card: #21262D;
-  --text-primary: #F0F6FC;
-  --text-secondary: #4ECDC4;
-}
-
-/* ==================== PARTNER PREFERENCES SECTION ==================== */
 .partner-preferences-section {
   padding: 30px;
   position: relative;
