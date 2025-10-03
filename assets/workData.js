@@ -60,7 +60,7 @@ const workData = [
     },
     {
         title: "Me, My device and The Universe",
-        size: "small",
+        size: "tall",
         image: "assets/images/stars_dslr.jpg",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
     }
