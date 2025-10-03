@@ -292,21 +292,6 @@ section:not(:last-child)::after {
     color: var(--saffron);
 }
 
-/* Decorative Paisley before section titles */
-.section-title::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,10 C90,40 90,60 50,90 C10,60 10,40 50,10 Z' fill='%230A9396'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%23005F73'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%23FFD700'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: rotateIcon 4s ease-in-out infinite;
-}
-
 @keyframes rotateIcon {
     0%, 100% { transform: translateY(-50%) rotate(-20deg); }
     50% { transform: translateY(-50%) rotate(20deg); }
@@ -319,19 +304,6 @@ section:not(:last-child)::after {
     padding: 40px 30px;
 }
 
-.photo-carousel-container {
-    width: 280px;
-    height: 280px;
-    position: relative;
-    margin: 0 auto 80px auto;
-    perspective: 1000px;
-    transition: all 0.5s ease;
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .photo-stack {
     width: 100%;
     height: 100%;
@@ -372,23 +344,6 @@ section:not(:last-child)::after {
 /* Disable all hover effects when carousel is expanded */
 .photo-stack.expanded .photo-frame img {
     transform: none !important;
-}
-
-.photo-frame {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    cursor: pointer;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border: 5px solid white;
-    backface-visibility: hidden;
-    transform: translate(-50%, -50%);
 }
 
 /* ==================== PHOTO SECTION ==================== */
@@ -398,19 +353,6 @@ section:not(:last-child)::after {
     padding: 40px 30px;
 }
 
-.photo-carousel-container {
-    width: 280px;
-    height: 280px;
-    position: relative;
-    margin: 0 auto 80px auto;
-    perspective: 1000px;
-    transition: all 0.5s ease;
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .photo-stack {
     width: 100%;
     height: 100%;
@@ -451,23 +393,6 @@ section:not(:last-child)::after {
 /* Disable all hover effects when carousel is expanded */
 .photo-stack.expanded .photo-frame img {
     transform: none !important;
-}
-
-.photo-frame {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    cursor: pointer;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border: 5px solid white;
-    backface-visibility: hidden;
-    transform: translate(-50%, -50%);
 }
 
 /* Large screens - show 5 photos (center + left + right + 2 hidden) */
@@ -543,83 +468,6 @@ section:not(:last-child)::after {
     }
 }
 
-/* Small screens - show only 1 photo (center only) */
-@media (max-width: 600px) {
-    .photo-frame.left,
-    .photo-frame.right {
-        display: none;
-    }
-
-    .photo-frame.center {
-        width: 180px;
-        height: 180px;
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    .photo-carousel-container {
-        width: 200px;
-        height: 200px;
-    }
-
-    /* Position arrows relative to center frame */
-    .photo-stack .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-    }
-
-    .photo-stack .carousel-arrow.left-arrow {
-        left: calc(50% - 120px); /* Position left of center frame with margin */
-    }
-
-    .photo-stack .carousel-arrow.right-arrow {
-        right: calc(50% - 120px); /* Position right of center frame with margin */
-    }
-}
-
-/* Very small screens - even smaller center photo with closer arrows */
-@media (max-width: 400px) {
-    .photo-carousel-container {
-        width: 160px;
-        height: 160px;
-    }
-
-    .photo-frame.center {
-        width: 140px;
-        height: 140px;
-    }
-
-    /* Position arrows even closer to center frame */
-    .photo-stack .carousel-arrow {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-    }
-
-    .photo-stack .carousel-arrow.left-arrow {
-        left: calc(50% - 100px); /* Closer positioning for smaller screens */
-    }
-
-    .photo-stack .carousel-arrow.right-arrow {
-        right: calc(50% - 100px); /* Closer positioning for smaller screens */
-    }
-
-    /* Make indicators more compact */
-    .photo-indicators {
-        bottom: -50px;
-        gap: 6px;
-        padding: 6px 10px;
-    }
-
-    .indicator {
-        width: 8px;
-        height: 8px;
-    }
-}
-
 /* Hide indicators when photo is expanded */
 .photo-stack.expanded ~ .photo-indicators {
     display: none;
@@ -651,21 +499,6 @@ section:not(:last-child)::after {
     transform: translate(-100%, -50%) scale(0.5);
     opacity: 0;
     z-index: 0;
-}
-
-/* Photo indicators - enhanced styling */
-.photo-indicators {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 4;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
 }
 
 .indicator {
@@ -703,25 +536,6 @@ section:not(:last-child)::after {
         width: 10px;
         height: 10px;
     }
-}
-.photo-stack .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .photo-stack .carousel-arrow:hover {
@@ -767,51 +581,6 @@ section:not(:last-child)::after {
 @media (max-width: 480px) {
     .photo-section {
         padding: 40px 20px 20px 20px; /* Increased bottom padding to prevent overlap with name */
-    }
-
-    .photo-carousel-container {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto 60px auto; /* Increased bottom margin */
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .photo-stack {
-        width: 100%;
-        max-width: 280px;
-    }
-
-    .photo-stack .carousel-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .photo-stack .carousel-arrow.left-arrow {
-        left: -20px;
-    }
-
-    .photo-stack .carousel-arrow.right-arrow {
-        right: -20px;
-    }
-
-    /* Enhanced indicators positioning */
-    .photo-indicators {
-        bottom: -60px; /* Moved further down */
-        gap: 8px;
-        padding: 8px 12px;
-    }
-
-    .indicator {
-        width: 10px;
-        height: 10px;
-    }
-
-    .indicator.active {
-        transform: scale(1.3);
     }
 
     .contact-info {
@@ -880,8 +649,7 @@ section:not(:last-child)::after {
 }
 
 .preferences-list li {
-    padding: 12px 0;
-    padding-left: 30px;
+    padding: 12px 0 12px 30px;
     position: relative;
     transition: transform 0.3s ease;
 }
@@ -987,25 +755,6 @@ section:not(:last-child)::after {
 .social-link:hover {
     transform: translateY(-3px) scale(1.1);
     color: var(--primary-maroon);
-}
-
-/* Tooltip on hover */
-.social-link::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 130%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--text-dark);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8em;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-    pointer-events: none;
 }
 
 .social-link:hover::before {
@@ -1123,24 +872,6 @@ footer {
     padding: 0 20px;
 }
 
-.work-item {
-    position: absolute; /* Positioned by JS on desktop */
-    width: 200px;
-    background: white;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    z-index: 10; /* Ensure they are above background elements */
-    text-decoration: none;
-    color: var(--text-dark);
-}
-
-.work-item:hover {
-    transform: translateY(-5px) scale(1.05) !important; /* Use !important to override JS rotation */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
 /* On mobile, stack them at the bottom */
 @media (max-width: 1300px) { /* Wider breakpoint to avoid overlap */
     .work-showcase-container {
@@ -1149,93 +880,6 @@ footer {
         gap: 20px;
         padding: 20px;
     }
-
-    .work-item {
-        position: relative !important; /* Back to normal flow */
-        width: auto;
-        transform: none !important; /* Override JS positioning */
-    }
-}
-
-/* ==================== PORTFOLIO FEATURED WORK - INSTAGRAM STYLE ==================== */
-.portfolio-section .work-showcase-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.portfolio-section .work-item {
-    position: relative;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    aspect-ratio: 1; /* Perfect square for Instagram-style */
-    max-width: 350px;
-    margin: 0 auto;
-}
-
-.portfolio-section .work-item:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-}
-
-.portfolio-section .work-item:hover img {
-    transform: scale(1.1);
-}
-
-.portfolio-section .work-item-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better readability */
-    color: var(--primary-maroon);
-    padding: 12px 20px; /* Reduced padding */
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    border-radius: 0 0 15px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.portfolio-section .work-item:hover .work-item-caption {
-    opacity: 1;
-}
-
-.portfolio-section .work-item-caption p {
-    font-size: 0.9em;
-    line-height: 1.3;
-    margin: 0;
-    text-align: center;
-}
-
-.portfolio-section .work-item-caption::after {
-    content: attr(data-description);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-size: 0.85em;
-    line-height: 1.4;
-    white-space: pre-line;
-    max-width: 250px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 1000;
-    margin-bottom: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive design for Instagram-style grid */

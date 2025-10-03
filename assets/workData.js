@@ -23,6 +23,12 @@ const workData = [
         link: "https://www.youtube.com/watch?v=GKhfCNnFkTc"
     },
     {
+        title: "Me, My device and The Universe",
+        size: "tall",
+        image: "assets/images/stars_dslr.jpg",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
         title: "Prayashit",
         size: "small",
         description: "Under the stars. Capturing the Milky Way.",
@@ -56,12 +62,6 @@ const workData = [
         title: "Day to Night Timelapse",
         size: "small",
         image: "assets/images/day_to_night_timelapse.gif",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    },
-    {
-        title: "Me, My device and The Universe",
-        size: "tall",
-        image: "assets/images/stars_dslr.jpg",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
