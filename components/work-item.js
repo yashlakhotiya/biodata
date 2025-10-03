@@ -151,15 +151,6 @@ class WorkItemsGallery {
         if (options.maxWidth) {
             itemElement.style.maxWidth = options.maxWidth;
         }
-
-        if (workItem.imagePosition) {
-            const imageContainer = itemElement.querySelector('.image-container');
-            if (imageContainer) {
-                if (workItem.imagePosition === 'moveDown') {
-                    imageContainer.classList.add('moveDown');
-                }
-            }
-        }
     }
 
     /**

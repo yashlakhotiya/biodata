@@ -45,7 +45,6 @@ const workData = [
         size: "small",
         image: "assets/images/lunar_eclipse.gif",
         link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-        imagePosition: "moveDown",
     },
     {
         title: "Solar Eclipse",
@@ -72,9 +71,21 @@ const workData = [
         link: "https://www.instagram.com/p/DBkvJ2LPin-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
+        title: "Moon Alignment",
+        size: "small",
+        image: "assets/images/moon_alignment.webp",
+        link: "https://www.instagram.com/p/CmsbKFqvyV0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+        title: "Comet C/2023 A3 (Tsuchinshan–ATLAS)",
+        size: "tall-small",
+        image: "assets/images/comet.jpeg",
+        link: "https://www.instagram.com/p/DApbUEEPiLd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
         title: "Andromeda Galaxy",
         size: "medium",
         image: "assets/images/andromeda_galaxy.heic",
-        link: "hhttps://www.instagram.com/p/DAswYEzPzaZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        link: "https://www.instagram.com/p/DAswYEzPzaZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     }
 ];
