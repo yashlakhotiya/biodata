@@ -63,5 +63,11 @@ const workData = [
         size: "tall",
         image: "assets/images/stars_dslr.jpg",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+        title: "Orion Nebula",
+        size: "wide",
+        image: "assets/images/orion_nebula.heic",
+        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     }
 ];
