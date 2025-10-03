@@ -246,6 +246,7 @@
         padding: 30px 15px;
         width: 100%;
         height: 100%;
+        justify-items: center;
     }
 
     /* Collapse larger sizes to smaller ones on mobile */
@@ -260,6 +261,8 @@
         grid-row: span 1;
         width: 100%;
         height: 100%;
+        max-width: 300px;
+        margin: 0 auto;
     }
 }
 
@@ -271,6 +274,7 @@
         padding: 20px 10px;
         width: 100%;
         height: 100%;
+        justify-items: center;
     }
 
     /* Ensure all larger items become small on very small screens */
@@ -287,6 +291,8 @@
         grid-row: span 1;
         width: 100%;
         height: 100%;
+        max-width: 250px;
+        margin: 0 auto;
     }
 }
 
@@ -303,11 +309,13 @@
 @media (max-width: 768px) {
     .work-item {
         max-width: 300px;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 480px) {
     .work-item {
         max-width: 250px;
+        margin: 0 auto;
     }
 }
