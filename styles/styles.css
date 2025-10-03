@@ -747,35 +747,15 @@ footer {
     font-weight: bold;
 }
 
-/* Swipe animation for portfolio navigation - only animate main content */
-.swipe-to-portfolio .container {
+/* Swipe animation for portfolio navigation - animate only main content, not header/footer */
+.swipe-to-portfolio .biodata-card,
+.swipe-to-portfolio #contact-container {
     animation: swipeRight 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
 }
 
-/* Swipe animation for biodata navigation - only animate main content */
-.swipe-to-biodata .container {
+/* Swipe animation for biodata navigation - animate only main content, not header/footer */
+.swipe-to-biodata .portfolio-card {
     animation: swipeLeft 0.5s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
-}
-
-/* Keep header and footer fixed during animation */
-.swipe-to-portfolio #header-container,
-.swipe-to-portfolio #footer-container,
-.swipe-to-biodata #header-container,
-.swipe-to-biodata #footer-container {
-    position: fixed;
-    z-index: 10000;
-    width: 100%;
-    left: 0;
-}
-
-.swipe-to-portfolio #header-container,
-.swipe-to-biodata #header-container {
-    top: 0;
-}
-
-.swipe-to-portfolio #footer-container,
-.swipe-to-biodata #footer-container {
-    bottom: 0;
 }
 
 @keyframes swipeRight {
