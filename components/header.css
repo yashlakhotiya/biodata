@@ -336,25 +336,56 @@
   }
 
   .header__nav-list {
-    position: absolute; /* Position relative to nav container */
-    top: calc(100% + 8px); /* Position just below hamburger button */
-    right: 0;
-    width: 220px;
-    background: white !important; /* Solid white background for light theme */
-    border: 2px solid var(--border-gold);
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(139, 0, 0, 0.15);
-    padding: 1.25rem;
+    position: fixed; /* Fixed position for backdrop-filter to work */
+    top: 75px; /* Position below header */
+    right: 20px;
+    width: 240px;
+    /* Glassmorphism effect */
+    background: rgba(255, 248, 220, 0.7) !important; /* Cream with transparency */
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border: 2px solid rgba(212, 175, 55, 0.5); /* Gold border */
+    border-radius: 16px;
+    box-shadow:
+      0 8px 32px rgba(139, 0, 0, 0.2),
+      0 2px 8px rgba(255, 153, 51, 0.15),
+      inset 0 1px 2px rgba(255, 255, 255, 0.8),
+      inset 0 -1px 2px rgba(139, 0, 0, 0.1);
+    padding: 1.5rem 1rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px) scale(0.95);
     transform-origin: top right; /* Unfurl from top right corner */
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
     z-index: 99998 !important; /* Just below hamburger button */
-    isolation: isolate; /* Create new stacking context to prevent backdrop-filter from affecting menu */
-    backdrop-filter: none !important; /* Ensure no blur on menu itself */
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  /* Glass shine effect */
+  .header__nav-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    border-radius: 16px 16px 0 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Ensure menu items are above the shine effect */
+  .header__nav-item {
+    position: relative;
+    z-index: 2;
   }
 
   .header__nav--active .header__nav-list {
@@ -368,6 +399,8 @@
     transform: translateX(-10px);
     opacity: 0;
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
   }
 
   .header__nav--active .header__nav-item {
@@ -382,48 +415,87 @@
   .header__nav--active .header__nav-item:nth-child(4) { transition-delay: 0.25s; }
   .header__nav--active .header__nav-item:nth-child(5) { transition-delay: 0.3s; }
 
-  /* Enhanced menu link styling */
+  /* Enhanced menu link styling with glass effect */
   .header__nav-link {
-    padding: 0.75rem 1rem !important;
-    border-radius: 8px;
+    padding: 0.875rem 1.25rem !important;
+    border-radius: 12px;
     display: block;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    font-weight: 500;
+    letter-spacing: 0.3px;
   }
 
+  /* Shimmer effect on hover */
   .header__nav-link::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: -100%;
     top: 0;
     height: 100%;
-    width: 3px;
-    background: linear-gradient(180deg, var(--primary-maroon), var(--saffron));
-    transform: scaleY(0);
-    transition: transform 0.3s ease;
-  }
-
-  .header__nav-link:hover {
-    background: rgba(139, 0, 0, 0.05);
-    transform: translateX(5px);
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 215, 0, 0.3) 50%,
+      transparent 100%
+    );
+    transition: left 0.5s ease;
   }
 
   .header__nav-link:hover::before {
-    transform: scaleY(1);
+    left: 100%;
+  }
+
+  .header__nav-link:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(139, 0, 0, 0.15) 0%,
+      rgba(255, 153, 51, 0.15) 100%
+    );
+    transform: translateX(5px) scale(1.02);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow:
+      0 4px 12px rgba(139, 0, 0, 0.1),
+      inset 0 1px 1px rgba(255, 255, 255, 0.5);
   }
 
   .header__nav-link:hover::after {
     width: 0; /* Disable bottom underline in mobile menu */
   }
 
+  .header__nav-link:active {
+    transform: translateX(3px) scale(0.98);
+  }
+
   /* Dark theme menu link hover */
+  [data-theme="dark"] .header__nav-link {
+    background: rgba(255, 215, 0, 0.08);
+    border-color: rgba(255, 215, 0, 0.2);
+  }
+
   [data-theme="dark"] .header__nav-link:hover {
-    background: rgba(255, 215, 0, 0.1);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 215, 0, 0.2) 0%,
+      rgba(255, 153, 51, 0.2) 100%
+    );
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow:
+      0 4px 12px rgba(255, 215, 0, 0.2),
+      inset 0 1px 1px rgba(255, 215, 0, 0.3);
   }
 
   [data-theme="dark"] .header__nav-link::before {
-    background: linear-gradient(180deg, var(--gold), var(--saffron));
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 215, 0, 0.4) 50%,
+      transparent 100%
+    );
   }
 
   .header__mobile-toggle {
@@ -459,11 +531,26 @@
 }
 
 [data-theme="dark"] .header__nav-list {
-  background: var(--bg-card) !important; /* Solid dark background for dark theme */
-  border: 2px solid rgba(255, 215, 0, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
-  isolation: isolate; /* Prevent blur from affecting dark theme menu */
-  backdrop-filter: none !important; /* Ensure no blur on menu itself */
+  /* Dark glassmorphism effect */
+  background: rgba(13, 17, 23, 0.7) !important; /* Dark with transparency */
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(255, 215, 0, 0.4),
+    inset 0 1px 2px rgba(255, 215, 0, 0.3),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+  isolation: isolate;
+}
+
+/* Dark theme glass shine effect */
+[data-theme="dark"] .header__nav-list::before {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 215, 0, 0.2) 0%,
+    rgba(255, 215, 0, 0) 100%
+  );
 }
 
 [data-theme="dark"] .header__nav-link {
