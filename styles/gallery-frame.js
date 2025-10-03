@@ -147,11 +147,6 @@ class GalleryFrameComponent {
             if (options.enableLazyLoading) {
                 img.loading = 'lazy';
             }
-
-            // Add CSS classes based on zoomOnLoad property
-            if (workItem.zoomOnLoad === false) {
-                img.classList.add('no-zoom-on-load'); // For contain fit
-            }
         }
 
         // Set caption text
@@ -260,11 +255,6 @@ class GalleryFrameComponent {
 
         console.log('GalleryFrameComponent: Component destroyed');
     }
-}
-
-// Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = GalleryFrameComponent;
 }
 
 // Make available globally

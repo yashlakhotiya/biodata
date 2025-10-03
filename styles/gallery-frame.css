@@ -3,11 +3,10 @@
 
 .gallery-frames-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* strict 4 equal columns */
+    grid-template-columns: repeat(4, 1fr);  /* strict 4 equal columns */
     grid-auto-rows: 220px;
     grid-auto-flow: dense;
     gap: 10px;
-    justify-content: stretch;
 }
 
 .instagram-frame-item {

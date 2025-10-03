@@ -2,12 +2,6 @@
 console.log('=== Scripts.js loaded ===');
 console.log('workData available at load:', typeof workData !== 'undefined' ? workData : 'Not loaded yet');
 
-// Photo carousel functionality
-const totalPhotos = 6;
-let currentPhotoIndex = 0;
-let photoElements;
-let indicatorElements;
-
 // Define your photo URLs here
 const photoUrls = [
     'assets/images/photo1.png',
@@ -15,7 +9,6 @@ const photoUrls = [
     'assets/images/photo3.jpg',
     'assets/images/photo4.jpg',
     'assets/images/photo5.jpg',
-    'assets/images/photo6.jpg'
 ];
 
 // ==================== INITIALIZATION ==================== //
@@ -28,30 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPhotoIndex = Math.floor(totalPhotos / 2); // Start at the middle photo
     let isExpanded = false;
 
-    function updateCarousel() {
-        photoElements.forEach((photo, index) => {
-            photo.classList.remove('center', 'left', 'right', 'hidden-left', 'hidden-right');
-            let newPosition = (index - currentPhotoIndex + totalPhotos) % totalPhotos;
-            if (newPosition === 0) photo.classList.add('center');
-            else if (newPosition === 1) photo.classList.add('right');
-            else if (newPosition === totalPhotos - 1) photo.classList.add('left');
-            else if (newPosition === 2) photo.classList.add('hidden-right');
-            else photo.classList.add('hidden-left');
-        });
-        indicatorElements.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentPhotoIndex);
-        });
-    }
-
-    window.changePhoto = function(direction) {
-        currentPhotoIndex = (currentPhotoIndex + direction + totalPhotos) % totalPhotos;
-        updateCarousel();
-    }
-    window.goToPhoto = function(index) {
-        currentPhotoIndex = index;
-        updateCarousel();
-    }
-
     // Only attach carousel event listeners if elements exist
     if (photoStack) {
         // Expand/Collapse Logic
@@ -61,21 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 photoStack.classList.toggle('expanded', isExpanded);
             }
         });
-
-        // --- TOUCH/SWIPE & KEYBOARD FOR CAROUSEL ---
-        let touchStartX = 0;
-        let touchEndX = 0;
-        photoStack.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX, false);
-        photoStack.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchEndX < touchStartX - 50) changePhoto(1);
-            if (touchEndX > touchStartX + 50) changePhoto(-1);
-        }, false);
-    }
-
-    // --- INITIAL CALLS ---
-    if (typeof updateCarousel === 'function') {
-        updateCarousel();
     }
 });
 
@@ -220,24 +174,6 @@ function populateShowcase() {
             galleryGrid.innerHTML += generateWorkItemHTML(item);
         });
     }
-}
-
-function positionWorkItems() {
-    const container = document.querySelector('.container');
-    const workItems = document.querySelectorAll('.work-showcase-container .work-item');
-    const viewportWidth = window.innerWidth;
-    const isPortfolioPage = window.location.pathname.includes('portfolio.html');
-
-    // Don't apply any positioning - let CSS grid handle the layout
-    // This ensures clean, organized display within the container bounds
-    workItems.forEach(item => {
-        item.style.position = '';
-        item.style.top = '';
-        item.style.left = '';
-        item.style.transform = '';
-        item.style.width = '';
-        item.style.height = '';
-    });
 }
 
 // Initialize photos with actual URLs

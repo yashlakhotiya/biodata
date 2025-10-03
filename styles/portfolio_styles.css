@@ -158,30 +158,6 @@
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
-/* ==================== PORTFOLIO FEATURED WORK - INSTAGRAM STYLE ==================== */
-.portfolio-section .work-showcase-container {
-    margin: 0 auto;
-    padding: 40px 20px;
-    position: relative;
-}
-
-/* Remove conflicting media queries */
-/* For larger screens, show items in a 3-column layout */
-@media (min-width: 1200px) {
-    .portfolio-section .work-showcase-container {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 1200px;
-    }
-}
-
-/* For medium screens, show in 2 columns */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .portfolio-section .work-showcase-container {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 900px;
-    }
-}
-
 /* ==================== RESPONSIVE PORTFOLIO NAVIGATION ==================== */
 /* Stack navigation buttons vertically on smaller screens */
 @media (max-width: 768px) {
