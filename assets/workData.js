@@ -3,7 +3,7 @@
 const workData = [
     {
         title: "Night Sky Timelapse",
-        size: "tall",
+        size: "tall-small",
         description: "I dont know But Time Lapses are so satisfying to watch. what say?\n" +
             "Try counting the stars May be⭐\n" +
             "\n" +
@@ -24,7 +24,7 @@ const workData = [
     },
     {
         title: "Me, My device and The Universe",
-        size: "tall",
+        size: "tall-small",
         image: "assets/images/stars_dslr.jpg",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
@@ -49,7 +49,7 @@ const workData = [
     },
     {
         title: "Solar Eclipse",
-        size: "tall",
+        size: "tall-small",
         image: "assets/images/solar_eclipse.gif",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
@@ -63,18 +63,18 @@ const workData = [
         title: "Day to Night Timelapse",
         size: "small",
         image: "assets/images/day_to_night_timelapse.gif",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        link: "https://www.instagram.com/reel/DMJ_m5xSMKG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
         title: "Orion Nebula",
-        size: "wide",
+        size: "wide-small",
         image: "assets/images/orion_nebula.heic",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        link: "https://www.instagram.com/p/DBkvJ2LPin-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
-        title: "Orion Nebula",
-        size: "small",
-        image: "assets/images/orion_nebula.heic",
-        link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        title: "Andromeda Galaxy",
+        size: "medium",
+        image: "assets/images/andromeda_galaxy.heic",
+        link: "hhttps://www.instagram.com/p/DAswYEzPzaZ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     }
 ];

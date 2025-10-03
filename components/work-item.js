@@ -67,8 +67,15 @@ class WorkItemsGallery {
      * @returns {string} Size class name
      */
     generateRandomSize() {
-        const sizes = ['small', 'medium', 'large', 'tall', 'wide'];
-        const weights = [0.25, 0.35, 0.15, 0.15, 0.10]; // Favor smaller items
+        const sizes = [
+            // Squares
+            'small', 'medium', 'large',
+            // Horizontal rectangles
+            'wide-small', 'wide-medium', 'wide-large',
+            // Vertical rectangles
+            'tall-small', 'tall-medium', 'tall-large'
+        ];
+        const weights = [0.15, 0.15, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]; // Balanced distribution
 
         let random = Math.random();
         let cumulativeWeight = 0;
