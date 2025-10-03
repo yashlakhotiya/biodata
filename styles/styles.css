@@ -84,87 +84,6 @@ body::before {
     to { transform: rotate(360deg); }
 }
 
-/* ==================== HEADER SECTION ==================== */
-/* Edit the header title and subtitle below */
-.header {
-    text-align: center;
-    padding: 40px 20px;
-    background: var(--header-bg);
-    color: var(--text-white);
-    border-radius: 15px;
-    margin-bottom: 30px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 40px var(--primary-maroon, rgba(139, 0, 0, 0.3));
-    animation: headerGlow 3s ease-in-out infinite alternate;
-    align-items: center;   /* vertically center them */
-    justify-content: center; /* optional: center the whole line horizontally */
-    gap: 10px;             /* space between elements */
-}
-
-@keyframes headerGlow {
-    0% { box-shadow: 0 10px 40px rgba(139, 0, 0, 0.3); }
-    100% { box-shadow: 0 15px 50px rgba(255, 215, 0, 0.4); }
-}
-
-.header::before,
-.header::after {
-    content: '❋';
-    position: absolute;
-    font-size: 100px;
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
-}
-
-.header::before {
-    top: -20px;
-    left: -20px;
-    animation-delay: 0s;
-}
-
-.header::after {
-    bottom: -20px;
-    right: -20px;
-    animation-delay: 3s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
-}
-
-.header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    animation: shimmer 2s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
-
-.header .subtitle {
-    font-size: 1.1em;
-    opacity: 0.95;
-    font-weight: 300;
-}
-
-/* Decorative Om Symbol */
-.om-symbol {
-    display: inline-block;
-    font-size: 1.5em;
-    margin: 0 10px;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
 /* ==================== BIODATA CARD ==================== */
 .biodata-card {
     background: white;
@@ -796,11 +715,6 @@ footer {
 
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
-    .header h1 {
-        margin: 0; /* remove default top/bottom margin of h1 */
-        font-size: 2rem; /* adjust size as needed */
-    }
-
     .section-title {
         font-size: 1.5em;
     }
