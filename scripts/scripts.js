@@ -116,12 +116,10 @@ function generateWorkItemHTML(item) {
 
 function populateShowcase() {
     console.log('=== populateShowcase() called ===');
-    const showcaseContainer = document.querySelector('.work-showcase-container');
-    const galleryGrid = document.querySelector('.gallery-grid');
+    const showcaseContainer = document.querySelector('.work-items-container');
     const isPortfolioPage = window.location.pathname.includes('portfolio');
     
     console.log('Showcase container found:', !!showcaseContainer);
-    console.log('Gallery grid found:', !!galleryGrid);
     console.log('Is portfolio page:', isPortfolioPage);
     console.log('workData available:', !!workData);
     
@@ -137,42 +135,36 @@ function populateShowcase() {
         showcaseContainer.innerHTML = '';
 
         try {
-            // Create Gallery Frame Component instance
-            const galleryComponent = new GalleryFrameComponent(showcaseContainer, {
-                minWidth: '200px',
-                maxWidth: '350px',
+            // Create Work Items Gallery instance
+            const galleryComponent = new WorkItemsGallery(showcaseContainer, {
                 gap: '20px',
                 enableLazyLoading: true
             });
-            console.log('Gallery Frame Component created successfully');
+            console.log('Work Items Gallery created successfully');
 
-            // Render all work items using the component
-            if (workData && workData.length > 0) {
-                console.log('Rendering work items:', workData.length);
-                galleryComponent.renderFrames(workData);
-                console.log('Work items rendered successfully');
-            } else {
-                console.warn('No work data available to render');
-            }
+            // Wait for initialization to complete before rendering
+            galleryComponent.init().then(() => {
+                // Render all work items using the component
+                if (workData && workData.length > 0) {
+                    console.log('Rendering work items:', workData.length);
+                    galleryComponent.renderItems(workData);
+                    console.log('Work items rendered successfully');
+                } else {
+                    console.warn('No work data available to render');
+                }
+            }).catch(error => {
+                console.error('Error during gallery component initialization:', error);
+            });
 
             // Store component reference for potential updates
             window.galleryComponent = galleryComponent;
         } catch (error) {
-            console.error('Error initializing Gallery Frame Component:', error);
+            console.error('Error initializing Work Items Gallery:', error);
         }
     } else if (showcaseContainer) {
         console.log('Clearing showcase container on non-portfolio page');
         // Clear showcase container on non-portfolio pages
         showcaseContainer.innerHTML = '';
-    }
-
-    // Keep gallery grid functionality for modal (when gallery button is clicked)
-    if (galleryGrid) {
-        galleryGrid.innerHTML = '';
-        // Use traditional HTML generation for gallery grid (simpler for modal)
-        workData.forEach(item => {
-            galleryGrid.innerHTML += generateWorkItemHTML(item);
-        });
     }
 }
 
