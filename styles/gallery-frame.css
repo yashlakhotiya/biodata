@@ -19,11 +19,37 @@
     cursor: pointer;
 }
 
-.instagram-frame-item img {
+/* ==================== CONFLICTING STYLES FROM MAIN CSS ==================== */
+/* These styles were moved here to avoid conflicts with gallery styles */
+
+/* Photo carousel styles */
+.photo-frame img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+/* Work showcase styles */
+.work-item img {
+    width: 100%;
+    height: auto;
     display: block;
+    border-radius: 2px;
+}
+
+/* Portfolio section styles */
+.portfolio-section .work-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    border-radius: 15px;
+}
+
+.portfolio-section .work-item img.no-zoom-on-load {
+    object-fit: contain;
 }
 
 .instagram-frame-item:hover {
@@ -36,16 +62,16 @@
 }
 
 .work-item-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-    color: white;
-    padding: 30px 20px 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 0 0 15px 15px;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    background: none;
+    color: inherit;
+    /*padding: 10px 0 0;*/
+    opacity: 1;
+    transition: none;
+    border-radius: 0;
 }
 
 .instagram-frame-item:hover .work-item-caption {

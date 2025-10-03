@@ -61,7 +61,9 @@ class GalleryFrameComponent {
     getComponentTemplate() {
         return `
             <div class="work-item instagram-frame-item" data-title="" data-description="" data-image="" data-link="" data-size="">
-                <img src="" alt="" loading="lazy">
+                <div class="image-container">
+                    <img src="" alt="" loading="lazy">
+                </div>
                 <div class="work-item-caption">
                     <p></p>
                 </div>
@@ -75,21 +77,21 @@ class GalleryFrameComponent {
      */
     generateRandomSize() {
         const sizes = ['small', 'medium', 'large', 'tall', 'wide'];
-        
+
         // Create balanced distribution with weights that promote variety
         const weights = [0.25, 0.35, 0.15, 0.15, 0.10]; // small and medium more common
-        
+
         // Use a more sophisticated random selection
         let random = Math.random();
         let cumulativeWeight = 0;
-        
+
         for (let i = 0; i < sizes.length; i++) {
             cumulativeWeight += weights[i];
             if (random <= cumulativeWeight) {
                 return sizes[i];
             }
         }
-        
+
         return 'medium'; // Fallback
     }
 
@@ -144,6 +146,11 @@ class GalleryFrameComponent {
 
             if (options.enableLazyLoading) {
                 img.loading = 'lazy';
+            }
+
+            // Add CSS classes based on zoomOnLoad property
+            if (workItem.zoomOnLoad === false) {
+                img.classList.add('no-zoom-on-load'); // For contain fit
             }
         }
 
