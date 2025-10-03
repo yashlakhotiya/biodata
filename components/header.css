@@ -96,6 +96,23 @@
   outline: none !important;
 }
 
+/* Primary navigation - always visible on desktop */
+.header__nav-list--primary {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+
+/* Secondary navigation - hidden by default, shown in hamburger menu */
+.header__nav-list--secondary {
+  display: none;
+}
+
+/* All nav items list - hidden, used as source for dynamic distribution */
+.header__nav-list--all {
+  display: none !important;
+}
+
 .header__nav-item {
   background: transparent !important;
   border: none !important;
@@ -145,39 +162,40 @@
   align-items: center;
   justify-content: center;
   transition: transform var(--transition-normal);
-  margin-left: 1rem;
+  margin-left: auto; /* Push to the right */
+  order: 3; /* Ensure it comes after hamburger */
 }
 
 .theme-toggle:hover {
   transform: rotate(30deg);
 }
 
-/* Mobile menu button */
+/* Hamburger menu button - dynamically shown when needed */
 .header__mobile-toggle {
-  display: none;
+  display: flex; /* Controlled by JavaScript */
   background: linear-gradient(135deg, var(--primary-maroon), var(--saffron));
   border: 2px solid var(--border-gold);
   border-radius: 8px;
   cursor: pointer;
   padding: 0.5rem;
-  position: relative; /* Keep relative by default */
-  z-index: 99999 !important; /* Ensure it stays on top of everything */
+  position: relative;
+  z-index: 99999 !important;
   width: 45px;
   height: 45px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
   box-shadow: 0 2px 8px rgba(139, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease; /* Only animate shadow, not transform */
 }
 
 .header__mobile-toggle:hover {
-  transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
 }
 
 .header__mobile-toggle:active {
-  transform: scale(0.95);
+  box-shadow: 0 1px 4px rgba(139, 0, 0, 0.3);
 }
 
 /* Dark theme hamburger button */
@@ -327,24 +345,187 @@
 
 /* ==================== RESPONSIVE DESIGN ==================== */
 
+/* Desktop and larger screens - hamburger menu for secondary nav */
+.header__nav-list--secondary {
+  position: absolute;
+  top: calc(100% + 8px); /* Position below the header */
+  right: 0; /* Align to right edge of nav container */
+  width: 240px;
+  /* Glassmorphism effect */
+  background: rgba(255, 248, 220, 0.7) !important;
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(139, 0, 0, 0.2),
+    0 2px 8px rgba(255, 153, 51, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 2px rgba(139, 0, 0, 0.1);
+  padding: 1.5rem 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px) scale(0.95);
+  transform-origin: top right;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 99998 !important;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Show secondary nav when menu is active */
+.header__nav--active .header__nav-list--secondary {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Glass shine effect for desktop secondary nav */
+.header__nav-list--secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Desktop secondary nav menu items */
+.header__nav-list--secondary .header__nav-item {
+  position: relative;
+  z-index: 2;
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.header__nav--active .header__nav-list--secondary .header__nav-item {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Stagger animation for desktop secondary nav */
+.header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(1) { transition-delay: 0.1s; }
+.header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(2) { transition-delay: 0.15s; }
+.header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(3) { transition-delay: 0.2s; }
+.header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(4) { transition-delay: 0.25s; }
+
+/* Enhanced menu link styling with glass effect for desktop */
+.header__nav-list--secondary .header__nav-link {
+  padding: 0.875rem 1.25rem !important;
+  border-radius: 12px;
+  display: block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Shimmer effect on hover for desktop */
+.header__nav-list--secondary .header__nav-link::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.3) 50%,
+    transparent 100%
+  );
+  transition: left 0.5s ease;
+}
+
+.header__nav-list--secondary .header__nav-link:hover::before {
+  left: 100%;
+}
+
+.header__nav-list--secondary .header__nav-link:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(139, 0, 0, 0.15) 0%,
+    rgba(255, 153, 51, 0.15) 100%
+  );
+  transform: translateX(5px) scale(1.02);
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow:
+    0 4px 12px rgba(139, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.header__nav-list--secondary .header__nav-link:hover::after {
+  width: 0; /* Disable bottom underline in dropdown menu */
+}
+
+.header__nav-list--secondary .header__nav-link:active {
+  transform: translateX(3px) scale(0.98);
+}
+
+/* Dark theme for desktop secondary nav */
+[data-theme="dark"] .header__nav-list--secondary .header__nav-link {
+  background: rgba(255, 215, 0, 0.08);
+  border-color: rgba(255, 215, 0, 0.2);
+}
+
+[data-theme="dark"] .header__nav-list--secondary .header__nav-link:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.2) 0%,
+    rgba(255, 153, 51, 0.2) 100%
+  );
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow:
+    0 4px 12px rgba(255, 215, 0, 0.2),
+    inset 0 1px 1px rgba(255, 215, 0, 0.3);
+}
+
+[data-theme="dark"] .header__nav-list--secondary .header__nav-link::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 215, 0, 0.4) 50%,
+    transparent 100%
+  );
+}
+
 @media (max-width: 840px) {
   .header__nav {
     position: relative;
-    flex-direction: row; /* Keep horizontal layout */
+    flex-direction: row;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .header__nav-list {
-    position: fixed; /* Fixed position for backdrop-filter to work */
-    top: 75px; /* Position below header */
-    right: 20px;
+  /* Hide primary nav on mobile, show all in hamburger */
+  .header__nav-list--primary {
+    display: none;
+  }
+
+  .header__nav-list--secondary {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
     width: 240px;
-    /* Glassmorphism effect */
-    background: rgba(255, 248, 220, 0.7) !important; /* Cream with transparency */
+    background: rgba(255, 248, 220, 0.7) !important;
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
-    border: 2px solid rgba(212, 175, 55, 0.5); /* Gold border */
+    border: 2px solid rgba(212, 175, 55, 0.5);
     border-radius: 16px;
     box-shadow:
       0 8px 32px rgba(139, 0, 0, 0.2),
@@ -355,17 +536,17 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px) scale(0.95);
-    transform-origin: top right; /* Unfurl from top right corner */
+    transform-origin: top right;
     transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     flex-direction: column;
     gap: 0.5rem;
-    z-index: 99998 !important; /* Just below hamburger button */
+    z-index: 99998 !important;
     isolation: isolate;
     overflow: hidden;
   }
 
   /* Glass shine effect */
-  .header__nav-list::before {
+  .header__nav-list--secondary::before {
     content: '';
     position: absolute;
     top: 0;
@@ -383,19 +564,13 @@
   }
 
   /* Ensure menu items are above the shine effect */
-  .header__nav-item {
+  .header__nav-list--secondary .header__nav-item {
     position: relative;
     z-index: 2;
   }
 
-  .header__nav--active .header__nav-list {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-  }
-
   /* Menu item styling */
-  .header__nav-item {
+  .header__nav-list--secondary .header__nav-item {
     transform: translateX(-10px);
     opacity: 0;
     transition: all 0.3s ease;
@@ -403,20 +578,19 @@
     z-index: 2;
   }
 
-  .header__nav--active .header__nav-item {
+  .header__nav--active .header__nav-list--secondary .header__nav-item {
     transform: translateX(0);
     opacity: 1;
   }
 
   /* Stagger animation for menu items */
-  .header__nav--active .header__nav-item:nth-child(1) { transition-delay: 0.1s; }
-  .header__nav--active .header__nav-item:nth-child(2) { transition-delay: 0.15s; }
-  .header__nav--active .header__nav-item:nth-child(3) { transition-delay: 0.2s; }
-  .header__nav--active .header__nav-item:nth-child(4) { transition-delay: 0.25s; }
-  .header__nav--active .header__nav-item:nth-child(5) { transition-delay: 0.3s; }
+  .header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(1) { transition-delay: 0.1s; }
+  .header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(2) { transition-delay: 0.15s; }
+  .header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(3) { transition-delay: 0.2s; }
+  .header__nav--active .header__nav-list--secondary .header__nav-item:nth-child(4) { transition-delay: 0.25s; }
 
   /* Enhanced menu link styling with glass effect */
-  .header__nav-link {
+  .header__nav-list--secondary .header__nav-link {
     padding: 0.875rem 1.25rem !important;
     border-radius: 12px;
     display: block;
@@ -430,7 +604,7 @@
   }
 
   /* Shimmer effect on hover */
-  .header__nav-link::before {
+  .header__nav-list--secondary .header__nav-link::before {
     content: '';
     position: absolute;
     left: -100%;
@@ -446,11 +620,11 @@
     transition: left 0.5s ease;
   }
 
-  .header__nav-link:hover::before {
+  .header__nav-list--secondary .header__nav-link:hover::before {
     left: 100%;
   }
 
-  .header__nav-link:hover {
+  .header__nav-list--secondary .header__nav-link:hover {
     background: linear-gradient(
       135deg,
       rgba(139, 0, 0, 0.15) 0%,
@@ -463,21 +637,21 @@
       inset 0 1px 1px rgba(255, 255, 255, 0.5);
   }
 
-  .header__nav-link:hover::after {
+  .header__nav-list--secondary .header__nav-link:hover::after {
     width: 0; /* Disable bottom underline in mobile menu */
   }
 
-  .header__nav-link:active {
+  .header__nav-list--secondary .header__nav-link:active {
     transform: translateX(3px) scale(0.98);
   }
 
   /* Dark theme menu link hover */
-  [data-theme="dark"] .header__nav-link {
+  [data-theme="dark"] .header__nav-list--secondary .header__nav-link {
     background: rgba(255, 215, 0, 0.08);
     border-color: rgba(255, 215, 0, 0.2);
   }
 
-  [data-theme="dark"] .header__nav-link:hover {
+  [data-theme="dark"] .header__nav-list--secondary .header__nav-link:hover {
     background: linear-gradient(
       135deg,
       rgba(255, 215, 0, 0.2) 0%,
@@ -489,23 +663,13 @@
       inset 0 1px 1px rgba(255, 215, 0, 0.3);
   }
 
-  [data-theme="dark"] .header__nav-link::before {
+  [data-theme="dark"] .header__nav-list--secondary .header__nav-link::before {
     background: linear-gradient(
       90deg,
       transparent 0%,
       rgba(255, 215, 0, 0.4) 50%,
       transparent 100%
     );
-  }
-
-  .header__mobile-toggle {
-    display: flex !important; /* Changed from block to flex */
-    position: relative !important; /* Keep in flow with theme toggle */
-    order: 1; /* Place before theme toggle */
-  }
-
-  .theme-toggle {
-    order: 2; /* Place after hamburger */
   }
 
   .menu-open::before {
@@ -527,10 +691,7 @@
   border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
-[data-theme="dark"] .header__nav {
-}
-
-[data-theme="dark"] .header__nav-list {
+[data-theme="dark"] .header__nav-list--secondary {
   /* Dark glassmorphism effect */
   background: rgba(13, 17, 23, 0.7) !important; /* Dark with transparency */
   backdrop-filter: blur(25px) saturate(200%);
@@ -545,7 +706,7 @@
 }
 
 /* Dark theme glass shine effect */
-[data-theme="dark"] .header__nav-list::before {
+[data-theme="dark"] .header__nav-list--secondary::before {
   background: linear-gradient(
     180deg,
     rgba(255, 215, 0, 0.2) 0%,

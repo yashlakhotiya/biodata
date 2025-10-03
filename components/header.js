@@ -66,7 +66,9 @@ class Header {
     this.mainNav = document.getElementById('main-nav');
     this.themeToggle = document.getElementById('theme-toggle');
     this.themeIcon = document.querySelector('.theme-icon');
-    this.navLinks = document.querySelectorAll('.header__nav-link');
+    this.primaryNav = document.getElementById('primary-nav');
+    this.secondaryNav = document.getElementById('secondary-nav');
+    this.allNavItems = document.getElementById('all-nav-items');
 
     // Mobile menu toggle
     if (this.mobileToggle) {
@@ -78,13 +80,86 @@ class Header {
       this.themeToggle.addEventListener('click', () => this.toggleTheme());
     }
 
-    // Close mobile menu when clicking on a nav link
-    this.navLinks.forEach(link => {
-      link.addEventListener('click', () => this.closeMobileMenu());
-    });
-
     // Load theme preference
     this.loadThemePreference();
+
+    // Setup responsive navigation
+    this.setupResponsiveNav();
+  }
+
+  setupResponsiveNav() {
+    // Initialize navigation distribution
+    this.distributeNavItems();
+
+    // Recalculate on window resize with debouncing
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        this.distributeNavItems();
+      }, 150);
+    });
+
+    // Setup click handlers for nav links (needs to be done after distribution)
+    this.setupNavLinkHandlers();
+  }
+
+  setupNavLinkHandlers() {
+    // Get all nav links after they've been distributed
+    const navLinks = document.querySelectorAll('.header__nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => this.closeMobileMenu());
+    });
+  }
+
+  distributeNavItems() {
+    if (!this.primaryNav || !this.secondaryNav || !this.allNavItems) return;
+
+    const windowWidth = window.innerWidth;
+
+    // Get all nav items from the source list
+    const allItems = Array.from(this.allNavItems.querySelectorAll('.header__nav-item'));
+
+    // Clear both lists
+    this.primaryNav.innerHTML = '';
+    this.secondaryNav.innerHTML = '';
+
+    let itemsInPrimary = 0;
+
+    // Determine how many items to show based on screen size
+    if (windowWidth <= 840) {
+      // Small screen: All items in hamburger
+      itemsInPrimary = 0;
+    } else if (windowWidth <= 1200) {
+      // Medium screen: Show 3 items in navbar
+      itemsInPrimary = 3;
+    } else {
+      // Large screen: Show 5 items in navbar
+      itemsInPrimary = 5;
+    }
+
+    // Ensure we don't try to show more items than we have
+    itemsInPrimary = Math.min(itemsInPrimary, allItems.length);
+
+    // Distribute items
+    allItems.forEach((item, index) => {
+      const clone = item.cloneNode(true);
+      if (index < itemsInPrimary) {
+        this.primaryNav.appendChild(clone);
+      } else {
+        this.secondaryNav.appendChild(clone);
+      }
+    });
+
+    // Update hamburger visibility
+    if (this.secondaryNav.children.length === 0) {
+      this.mobileToggle.style.display = 'none';
+    } else {
+      this.mobileToggle.style.display = 'flex';
+    }
+
+    // Re-setup click handlers after distribution
+    this.setupNavLinkHandlers();
   }
 
   toggleMobileMenu() {
