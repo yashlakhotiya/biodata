@@ -50,14 +50,14 @@ if (galleryTrigger) {
             document.body.classList.add('swipe-to-biodata');
             setTimeout(() => {
                 window.location.href = 'index.html';
-            }, 450); // Slightly less than animation duration for smooth transition
+            }, 600); // Match CSS animation duration for smoother transition
         } else {
             console.log('Adding swipe-to-portfolio class and navigating to portfolio.html');
             // From biodata page - navigate to portfolio with swipe
             document.body.classList.add('swipe-to-portfolio');
             setTimeout(() => {
                 window.location.href = 'portfolio.html';
-            }, 450); // Slightly less than animation duration for smooth transition
+            }, 600); // Match CSS animation duration for smoother transition
         }
     });
 } else {
