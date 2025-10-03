@@ -35,6 +35,22 @@ class WorkItemsGallery {
     }
 
     /**
+     * Initialize and render the gallery with work data
+     * @param {Array} workData - Array of work items to render
+     * @param {Object} options - Override options
+     */
+    async initialize(workData, options = {}) {
+        await this.init();
+        if (workData && workData.length > 0) {
+            console.log('WorkItemsGallery: Rendering', workData.length, 'items');
+            await this.renderItems(workData, options);
+            console.log('WorkItemsGallery: Successfully rendered items');
+        } else {
+            console.warn('WorkItemsGallery: No work data provided');
+        }
+    }
+
+    /**
      * Set up the container element
      */
     async setupContainer() {
@@ -47,9 +63,36 @@ class WorkItemsGallery {
 
     /**
      * Get the HTML template for a work item
+     * @returns {Promise<string>} HTML template string
+     */
+    async getItemTemplate() {
+        try {
+            const response = await fetch('components/work-item.html');
+            if (!response.ok) {
+                throw new Error(`Failed to load template: ${response.status}`);
+            }
+
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const template = doc.getElementById('work-item-template');
+
+            if (!template) {
+                throw new Error('Template element not found in work-item.html');
+            }
+
+            return template.innerHTML;
+        } catch (error) {
+            console.error('WorkItemsGallery: Error loading template from HTML file:', error);
+            return this.getFallbackTemplate();
+        }
+    }
+
+    /**
+     * Fallback template in case HTML template is not found
      * @returns {string} HTML template string
      */
-    getItemTemplate() {
+    getFallbackTemplate() {
         return `
             <div class="work-item" data-title="" data-description="" data-image="" data-link="" data-size="">
                 <div class="image-container">
@@ -94,11 +137,12 @@ class WorkItemsGallery {
      * Create a single work item element
      * @param {Object} workItem - The work item data
      * @param {Object} options - Override options for this item
-     * @returns {HTMLElement} The created work item element
+     * @returns {Promise<HTMLElement>} The created work item element
      */
-    createItem(workItem, options = {}) {
+    async createItem(workItem, options = {}) {
+        const templateHtml = await this.getItemTemplate();
         const template = document.createElement('template');
-        template.innerHTML = this.getItemTemplate();
+        template.innerHTML = templateHtml;
 
         const itemElement = template.content.firstElementChild.cloneNode(true);
         const itemOptions = { ...this.options, ...options };
@@ -178,7 +222,7 @@ class WorkItemsGallery {
      * @param {Array} workData - Array of work items to render
      * @param {Object} options - Override options
      */
-    renderItems(workData, options = {}) {
+    async renderItems(workData, options = {}) {
         if (!this.container) {
             console.error('WorkItemsGallery: Cannot render items - container not found');
             return;
@@ -187,13 +231,20 @@ class WorkItemsGallery {
         // Clear existing content
         this.container.innerHTML = '';
 
-        // Render each work item
-        workData.forEach(workItem => {
-            const itemElement = this.createItem(workItem, options);
-            this.container.appendChild(itemElement);
-        });
+        try {
+            // Create all items concurrently
+            const itemPromises = workData.map(workItem => this.createItem(workItem, options));
+            const itemElements = await Promise.all(itemPromises);
 
-        console.log(`WorkItemsGallery: Rendered ${workData.length} items`);
+            // Append all items to container
+            itemElements.forEach(itemElement => {
+                this.container.appendChild(itemElement);
+            });
+
+            console.log(`WorkItemsGallery: Rendered ${workData.length} items`);
+        } catch (error) {
+            console.error('WorkItemsGallery: Error rendering items:', error);
+        }
     }
 }
 

@@ -15,10 +15,6 @@ const photoUrls = [
 document.addEventListener('DOMContentLoaded', () => {
     // --- CAROUSEL SETUP ---
     const photoStack = document.querySelector('.photo-stack');
-    const photoElements = document.querySelectorAll('.photo-frame');
-    const indicatorElements = document.querySelectorAll('.indicator');
-    const totalPhotos = photoElements.length;
-    let currentPhotoIndex = Math.floor(totalPhotos / 2); // Start at the middle photo
     let isExpanded = false;
 
     // Only attach carousel event listeners if elements exist
@@ -99,21 +95,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ==================== WORK SHOWCASE LOGIC ==================== //
-
-function generateWorkItemHTML(item) {
-    return `
-        <div class="work-item">
-            ${item.image ? `<img src="${item.image}" alt="${item.title}">` : ''}
-            <div class="work-info">
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-                <a href="${item.link}" target="_blank">View Project</a>
-            </div>
-        </div>
-    `;
-}
-
 function populateShowcase() {
     console.log('=== populateShowcase() called ===');
     const showcaseContainer = document.querySelector('.work-items-container');
@@ -142,24 +123,15 @@ function populateShowcase() {
             });
             console.log('Work Items Gallery created successfully');
 
-            // Wait for initialization to complete before rendering
-            galleryComponent.init().then(() => {
-                // Render all work items using the component
-                if (workData && workData.length > 0) {
-                    console.log('Rendering work items:', workData.length);
-                    galleryComponent.renderItems(workData);
-                    console.log('Work items rendered successfully');
-                } else {
-                    console.warn('No work data available to render');
-                }
-            }).catch(error => {
-                console.error('Error during gallery component initialization:', error);
+            // Initialize and render items using the component's initialize method
+            galleryComponent.initialize(workData).catch(error => {
+                console.error('Error initializing Work Items Gallery:', error);
             });
 
             // Store component reference for potential updates
             window.galleryComponent = galleryComponent;
         } catch (error) {
-            console.error('Error initializing Work Items Gallery:', error);
+            console.error('Error creating Work Items Gallery:', error);
         }
     } else if (showcaseContainer) {
         console.log('Clearing showcase container on non-portfolio page');

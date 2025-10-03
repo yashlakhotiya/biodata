@@ -23,6 +23,8 @@
     aspect-ratio: 1; /* Perfect square for Instagram-style */
     justify-self: stretch;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ==================== SIZE VARIANTS FOR MASONRY EFFECT ==================== */
@@ -91,10 +93,13 @@
 }
 
 .image-container {
+    flex: 1;
     width: 100%;
-    height: calc(100% - 20px);
     overflow: hidden;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .work-item img {
@@ -143,20 +148,16 @@
 /* ==================== CAPTION STYLES ==================== */
 
 .work-item-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background: rgba(255, 255, 255, 0.95);
     color: var(--primary-maroon);
-    padding: 5px;
+    padding: 8px;
     opacity: 1;
     transition: opacity 0.3s ease;
     border-radius: 0 0 15px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 30px;
+    flex-shrink: 0;
 }
 
 .work-item:hover .work-item-caption {
@@ -175,7 +176,7 @@
 .work-item-caption::after {
     content: attr(data-description);
     position: absolute;
-    bottom: 100%;
+    bottom: calc(100% + 10px);
     left: 50%;
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.9);
@@ -190,7 +191,6 @@
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 1000;
-    margin-bottom: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
