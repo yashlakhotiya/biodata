@@ -78,14 +78,17 @@ class FamilyDetails {
       return;
     }
 
-    // Clear existing content
-    infoGrid.innerHTML = '';
-
-    // Populate with family details data
-    this.biodataData.familyDetails.items.forEach(item => {
-      const infoItem = this.createInfoItem(item);
-      infoGrid.appendChild(infoItem);
-    });
+    // Populate with family details data using shared helper
+    if (window.InfoItems) {
+      InfoItems.renderGrid(infoGrid, this.biodataData.familyDetails.items);
+    } else {
+      // Fallback
+      infoGrid.innerHTML = '';
+      this.biodataData.familyDetails.items.forEach(item => {
+        const infoItem = this.createInfoItem(item);
+        infoGrid.appendChild(infoItem);
+      });
+    }
   }
 
   createInfoItem(item) {

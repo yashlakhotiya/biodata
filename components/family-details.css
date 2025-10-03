@@ -41,58 +41,6 @@
   50% { transform: translateY(-50%) rotate(20deg); }
 }
 
-/* ==================== INFO GRID ==================== */
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.info-item {
-  background: var(--cream);
-  padding: 15px;
-  border-radius: 10px;
-  border-left: 4px solid var(--saffron);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Dark theme for info items */
-[data-theme="dark"] .info-item {
-  background: var(--sandalwood);
-  border-left-color: var(--gold);
-}
-
-/* New hover effect for info items */
-.info-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-/* Dark theme hover effect */
-[data-theme="dark"] .info-item:hover {
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-.info-label {
-  font-weight: 600;
-  color: var(--peacock-blue);
-  margin-bottom: 5px;
-  font-size: 0.9em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Dark theme for labels */
-[data-theme="dark"] .info-label {
-  color: var(--peacock-green);
-}
-
-.info-value {
-  color: var(--text-dark);
-  font-size: 1.1em;
-}
-
 /* ==================== RESPONSIVE DESIGN ==================== */
 @media (max-width: 768px) {
   .family-details-section {
@@ -101,14 +49,5 @@
 
   .family-details-section .section-title {
     font-size: 1.5em;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .info-item {
-    padding: 12px;
   }
 }

@@ -73,14 +73,17 @@ class PersonalDetails {
       return;
     }
 
-    // Clear existing content
-    infoGrid.innerHTML = '';
-
-    // Populate with personal details data
-    this.biodataData.personalDetails.items.forEach(item => {
-      const infoItem = this.createInfoItem(item);
-      infoGrid.appendChild(infoItem);
-    });
+    // Populate with personal details data using shared helper
+    if (window.InfoItems) {
+      InfoItems.renderGrid(infoGrid, this.biodataData.personalDetails.items);
+    } else {
+      // Fallback (should not happen if scripts are included correctly)
+      infoGrid.innerHTML = '';
+      this.biodataData.personalDetails.items.forEach(item => {
+        const infoItem = this.createInfoItem(item);
+        infoGrid.appendChild(infoItem);
+      });
+    }
   }
 
   createInfoItem(item) {

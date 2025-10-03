@@ -4,7 +4,7 @@
 
 /* Contact container - matches biodata-card styling */
 #contact-container {
-  background: var(--card-bg, var(--bg-card)); /* Theme-aware card background */
+  background: transparent;
   border-radius: 15px;
   box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139, 0, 0, 0.1);
   overflow: hidden;
@@ -25,7 +25,6 @@
 
 /* Dark theme for contact container */
 [data-theme="dark"] #contact-container {
-  background: var(--card-bg); /* Theme variable for dark mode too */
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 8px 40px rgba(0,0,0,0.4), var(--shadow-lg), var(--card-glow);
 }
@@ -39,7 +38,6 @@
 .contact-section {
   padding: 0;
   position: relative;
-  background: transparent;
 }
 
 /* Add padding to the content area between borders */
@@ -57,7 +55,7 @@
 
 /* Section title */
 .contact-section .section-title {
-  font-family: var(--font-heading);
+    font-family: var(--font-heading), serif;
   font-size: 2.25rem;
   color: var(--primary-maroon);
   margin: 0 0 var(--space-2xl);
@@ -94,7 +92,6 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-lg);
   margin: var(--space-xl) 0;
-  background: transparent;
 }
 
 /* Contact item cards */
@@ -157,7 +154,7 @@
   color: var(--gold);
 }
 
-/* Labels */
+/* Labels - Improved contrast and readability */
 .contact-item strong {
   display: block;
   font-size: 0.9rem;
@@ -166,6 +163,7 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  opacity: 0.9;
 }
 
 /* Text and links */

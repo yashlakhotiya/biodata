@@ -24,11 +24,11 @@
   --bg-card: #FFFFFF;             /* White cards */
   --bg-overlay: rgba(255, 248, 220, 0.95); /* Light overlay */
 
-  /* Text Colors */
-  --text-primary: #2C1810;        /* Main dark text */
-  --text-secondary: #005F73;      /* Secondary teal text */
-  --text-muted: #6C757D;          /* Muted text */
-  --text-white: #FFFFFF;          /* White text */
+  /* Text Colors - Improved for better readability and consistency */
+  --text-primary: #1A1A1A;        /* Rich dark charcoal for main text */
+  --text-secondary: #0F766E;      /* Sophisticated teal for secondary text */
+  --text-muted: #6B7280;          /* Balanced gray for muted text */
+  --text-white: #FFFFFF;          /* Pure white text */
 
   /* Interactive Colors */
   --hover-primary: #A52A2A;       /* Hover maroon */

@@ -23,11 +23,11 @@
     --bg-card: #21262D; /* Medium dark gray */
     --bg-overlay: rgba(13, 17, 23, 0.95); /* Dark overlay */
 
-    /* Text Colors */
-    --text-primary: #F0F6FC; /* Near-white text */
-    --text-secondary: #4ECDC4; /* Bright turquoise text */
-    --text-muted: #8B949E; /* Muted gray text */
-    --text-white: #FFFFFF; /* Pure white text */
+    /* Text Colors - Improved for better readability and consistency */
+    --text-primary: #F8FAFC;        /* Clean off-white for main text */
+    --text-secondary: #60A5FA;      /* Soft blue for secondary text */
+    --text-muted: #94A3B8;          /* Balanced gray for muted text */
+    --text-white: #FFFFFF;          /* Pure white text */
 
     /* Interactive Colors */
     --hover-primary: #FF8A95; /* Bright rose hover */

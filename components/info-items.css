@@ -1,0 +1,64 @@
+/* ===== SHARED INFO ITEMS CSS ===== */
+/* Centralized styles for .info-grid, .info-item, .info-label, .info-value */
+
+/* Grid layout */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Card */
+.info-item {
+  background: var(--bg-card);
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid var(--saffron);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Dark theme */
+[data-theme="dark"] .info-item {
+  background: var(--bg-card);
+  border-left-color: var(--gold);
+}
+
+/* Hover */
+.info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Labels */
+.info-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Dark theme labels keep secondary color for contrast */
+[data-theme="dark"] .info-label {
+  color: var(--text-secondary);
+}
+
+/* Values */
+.info-value {
+  color: var(--text-primary);
+  font-size: 1.1em;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .info-item {
+    padding: 12px;
+  }
+}

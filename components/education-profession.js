@@ -73,14 +73,17 @@ class EducationProfessionDetails {
       return;
     }
 
-    // Clear existing content
-    infoGrid.innerHTML = '';
-
-    // Populate with education & professional details data
-    this.biodataData.educationProfession.items.forEach(item => {
-      const infoItem = this.createInfoItem(item);
-      infoGrid.appendChild(infoItem);
-    });
+    // Populate with education & professional details data using shared helper
+    if (window.InfoItems) {
+      InfoItems.renderGrid(infoGrid, this.biodataData.educationProfession.items);
+    } else {
+      // Fallback
+      infoGrid.innerHTML = '';
+      this.biodataData.educationProfession.items.forEach(item => {
+        const infoItem = this.createInfoItem(item);
+        infoGrid.appendChild(infoItem);
+      });
+    }
   }
 
   createInfoItem(item) {
