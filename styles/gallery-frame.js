@@ -22,7 +22,6 @@ class GalleryFrameComponent {
             ...options
         };
 
-        this.componentTemplate = this.getComponentTemplate();
         this.init();
     }
 
@@ -42,7 +41,7 @@ class GalleryFrameComponent {
      * Set up the container element
      */
     setupContainer() {
-        this.container.classList.add('gallery-frames-container');
+        this.container.classList.add('work-items-container');
         if (!this.container.style.display) {
             this.container.style.display = 'grid';
         }
@@ -60,7 +59,7 @@ class GalleryFrameComponent {
      */
     getComponentTemplate() {
         return `
-            <div class="work-item instagram-frame-item" data-title="" data-description="" data-image="" data-link="" data-size="">
+            <div class="work-item" data-title="" data-description="" data-image="" data-link="" data-size="">
                 <div class="image-container">
                     <img src="" alt="" loading="lazy">
                 </div>
@@ -154,19 +153,6 @@ class GalleryFrameComponent {
             caption.textContent = workItem.title;
         }
 
-        // Set up click handler if link is provided
-        if (workItem.link && workItem.link !== '#') {
-            frameElement.style.cursor = 'pointer';
-            frameElement.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (workItem.link.startsWith('http')) {
-                    window.open(workItem.link, '_blank');
-                } else {
-                    window.location.href = workItem.link;
-                }
-            });
-        }
-
         // Apply custom max-width if specified
         if (options.maxWidth) {
             frameElement.style.maxWidth = options.maxWidth;
@@ -216,44 +202,6 @@ class GalleryFrameComponent {
         });
 
         console.log(`GalleryFrameComponent: Rendered ${workData.length} frames`);
-    }
-
-    /**
-     * Update a specific frame with new data
-     * @param {number} index - Index of the frame to update
-     * @param {Object} workItem - New work item data
-     */
-    updateFrame(index, workItem) {
-        const frames = this.container.querySelectorAll('.gallery-item');
-        if (frames[index]) {
-            this.setupFrameElement(frames[index], workItem, this.options);
-        }
-    }
-
-    /**
-     * Remove all frames from the container
-     */
-    clearFrames() {
-        if (this.container) {
-            this.container.innerHTML = '';
-        }
-    }
-
-    /**
-     * Get all frame elements
-     * @returns {NodeList} All frame elements in the container
-     */
-    getFrames() {
-        return this.container ? this.container.querySelectorAll('.instagram-frame-item') : [];
-    }
-
-    /**
-     * Destroy the component and clean up
-     */
-    destroy() {
-        this.clearFrames();
-
-        console.log('GalleryFrameComponent: Component destroyed');
     }
 }
 

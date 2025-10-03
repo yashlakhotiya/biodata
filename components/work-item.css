@@ -31,7 +31,7 @@
 }
 
 /* Enhanced Instagram Frames Container with modern styling */
-.instagram-frames-container {
+.work-items-container {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   max-width: 1400px;
   margin: 0 auto;
@@ -43,7 +43,7 @@
 }
 
 /* ==================== ENHANCED WORK ITEM FRAMES ==================== */
-.instagram-frame-component .work-item,
+.work-item,
 .work-item {
   position: relative;
   background: var(--cream);
@@ -57,7 +57,7 @@
   margin: 0 auto;
 }
 
-.instagram-frame-component .work-item::after,
+.work-item::after,
 [data-theme="dark"] .work-item {
   background: var(--sandalwood);
   box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
@@ -152,21 +152,21 @@
 /* ==================== ENHANCED RESPONSIVE DESIGN ==================== */
 /* Large desktop screens */
 @media (min-width: 1400px) {
-  .instagram-frames-container {
+  .work-items-container {
     grid-template-columns: repeat(4, 1fr);
     max-width: 1400px;
     gap: 35px;
   }
 }
 @media (min-width: 1200px) {
-  .instagram-frames-container {
+  .work-items-container {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-  .instagram-frames-container {
+  .work-items-container {
     grid-template-columns: repeat(2, 1fr);
     max-width: 900px;
     gap: 25px;
@@ -175,7 +175,7 @@
 }
 
 @media (max-width: 767px) {
-  .instagram-frames-container {
+  .work-items-container {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 30px 15px;

@@ -1,5 +1,5 @@
 // Instagram Frame Component JavaScript
-class InstagramFrame {
+class WorkItem {
   constructor() {
     this.framesContainer = null;
     this.workData = null;
@@ -9,14 +9,14 @@ class InstagramFrame {
   async init() {
     // Wait for DOM to be ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.loadInstagramFrame());
+      document.addEventListener('DOMContentLoaded', () => this.loadWorkItemFrame());
     } else {
-      await this.loadInstagramFrame();
+      await this.loadWorkItemFrame();
     }
   }
 
-  async loadInstagramFrame() {
-    this.framesContainer = document.querySelector('.instagram-frames-container');
+  async loadWorkItemFrame() {
+    this.framesContainer = document.querySelector('.work-items-container');
     if (!this.framesContainer) return;
 
     try {
@@ -132,29 +132,7 @@ class InstagramFrame {
 
     return null;
   }
-
-  // Public API methods
-  updateFrame(index, workItem) {
-    const frames = this.framesContainer ? this.framesContainer.querySelectorAll('.work-item') : [];
-    if (frames[index]) {
-      const newFrame = this.createFrame(workItem);
-      frames[index].replaceWith(newFrame);
-    }
-  }
-
-  addFrame(workItem) {
-    if (this.framesContainer) {
-      const frameElement = this.createFrame(workItem);
-      this.framesContainer.appendChild(frameElement);
-    }
-  }
-
-  clearFrames() {
-    if (this.framesContainer) {
-      this.framesContainer.innerHTML = '';
-    }
-  }
 }
 
 // Initialize Instagram frame when script loads
-new InstagramFrame();
+new WorkItem();

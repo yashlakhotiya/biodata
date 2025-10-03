@@ -1,7 +1,7 @@
 /* Gallery Frame Component Styles */
 /* Masonry-style layout with random frame sizes */
 
-.gallery-frames-container {
+.work-items-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);  /* strict 4 equal columns */
     grid-auto-rows: 220px;
@@ -9,25 +9,13 @@
     gap: 10px;
 }
 
-.instagram-frame-item {
+.work-item {
     position: relative;
     box-sizing: border-box;
     background: white;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-}
-
-/* ==================== CONFLICTING STYLES FROM MAIN CSS ==================== */
-/* These styles were moved here to avoid conflicts with gallery styles */
-
-/* Photo carousel styles */
-.photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    will-change: transform;
 }
 
 /* Work showcase styles */
@@ -51,12 +39,12 @@
     object-fit: contain;
 }
 
-.instagram-frame-item:hover {
+.work-item:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
-.instagram-frame-item:hover img {
+.work-item:hover img {
     transform: scale(1.1);
 }
 
@@ -73,7 +61,7 @@
     border-radius: 0;
 }
 
-.instagram-frame-item:hover .work-item-caption {
+.work-item:hover .work-item-caption {
     opacity: 1;
 }
 
@@ -93,7 +81,7 @@
     opacity: 0.9;
 }
 
-.instagram-frame-item::before {
+.work-item::before {
     content: '♡';
     position: absolute;
     top: 15px;
@@ -113,41 +101,41 @@
     z-index: 10;
 }
 
-.instagram-frame-item:hover::before {
+.work-item:hover::before {
     opacity: 1;
     transform: scale(1.1);
 }
 
 /* Size variants for masonry effect */
-.instagram-frame-item.size-small {
+.work-item.size-small {
     grid-column: span 1;
     grid-row: span 1;
     width: 100%;
     height: 100%;
 }
 
-.instagram-frame-item.size-medium {
+.work-item.size-medium {
     grid-column: span 2;
     grid-row: span 2;
     width: 100%;
     height: 100%;
 }
 
-.instagram-frame-item.size-large {
+.work-item.size-large {
     grid-column: span 3;
     grid-row: span 3;
     width: 100%;
     height: 100%;
 }
 
-.instagram-frame-item.size-wide {
+.work-item.size-wide {
     grid-column: span 2;
     grid-row: span 1;
     width: 100%;
     height: 100%;
 }
 
-.instagram-frame-item.size-tall {
+.work-item.size-tall {
     grid-column: span 1;
     grid-row: span 2;
     width: 100%;
@@ -156,14 +144,14 @@
 
 /* Responsive design for component */
 @media (min-width: 1200px) {
-    .gallery-frames-container {
+    .work-items-container {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         max-width: 1400px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
-    .gallery-frames-container {
+    .work-items-container {
         grid-template-columns: repeat(3, 1fr); /* ✅ 3 fixed columns */
         max-width: 1000px;
         width: 100%;
@@ -172,7 +160,7 @@
 }
 
 @media (max-width: 767px) {
-    .gallery-frames-container {
+    .work-items-container {
         grid-template-columns: repeat(2, 1fr); /* ✅ 2 fixed columns */
         gap: 15px;
         padding: 30px 15px;
@@ -181,8 +169,8 @@
     }
 
     /* Wide/large collapse into 1 col */
-    .instagram-frame-item.size-large,
-    .instagram-frame-item.size-wide {
+    .work-item.size-large,
+    .work-item.size-wide {
         grid-column: span 1;
         grid-row: span 1;
         width: 100%;
@@ -191,7 +179,7 @@
 }
 
 @media (max-width: 480px) {
-    .gallery-frames-container {
+    .work-items-container {
         grid-template-columns: repeat(2, 1fr); /* ✅ still 2 cols */
         gap: 10px;
         padding: 20px 10px;
