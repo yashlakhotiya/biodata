@@ -427,73 +427,47 @@ section:not(:last-child)::after {
     }
 }
 
-/* Hide indicators when photo is expanded */
-.photo-stack.expanded ~ .photo-indicators {
-    display: none;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-/* Very small screens - smallest expansion */
-@media (max-width: 360px) {
-  .photo-frame.expanded {
-    width: min(200px, 60vw) !important;
-    height: min(200px, 60vw) !important;
-    max-width: min(200px, 60vw) !important;
-    max-height: min(200px, 60vw) !important;
-  }
-}
-
-.photo-frame.expanded img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: none !important;
-}
-
-/* Hidden photos */
-.photo-frame.hidden-left {
-    left: 0;
-    top: 50%;
-    transform: translate(-100%, -50%) scale(0.5);
-    opacity: 0;
-    z-index: 0;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(160, 160, 160, 0.4);
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 2px solid transparent;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.indicator.active {
-    background: var(--primary-maroon);
-    transform: scale(1.4);
-    border: 2px solid var(--gold);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.indicator:hover {
-    background: var(--saffron);
-    transform: scale(1.2);
-    border: 2px solid var(--primary-maroon);
-}
-
-/* Hide indicators on very small screens */
-@media (max-width: 400px) {
+/* Show indicators on small screens instead of hiding them */
+@media (max-width: 768px) {
     .photo-indicators {
-        bottom: -40px;
-        gap: 8px;
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 100;
     }
 
     .indicator {
         width: 10px;
         height: 10px;
+        border-radius: 50%;
+        background: rgba(160, 160, 160, 0.6);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .indicator.active {
+        background: var(--primary-maroon);
+        transform: scale(1.3);
+        border: 2px solid var(--gold);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .indicator:hover {
+        background: var(--saffron);
+        transform: scale(1.2);
+        border: 2px solid var(--primary-maroon);
+    }
+
+    /* Ensure indicators are visible even when photo is expanded on mobile */
+    .photo-stack.expanded ~ .photo-indicators {
+        display: flex !important;
+        opacity: 1;
+        pointer-events: auto;
     }
 }
 
@@ -739,17 +713,79 @@ footer {
     font-weight: bold;
 }
 
-/* Swipe animation for portfolio navigation - animate only main content, not header/footer */
-.swipe-to-portfolio .biodata-card,
-.swipe-to-portfolio #contact-container {
-    /* Smoother timing and easing */
-    animation: swipeRight 0.6s ease-in-out forwards;
-}
+/* Fix mobile scroll issues by preventing animation interference during normal scrolling */
+@media (max-width: 768px) {
+    /* Only allow animations when explicitly triggered by user interaction */
+    .swipe-to-portfolio.user-triggered .biodata-card,
+    .swipe-to-portfolio.user-triggered #contact-container,
+    .swipe-to-biodata.user-triggered .portfolio-card {
+        animation: swipeRight 0.6s ease-in-out forwards;
+    }
 
-/* Swipe animation for biodata navigation - animate only main content, not header/footer */
-.swipe-to-biodata .portfolio-card {
-    /* Smoother timing and easing */
-    animation: swipeLeft 0.6s ease-in-out forwards;
+    .swipe-to-biodata.user-triggered .portfolio-card {
+        animation: swipeLeft 0.6s ease-in-out forwards;
+    }
+
+    /* Prevent animations during normal scrolling - only target problematic elements */
+    .swipe-to-portfolio:not(.user-triggered) .biodata-card,
+    .swipe-to-portfolio:not(.user-triggered) #contact-container,
+    .swipe-to-biodata:not(.user-triggered) .portfolio-card,
+    .swipe-to-portfolio:not(.user-triggered) .work-item,
+    .swipe-to-biodata:not(.user-triggered) .work-item {
+        animation: none !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    /* Ensure photo carousel elements maintain their proper positioning */
+    .photo-stack {
+        transform-style: preserve-3d !important;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;
+    }
+
+    .photo-frame {
+        position: absolute !important;
+    }
+
+    .photo-frame.center {
+        transform: translate(-50%, -50%) scale(1.1) !important;
+        z-index: 10 !important;
+        opacity: 1 !important;
+    }
+
+    .photo-frame.left {
+        transform: translate(-30%, -50%) scale(0.85) !important;
+        z-index: 1 !important;
+        opacity: 0.7 !important;
+    }
+
+    .photo-frame.right {
+        transform: translate(30%, -50%) scale(0.85) !important;
+        z-index: 1 !important;
+        opacity: 0.7 !important;
+    }
+
+    .photo-frame.hidden-left,
+    .photo-frame.hidden-right {
+        transform: translate(-100%, -50%) scale(0.5) !important;
+        opacity: 0 !important;
+        z-index: 0 !important;
+    }
+
+    /* Preserve carousel arrows */
+    .carousel-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+
+    .carousel-arrow.left-arrow {
+        left: -40px !important;
+    }
+
+    .carousel-arrow.right-arrow {
+        right: -40px !important;
+    }
 }
 
 /* Add a subtle blur and full fade by the end to avoid abrupt stop */
