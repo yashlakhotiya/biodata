@@ -151,23 +151,113 @@
 /* ==================== INTERACTIVE ELEMENTS ==================== */
 
 .theme-toggle {
-  background: none;
-  border: none;
+  /* Liquid glass background with gradient */
+  background: linear-gradient(135deg,
+    rgba(255, 248, 220, 0.8) 0%,
+    rgba(245, 230, 211, 0.9) 25%,
+    rgba(237, 222, 190, 0.7) 50%,
+    rgba(255, 215, 0, 0.15) 85%,
+    rgba(255, 153, 51, 0.1) 100%);
+  /* Glass-like backdrop filter */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 50%;
   color: var(--text-primary);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
   font-size: 1.5rem;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-normal);
+  width: 50px;
+  height: 50px;
+  /* Enhanced 3D shadows */
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(139, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-left: auto; /* Push to the right */
   order: 3; /* Ensure it comes after hamburger */
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 215, 0, 0.08) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 65%);
+  border-radius: 50%;
+  animation: liquidLight 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes liquidLight {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) translateY(200%) rotate(45deg);
+    opacity: 0;
+  }
 }
 
 .theme-toggle:hover {
-  transform: rotate(30deg);
+  transform: rotate(30deg) scale(1.05);
+  /* Enhanced glass effect on hover */
+  background: linear-gradient(135deg,
+    rgba(255, 248, 220, 0.95) 0%,
+    rgba(245, 230, 211, 0.9) 25%,
+    rgba(237, 222, 190, 0.9) 50%,
+    rgba(255, 215, 0, 0.25) 75%,
+    rgba(255, 153, 51, 0.2) 100%);
+  /* Stronger shadows on hover */
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.2),
+    0 6px 15px rgba(139, 0, 0, 0.15),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 6px rgba(139, 0, 0, 0.15);
+}
+
+.theme-toggle:hover::before {
+  animation: liquidLight 2s linear infinite;
+  background: linear-gradient(45deg,
+    transparent 15%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 215, 0, 0.15) 50%,
+    rgba(255, 255, 255, 0.3) 60%,
+    transparent 85%);
+}
+
+/* Theme icon should be above the liquid glass effect */
+.theme-icon {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 /* Hamburger menu button - dynamically shown when needed */
@@ -706,12 +796,59 @@
 }
 
 /* Dark theme glass shine effect */
-[data-theme="dark"] .header__nav-list--secondary::before {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 215, 0, 0.2) 0%,
-    rgba(255, 215, 0, 0) 100%
-  );
+[data-theme="dark"] .theme-toggle {
+  /* Dark theme liquid glass background */
+  background: linear-gradient(135deg,
+    rgba(33, 38, 45, 0.8) 0%,
+    rgba(22, 27, 34, 0.9) 25%,
+    rgba(13, 17, 23, 0.7) 50%,
+    rgba(255, 215, 0, 0.1) 85%,
+    rgba(78, 205, 196, 0.08) 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  /* Dark theme shadows */
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.4),
+    0 4px 10px rgba(0,0,0,0.3),
+    inset 0 2px 4px rgba(255, 215, 0, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle::before {
+  background: linear-gradient(45deg,
+    transparent 25%,
+    rgba(255, 215, 0, 0.15) 45%,
+    rgba(255, 183, 77, 0.1) 50%,
+    rgba(255, 215, 0, 0.15) 55%,
+    transparent 75%);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  /* Enhanced dark theme glass effect */
+  background: linear-gradient(135deg,
+    rgba(33, 38, 45, 0.9) 0%,
+    rgba(22, 27, 34, 0.95) 25%,
+    rgba(13, 17, 23, 0.9) 50%,
+    rgba(255, 215, 0, 0.15) 85%,
+    rgba(78, 205, 196, 0.12) 100%);
+  /* Enhanced dark theme shadows */
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.5),
+    0 6px 15px rgba(255, 215, 0, 0.2),
+    inset 0 3px 6px rgba(255, 215, 0, 0.3),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .theme-toggle:hover::before {
+  background: linear-gradient(45deg,
+    transparent 10%,
+    rgba(255, 215, 0, 0.2) 40%,
+    rgba(255, 183, 77, 0.15) 50%,
+    rgba(255, 215, 0, 0.2) 60%,
+    transparent 90%);
+}
+
+[data-theme="dark"] .theme-icon {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6), 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
 [data-theme="dark"] .header__nav-link {
