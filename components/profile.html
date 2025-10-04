@@ -1,37 +1,28 @@
 <!-- Profile Component -->
 <section class="profile-section">
-    <!-- Photo Carousel -->
-    <div class="photo-carousel-container">
-        <div class="photo-stack">
-            <button class="carousel-arrow left-arrow" onclick="changePhoto(-1)">‹</button>
-
-            <div class="photo-frame center" id="photo-0">
-                <img src="assets/images/photo1.png" alt="Profile Photo 1">
-            </div>
-            <div class="photo-frame right" id="photo-1">
-                <img src="assets/images/photo1.png" alt="Profile Photo 2">
-            </div>
-            <div class="photo-frame hidden-right" id="photo-2">
-                <img src="assets/images/photo1.png" alt="Profile Photo 3">
-            </div>
-            <div class="photo-frame hidden-right" id="photo-3">
-                <img src="assets/images/photo1.png" alt="Profile Photo 4">
-            </div>
-            <div class="photo-frame hidden-right" id="photo-4">
-                <img src="assets/images/photo1.png" alt="Profile Photo 5">
-            </div>
-
-            <button class="carousel-arrow right-arrow" onclick="changePhoto(1)">›</button>
+    <!-- Card Animation Carousel -->
+    <div class="card-carousel-container">
+        <!-- Controls -->
+        <div class="controls">
+            <button class="control-btn" onclick="toggleAnimation()">⏸️ Pause</button>
+            <button class="control-btn" onclick="resetPosition()">🔄 Reset</button>
+            <button class="control-btn" onclick="changeDirection()">↔️ Direction</button>
         </div>
 
-        <!-- Photo Indicators -->
-        <div class="photo-indicators">
-            <span class="indicator active" onclick="goToPhoto(0)"></span>
-            <span class="indicator" onclick="goToPhoto(1)"></span>
-            <span class="indicator" onclick="goToPhoto(2)"></span>
-            <span class="indicator" onclick="goToPhoto(3)"></span>
-            <span class="indicator" onclick="goToPhoto(4)"></span>
+        <div class="speed-indicator">
+            Speed: <span id="speedValue">120</span> px/s
         </div>
+
+        <!-- Main carousel wrapper -->
+        <div class="carousel-wrapper">
+            <div class="card-stream" id="cardStream">
+                <div class="card-line" id="cardLine"></div>
+            </div>
+        </div>
+
+        <!-- Hidden canvases for effects -->
+        <canvas id="particleCanvas" style="display: none;"></canvas>
+        <canvas id="scannerCanvas" style="display: none;"></canvas>
     </div>
 
     <!-- Basic Info -->

@@ -256,272 +256,262 @@ section:not(:last-child)::after {
     50% { transform: translateY(-50%) rotate(20deg); }
 }
 
-/* ==================== PHOTO SECTION ==================== */
-/* Photo carousel with stacked effect */
-.photo-section {
-    text-align: center;
-    padding: 40px 30px;
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.photo-stack {
+:root {
+  /* Import theme variables - these will be overridden by theme files */
+}
+
+/* Import theme files */
+@import url('../themes/light-theme.css');
+
+/* Dark theme override */
+[data-theme="dark"] {
+  /* Import dark theme variables */
+  @import url('../themes/dark-theme.css');
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Background Pattern - DISABLED */
+/* body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 50%, var(--saffron, #FF9933) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, var(--primary-maroon, #8B0000) 0%, transparent 50%),
+        radial-gradient(circle at 50% 20%, var(--gold, #FFD700) 0%, transparent 50%);
+    animation: floatPattern 20s ease-in-out infinite;
+    z-index: -1;
+} */
+
+@keyframes floatPattern {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+/* ==================== CONTAINER ==================== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
     position: relative;
-    transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    background: transparent !important;
 }
 
-/* Expanded state for the carousel */
-.photo-stack.expanded {
-    /* No transform needed on the stack itself */
+/* ==================== DECORATIVE MANDALA SVG ==================== */
+.mandala-decoration {
+    position: absolute;
+    opacity: 0.1;
+    animation: rotateMandala 60s linear infinite;
+    pointer-events: none;
 }
 
-.photo-stack.expanded .photo-frame.center {
-    transform: translate(-50%, -50%) scale(1.5);
-    cursor: zoom-out;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    z-index: 1000;
+.mandala-top-left {
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
 }
 
-.photo-stack.expanded .photo-frame.left {
-    transform: translate(calc(-50% - 160px), calc(-50% + 20px)) scale(0.7);
-    opacity: 0.8;
-    z-index: 1; /* Always keep below center */
+.mandala-bottom-right {
+    bottom: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
 }
 
-.photo-stack.expanded .photo-frame.right {
-    transform: translate(calc(-50% + 320px), calc(-50% + 20px)) scale(0.7);
-    opacity: 0.8;
-    z-index: 1; /* Always keep below center */
+@keyframes rotateMandala {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Hover effect for non-expanded state */
-.photo-stack:not(.expanded) .photo-frame:hover img {
-    transform: scale(1.1);
-}
-
-/* Disable all hover effects when carousel is expanded */
-.photo-stack.expanded .photo-frame img {
-    transform: none !important;
-}
-
-/* ==================== PHOTO SECTION ==================== */
-/* Photo carousel with stacked effect */
-.photo-section {
-    text-align: center;
-    padding: 40px 30px;
-}
-
-.photo-stack {
-    width: 100%;
-    height: 100%;
+/* ==================== BIODATA CARD ==================== */
+.biodata-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 0 20px rgba(139, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
     position: relative;
-    transform-style: preserve-3d;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Expanded state for the carousel */
-.photo-stack.expanded {
-    /* No transform needed on the stack itself */
+.biodata-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.25), 0 0 40px rgba(139, 0, 0, 0.2);
 }
 
-.photo-stack.expanded .photo-frame.center {
-    transform: translate(-50%, -50%) scale(1.5);
-    cursor: zoom-out;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    z-index: 1000;
+/* Dark theme for biodata card */
+[data-theme="dark"] .biodata-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4), var(--shadow-lg), var(--card-glow);
 }
 
-.photo-stack.expanded .photo-frame.left {
-    transform: translate(calc(-50% - 160px), calc(-50% + 20px)) scale(0.7);
-    opacity: 0.8;
-    z-index: 1; /* Always keep below center */
+[data-theme="dark"] .biodata-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(139, 0, 0, 0.4), var(--shadow-xl), var(--hover-glow);
+    border: 1px solid rgba(255, 215, 0, 0.4);
 }
 
-.photo-stack.expanded .photo-frame.right {
-    transform: translate(calc(-50% + 320px), calc(-50% + 20px)) scale(0.7);
-    opacity: 0.8;
-    z-index: 1; /* Always keep below center */
-}
-
-/* Hover effect for non-expanded state */
-.photo-stack:not(.expanded) .photo-frame:hover img {
-    transform: scale(1.1);
-}
-
-/* Disable all hover effects when carousel is expanded */
-.photo-stack.expanded .photo-frame img {
-    transform: none !important;
-}
-
-/* Large screens - show 5 photos (center + left + right + 2 hidden) */
-.photo-frame.center {
-    transform: translate(-50%, -50%) scale(1.1);
-    z-index: 10;
-    opacity: 1;
-    width: 220px;
-    height: 220px;
-}
-
-.photo-frame.left {
-    left: 0;
-    right: auto;
-    top: 50%;
-    transform: translate(-30%, -50%) scale(0.85);
+/* ==================== CORNER DECORATIONS ==================== */
+.corner-decoration {
+    position: absolute;
+    font-size: 24px;
+    color: var(--primary-maroon);
+    opacity: 0.3;
     z-index: 1;
-    opacity: 0.7;
-    filter: brightness(0.7);
-    width: 180px;
-    height: 180px;
+    animation: shimmer-fade 5s ease-in-out infinite alternate;
 }
 
-.photo-frame.right {
-    right: 0;
-    top: 50%;
-    left: auto;
-    transform: translate(30%, -50%) scale(0.85);
-    z-index: 1;
-    opacity: 0.7;
-    filter: brightness(0.7);
-    width: 180px;
-    height: 180px;
+.corner-decoration.top-left {
+    top: 15px;
+    left: 15px;
 }
 
-.photo-frame.hidden-left {
-    left: 0;
-    top: 50%;
-    transform: translate(-100%, -50%) scale(0.5);
-    opacity: 0;
-    z-index: 0;
-    width: 100px;
-    height: 100px;
+.corner-decoration.top-right {
+    top: 15px;
+    right: 15px;
 }
 
-.photo-frame.hidden-right {
-    right: 0;
-    top: 50%;
-    left: auto;
-    transform: translate(100%, -50%) scale(0.5);
-    opacity: 0;
-    z-index: 0;
-    width: 100px;
-    height: 100px;
+.corner-decoration.bottom-left {
+    bottom: 15px;
+    left: 15px;
 }
 
-/* Medium screens - show 3 photos (hide the far hidden ones) */
-@media (max-width: 900px) {
-    .photo-frame.hidden-left,
-    .photo-frame.hidden-right {
-        display: none;
+.corner-decoration.bottom-right {
+    bottom: 15px;
+    right: 15px;
+    animation-delay: 2.5s; /* Offset the animation for variation */
+}
+
+@keyframes shimmer-fade {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(1);
     }
-
-    .photo-frame.center {
-        width: 200px;
-        height: 200px;
-    }
-
-    .photo-frame.left,
-    .photo-frame.right {
-        width: 160px;
-        height: 160px;
+    50% {
+        opacity: 0.6;
+        transform: scale(1.05);
     }
 }
 
-/* Show indicators on small screens instead of hiding them */
-@media (max-width: 768px) {
-    .photo-indicators {
-        position: absolute;
-        bottom: -50px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        z-index: 100;
-    }
-
-    .indicator {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(160, 160, 160, 0.6);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        border: 2px solid transparent;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .indicator.active {
-        background: var(--primary-maroon);
-        transform: scale(1.3);
-        border: 2px solid var(--gold);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .indicator:hover {
-        background: var(--saffron);
-        transform: scale(1.2);
-        border: 2px solid var(--primary-maroon);
-    }
-
-    /* Ensure indicators are visible even when photo is expanded on mobile */
-    .photo-stack.expanded ~ .photo-indicators {
-        display: flex !important;
-        opacity: 1;
-        pointer-events: auto;
-    }
+/* ==================== ETHNIC BORDER DECORATION ==================== */
+.ethnic-border {
+    height: 5px;
+    background: linear-gradient(90deg,
+        var(--gold) 0%,
+        var(--primary-maroon) 25%,
+        var(--saffron) 50%,
+        var(--primary-maroon) 75%,
+        var(--gold) 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-.photo-stack .carousel-arrow:hover {
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(135deg, var(--saffron), var(--gold));
-}
-
-.photo-stack .carousel-arrow:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.photo-stack .carousel-arrow.left-arrow {
-    left: -60px;
-}
-
-.photo-stack .carousel-arrow.right-arrow {
-    right: -60px;
-}
-
-.photo-stack .carousel-arrow::after {
+.ethnic-border::after {
     content: '';
     position: absolute;
+    top: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    border: 2px solid var(--gold);
-    animation: pulseRing 2s infinite;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255,255,255,0.5) 50%,
+        transparent 100%);
+    animation: borderShine 2s linear infinite;
 }
 
-@keyframes pulseRing {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
+@keyframes borderShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
 }
 
-/* For very small screens, move arrows below photo-stack */
-@media (max-width: 480px) {
-    .photo-section {
-        padding: 40px 20px 20px 20px; /* Increased bottom padding to prevent overlap with name */
-    }
+/* ==================== SECTION STYLES ==================== */
+/* Each section is modular - you can copy, remove, or modify */
+section {
+    padding: 30px;
+    position: relative;
+}
 
-    .photo-frame.expanded {
-        width: min(250px, 70vw) !important;
-        height: min(250px, 70vw) !important;
-        max-width: min(250px, 70vw) !important;
-        max-height: min(250px, 70vw) !important;
-    }
+section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--border-gold) 50%,
+        transparent 100%);
+}
+
+/* Ensure separators render inside card layouts as well */
+.biodata-card section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 2px; /* increased for visibility */
+    background: var(--border-gold); /* solid for stronger contrast */
+    pointer-events: none;
+}
+
+/* Keep portfolio separators as subtle gradient */
+.portfolio-card section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--border-gold) 50%,
+        transparent 100%);
+    pointer-events: none;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: var(--primary-maroon);
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 40px;
+    transition: color 0.3s ease;
+}
+
+.section-title:hover {
+    color: var(--saffron);
+}
+
+@keyframes rotateIcon {
+    0%, 100% { transform: translateY(-50%) rotate(-20deg); }
+    50% { transform: translateY(-50%) rotate(20deg); }
 }
 
 /* ==================== PRINT STYLES ==================== */
@@ -583,37 +573,9 @@ footer {
         font-size: 1.5em;
     }
 
-    .photo-carousel-container {
-        max-width: 320px;
-    }
-
-    .photo-stack {
-        width: 250px;
-    }
-
-    .photo-frame {
-        width: 150px;
-        height: 150px;
-    }
-
-    .carousel-arrow.left-arrow {
-        left: -40px;
-    }
-
-    .carousel-arrow.right-arrow {
-        right: -40px;
-    }
-
-    .carousel-arrow {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
-    }
-
     .name-display {
         font-size: 1.5em;
     }
-
 }
 
 /* ==================== PRINT STYLES ==================== */
@@ -681,198 +643,9 @@ footer {
     font-weight: bold;
 }
 
-/* Sliding animations for all devices - only trigger on user interaction */
-.swipe-to-portfolio.user-triggered .biodata-card,
-.swipe-to-portfolio.user-triggered #contact-container,
-.swipe-to-biodata.user-triggered .portfolio-card {
-    animation: swipeRight 0.6s ease-in-out forwards;
-}
-
-.swipe-to-biodata.user-triggered .portfolio-card {
-    animation: swipeLeft 0.6s ease-in-out forwards;
-}
-
-/* Prevent animations during normal scrolling - only target problematic elements */
-.swipe-to-portfolio:not(.user-triggered) .biodata-card,
-.swipe-to-portfolio:not(.user-triggered) #contact-container,
-.swipe-to-biodata:not(.user-triggered) .portfolio-card,
-.swipe-to-portfolio:not(.user-triggered) .work-item,
-.swipe-to-biodata:not(.user-triggered) .work-item {
-    animation: none !important;
-    transform: none !important;
-    filter: none !important;
-}
-
-/* Ensure photo carousel elements maintain their proper positioning */
-.photo-stack {
-    transform-style: preserve-3d !important;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;
-}
-
-.photo-frame {
-    position: absolute !important;
-}
-
-.photo-frame.center {
-    transform: translate(-50%, -50%) scale(1.1) !important;
-    z-index: 10 !important;
-    opacity: 1 !important;
-}
-
-.photo-frame.left {
-    transform: translate(-30%, -50%) scale(0.85) !important;
-    z-index: 1 !important;
-    opacity: 0.7 !important;
-}
-
-.photo-frame.right {
-    transform: translate(30%, -50%) scale(0.85) !important;
-    z-index: 1 !important;
-    opacity: 0.7 !important;
-}
-
-.photo-frame.hidden-left,
-.photo-frame.hidden-right {
-    transform: translate(-100%, -50%) scale(0.5) !important;
-    opacity: 0 !important;
-    z-index: 0 !important;
-}
-
-/* Preserve carousel arrows */
-.carousel-arrow {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-}
-
-.carousel-arrow.left-arrow {
-    left: -40px !important;
-}
-
-.carousel-arrow.right-arrow {
-    right: -40px !important;
-}
-
-/* Sliding animations for all devices - only trigger on user interaction */
-.swipe-to-portfolio.user-triggered .biodata-card,
-.swipe-to-portfolio.user-triggered #contact-container,
-.swipe-to-biodata.user-triggered .portfolio-card {
-    animation: swipeRight 0.6s ease-in-out forwards;
-}
-
-.swipe-to-biodata.user-triggered .portfolio-card {
-    animation: swipeLeft 0.6s ease-in-out forwards;
-}
-
-/* Prevent animations during normal scrolling - only target problematic elements */
-.swipe-to-portfolio:not(.user-triggered) .biodata-card,
-.swipe-to-portfolio:not(.user-triggered) #contact-container,
-.swipe-to-biodata:not(.user-triggered) .portfolio-card,
-.swipe-to-portfolio:not(.user-triggered) .work-item,
-.swipe-to-biodata:not(.user-triggered) .work-item {
-    animation: none !important;
-    transform: none !important;
-    filter: none !important;
-}
-
-/* Add a subtle blur and full fade by the end to avoid abrupt stop */
-@keyframes swipeRight {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-        filter: blur(0px);
-    }
-    60% {
-        transform: translateX(70%);
-        opacity: 0.9;
-        filter: blur(1px);
-    }
-    100% {
-        transform: translateX(110%);
-        opacity: 0;
-        filter: blur(6px);
-    }
-}
-
-@keyframes swipeLeft {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-        filter: blur(0px);
-    }
-    60% {
-        transform: translateX(-70%);
-        opacity: 0.9;
-        filter: blur(1px);
-    }
-    100% {
-        transform: translateX(-110%);
-        opacity: 0;
-        filter: blur(6px);
-    }
-}
-
-#work-gallery-screen {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 251, 245, 0.98);
-    backdrop-filter: blur(5px);
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    overflow-y: auto;
-    padding: 60px 20px 20px 20px;
-}
-
-#work-gallery-screen.active {
-    transform: translateX(0);
-}
-
-#close-gallery-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 2.5em;
-    color: var(--text-dark);
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Re-styling work-item specifically for the gallery grid */
-.gallery-grid .work-item {
-    position: relative;
-    width: auto;
-    transform: none;
-}
-
-.gallery-grid .work-item:hover {
-    transform: translateY(-5px) scale(1.05);
-}
-
 /* ==================== SCROLLBAR STYLES ==================== */
 /* For Firefox */
 html {
     scrollbar-color: var(--primary-maroon) var(--sandalwood);
     scrollbar-width: thin;
-}
-
-.photo-stack.expanded .carousel-arrow.left-arrow {
-    left: calc(50% - 210px); /* Left of expanded center */
-}
-
-.photo-stack.expanded .carousel-arrow.right-arrow {
-    right: calc(50% - 210px); /* Right of expanded center */
 }

@@ -2,15 +2,6 @@
 console.log('=== Scripts.js loaded ===');
 console.log('workData available at load:', typeof workData !== 'undefined' ? workData : 'Not loaded yet');
 
-// Define your photo URLs here
-const photoUrls = [
-    'assets/images/photo1.png',
-    'assets/images/photo2.jpg',
-    'assets/images/photo3.jpg',
-    'assets/images/photo4.jpg',
-    'assets/images/photo5.jpg',
-];
-
 // ==================== INITIALIZATION ==================== //
 document.addEventListener('DOMContentLoaded', () => {
     // --- CAROUSEL SETUP ---
@@ -47,16 +38,20 @@ window.addEventListener('pageshow', (event) => {
         setTimeout(() => populateShowcase(), 100);
     }
     
-    // Re-initialize photo carousel for index page
+    // Re-initialize photo carousel for index page (only if old carousel exists)
     if (isIndexPage) {
         console.log('Re-initializing photo carousel for index.html');
         setTimeout(() => {
             const photoStack = document.querySelector('.photo-stack');
-            if (photoStack) {
+            const cardCarousel = document.querySelector('.card-carousel-container');
+
+            // Only run old carousel logic if old carousel exists and new one doesn't
+            if (photoStack && !cardCarousel) {
+                console.log('Old photo carousel found, re-initializing...');
                 // Remove existing event listeners to prevent duplicates
                 photoStack.replaceWith(photoStack.cloneNode(true));
                 const newPhotoStack = document.querySelector('.photo-stack');
-                
+
                 // Re-attach carousel event listeners
                 newPhotoStack.addEventListener('click', (e) => {
                     if (e.target.closest('.photo-frame.center')) {
@@ -64,7 +59,7 @@ window.addEventListener('pageshow', (event) => {
                         newPhotoStack.classList.toggle('expanded', !isExpanded);
                     }
                 });
-                
+
                 // Re-initialize photo URLs
                 const photos = document.querySelectorAll('.photo-frame img');
                 photos.forEach((img, index) => {
@@ -73,6 +68,10 @@ window.addEventListener('pageshow', (event) => {
                         img.alt = `Profile Photo ${index + 1}`;
                     }
                 });
+            } else if (cardCarousel) {
+                console.log('New card carousel found, skipping old carousel initialization');
+            } else {
+                console.log('No carousel elements found');
             }
         }, 150);
     }
@@ -146,9 +145,6 @@ document.addEventListener('keydown', (e) => {
             }, 450);
         }
     } else {
-        // On biodata page - handle carousel navigation
-        if (e.key === 'ArrowLeft') changePhoto(-1);
-        if (e.key === 'ArrowRight') changePhoto(1);
     }
 });
 
