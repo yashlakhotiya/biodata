@@ -57,7 +57,50 @@ class FlickityCarousel {
         this.loadProfileImages();
         this.setupEventListeners();
         this.setupInfiniteScroll();
+
+        // Center the first image initially
+        this.centerFirstImage();
+
         this.updateDots();
+    }
+
+    centerFirstImage() {
+        // For circular layout, start with middle image centered
+        setTimeout(() => {
+            if (!this.cells.length || !this.gallery) return;
+
+            const middleIndex = Math.floor(this.cells.length / 2)-1;
+            const middleCell = this.cells[middleIndex];
+            if (!middleCell) return;
+
+            const cellWidth = middleCell.offsetWidth;
+            const gap = 25;
+            const galleryWidth = this.gallery.offsetWidth;
+            const galleryPadding = 32;
+
+            // Calculate position to center middle image
+            const availableWidth = galleryWidth - (galleryPadding * 2);
+            const centerPosition = galleryPadding + ((availableWidth - cellWidth) / 2);
+
+            // Position so middle image is centered, but we can see first and last images
+            const totalContentWidth = (cellWidth + gap) * this.cells.length - gap;
+            const startPosition = Math.max(0,
+                (totalContentWidth - availableWidth) / 2 - (cellWidth + gap) * (middleIndex - 1)
+            );
+
+            this.gallery.scrollLeft = startPosition;
+
+            console.log('Circular carousel centering:', {
+                middleIndex,
+                cellWidth,
+                galleryWidth,
+                totalContentWidth,
+                startPosition,
+                scrollLeft: this.gallery.scrollLeft
+            });
+
+            this.currentIndex = middleIndex;
+        }, 100);
     }
 
     loadProfileImages() {
@@ -236,13 +279,17 @@ class FlickityCarousel {
     }
 
     nextSlide() {
-        const nextIndex = (this.currentIndex + 1) % this.cells.length;
-        this.goToSlide(nextIndex);
+        if (this.currentIndex < this.cells.length - 1) {
+            this.goToSlide(this.currentIndex + 1);
+        }
+        // If at last image, do nothing (no wraparound)
     }
 
     previousSlide() {
-        const prevIndex = (this.currentIndex - 1 + this.cells.length) % this.cells.length;
-        this.goToSlide(prevIndex);
+        if (this.currentIndex > 0) {
+            this.goToSlide(this.currentIndex - 1);
+        }
+        // If at first image, do nothing (no wraparound)
     }
 
     // Public API methods
