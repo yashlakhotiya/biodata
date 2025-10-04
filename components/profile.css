@@ -980,3 +980,34 @@
 .photo-stack.expanded .carousel-arrow.right-arrow {
     right: calc(50% - 210px); /* Right of expanded center */
 }
+
+/* ==================== SOCIAL PROFILES SECTION ==================== */
+#social-profiles .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Space between icons */
+    margin-top: 10px;
+}
+
+.social-link {
+    position: relative; /* For tooltip positioning */
+    color: var(--peacock-blue);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+    color: var(--primary-maroon);
+}
+
+.social-link:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+

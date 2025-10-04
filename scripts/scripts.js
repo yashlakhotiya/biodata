@@ -35,6 +35,49 @@ let isShowcaseInitialized = false;
 populateShowcase();
 window.addEventListener('resize', debounce(populateShowcase, 100));
 
+// Reset initialization state on page navigation to ensure proper loading
+window.addEventListener('pageshow', (event) => {
+    console.log('Pageshow event triggered, resetting initialization state');
+    const isPortfolioPage = window.location.pathname.includes('portfolio');
+    const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/';
+    
+    // Reset showcase state for portfolio page
+    if (isPortfolioPage) {
+        isShowcaseInitialized = false;
+        setTimeout(() => populateShowcase(), 100);
+    }
+    
+    // Re-initialize photo carousel for index page
+    if (isIndexPage) {
+        console.log('Re-initializing photo carousel for index.html');
+        setTimeout(() => {
+            const photoStack = document.querySelector('.photo-stack');
+            if (photoStack) {
+                // Remove existing event listeners to prevent duplicates
+                photoStack.replaceWith(photoStack.cloneNode(true));
+                const newPhotoStack = document.querySelector('.photo-stack');
+                
+                // Re-attach carousel event listeners
+                newPhotoStack.addEventListener('click', (e) => {
+                    if (e.target.closest('.photo-frame.center')) {
+                        const isExpanded = newPhotoStack.classList.contains('expanded');
+                        newPhotoStack.classList.toggle('expanded', !isExpanded);
+                    }
+                });
+                
+                // Re-initialize photo URLs
+                const photos = document.querySelectorAll('.photo-frame img');
+                photos.forEach((img, index) => {
+                    if (photoUrls[index]) {
+                        img.src = photoUrls[index];
+                        img.alt = `Profile Photo ${index + 1}`;
+                    }
+                });
+            }
+        }, 150);
+    }
+});
+
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -124,42 +167,39 @@ function populateShowcase() {
         console.log('First work item:', workData[0]);
     }
 
-    // Prevent multiple initializations
-    if (isShowcaseInitialized && showcaseContainer && showcaseContainer.children.length > 0) {
-        console.log('Showcase already initialized, skipping...');
-        return;
-    }
-
-    // Initialize Instagram Frame Component for portfolio page
-    if (showcaseContainer && isPortfolioPage) {
+    // Always initialize for portfolio page, reset flag if needed
+    if (isPortfolioPage) {
         console.log('Initializing Work Items Gallery for portfolio page');
         
-        // Only clear if we're re-initializing
-        if (showcaseContainer.children.length > 0) {
-            console.log('Clearing existing content for re-initialization');
+        // Clear existing content to ensure fresh render
+        if (showcaseContainer) {
             showcaseContainer.innerHTML = '';
         }
 
-        try {
-            // Create Work Items Gallery instance
-            const galleryComponent = new WorkItemsGallery(showcaseContainer, {
-                gap: '20px',
-                enableLazyLoading: true
-            });
-            console.log('Work Items Gallery created successfully');
+        if (showcaseContainer && workData && workData.length > 0) {
+            try {
+                // Create Work Items Gallery instance
+                const galleryComponent = new WorkItemsGallery(showcaseContainer, {
+                    gap: '20px',
+                    enableLazyLoading: true
+                });
+                console.log('Work Items Gallery created successfully');
 
-            // Initialize and render items using the component's initialize method
-            galleryComponent.initialize(workData).then(() => {
-                console.log('Work Items Gallery successfully rendered');
-                isShowcaseInitialized = true;
-            }).catch(error => {
-                console.error('Error initializing Work Items Gallery:', error);
-            });
+                // Initialize and render items using the component's initialize method
+                galleryComponent.initialize(workData).then(() => {
+                    console.log('Work Items Gallery successfully rendered');
+                    isShowcaseInitialized = true;
+                }).catch(error => {
+                    console.error('Error initializing Work Items Gallery:', error);
+                });
 
-            // Store component reference for potential updates
-            window.galleryComponent = galleryComponent;
-        } catch (error) {
-            console.error('Error creating Work Items Gallery:', error);
+                // Store component reference for potential updates
+                window.galleryComponent = galleryComponent;
+            } catch (error) {
+                console.error('Error creating Work Items Gallery:', error);
+            }
+        } else {
+            console.log('Showcase container or workData not available');
         }
     } else if (showcaseContainer) {
         console.log('Clearing showcase container on non-portfolio page');

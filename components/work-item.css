@@ -14,10 +14,23 @@
 .work-item {
     position: relative;
     box-sizing: border-box;
-    background: var(--cream-dark);
+    /* More transparent liquid glass gradient background for light theme */
+    background: linear-gradient(135deg,
+        rgba(255, 248, 220, 0.6) 0%,
+        rgba(245, 230, 211, 0.5) 35%,
+        rgba(237, 222, 190, 0.6) 70%,
+        rgba(255, 215, 0, 0.05) 100%);
+    /* Stronger glass-like backdrop filter */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 32px rgba(0,0,0,0.15);
+    box-shadow:
+        0 10px 32px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    /* Subtle animated liquid effect */
+    background-size: 200% 200%;
+    animation: liquidFlow 8s ease-in-out infinite;
     /*border: 1px solid var(--sandalwood);*/
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
@@ -26,6 +39,16 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
+}
+
+/* Liquid flow animation for glass effect */
+@keyframes liquidFlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 /* ==================== SIZE VARIANTS FOR MASONRY EFFECT ==================== */
@@ -113,9 +136,20 @@
 /* ==================== INTERACTIVE STATES ==================== */
 
 .work-item:hover {
-    box-shadow: 0 16px 48px rgba(0,0,0,0.20);
-    border-color: var(--gold);
-    background: var(--bg-secondary);
+    box-shadow:
+        0 16px 48px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    /* More transparent enhanced liquid glass effect on hover */
+    background: linear-gradient(135deg,
+        rgba(255, 248, 220, 0.7) 0%,
+        rgba(245, 230, 211, 0.6) 25%,
+        rgba(237, 222, 190, 0.7) 50%,
+        rgba(255, 215, 0, 0.08) 85%,
+        rgba(255, 153, 51, 0.05) 100%);
+    transform: translateY(-2px) scale(1.02);
+    /* Stronger backdrop filter on hover */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 }
 
 .work-item:hover img {
@@ -150,7 +184,12 @@
 /* ==================== CAPTION STYLES ==================== */
 
 .work-item-caption {
-    background: var(--cream);
+    /* Glass-like caption background for light theme */
+    background: linear-gradient(135deg,
+        rgba(255, 248, 220, 0.9) 0%,
+        rgba(245, 230, 211, 0.8) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: var(--text-primary);
     padding: 8px;
     opacity: 1;
@@ -160,6 +199,8 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    /* Subtle glass border */
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .work-item:hover .work-item-caption {
@@ -301,20 +342,64 @@
 /* ==================== DARK THEME WORK ITEM STYLES ==================== */
 
 [data-theme="dark"] .work-item {
-    background: var(--bg-card);
-    border: 1px solid var(--saffron);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+    /* More transparent dark theme liquid glass gradient */
+    background: linear-gradient(135deg,
+        rgba(33, 38, 45, 0.7) 0%,
+        rgba(22, 27, 34, 0.6) 30%,
+        rgba(13, 17, 23, 0.7) 60%,
+        rgba(255, 215, 0, 0.03) 90%,
+        rgba(78, 205, 196, 0.05) 100%);
+    /* Stronger glass effect for dark mode */
+    backdrop-filter: blur(25px) saturate(1.2);
+    -webkit-backdrop-filter: blur(25px) saturate(1.2);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255, 215, 0, 0.08),
+        0 0 20px rgba(255, 215, 0, 0.03);
+    /* Dark theme liquid animation */
+    background-size: 200% 200%;
+    animation: liquidFlowDark 10s ease-in-out infinite;
+}
+
+@keyframes liquidFlowDark {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 [data-theme="dark"] .work-item:hover {
-    background: var(--bg-card);
-    border-color: var(--gold);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.30);
+    /* More transparent enhanced dark theme liquid glass hover effect */
+    background: linear-gradient(135deg,
+        rgba(33, 38, 45, 0.8) 0%,
+        rgba(22, 27, 34, 0.7) 20%,
+        rgba(13, 17, 23, 0.8) 50%,
+        rgba(255, 215, 0, 0.05) 80%,
+        rgba(78, 205, 196, 0.08) 100%);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255, 215, 0, 0.15),
+        0 0 30px rgba(255, 215, 0, 0.08);
+    transform: translateY(-2px) scale(1.02);
+    /* Stronger glass effect on hover */
+    backdrop-filter: blur(30px) saturate(1.4);
+    -webkit-backdrop-filter: blur(30px) saturate(1.4);
 }
 
 [data-theme="dark"] .work-item-caption {
-    background: var(--bg-card);
+    /* Dark theme glass-like caption background */
+    background: linear-gradient(135deg,
+        rgba(33, 38, 45, 0.9) 0%,
+        rgba(22, 27, 34, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--text-primary);
+    /* Subtle dark theme glass border */
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 [data-theme="dark"] .work-item::before {

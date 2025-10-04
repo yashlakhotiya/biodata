@@ -556,38 +556,6 @@ section:not(:last-child)::after {
     50% { transform: translateY(-5px); }
 }
 
-/* ==================== RESPONSIVE STYLES ==================== */
-
-/* ==================== SOCIAL PROFILES SECTION ==================== */
-#social-profiles .social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px; /* Space between icons */
-    margin-top: 10px;
-}
-
-.social-link {
-    position: relative; /* For tooltip positioning */
-    color: var(--peacock-blue);
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-icon {
-    width: 30px;
-    height: 30px;
-}
-
-.social-link:hover {
-    transform: translateY(-3px) scale(1.1);
-    color: var(--primary-maroon);
-}
-
-.social-link:hover::before {
-    opacity: 1;
-    visibility: visible;
-}
-
 /* ==================== FOOTER ==================== */
 footer {
     text-align: center;
@@ -713,79 +681,98 @@ footer {
     font-weight: bold;
 }
 
-/* Fix mobile scroll issues by preventing animation interference during normal scrolling */
-@media (max-width: 768px) {
-    /* Only allow animations when explicitly triggered by user interaction */
-    .swipe-to-portfolio.user-triggered .biodata-card,
-    .swipe-to-portfolio.user-triggered #contact-container,
-    .swipe-to-biodata.user-triggered .portfolio-card {
-        animation: swipeRight 0.6s ease-in-out forwards;
-    }
+/* Sliding animations for all devices - only trigger on user interaction */
+.swipe-to-portfolio.user-triggered .biodata-card,
+.swipe-to-portfolio.user-triggered #contact-container,
+.swipe-to-biodata.user-triggered .portfolio-card {
+    animation: swipeRight 0.6s ease-in-out forwards;
+}
 
-    .swipe-to-biodata.user-triggered .portfolio-card {
-        animation: swipeLeft 0.6s ease-in-out forwards;
-    }
+.swipe-to-biodata.user-triggered .portfolio-card {
+    animation: swipeLeft 0.6s ease-in-out forwards;
+}
 
-    /* Prevent animations during normal scrolling - only target problematic elements */
-    .swipe-to-portfolio:not(.user-triggered) .biodata-card,
-    .swipe-to-portfolio:not(.user-triggered) #contact-container,
-    .swipe-to-biodata:not(.user-triggered) .portfolio-card,
-    .swipe-to-portfolio:not(.user-triggered) .work-item,
-    .swipe-to-biodata:not(.user-triggered) .work-item {
-        animation: none !important;
-        transform: none !important;
-        filter: none !important;
-    }
+/* Prevent animations during normal scrolling - only target problematic elements */
+.swipe-to-portfolio:not(.user-triggered) .biodata-card,
+.swipe-to-portfolio:not(.user-triggered) #contact-container,
+.swipe-to-biodata:not(.user-triggered) .portfolio-card,
+.swipe-to-portfolio:not(.user-triggered) .work-item,
+.swipe-to-biodata:not(.user-triggered) .work-item {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+}
 
-    /* Ensure photo carousel elements maintain their proper positioning */
-    .photo-stack {
-        transform-style: preserve-3d !important;
-        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;
-    }
+/* Ensure photo carousel elements maintain their proper positioning */
+.photo-stack {
+    transform-style: preserve-3d !important;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;
+}
 
-    .photo-frame {
-        position: absolute !important;
-    }
+.photo-frame {
+    position: absolute !important;
+}
 
-    .photo-frame.center {
-        transform: translate(-50%, -50%) scale(1.1) !important;
-        z-index: 10 !important;
-        opacity: 1 !important;
-    }
+.photo-frame.center {
+    transform: translate(-50%, -50%) scale(1.1) !important;
+    z-index: 10 !important;
+    opacity: 1 !important;
+}
 
-    .photo-frame.left {
-        transform: translate(-30%, -50%) scale(0.85) !important;
-        z-index: 1 !important;
-        opacity: 0.7 !important;
-    }
+.photo-frame.left {
+    transform: translate(-30%, -50%) scale(0.85) !important;
+    z-index: 1 !important;
+    opacity: 0.7 !important;
+}
 
-    .photo-frame.right {
-        transform: translate(30%, -50%) scale(0.85) !important;
-        z-index: 1 !important;
-        opacity: 0.7 !important;
-    }
+.photo-frame.right {
+    transform: translate(30%, -50%) scale(0.85) !important;
+    z-index: 1 !important;
+    opacity: 0.7 !important;
+}
 
-    .photo-frame.hidden-left,
-    .photo-frame.hidden-right {
-        transform: translate(-100%, -50%) scale(0.5) !important;
-        opacity: 0 !important;
-        z-index: 0 !important;
-    }
+.photo-frame.hidden-left,
+.photo-frame.hidden-right {
+    transform: translate(-100%, -50%) scale(0.5) !important;
+    opacity: 0 !important;
+    z-index: 0 !important;
+}
 
-    /* Preserve carousel arrows */
-    .carousel-arrow {
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-    }
+/* Preserve carousel arrows */
+.carousel-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
 
-    .carousel-arrow.left-arrow {
-        left: -40px !important;
-    }
+.carousel-arrow.left-arrow {
+    left: -40px !important;
+}
 
-    .carousel-arrow.right-arrow {
-        right: -40px !important;
-    }
+.carousel-arrow.right-arrow {
+    right: -40px !important;
+}
+
+/* Sliding animations for all devices - only trigger on user interaction */
+.swipe-to-portfolio.user-triggered .biodata-card,
+.swipe-to-portfolio.user-triggered #contact-container,
+.swipe-to-biodata.user-triggered .portfolio-card {
+    animation: swipeRight 0.6s ease-in-out forwards;
+}
+
+.swipe-to-biodata.user-triggered .portfolio-card {
+    animation: swipeLeft 0.6s ease-in-out forwards;
+}
+
+/* Prevent animations during normal scrolling - only target problematic elements */
+.swipe-to-portfolio:not(.user-triggered) .biodata-card,
+.swipe-to-portfolio:not(.user-triggered) #contact-container,
+.swipe-to-biodata:not(.user-triggered) .portfolio-card,
+.swipe-to-portfolio:not(.user-triggered) .work-item,
+.swipe-to-biodata:not(.user-triggered) .work-item {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
 }
 
 /* Add a subtle blur and full fade by the end to avoid abrupt stop */
