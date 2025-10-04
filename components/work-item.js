@@ -250,3 +250,85 @@ class WorkItemsGallery {
 
 // Make available globally
 window.WorkItemsGallery = WorkItemsGallery;
+
+// ==================== LIQUID GLASS LIGHT REFLECTIONS ====================
+// Add dynamic light reflections that respond to scroll and mouse movement
+
+// Track scroll position for dynamic light reflections
+let scrollPosition = 0;
+let isScrolling = false;
+
+document.addEventListener('scroll', () => {
+    scrollPosition = window.scrollY;
+    isScrolling = true;
+
+    // Update light reflection timing based on scroll position
+    updateLightReflections();
+
+    // Clear the scrolling flag after a short delay
+    clearTimeout(window.scrollTimeout);
+    window.scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+    }, 150);
+});
+
+// Update light reflection animations based on scroll position
+function updateLightReflections() {
+    const workItems = document.querySelectorAll('.work-item');
+    const scrollPercent = scrollPosition / (document.body.scrollHeight - window.innerHeight);
+
+    workItems.forEach((item, index) => {
+        // Calculate unique timing for each work item based on scroll position and index
+        const baseDelay = index * 0.5;
+        const scrollOffset = scrollPercent * 2;
+        const totalDelay = baseDelay + scrollOffset;
+
+        // Apply the calculated animation delay
+        item.style.animationDelay = `${totalDelay}s`;
+    });
+}
+
+// Initialize work item liquid glass system
+function initWorkItemLiquidGlass() {
+    // Initial update of light reflections
+    updateLightReflections();
+
+    // Add dynamic CSS for enhanced liquid glass effects if not already added
+    if (!document.getElementById('work-item-liquid-glass-styles')) {
+        const style = document.createElement('style');
+        style.id = 'work-item-liquid-glass-styles';
+        style.textContent = `
+            /* Enhanced liquid glass work items */
+            .work-item {
+                will-change: transform, backdrop-filter;
+            }
+
+            /* Performance optimizations */
+            @media (prefers-reduced-motion: reduce) {
+                .work-item::before {
+                    animation: none !important;
+                }
+
+                .work-item {
+                    animation: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    console.log('Work item liquid glass system initialized');
+}
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWorkItemLiquidGlass);
+} else {
+    initWorkItemLiquidGlass();
+}
+
+// Export liquid glass functions for external use if needed
+window.WorkItemLiquidGlass = {
+    updateLightReflections,
+    initWorkItemLiquidGlass
+};
