@@ -38,6 +38,9 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <!-- Three.js Library for 3D particle effects -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -45,7 +48,7 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <!-- Particles CSS -->
-    <link rel="stylesheet" href="styles/particles.css" />
+    <link rel="stylesheet" href="components/particles.css" />
     <!-- Theme CSS -->
     <link rel="stylesheet" href="themes/light-theme.css" />
     <link rel="stylesheet" href="themes/dark-theme.css" />
@@ -71,8 +74,6 @@
     <link rel="stylesheet" href="components/footer.css" />
     <!-- External CSS -->
     <link rel="stylesheet" href="styles/styles.css" />
-    <!-- Card Carousel CSS -->
-    <link rel="stylesheet" href="styles/card-carousel.css" />
 
 </head>
 <body>
@@ -118,13 +119,23 @@
         <div id="footer-container"></div>
     </div>
 
+    <!-- ==================== CAROUSEL SECTION ==================== -->
+    <div class="carousel-section" style="display: none;" id="carouselSection">
+        <div class="carousel-overlay">
+            <button class="carousel-close-btn" onclick="closeCarousel()">×</button>
+            <section class="carousel">
+                <div class="cards-wrapper"></div>
+            </section>
+            <div class="cursor">👉</div>
+        </div>
+    </div>
+
     <!-- ==================== GALLERY TRIGGER ==================== -->
     <div id="gallery-trigger">
         <div class="arrow">›</div>
     </div>
 
     <script src="assets/profilePictures.js"></script>
-    <script src="scripts/card-carousel.js"></script>
     <script src="scripts/particles.js"></script>
     <script src="components/header.js"></script>
     <script src="components/profile.js"></script>
