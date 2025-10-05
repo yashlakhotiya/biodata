@@ -4,20 +4,6 @@ console.log('workData available at load:', typeof workData !== 'undefined' ? wor
 // ==================== WORK SHOWCASE & GALLERY SETUP ==================== //
 let isShowcaseInitialized = false;
 
-populateShowcase();
-
-// Reset initialization state on page navigation to ensure proper loading
-window.addEventListener('pageshow', (event) => {
-    console.log('Pageshow event triggered, resetting initialization state');
-    const isPortfolioPage = window.location.pathname.includes('portfolio');
-
-    // Reset showcase state for portfolio page
-    if (isPortfolioPage) {
-        isShowcaseInitialized = false;
-        setTimeout(() => populateShowcase(), 100);
-    }
-});
-
 const galleryScreen = document.getElementById('work-gallery-screen');
 const galleryTrigger = document.getElementById('gallery-trigger');
 const closeGalleryBtn = document.getElementById('close-gallery-btn');
@@ -81,55 +67,59 @@ function populateShowcase() {
     console.log('=== populateShowcase() called ===');
     const showcaseContainer = document.querySelector('.work-items-container');
     const isPortfolioPage = window.location.pathname.includes('portfolio');
-    
-    console.log('Showcase container found:', !!showcaseContainer);
-    console.log('Is portfolio page:', isPortfolioPage);
-    console.log('workData available:', !!workData);
-    console.log('Showcase already initialized:', isShowcaseInitialized);
-    
-    if (workData) {
-        console.log('workData length:', workData.length);
-        console.log('First work item:', workData[0]);
+
+    // Only proceed if we're on the portfolio page and have a container
+    if (!isPortfolioPage || !showcaseContainer) {
+        console.log('Not on portfolio page or container not found');
+        return;
     }
 
-    // Always initialize for portfolio page, reset flag if needed
-    if (isPortfolioPage) {
-        console.log('Initializing Work Items Gallery for portfolio page');
-        
-        // Clear existing content to ensure fresh render
-        if (showcaseContainer) {
-            showcaseContainer.innerHTML = '';
-        }
+    // Clear existing content to ensure fresh render
+    showcaseContainer.innerHTML = '';
 
-        if (showcaseContainer && workData && workData.length > 0) {
-            try {
-                // Create Work Items Gallery instance
-                const galleryComponent = new WorkItemsGallery(showcaseContainer, {
-                    gap: '20px',
-                    enableLazyLoading: true
-                });
-                console.log('Work Items Gallery created successfully');
+    if (workData && workData.length > 0) {
+        console.log('Initializing Work Items Gallery with', workData.length, 'items');
 
-                // Initialize and render items using the component's initialize method
-                galleryComponent.initialize(workData).then(() => {
-                    console.log('Work Items Gallery successfully rendered');
-                    isShowcaseInitialized = true;
-                }).catch(error => {
-                    console.error('Error initializing Work Items Gallery:', error);
-                });
+        // Initialize the gallery
+        const gallery = new WorkItemsGallery(showcaseContainer, {
+            gap: '20px',
+            enableLazyLoading: true
+        });
 
-                // Store component reference for potential updates
-                window.galleryComponent = galleryComponent;
-            } catch (error) {
-                console.error('Error creating Work Items Gallery:', error);
-            }
-        } else {
-            console.log('Showcase container or workData not available');
-        }
-    } else if (showcaseContainer) {
-        console.log('Clearing showcase container on non-portfolio page');
-        // Clear showcase container on non-portfolio pages
-        showcaseContainer.innerHTML = '';
-        isShowcaseInitialized = false;
+        gallery.initialize(workData);
+        isShowcaseInitialized = true;
+    } else {
+        console.warn('No work data available to populate showcase');
     }
 }
+
+// Update the initialization logic at the bottom of scripts.js
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded');
+
+    // Only run populateShowcase if we're on the portfolio page
+    if (window.location.pathname.includes('portfolio')) {
+        // Use requestAnimationFrame to ensure DOM is ready
+        requestAnimationFrame(() => {
+            console.log('Running initial populateShowcase');
+            populateShowcase();
+        });
+    }
+});
+
+// Update the pageshow event listener
+window.addEventListener('pageshow', (event) => {
+    console.log('Pageshow event triggered');
+    const isPortfolioPage = window.location.pathname.includes('portfolio');
+
+    // Only run if we're on the portfolio page and the showcase isn't already initialized
+    if (isPortfolioPage && !isShowcaseInitialized) {
+        console.log('Initializing portfolio page content');
+        // Use a small timeout to ensure DOM is ready
+        setTimeout(() => {
+            if (!isShowcaseInitialized) {
+                populateShowcase();
+            }
+        }, 100);
+    }
+});
