@@ -43,18 +43,6 @@ const biodataData = {
                 category: "health"
             },
             {
-                id: "rashi",
-                label: "Rashi (Moon Sign)",
-                value: "[Your Rashi]",
-                category: "astrological"
-            },
-            {
-                id: "nakshatra",
-                label: "Nakshatra",
-                value: "[Your Nakshatra]",
-                category: "astrological"
-            },
-            {
                 id: "gotra",
                 label: "Gotra",
                 value: "Lakhotiya and Jhanwar",
@@ -65,12 +53,6 @@ const biodataData = {
                 label: "Manglik",
                 value: "No",
                 category: "astrological"
-            },
-            {
-                id: "habits",
-                label: "Habits",
-                value: "Non-drinker, Non-smoker",
-                category: "lifestyle"
             }
         ]
     },
