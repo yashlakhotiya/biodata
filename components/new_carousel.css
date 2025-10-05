@@ -84,7 +84,6 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Navigation Arrows */
 .carousel-nav {
     position: absolute;
     top: 50%;
@@ -96,6 +95,28 @@
     width: 100%;
     z-index: 10;
     pointer-events: none;
+}
+
+/* Move buttons below carousel on mobile */
+@media screen and (max-width: 768px) {
+    .carousel-nav {
+        position: static;
+        transform: none;
+        justify-content: center;
+        gap: 2rem; /* Space between buttons */
+        margin-top: 1.5rem;
+        pointer-events: auto;
+    }
+
+    .carousel-prev,
+    .carousel-next {
+        position: static;
+        margin: 0 !important; /* Remove any absolute positioning */
+    }
+
+    .carousel-wrapper {
+        padding-bottom: 1.5rem; /* Add space for buttons */
+    }
 }
 
 .carousel-nav button {
@@ -133,14 +154,6 @@
     .carousel-nav button {
         width: 36px;
         height: 36px;
-    }
-
-    .carousel-prev {
-        margin-left: -30px;
-    }
-
-    .carousel-next {
-        margin-right: -30px;
     }
 
     .carousel-wrapper {
