@@ -30,50 +30,11 @@ window.addEventListener('resize', debounce(populateShowcase, 100));
 window.addEventListener('pageshow', (event) => {
     console.log('Pageshow event triggered, resetting initialization state');
     const isPortfolioPage = window.location.pathname.includes('portfolio');
-    const isIndexPage = window.location.pathname.includes('index.html') || window.location.pathname === '/';
-    
+
     // Reset showcase state for portfolio page
     if (isPortfolioPage) {
         isShowcaseInitialized = false;
         setTimeout(() => populateShowcase(), 100);
-    }
-    
-    // Re-initialize photo carousel for index page (only if old carousel exists)
-    if (isIndexPage) {
-        console.log('Re-initializing photo carousel for index.html');
-        setTimeout(() => {
-            const photoStack = document.querySelector('.photo-stack');
-            const cardCarousel = document.querySelector('.card-carousel-container');
-
-            // Only run old carousel logic if old carousel exists and new one doesn't
-            if (photoStack && !cardCarousel) {
-                console.log('Old photo carousel found, re-initializing...');
-                // Remove existing event listeners to prevent duplicates
-                photoStack.replaceWith(photoStack.cloneNode(true));
-                const newPhotoStack = document.querySelector('.photo-stack');
-
-                // Re-attach carousel event listeners
-                newPhotoStack.addEventListener('click', (e) => {
-                    if (e.target.closest('.photo-frame.center')) {
-                        const isExpanded = newPhotoStack.classList.contains('expanded');
-                        newPhotoStack.classList.toggle('expanded', !isExpanded);
-                    }
-                });
-
-                // Re-initialize photo URLs
-                const photos = document.querySelectorAll('.photo-frame img');
-                photos.forEach((img, index) => {
-                    if (photoUrls[index]) {
-                        img.src = photoUrls[index];
-                        img.alt = `Profile Photo ${index + 1}`;
-                    }
-                });
-            } else if (cardCarousel) {
-                console.log('New card carousel found, skipping old carousel initialization');
-            } else {
-                console.log('No carousel elements found');
-            }
-        }, 150);
     }
 });
 
