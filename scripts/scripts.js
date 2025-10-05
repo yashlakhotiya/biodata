@@ -1,30 +1,10 @@
 // Debug logging
 console.log('=== Scripts.js loaded ===');
 console.log('workData available at load:', typeof workData !== 'undefined' ? workData : 'Not loaded yet');
-
-// ==================== INITIALIZATION ==================== //
-document.addEventListener('DOMContentLoaded', () => {
-    // --- CAROUSEL SETUP ---
-    const photoStack = document.querySelector('.photo-stack');
-    let isExpanded = false;
-
-    // Only attach carousel event listeners if elements exist
-    if (photoStack) {
-        // Expand/Collapse Logic
-        photoStack.addEventListener('click', (e) => {
-            if (e.target.closest('.photo-frame.center')) {
-                isExpanded = !isExpanded;
-                photoStack.classList.toggle('expanded', isExpanded);
-            }
-        });
-    }
-});
-
 // ==================== WORK SHOWCASE & GALLERY SETUP ==================== //
 let isShowcaseInitialized = false;
 
 populateShowcase();
-window.addEventListener('resize', debounce(populateShowcase, 100));
 
 // Reset initialization state on page navigation to ensure proper loading
 window.addEventListener('pageshow', (event) => {
@@ -37,18 +17,6 @@ window.addEventListener('pageshow', (event) => {
         setTimeout(() => populateShowcase(), 100);
     }
 });
-
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
 
 const galleryScreen = document.getElementById('work-gallery-screen');
 const galleryTrigger = document.getElementById('gallery-trigger');
@@ -165,14 +133,3 @@ function populateShowcase() {
         isShowcaseInitialized = false;
     }
 }
-
-// Initialize photos with actual URLs
-document.addEventListener('DOMContentLoaded', function () {
-    const photos = document.querySelectorAll('.photo-frame img');
-    photos.forEach((img, index) => {
-        if (photoUrls[index]) {
-            img.src = photoUrls[index];
-            img.alt = `Profile Photo ${index + 1}`;
-        }
-    });
-});

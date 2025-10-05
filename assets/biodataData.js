@@ -15,7 +15,7 @@ const biodataData = {
             {
                 id: "tob",
                 label: "Time of Birth",
-                value: "[HH:MM AM/PM]",
+                value: "06:10 PM",
                 category: "basic"
             },
             {
@@ -57,7 +57,7 @@ const biodataData = {
             {
                 id: "gotra",
                 label: "Gotra",
-                value: "Phaphadansh",
+                value: "Lakhotiya and Jhanwar",
                 category: "traditional"
             },
             {
@@ -99,13 +99,13 @@ const biodataData = {
             {
                 id: "mother_occupation",
                 label: "Mother's Occupation",
-                value: "Vice Principal",
+                value: "Vice Principal @ Government School, Gudha.",
                 category: "parents"
             },
             {
-                id: "brothers",
-                label: "Brothers",
-                value: "1 - Married",
+                id: "brother-1",
+                label: "Brother's Name",
+                value: "Kartik Lakhotiya",
                 category: "siblings"
             },
             {
