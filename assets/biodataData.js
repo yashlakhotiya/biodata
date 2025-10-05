@@ -79,6 +79,42 @@ const biodataData = {
         title: "Family Details",
         items: [
             {
+                id: "grandfather_name",
+                label: "Grandfather's Name",
+                value: "Late Shri. Nand Kishore Lakhotiya",
+                category: "grandparents"
+            },
+            {
+                id: "grandmother_name",
+                label: "Grandmother's Name",
+                value: "Smt. Prem Lata Lakhotiya",
+                category: "grandparents"
+            },
+            {
+                "id": "badepapa-1",
+                label: "Bade Papa - 1",
+                value: "Shri Bhagwan Lakhotiya",
+                category: "uncle"
+            },
+            {
+                "id": "badimummy-1",
+                label: "Badi Mummy - 1",
+                value: "Smt. Leela Lakhotiya",
+                category: "aunt"
+            },
+            {
+                id: "badepapa-2",
+                label: "Bade Papa - 2",
+                value: "Shri Murli Manohar Lakhotiya",
+                category: "uncle"
+            },
+            {
+                "id": "badimummy-2",
+                label: "Badi Mummy - 2",
+                value: "Smt. Madhu Lakhotiya",
+                category: "aunt"
+            },
+            {
                 id: "father_name",
                 label: "Father's Name",
                 value: "Shailendra Lakhotiya",
@@ -104,15 +140,9 @@ const biodataData = {
             },
             {
                 id: "brother-1",
-                label: "Brother's Name",
-                value: "Kartik Lakhotiya",
+                label: "Brother / Sister in Law",
+                value: "Kartik Lakhotiya (Pursuing Ph.D. from Cleveland Clinic, USA) / CA. Radhika Maheshwari (Ajmer)",
                 category: "siblings"
-            },
-            {
-                id: "family_type",
-                label: "Family Type",
-                value: "Joint",
-                category: "structure"
             },
             {
                 id: "native_place",
