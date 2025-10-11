@@ -7,37 +7,6 @@
   margin: 30px 0;
 }
 
-.skills-title {
-  color: var(--primary-maroon);
-  margin-bottom: 30px;
-  font-size: 2.2em;
-  text-align: center;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-/* Dark theme for skills title */
-[data-theme="dark"] .skills-title {
-  color: var(--gold);
-}
-
-.skills-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-maroon), var(--saffron));
-  border-radius: 2px;
-}
-
-/* Dark theme for skills title decoration */
-[data-theme="dark"] .skills-title::after {
-  background: linear-gradient(90deg, var(--gold), var(--saffron));
-}
-
 /* ==================== SKILLS GRID ==================== */
 .skills-grid {
   display: grid;
@@ -135,11 +104,6 @@
     margin: 20px 10px;
   }
 
-  .skills-title {
-    font-size: 1.8em;
-    margin-bottom: 25px;
-  }
-
   .skills-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -158,20 +122,12 @@
     font-size: 0.85em;
     padding: 6px 12px;
   }
-
-  .skills-title::after {
-    width: 80px;
-  }
 }
 
 @media (max-width: 480px) {
   .portfolio-skills-section {
     padding: 25px 15px;
     margin: 15px 5px;
-  }
-
-  .skills-title {
-    font-size: 1.6em;
   }
 
   .skill-category {

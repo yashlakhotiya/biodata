@@ -67,15 +67,6 @@ class PortfolioIntro {
       observer.observe(introSection);
     }
   }
-
-  // Public API methods
-  updateIntroText(newTitle, newText) {
-    const introTitle = document.querySelector('#portfolio-intro-container .intro-title');
-    const introText = document.querySelector('#portfolio-intro-container .intro-text');
-
-    if (introTitle) introTitle.textContent = newTitle;
-    if (introText) introText.textContent = newText;
-  }
 }
 
 // Initialize portfolio introduction when script loads

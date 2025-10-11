@@ -7,35 +7,6 @@
   position: relative;
 }
 
-.family-details-section .section-title {
-  font-family: var(--font-heading);
-  font-size: 1.8em;
-  color: var(--primary-maroon);
-  margin-bottom: 20px;
-  position: relative;
-  padding-left: 40px;
-  transition: color 0.3s ease;
-}
-
-.family-details-section .section-title:hover {
-  color: var(--saffron);
-}
-
-/* Decorative Paisley before section titles */
-.family-details-section .section-title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,10 C90,40 90,60 50,90 C10,60 10,40 50,10 Z' fill='%230A9396'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%23005F73'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%23FFD700'/%3E%3C/svg%3E");
-  background-size: contain;
-  background-repeat: no-repeat;
-  animation: rotateIcon 4s ease-in-out infinite;
-}
-
 @keyframes rotateIcon {
   0%, 100% { transform: translateY(-50%) rotate(-20deg); }
   50% { transform: translateY(-50%) rotate(20deg); }
@@ -45,9 +16,5 @@
 @media (max-width: 768px) {
   .family-details-section {
     padding: 25px 20px;
-  }
-
-  .family-details-section .section-title {
-    font-size: 1.5em;
   }
 }

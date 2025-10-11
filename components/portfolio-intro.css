@@ -19,38 +19,6 @@
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Section title styling is now handled by global .section-title class */
-/* Keeping this for backwards compatibility if needed */
-.intro-title {
-  color: var(--primary-maroon);
-  margin-bottom: 30px;
-  font-size: 2.5em;
-  position: relative;
-  font-family: var(--font-heading);
-}
-
-/* Dark theme for intro title */
-[data-theme="dark"] .intro-title {
-  color: var(--primary-maroon);
-}
-
-.intro-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--saffron), var(--gold));
-  border-radius: 2px;
-}
-
-/* Dark theme for intro title decoration */
-[data-theme="dark"] .intro-title::after {
-  background: linear-gradient(90deg, var(--saffron), var(--gold));
-}
-
 .intro-text {
   font-size: 1.2em;
   line-height: 1.8;
@@ -79,21 +47,10 @@
     margin: 20px 10px;
   }
 
-  .portfolio-intro-section .section-title,
-  .intro-title {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-
   .intro-text {
     font-size: 1.1em;
     line-height: 1.7;
     text-align: left;
-  }
-
-  .portfolio-intro-section .section-title::after,
-  .intro-title::after {
-    width: 50px;
   }
 }
 
@@ -101,11 +58,6 @@
   .portfolio-intro-section {
     padding: 25px 15px;
     margin: 15px 5px;
-  }
-
-  .portfolio-intro-section .section-title,
-  .intro-title {
-    font-size: 1.8em;
   }
 
   .intro-text {

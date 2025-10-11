@@ -40,50 +40,10 @@
   position: relative;
 }
 
-/* Add padding to the content area between borders */
-.contact-section .section-title {
-  padding-top: var(--space-2xl);
-  padding-left: var(--space-lg);
-  padding-right: var(--space-lg);
-}
-
 .contact-section .contact-info {
   padding-left: var(--space-lg);
   padding-right: var(--space-lg);
   padding-bottom: var(--space-2xl);
-}
-
-/* Section title */
-.contact-section .section-title {
-    font-family: var(--font-heading), serif;
-  font-size: 2.25rem;
-  color: var(--primary-maroon);
-  margin: 0 0 var(--space-2xl);
-  text-align: center;
-  position: relative;
-  padding-bottom: var(--space-sm);
-  transition: color var(--transition-normal);
-}
-
-.contact-section .section-title:hover {
-  color: var(--saffron);
-}
-
-.contact-section .section-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary-maroon), var(--saffron));
-  border-radius: var(--radius-sm);
-}
-
-/* Dark theme title underline */
-[data-theme="dark"] .contact-section .section-title::after {
-  background: linear-gradient(90deg, var(--gold), var(--saffron));
 }
 
 /* ==================== CONTACT INFO GRID ==================== */
@@ -226,12 +186,6 @@
 
 /* Tablets and small desktops */
 @media (max-width: 1199px) {
-  .contact-section .section-title {
-    font-size: 1.8rem;
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
-  }
-
   .contact-section .contact-info {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
@@ -245,13 +199,6 @@
 
 /* Tablets - single column layout */
 @media (max-width: 768px) {
-  .contact-section .section-title {
-    font-size: 1.6rem;
-    margin-bottom: var(--space-xl);
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
-  }
-
   .contact-section .contact-info {
     padding-left: var(--space-md);
     padding-right: var(--space-md);
@@ -273,13 +220,6 @@
 @media (max-width: 480px) {
   #contact-container {
     border-radius: var(--radius-md);
-  }
-
-  .contact-section .section-title {
-    font-size: 1.4rem;
-    margin-bottom: var(--space-lg);
-    padding-left: var(--space-sm);
-    padding-right: var(--space-sm);
   }
 
   .contact-section .contact-info {
@@ -314,10 +254,6 @@
 
 /* Small mobile devices */
 @media (max-width: 360px) {
-  .contact-section .section-title {
-    padding-left: var(--space-xs);
-    padding-right: var(--space-xs);
-  }
 
   .contact-section .contact-info {
     padding-left: var(--space-xs);
