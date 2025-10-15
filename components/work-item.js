@@ -195,6 +195,14 @@ class WorkItemsGallery {
         if (options.maxWidth) {
             itemElement.style.maxWidth = options.maxWidth;
         }
+
+        // Add click event handler to open link in new tab
+        if (workItem.link) {
+            itemElement.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.open(workItem.link, '_blank', 'noopener,noreferrer');
+            });
+        }
     }
 
     /**
