@@ -1,4 +1,3 @@
-// ==================== PARTICLES.JS CONFIGURATION ====================
 // Enhanced particles with better visibility for both light and dark themes
 // This configuration is used by both index.html and portfolio.html
 
@@ -23,7 +22,7 @@ function initParticles() {
         particlesJS('particles-js', {
             "particles": {
                 "number": {
-                    "value": 120,
+                    "value": 80,
                     "density": {
                         "enable": true,
                         "value_area": 1000
@@ -44,27 +43,68 @@ function initParticles() {
                     ]
                 },
                 "shape": {
-                    "type": ["circle", "star"],
+                    "type": ["circle", "star", "text"],
                     "stroke": {
                         "width": 0,
                         "color": "#000000"
                     },
                     "star": {
                         "nb_sides": 5
+                    },
+                    "text": {
+                        "value": [
+                            "stars", "supernova", "consciousness", "self-awareness", "electron",
+                            "proton", "neutron", "energy", "sun", "moon", "earth",
+                            "cinematography", "music", "flute", "guitar", "piano",
+                            "coding", "AI", "machine learning", "photography", "nature",
+                            "creativity", "innovation", "technology", "universe", "cosmos",
+                            "quantum", "harmony", "melody", "rhythm", "vision", "imagination",
+                            "wisdom", "knowledge", "curiosity", "exploration", "discovery",
+                            "inspiration", "passion", "dreams", "reality", "balance",
+                            "flow", "light", "shadow", "color", "sound", "silence",
+                            "movement", "stillness", "chaos", "order", "beauty", "wonder",
+                            "mystery", "magic", "science", "art", "logic", "intuition",
+                            "heart", "mind", "soul", "spirit", "journey", "destination",
+                            "beginning", "end", "cycle", "evolution", "transformation",
+                            "growth", "learning", "teaching", "sharing", "connection",
+                            "unity", "diversity", "possibility", "potential", "achievement",
+                            "success", "failure", "resilience", "strength", "courage",
+                            "compassion", "empathy", "kindness", "love", "peace", "joy",
+                            "happiness", "fulfillment", "purpose", "meaning", "existence",
+                            "consciousness", "awareness", "perception", "reality", "illusion",
+                            "truth", "wisdom", "understanding", "clarity", "focus",
+                            "concentration", "meditation", "mindfulness", "presence",
+                            "gratitude", "appreciation", "celebration", "reflection",
+                            "contemplation", "introspection", "analysis", "synthesis",
+                            "creativity", "innovation", "invention", "programming",
+                            "guidance", "direction", "strategy", "planning", "execution",
+                            "implementation", "evaluation", "assessment", "improvement",
+                            "iteration", "refinement", "polish", "perfection", "excellence",
+                            "quality", "standards", "best practices", "methodology",
+                            "framework", "architecture", "structure", "organization",
+                            "system", "process", "workflow", "efficiency", "productivity",
+                            "effectiveness", "impact", "influence", "change", "progress",
+                            "advancement", "breakthrough", "revolution", "paradigm shift"
+                        ],
+                        "font": "16px Arial, sans-serif",
+                        "weight": "400",
+                        "color": "#ffffff",
+                        "stroke_width": 0,
+                        "stroke_color": "#000000"
                     }
                 },
                 "opacity": {
-                    "value": 0.9,
+                    "value": 0.8,
                     "random": true,
                     "anim": {
                         "enable": true,
                         "speed": 0.5,
-                        "opacity_min": 0.6,
+                        "opacity_min": 0.4,
                         "sync": false
                     }
                 },
                 "size": {
-                    "value": 4,
+                    "value": 6,
                     "random": true,
                     "anim": {
                         "enable": true,
@@ -118,11 +158,271 @@ function initParticles() {
             },
             "retina_detect": true
         });
-        console.log('Particles.js initialized successfully');
+
+        // Initialize floating text animation
+        initFloatingText();
+
+        console.log('Particles.js initialized successfully with text particles');
     } catch (error) {
         console.error('Error initializing particles.js:', error);
         setTimeout(initParticles, 500);
     }
+}
+
+// Initialize floating text animation system
+function initFloatingText() {
+    const particlesContainer = document.getElementById('particles-js');
+    if (!particlesContainer) return;
+
+    // Create text particles container
+    const textContainer = document.createElement('div');
+    textContainer.id = 'floating-text-container';
+    textContainer.style.position = 'absolute';
+    textContainer.style.top = '0';
+    textContainer.style.left = '0';
+    textContainer.style.width = '100%';
+    textContainer.style.height = '100%';
+    textContainer.style.pointerEvents = 'none';
+    textContainer.style.zIndex = '1';
+
+    particlesContainer.appendChild(textContainer);
+
+    // Astronomy and consciousness themed words - expanded list
+    const words = [
+        'stars', 'supernova', 'neutron star', 'black hole', 'pulsar',
+        'galaxy', 'nebula', 'quasar', 'dark matter', 'event horizon',
+        'consciousness', 'self awareness', 'mindfulness', 'awareness',
+        'cosmic energy', 'quantum', 'stardust', 'universe',
+        'cosmic consciousness', 'universal mind'
+    ];
+
+    // Create floating text elements with even longer delays for maximum sparsity
+    words.forEach((word, index) => {
+        setTimeout(() => {
+            createFloatingText(textContainer, word);
+        }, index * 5000); // 5 second delays for very few visible at once
+    });
+}
+
+function createFloatingText(container, word) {
+    const textElement = document.createElement('div');
+    textElement.textContent = word;
+    textElement.style.position = 'absolute';
+    textElement.style.fontSize = Math.random() * 6 + 10 + 'px'; // Smaller size: 10-16px
+    textElement.style.fontFamily = "'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+    textElement.style.fontWeight = Math.random() > 0.5 ? '500' : '400';
+    textElement.style.letterSpacing = '0.5px';
+
+    // Enhanced color scheme with gradients
+    const hue1 = Math.random() * 360;
+    const hue2 = (hue1 + 60) % 360;
+    textElement.style.background = `linear-gradient(45deg, hsl(${hue1}, 70%, 60%), hsl(${hue2}, 70%, 60%))`;
+    textElement.style.webkitBackgroundClip = 'text';
+    textElement.style.webkitTextFillColor = 'transparent';
+    textElement.style.backgroundClip = 'text';
+    textElement.style.color = `hsl(${hue1}, 70%, 60%)`;
+
+    // Add glow effect
+    textElement.style.textShadow = `
+        0 0 10px rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.8),
+        0 0 20px rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.5),
+        0 0 30px rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, 0.3)
+    `;
+
+    // Glass-like background for depth
+    textElement.style.borderRadius = '4px';
+    textElement.style.padding = '2px 6px';
+    textElement.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+    textElement.style.backdropFilter = 'blur(5px)';
+
+    // Theme-aware border for better visibility
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    if (theme === 'light') {
+        textElement.style.border = '1px solid rgba(0, 0, 0, 0.15)'; // Subtle dark border for light mode
+    } else {
+        textElement.style.border = '1px solid rgba(255, 255, 255, 0.2)'; // Original white border for dark mode
+    }
+
+    textElement.style.whiteSpace = 'nowrap';
+    textElement.style.pointerEvents = 'none';
+    textElement.style.userSelect = 'none';
+
+    // Random starting position
+    textElement.style.left = Math.random() * 100 + '%';
+    textElement.style.top = Math.random() * 100 + '%';
+
+    // Start invisible and small for fire effect
+    textElement.style.opacity = '0';
+    textElement.style.transform = 'scale(0.1)';
+
+    container.appendChild(textElement);
+
+    // Animate with fire-like effect
+    animateFireText(textElement);
+}
+
+function animateFireText(element) {
+    const totalDuration = 2000+Math.random() * 1000; // 15-25 seconds total for quicker in/out cycle
+    const startTime = Date.now();
+
+    // Get current position as start position
+    const startX = parseFloat(element.style.left) || Math.random() * 100;
+    const startY = parseFloat(element.style.top) || Math.random() * 100;
+
+    // Calculate end position (drift to a new random location)
+    const endX = Math.random() * 100;
+    const endY = Math.random() * 100;
+
+    // Rotation animation
+    const startRotation = Math.random() * 10 - 5;
+    const endRotation = startRotation + (Math.random() * 6 - 3); // +/- 3 degrees from start
+
+    // Create particle container for spreading particles
+    const particleContainer = element.parentElement;
+
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / totalDuration, 1);
+
+        // Calculate current position with smooth interpolation
+        const currentX = startX + (endX - startX) * easeInOutCubic(progress);
+        const currentY = startY + (endY - startY) * easeInOutCubic(progress);
+        const currentRotation = startRotation + (endRotation - startRotation) * easeInOutCubic(progress);
+
+        // Modified animation: immediate ease in to out (no hold phase)
+        if (progress < 0.5) {
+            // Phase 1: Ease in (0-50% of duration)
+            const phaseProgress = progress / 0.5;
+            const scale = 0.1 + 0.9 * easeOutCubic(phaseProgress);
+            const opacity = easeOutCubic(phaseProgress);
+
+            element.style.opacity = opacity.toString();
+            element.style.transform = `translate(${currentX - startX}%, ${currentY - startY}%) scale(${scale}) rotate(${currentRotation}deg)`;
+            element.style.left = startX + '%';
+            element.style.top = startY + '%';
+
+        } else {
+            // Phase 2: Immediate ease out (50-100% of duration) - no hold phase
+            const phaseProgress = (progress - 0.5) / 0.5;
+            const scale = 1 - 0.5 * easeInCubic(phaseProgress);
+            const opacity = 1 - easeInCubic(phaseProgress);
+
+            element.style.opacity = opacity.toString();
+            element.style.transform = `translate(${currentX - startX}%, ${currentY - startY}%) scale(${scale}) rotate(${currentRotation}deg)`;
+
+            // Update position as it drifts during ease out
+            element.style.left = currentX + '%';
+            element.style.top = currentY + '%';
+
+            // Add particle spreading during ease out phase
+            if (Math.random() < 0.3) {
+                createSpreadingParticles(element, particleContainer);
+            }
+        }
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            // Remove element and create new one
+            if (element.parentElement) {
+                element.parentElement.removeChild(element);
+            }
+            // Create new text after a shorter delay for more frequent cycling
+            setTimeout(() => {
+                const words = ['stars', 'supernova', 'neutron star', 'black hole', 'pulsar',
+                    'galaxy', 'nebula', 'quasar', 'dark matter', 'event horizon',
+                    'consciousness', 'self awareness', 'mindfulness', 'awareness',
+                    'cosmic energy', 'quantum', 'stardust', 'universe',
+                    'cosmic consciousness', 'universal mind'];
+                const randomWord = words[Math.floor(Math.random() * words.length)];
+                createFloatingText(particleContainer, randomWord);
+            }, Math.random() * 5000 + 2000); // 2-7 second delay for more frequent cycling
+        }
+    }
+
+    animate();
+}
+
+function createSpreadingParticles(parentElement, container) {
+    const rect = parentElement.getBoundingClientRect();
+    const particlesContainer = document.getElementById('particles-js');
+    if (!particlesContainer) return;
+
+    // Create 2-4 small particles
+    const particleCount = Math.floor(Math.random() * 3) + 2;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.style.position = 'absolute';
+        particle.style.width = Math.random() * 3 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.borderRadius = '50%';
+        particle.style.background = `hsl(${Math.random() * 60 + 15}, 80%, 60%)`; // Warm colors for fire effect
+        particle.style.opacity = '0.8';
+        particle.style.pointerEvents = 'none';
+
+        // Start from center of text element
+        const startX = rect.left + rect.width / 2 - particlesContainer.getBoundingClientRect().left;
+        const startY = rect.top + rect.height / 2 - particlesContainer.getBoundingClientRect().top;
+
+        particle.style.left = startX + 'px';
+        particle.style.top = startY + 'px';
+
+        container.appendChild(particle);
+
+        // Animate particle spreading outward
+        animateSpreadingParticle(particle, startX, startY);
+    }
+}
+
+function animateSpreadingParticle(particle, startX, startY) {
+    const duration = 1500 + Math.random() * 1000; // 1.5-2.5 seconds
+    const startTime = Date.now();
+
+    // Random direction and distance
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 100 + 50; // 50-150px spread
+    const endX = startX + Math.cos(angle) * distance;
+    const endY = startY + Math.sin(angle) * distance;
+
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Move outward
+        const currentX = startX + (endX - startX) * easeOutCubic(progress);
+        const currentY = startY + (endY - startY) * easeOutCubic(progress);
+
+        particle.style.left = currentX + 'px';
+        particle.style.top = currentY + 'px';
+
+        // Fade out over time
+        const opacity = 0.8 * (1 - progress);
+        particle.style.opacity = opacity.toString();
+
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            // Remove particle
+            if (particle.parentElement) {
+                particle.parentElement.removeChild(particle);
+            }
+        }
+    }
+
+    animate();
+}
+
+function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+}
+
+function easeInCubic(t) {
+    return t * t * t;
+}
+
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 }
 
 // Initialize particles when DOM is ready
