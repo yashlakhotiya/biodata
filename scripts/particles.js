@@ -162,6 +162,9 @@ function initParticles() {
         // Initialize floating text animation
         initFloatingText();
 
+        // Initialize star systems animation
+        initStarSystems();
+
         console.log('Particles.js initialized successfully with text particles');
     } catch (error) {
         console.error('Error initializing particles.js:', error);
@@ -423,6 +426,267 @@ function easeInCubic(t) {
 
 function easeInOutCubic(t) {
     return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+}
+
+// ==================== STAR SYSTEM ANIMATIONS ====================
+
+function initStarSystems() {
+    const particlesContainer = document.getElementById('particles-js');
+    if (!particlesContainer) return;
+
+    // Create 1, 2, and 3 star systems at random positions
+    createSingleStarSystem(particlesContainer);
+    createBinaryStarSystem(particlesContainer);
+    createTripleStarSystem(particlesContainer);
+}
+
+function createSingleStarSystem(container) {
+    const starSystem = document.createElement('div');
+    starSystem.className = 'star-system single-star';
+    starSystem.style.position = 'absolute';
+
+    // Random position
+    const x = Math.random() * 80 + 10; // 10-90% to avoid edges
+    const y = Math.random() * 80 + 10;
+    starSystem.style.left = x + '%';
+    starSystem.style.top = y + '%';
+
+    // Create the single star
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.width = '20px';
+    star.style.height = '20px';
+    star.style.borderRadius = '50%';
+    star.style.position = 'absolute';
+    star.style.left = '50%';
+    star.style.top = '50%';
+    star.style.transform = 'translate(-50%, -50%)';
+
+    // Theme-aware star colors
+    const theme = document.documentElement.getAttribute('data-theme') || 'light';
+    if (theme === 'light') {
+        star.style.background = 'radial-gradient(circle, #ffd60a 0%, #ff9500 70%, #ff6b35 100%)';
+        star.style.boxShadow = '0 0 20px rgba(255, 215, 10, 0.8), 0 0 40px rgba(255, 149, 0, 0.6)';
+    } else {
+        star.style.background = 'radial-gradient(circle, #ffffff 0%, #e8f4fd 70%, #96ceb4 100%)';
+        star.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(232, 244, 253, 0.6)';
+    }
+
+    starSystem.appendChild(star);
+    container.appendChild(starSystem);
+
+    // Animate single star with pulsing
+    animateSingleStar(star, starSystem);
+}
+
+function animateSingleStar(star, container) {
+    let pulsePhase = 0;
+
+    function animate() {
+        pulsePhase += 0.02;
+
+        // Pulsing scale and glow
+        const scale = 0.8 + 0.4 * Math.sin(pulsePhase);
+        const opacity = 0.7 + 0.3 * Math.sin(pulsePhase * 2);
+
+        star.style.transform = `translate(-50%, -50%) scale(${scale})`;
+        star.style.opacity = opacity.toString();
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
+function createBinaryStarSystem(container) {
+    const starSystem = document.createElement('div');
+    starSystem.className = 'star-system binary-system';
+    starSystem.style.position = 'absolute';
+    starSystem.style.zIndex = '10';
+
+    // Set size for proper positioning
+    starSystem.style.width = '200px';
+    starSystem.style.height = '200px';
+
+    // Random position
+    const x = Math.random() * 70 + 15;
+    const y = Math.random() * 70 + 15;
+    starSystem.style.left = x + '%';
+    starSystem.style.top = y + '%';
+
+    // Create two stars
+    for (let i = 0; i < 2; i++) {
+        const star = document.createElement('div');
+        star.className = 'star binary-star-' + (i + 1);
+        star.style.width = '15px';
+        star.style.height = '15px';
+        star.style.borderRadius = '50%';
+        star.style.position = 'absolute';
+
+        // Position stars opposite each other
+        const angle = (i * Math.PI) + Math.random() * Math.PI;
+        const radius = 40;
+
+        // Calculate initial position using container dimensions
+        const containerRect = container.getBoundingClientRect();
+        const systemRect = {
+            left: x * containerRect.width / 100,
+            top: y * containerRect.height / 100,
+            width: 200,
+            height: 200
+        };
+        const centerX = systemRect.left + systemRect.width / 2;
+        const centerY = systemRect.top + systemRect.height / 2;
+
+        const starX = centerX + Math.cos(angle) * radius;
+        const starY = centerY + Math.sin(angle) * radius;
+
+        star.style.left = starX + 'px';
+        star.style.top = starY + 'px';
+
+        // Theme-aware colors
+        const theme = document.documentElement.getAttribute('data-theme') || 'light';
+        if (theme === 'light') {
+            star.style.background = i === 0
+                ? 'radial-gradient(circle, #ff6b6b 0%, #ff4757 100%)'
+                : 'radial-gradient(circle, #4ecdc4 0%, #26a69a 100%)';
+            star.style.boxShadow = `0 0 15px ${i === 0 ? 'rgba(255, 107, 107, 0.8)' : 'rgba(78, 205, 196, 0.8)'}`;
+        } else {
+            star.style.background = i === 0
+                ? 'radial-gradient(circle, #ff9ff3 0%, #f368e0 100%)'
+                : 'radial-gradient(circle, #45b7d1 0%, #2980b9 100%)';
+            star.style.boxShadow = `0 0 15px ${i === 0 ? 'rgba(255, 159, 243, 0.8)' : 'rgba(69, 183, 209, 0.8)'}`;
+        }
+
+        starSystem.appendChild(star);
+    }
+
+    container.appendChild(starSystem);
+
+    // Animate binary stars orbiting
+    animateBinaryStars(starSystem);
+}
+
+function animateBinaryStars(system) {
+    const stars = system.querySelectorAll('.star');
+    let orbitPhase = Math.random() * Math.PI * 2;
+
+    function animate() {
+        orbitPhase += 0.01; // Slow orbital speed
+
+        stars.forEach((star, index) => {
+            const angle = orbitPhase + (index * Math.PI); // Opposite positions
+            const radius = 40;
+
+            // Calculate position relative to container center
+            const containerRect = system.parentElement.getBoundingClientRect();
+            const centerX = containerRect.width / 2;
+            const centerY = containerRect.height / 2;
+
+            const starX = centerX + Math.cos(angle) * radius;
+            const starY = centerY + Math.sin(angle) * radius;
+
+            star.style.left = (starX / containerRect.width * 100) + '%';
+            star.style.top = (starY / containerRect.height * 100) + '%';
+
+            // Add slight pulsing
+            const pulse = 0.9 + 0.2 * Math.sin(orbitPhase * 3 + index);
+            star.style.transform = `scale(${pulse})`;
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
+function createTripleStarSystem(container) {
+    const starSystem = document.createElement('div');
+    starSystem.className = 'star-system triple-system';
+    starSystem.style.position = 'absolute';
+    starSystem.style.zIndex = '10'; // Ensure visibility above particles
+
+    // Set size for proper positioning
+    starSystem.style.width = '200px';
+    starSystem.style.height = '200px';
+
+    // Random position
+    const x = Math.random() * 60 + 20; // 20-80% to avoid edges
+    const y = Math.random() * 60 + 20;
+    starSystem.style.left = x + '%';
+    starSystem.style.top = y + '%';
+
+    // Create three stars in a triangular formation
+    for (let i = 0; i < 3; i++) {
+        const star = document.createElement('div');
+        star.className = 'star triple-star-' + (i + 1);
+        star.style.width = '12px';
+        star.style.height = '12px';
+        star.style.borderRadius = '50%';
+        star.style.position = 'absolute';
+
+        // Position stars in a triangle
+        const angles = [0, 2 * Math.PI / 3, 4 * Math.PI / 3];
+        const angle = angles[i] + Math.random() * Math.PI / 6; // Add some randomness
+        const radius = 35;
+        const starX = 50 + Math.cos(angle) * radius / container.offsetWidth * 100;
+        const starY = 50 + Math.sin(angle) * radius / container.offsetHeight * 100;
+
+        star.style.left = starX + '%';
+        star.style.top = starY + '%';
+
+        // Theme-aware colors
+        const theme = document.documentElement.getAttribute('data-theme') || 'light';
+        const colors = theme === 'light'
+            ? ['#ffd60a', '#ff6b6b', '#4ecdc4']
+            : ['#feca57', '#ff9ff3', '#45b7d1'];
+
+        star.style.background = `radial-gradient(circle, ${colors[i]} 0%, ${colors[i]} 100%)`;
+        star.style.boxShadow = `0 0 12px ${colors[i] + 'cc'}`;
+
+        starSystem.appendChild(star);
+    }
+
+    container.appendChild(starSystem);
+
+    // Animate triple stars with complex orbits
+    animateTripleStars(starSystem);
+}
+
+function animateTripleStars(system) {
+    const stars = system.querySelectorAll('.star');
+    let orbitPhase = Math.random() * Math.PI * 2;
+
+    function animate() {
+        orbitPhase += 0.008; // Slower orbital speed for triple system
+
+        // Get system position and size
+        const systemRect = system.getBoundingClientRect();
+        const centerX = systemRect.left + systemRect.width / 2;
+        const centerY = systemRect.top + systemRect.height / 2;
+
+        stars.forEach((star, index) => {
+            // Different orbital speeds and radii for each star
+            const speeds = [1, 1.3, 0.7];
+            const radii = [70, 90, 60]; // Increased from [35, 45, 30] for farther apart
+
+            const angle = orbitPhase * speeds[index] + (index * 2 * Math.PI / 3);
+            const radius = radii[index];
+
+            const starX = centerX + Math.cos(angle) * radius;
+            const starY = centerY + Math.sin(angle) * radius;
+
+            star.style.left = starX + 'px';
+            star.style.top = starY + 'px';
+
+            // Remove pulsing - keep stars at constant size
+            star.style.transform = 'scale(1)';
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
 
 // Initialize particles when DOM is ready
