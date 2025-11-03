@@ -37,6 +37,9 @@ class Header {
       // Setup event listeners
       this.setupEventListeners();
       
+      // Initialize theme toggle
+      this.initThemeToggle();
+
       // Adjust navigation based on current page
       this.adjustNavigationForCurrentPage();
     } catch (error) {
@@ -93,6 +96,9 @@ class Header {
       this.mobileToggle.addEventListener('click', () => this.toggleMobileMenu());
     }
 
+    // Theme toggle element (if present after loadHeader)
+    this.themeToggle = document.getElementById('theme-toggle');
+
     let resizeTimer;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
@@ -113,6 +119,43 @@ class Header {
     });
 
     this.setupNavLinkHandlers();
+  }
+
+  /** Theme toggle: apply saved theme or system preference and wire button */
+  initThemeToggle() {
+    this.themeToggle = document.getElementById('theme-toggle');
+    this.themeIcon = document.getElementById('theme-icon');
+
+    if (!this.themeToggle) return;
+
+    // Determine initial theme: fallback order -> localStorage -> document attr -> system preference -> light
+    const stored = localStorage.getItem('preferred-theme');
+    const currentAttr = document.documentElement.getAttribute('data-theme');
+    let initial = stored || currentAttr;
+
+    if (!initial) {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      initial = prefersDark ? 'dark' : 'light';
+    }
+
+    this.applyTheme(initial);
+
+    // Click handler
+    this.themeToggle.addEventListener('click', () => {
+      const applied = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      this.applyTheme(applied);
+      localStorage.setItem('preferred-theme', applied);
+    });
+  }
+
+  applyTheme(theme) {
+    if (!theme) return;
+    document.documentElement.setAttribute('data-theme', theme);
+    if (this.themeToggle) {
+      const isDark = theme === 'dark';
+      this.themeToggle.setAttribute('aria-pressed', String(isDark));
+      if (this.themeIcon) this.themeIcon.textContent = isDark ? '☀️' : '🌙';
+    }
   }
 
   // Removed setupResponsiveNav as its functionality is now in setupEventListeners
