@@ -50,7 +50,7 @@ class Header {
     // Detect current page
     const currentPath = window.location.pathname;
     const isPortfolioPage = currentPath.includes('portfolio.html');
-    const isIndexPage = currentPath.endsWith('index.html') || 
+    const isIndexPage = currentPath.endsWith('biodata.html') ||
                        currentPath.endsWith('/') || 
                        currentPath === '';
 
@@ -74,9 +74,9 @@ class Header {
 
     if (isPortfolioPage) {
       // For portfolio page, update navigation links to point to main page sections
-      updateLink('.header__nav-link[data-nav-id="experience"]', 'index.html#education-profession', 'Experience');
-      updateLink('.header__nav-link[data-nav-id="interests"]', 'index.html#hobbies-interests', 'Interests');
-      updateLink('.header__nav-link[data-nav-id="contact"]', 'index.html#contact', 'Contact');
+      updateLink('.header__nav-link[data-nav-id="experience"]', 'biodata.html#education-profession', 'Experience');
+      updateLink('.header__nav-link[data-nav-id="interests"]', 'biodata.html#hobbies-interests', 'Interests');
+      updateLink('.header__nav-link[data-nav-id="contact"]', 'biodata.html#contact', 'Contact');
     } else if (isIndexPage) {
       // Ensure About Me link is correct on index page
       updateLink('.header__nav-link[data-nav-id="about-me"]', 'about-me.html', 'About Me');

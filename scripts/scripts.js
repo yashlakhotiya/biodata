@@ -16,11 +16,11 @@ if (galleryTrigger) {
         console.log('Is portfolio page:', isPortfolioPage);
 
         if (isPortfolioPage) {
-            console.log('Adding swipe-to-biodata class and navigating to index.html');
+            console.log('Adding swipe-to-biodata class and navigating to biodata.html');
             // From portfolio page - navigate back to biodata with reverse swipe
             document.body.classList.add('swipe-to-biodata', 'user-triggered');
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'biodata.html';
             }, 600); // Match CSS animation duration for smoother transition
         } else {
             console.log('Adding swipe-to-portfolio class and navigating to portfolio.html');
@@ -49,14 +49,14 @@ document.addEventListener('keydown', (e) => {
             // Navigate back to biodata with reverse swipe animation
             document.body.classList.add('swipe-to-biodata', 'user-triggered');
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'biodata.html';
             }, 450);
         }
         // Right arrow on portfolio page could also navigate back (alternative)
         if (e.key === 'ArrowRight') {
             document.body.classList.add('swipe-to-biodata', 'user-triggered');
             setTimeout(() => {
-                window.location.href = 'index.html';
+                window.location.href = 'biodata.html';
             }, 450);
         }
     } else {

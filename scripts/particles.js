@@ -1,5 +1,5 @@
 // Enhanced particles with better visibility for both light and dark themes
-// This configuration is used by both index.html and portfolio.html
+// This configuration is used by both biodata.html and portfolio.html
 
 // Wait for DOM to be ready and particles container to exist
 function initParticles() {

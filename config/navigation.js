@@ -4,7 +4,7 @@ const navigationConfig = {
     items: [
         {
             text: 'Biodata',
-            url: 'index.html',
+            url: 'biodata.html',
             priority: 1,
             icon: '📜️', // Optional icon
             showInNav: true
@@ -18,14 +18,14 @@ const navigationConfig = {
         },
         // {
         //     text: 'Experience',
-        //     url: 'index.html#education-profession',
+        //     url: 'biodata.html#education-profession',
         //     priority: 3,
         //     icon: '💼',
         //     showInNav: true
         // }
         // {
         //     text: 'Interests',
-        //     url: 'index.html#hobbies-interests',
+        //     url: 'biodata.html#hobbies-interests',
         //     priority: 4,
         //     icon: '🎯',
         //     showInNav: true
@@ -46,7 +46,7 @@ const navigationConfig = {
         // },
         {
             text: 'Contact',
-            url: 'index.html#contact',
+            url: 'biodata.html#contact',
             priority: 7,
             icon: '📞',
             showInNav: true

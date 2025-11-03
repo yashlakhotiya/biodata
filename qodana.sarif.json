@@ -25506,7 +25506,7 @@
                 },
                 "fullDescription": {
                   "text": "Detects duplicated job usages in GitLab CI/CD Configuration file. For more information on job references, see the GitLab documentation. Inspection ID: DuplicatedJobUsage",
-                  "markdown": "Detects duplicated job usages in GitLab CI/CD Configuration file.\n\n\nFor more information on job references, see the [GitLab documentation](https://docs.gitlab.com/ee/ci/jobs/index.html).\n\nInspection ID: DuplicatedJobUsage"
+                  "markdown": "Detects duplicated job usages in GitLab CI/CD Configuration file.\n\n\nFor more information on job references, see the [GitLab documentation](https://docs.gitlab.com/ee/ci/jobs/biodata.html).\n\nInspection ID: DuplicatedJobUsage"
                 },
                 "defaultConfiguration": {
                   "enabled": false,
@@ -25540,7 +25540,7 @@
                 },
                 "fullDescription": {
                   "text": "Detects unresolved stage references in GitLab CI/CD Configuration file. For more information on stage references, see the GitLab documentation. Inspection ID: UndefinedStage",
-                  "markdown": "Detects unresolved stage references in GitLab CI/CD Configuration file.\n\n\nFor more information on stage references, see the [GitLab documentation](https://docs.gitlab.com/ee/ci/yaml/index.html#stages).\n\nInspection ID: UndefinedStage"
+                  "markdown": "Detects unresolved stage references in GitLab CI/CD Configuration file.\n\n\nFor more information on stage references, see the [GitLab documentation](https://docs.gitlab.com/ee/ci/yaml/biodata.html#stages).\n\nInspection ID: UndefinedStage"
                 },
                 "defaultConfiguration": {
                   "enabled": false,
@@ -25574,7 +25574,7 @@
                 },
                 "fullDescription": {
                   "text": "Detects unresolved job references in GitLab CI/CD Configuration file. For more information on job references, see the GitLab documentation. Inspection ID: UndefinedJob",
-                  "markdown": "Detects unresolved job references in GitLab CI/CD Configuration file.\n\n\nFor more information on job references, see the [GitLab documentation](https://docs.gitlab.com/ee/ci/jobs/index.html).\n\nInspection ID: UndefinedJob"
+                  "markdown": "Detects unresolved job references in GitLab CI/CD Configuration file.\n\n\nFor more information on job references, see the [GitLab documentation](https://docs.gitlab.com/ee/ci/jobs/biodata.html).\n\nInspection ID: UndefinedJob"
                 },
                 "defaultConfiguration": {
                   "enabled": false,
