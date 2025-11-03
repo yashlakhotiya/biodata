@@ -6,7 +6,7 @@ const navigationConfig = {
             text: 'Biodata',
             url: 'index.html',
             priority: 1,
-            icon: '📄', // Optional icon
+            icon: '📜️', // Optional icon
             showInNav: true
         },
         {
@@ -22,7 +22,7 @@ const navigationConfig = {
         //     priority: 3,
         //     icon: '💼',
         //     showInNav: true
-        // },
+        // }
         // {
         //     text: 'Interests',
         //     url: 'index.html#hobbies-interests',
@@ -34,7 +34,7 @@ const navigationConfig = {
             text: 'Portfolio',
             url: 'portfolio.html',
             priority: 5,
-            icon: '🖥️',
+            icon: '💼️',
             showInNav: true
         },
         // {
@@ -48,7 +48,7 @@ const navigationConfig = {
             text: 'Contact',
             url: 'index.html#contact',
             priority: 7,
-            icon: '📧',
+            icon: '📞',
             showInNav: true
         },
         // {
