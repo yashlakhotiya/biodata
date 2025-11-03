@@ -8,6 +8,15 @@
   box-sizing: border-box;
 }
 
+.header__nav-link .nav-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.header__nav-link .nav-text {
+  line-height: 1.1;
+}
+
 /* ==================== BASE HEADER COMPONENT ==================== */
 
 .header {
@@ -122,6 +131,9 @@
 }
 
 .header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   color: var(--text-primary) !important;
   text-decoration: none !important;
   font-weight: 500;
