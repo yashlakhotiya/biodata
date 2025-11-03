@@ -4,122 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome - Prakirti Lakhotiya</title>
-    <meta name="description" content="Welcome to Prakirti's space — backend developer, cinematographer, astrophotographer, and music producer.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.wiggleframes.com/">
-    <meta property="og:title" content="Welcome to Prakirti's Space">
-    <meta property="og:description" content="Backend developer blending distributed systems expertise with cinematography, astrophotography, and music production.">
-    <meta property="og:image" content="https://www.wiggleframes.com/assets/images/photo2.jpg">
-    
+    <meta name="description" content="Welcome to Prakirti's space – backend developer, cinematographer, astrophotographer, and music producer.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="themes/light-theme.css" />
-    <link rel="stylesheet" href="themes/dark-theme.css" />
-    <link rel="stylesheet" href="styles/landing.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/landing.css">
 </head>
 <body>
-    <!-- Solar Eclipse Background Animation -->
-    <div class="eclipse-container">
+
+<!-- Night Sky Background -->
+<div class="night-sky"></div>
+
+<!-- Animated Stars -->
+<canvas class="stars stars-layer1" id="stars1"></canvas>
+<canvas class="stars stars-layer2" id="stars2"></canvas>
+<canvas class="stars stars-layer3" id="stars3"></canvas>
+
+<!-- Realistic Eclipse -->
+<div class="eclipse-container">
+    <div class="eclipse-glow"></div>
         <div class="sun"></div>
-        <div class="moon"></div>
-        <div class="corona"></div>
-        <div class="eclipse-glow"></div>
+
+    <!-- Place the moon as a sibling so it can be absolutely positioned on top of the sun -->
+    <div class="moon">
     </div>
 
-    <!-- Stars Background -->
-    <div class="stars"></div>
-    <div class="stars2"></div>
-    <div class="stars3"></div>
+    <div class="corona"></div>
+    <div class="solar-prominence prominence-1"></div>
+    <div class="solar-prominence prominence-2"></div>
+    <div class="solar-prominence prominence-3"></div>
+</div>
 
-    <!-- Theme Toggle -->
-    <button class="theme-toggle-landing" id="theme-toggle-landing" aria-label="Toggle dark mode">
-        <span class="theme-icon">🌙</span>
-    </button>
+<!-- Main Content -->
+<main class="landing-container">
+    <div class="landing-content">
+        <h1 class="landing-title">
+            Welcome to <span class="name-highlight">Prakirti's</span> Space
+        </h1>
 
-    <!-- Main Content -->
-    <div class="landing-container">
-        <div class="landing-content">
-            <!-- Om Symbol -->
-            <div class="om-symbol">ॐ</div>
-            
-            <!-- Welcome Text -->
-            <h1 class="landing-title">
-                Welcome to <span class="name-highlight">Prakirti's</span> Space
-            </h1>
-            
-            <div class="landing-subtitle">
-                <span class="subtitle-line">Backend Developer</span>
-                <span class="separator">•</span>
-                <span class="subtitle-line">Cinematographer</span>
-                <span class="separator">•</span>
-                <span class="subtitle-line">Astrophotographer</span>
-            </div>
-
-            <!-- Brief Introduction -->
-            <div class="intro-snippet">
-                <p>Calm, introverted, and thoughtful. Building resilient systems by day, capturing the cosmos by night, crafting melodies that speak when words fall short.</p>
-                <p class="intro-highlight">Choosing substance over spectacle. Building kindness quietly. Nurturing family peace.</p>
-            </div>
-
-            <!-- CTA Buttons -->
-            <div class="cta-buttons">
-                <a href="about-me.html" class="cta-button cta-primary">
-                    <span class="button-icon">👤</span>
-                    <span class="button-text">Know More About Me</span>
-                </a>
-                <a href="biodata.html" class="cta-button cta-secondary">
-                    <span class="button-icon">📜</span>
-                    <span class="button-text">View Biodata</span>
-                </a>
-                <a href="portfolio.html" class="cta-button cta-tertiary">
-                    <span class="button-icon">💼</span>
-                    <span class="button-text">Portfolio</span>
-                </a>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div class="scroll-indicator">
-                <div class="scroll-text">Explore</div>
-                <div class="scroll-arrow">↓</div>
-            </div>
+        <div class="landing-subtitle">
+            <span class="subtitle-line">Backend Developer</span>
+            <span class="separator">•</span>
+            <span class="subtitle-line">Cinematographer</span>
+            <span class="separator">•</span>
+            <span class="subtitle-line">Astrophotographer</span>
         </div>
+
+        <div class="intro-snippet">
+            <p>Calm, introverted, and thoughtful. Building resilient systems by day, capturing the cosmos by night, crafting melodies that speak when words fall short.</p>
+            <p class="intro-highlight">Choosing substance over spectacle. Building kindness quietly. Nurturing family peace.</p>
+        </div>
+
+        <div class="cta-buttons">
+            <a href="biodata.html" class="cta-button cta-secondary">
+                <span class="button-icon">📜</span>
+                <span class="button-text">View Biodata</span>
+            </a>
+            <a href="about-me.html" class="cta-button cta-primary">
+                <span class="button-icon">👤</span>
+                <span class="button-text">Know More About Me</span>
+            </a>
+            <a href="portfolio.html" class="cta-button cta-tertiary">
+                <span class="button-icon">💼</span>
+                <span class="button-text">Portfolio</span>
+            </a>
+        </div>
+
     </div>
+</main>
 
-    <!-- Scripts -->
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle-landing');
-        const themeIcon = themeToggle.querySelector('.theme-icon');
-        
-        function loadTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+<script>
+    // Generate realistic stars on canvas
+    function generateStars(canvas, starCount, size) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+
+        for (let i = 0; i < starCount; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * size,
+                opacity: Math.random() * 0.8 + 0.2,
+                twinkleSpeed: Math.random() * 0.02 + 0.005
+            });
         }
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-            localStorage.setItem('theme', newTheme);
-        });
-        
-        loadTheme();
 
-        // Eclipse Animation Trigger
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                document.querySelector('.eclipse-container').classList.add('active');
-            }, 500);
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.opacity += star.twinkleSpeed;
+                if (star.opacity >= 1 || star.opacity <= 0.2) {
+                    star.twinkleSpeed *= -1;
+                }
+
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Responsive resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
-    </script>
+    }
+
+    // Initialize star layers with different densities
+    generateStars(document.getElementById('stars1'), 150, 1.5);
+    generateStars(document.getElementById('stars2'), 100, 1);
+    generateStars(document.getElementById('stars3'), 80, 0.8);
+</script>
+<script src="scripts/eclipse-animation.js"></script>
 </body>
 </html>

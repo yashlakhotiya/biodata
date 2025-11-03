@@ -28,11 +28,9 @@ class Header {
     try {
       // Load header template
       const response = await fetch('components/header.html');
-      const html = await response.text();
-      
-      // Insert the header HTML
-      this.headerContainer.innerHTML = html;
-      
+      // Insert the header HTML (assign response text directly)
+      this.headerContainer.innerHTML = await response.text();
+
       // Initialize navigation
       this.initializeNavigation();
       
@@ -87,19 +85,12 @@ class Header {
     // Get DOM elements
     this.mobileToggle = document.getElementById('mobile-toggle');
     this.mainNav = document.getElementById('main-nav');
-    this.themeToggle = document.getElementById('theme-toggle');
-    this.themeIcon = document.querySelector('.theme-icon');
-    
+
     if (!this.primaryNav) this.primaryNav = document.getElementById('primary-nav');
     if (!this.secondaryNav) this.secondaryNav = document.getElementById('secondary-nav');
 
     if (this.mobileToggle) {
       this.mobileToggle.addEventListener('click', () => this.toggleMobileMenu());
-    }
-
-    if (this.themeToggle) {
-      this.themeToggle.addEventListener('click', () => this.toggleTheme());
-      this.loadThemePreference();
     }
 
     let resizeTimer;
@@ -276,30 +267,6 @@ class Header {
     this.mobileToggle.setAttribute('aria-expanded', 'false');
     this.mainNav.classList.remove('header__nav--active');
     document.body.classList.remove('menu-open');
-  }
-
-  toggleTheme() {
-    if (!this.themeIcon) return;
-
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-    // Update theme
-    document.documentElement.setAttribute('data-theme', newTheme);
-
-    // Update icon
-    this.themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-
-    // Save preference
-    localStorage.setItem('theme', newTheme);
-  }
-
-  loadThemePreference() {
-    if (!this.themeIcon) return;
-
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    this.themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
   }
 }
 

@@ -1,6 +1,21 @@
-/* ===== LANDING PAGE STYLES ===== */
+:root {
+    --primary-maroon: #8B0000;
+    --saffron: #FF9933;
+    --gold: #FFD700;
+    --text-primary: #e8e8e8;
+    --text-secondary: #b8b8b8;
+    --solar-flare-scale: 1;
+    --solar-flare-opacity: 0.6;
 
-/* Reset and Base */
+    /* Responsive sizing variables */
+    --sun-size: clamp(220px, 30vw, 500px);
+    /* Make moon slightly larger than sun to guarantee full coverage across devices */
+    --moon-size: calc(var(--sun-size) * 1.02);
+    --eclipse-height: calc(var(--sun-size) * 0.9);
+
+    --eclipse-center-top: calc(-1 * var(--sun-size) / 2);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,255 +23,293 @@
 }
 
 body {
-    font-family: var(--font-sans, 'Poppins', sans-serif);
+    font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
-    background: var(--bg-primary);
+    background: #000000;
     color: var(--text-primary);
     position: relative;
     min-height: 100vh;
 }
 
-/* ==================== SOLAR ECLIPSE ANIMATION ==================== */
-
-.eclipse-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
-    z-index: 1;
-    opacity: 0;
-    animation: fadeInEclipse 2s ease-out forwards;
+/* Prevent horizontal overflow at root (avoid scrollbars from small oversize elements) */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* ensure no horizontal scrollbar */
 }
 
-.eclipse-container.active .moon {
-    animation: eclipseMovement 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-}
-
-@keyframes fadeInEclipse {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Sun */
-.sun {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #FFD700, #FF8C00, #FF4500);
-    box-shadow: 
-        0 0 60px rgba(255, 215, 0, 0.8),
-        0 0 120px rgba(255, 140, 0, 0.6),
-        0 0 180px rgba(255, 69, 0, 0.4),
-        inset 0 0 50px rgba(255, 255, 255, 0.2);
-    animation: sunPulse 4s ease-in-out infinite;
-}
-
-@keyframes sunPulse {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 
-            0 0 60px rgba(255, 215, 0, 0.8),
-            0 0 120px rgba(255, 140, 0, 0.6),
-            0 0 180px rgba(255, 69, 0, 0.4);
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.05);
-        box-shadow: 
-            0 0 80px rgba(255, 215, 0, 0.9),
-            0 0 140px rgba(255, 140, 0, 0.7),
-            0 0 200px rgba(255, 69, 0, 0.5);
-    }
-}
-
-/* Moon */
-.moon {
-    position: absolute;
-    top: 50%;
-    left: -100px;
-    transform: translate(-50%, -50%);
-    width: 210px;
-    height: 210px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, #2a2a2a, #0a0a0a);
-    box-shadow: 
-        inset 20px -20px 40px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(0, 0, 0, 0.8);
-    z-index: 3;
-}
-
-@keyframes eclipseMovement {
-    0% {
-        left: -100px;
-    }
-    25% {
-        left: 50%;
-    }
-    50% {
-        left: 50%;
-    }
-    75% {
-        left: 50%;
-    }
-    100% {
-        left: calc(100% + 100px);
-    }
-}
-
-/* Corona Effect During Eclipse */
-.corona {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    opacity: 0;
-    background: radial-gradient(
-        circle,
-        transparent 80px,
-        rgba(255, 215, 0, 0.3) 90px,
-        rgba(255, 140, 0, 0.2) 110px,
-        transparent 120px
-    );
-    animation: coronaGlow 8s ease-in-out infinite;
-    z-index: 2;
-}
-
-@keyframes coronaGlow {
-    0%, 100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    25% {
-        opacity: 0;
-    }
-    40%, 60% {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-    75% {
-        opacity: 0;
-    }
-}
-
-/* Eclipse Glow */
-.eclipse-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255, 215, 0, 0.15),
-        transparent 70%
-    );
-    animation: glowPulse 4s ease-in-out infinite;
-    z-index: 0;
-}
-
-@keyframes glowPulse {
-    0%, 100% {
-        opacity: 0.5;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        opacity: 0.8;
-        transform: translate(-50%, -50%) scale(1.2);
-    }
-}
-
-/* ==================== STARRY BACKGROUND ==================== */
-
-.stars, .stars2, .stars3 {
+/* ==================== REALISTIC NIGHT SKY ==================== */
+.night-sky {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
+    background: radial-gradient(ellipse at top, #0a1128 0%, #000000 100%);
 }
 
+/* Multiple star layers for depth */
 .stars {
-    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNGRkYiIGZpbGwtb3BhY2l0eT0iMC44Ii8+PC9zdmc+') repeat;
-    background-size: 2px 2px;
-    animation: starsMove 100s linear infinite;
-    opacity: 0.3;
-}
-
-.stars2 {
-    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNGRkYiIGZpbGwtb3BhY2l0eT0iMC42Ii8+PC9zdmc+') repeat;
-    background-size: 3px 3px;
-    animation: starsMove 150s linear infinite;
-    opacity: 0.2;
-}
-
-.stars3 {
-    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNGRkYiIGZpbGwtb3BhY2l0eT0iMC40Ii8+PC9zdmc+') repeat;
-    background-size: 1px 1px;
-    animation: starsMove 200s linear infinite;
-    opacity: 0.15;
-}
-
-@keyframes starsMove {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-1000px);
-    }
-}
-
-/* Dark theme stars brightness */
-[data-theme="dark"] .stars,
-[data-theme="dark"] .stars2,
-[data-theme="dark"] .stars3 {
-    opacity: 0.6;
-}
-
-/* ==================== THEME TOGGLE ==================== */
-
-.theme-toggle-landing {
     position: fixed;
-    top: 2rem;
-    right: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 215, 0, 0.2);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: block; /* prevent inline gaps and ensure full-bleed canvas */
+    will-change: transform;
+}
+
+.stars-layer1 {
+    background: transparent;
+    animation: twinkle1 5s ease-in-out infinite;
+}
+
+.stars-layer2 {
+    background: transparent;
+    animation: twinkle2 7s ease-in-out infinite 1s;
+}
+
+.stars-layer3 {
+    background: transparent;
+    animation: twinkle3 9s ease-in-out infinite 2s;
+}
+
+@keyframes twinkle1 {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes twinkle2 {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+}
+
+@keyframes twinkle3 {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.7; }
+}
+
+/* ==================== REALISTIC ECLIPSE ANIMATION ==================== */
+.eclipse-container {
+    position: fixed;
+    top: 0; /* place at top of viewport */
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--sun-size);
+    height: var(--eclipse-height);
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+}
+
+/* Sun as full circle, pushed up so only bottom half is visible in viewport */
+.sun {
+    position: absolute;
+    left: 50%;
+    /* Desktop: center is above viewport so only lower arc shows */
+    top: var(--eclipse-center-top);
+    transform: translateX(-50%);
+    width: var(--sun-size);
+    height: var(--sun-size);
     border-radius: 50%;
-    color: var(--text-primary);
-    cursor: pointer;
-    padding: 0.75rem;
-    font-size: 1.5rem;
-    line-height: 1;
+    background: radial-gradient(circle at 50% 35%,
+        #fffae6 0%,
+        #ffe680 15%,
+        #ffdb4d 30%,
+        #ffa500 60%,
+        #ff8c00 80%,
+        #ff6b00 100%
+    );
+    box-shadow:
+        0 0 60px rgba(255, 220, 100, 0.9),
+        0 0 120px rgba(255, 180, 50, 0.6);
+    z-index: 4;
+    overflow: visible;
+}
+
+/* Moon as full circle, same size and exact same position so it can fully cover the sun */
+.moon {
+    position: absolute;
+    left: 50%;
+    /* center horizontally the same as sun; don't translate vertically so top acts as the element's top */
+    transform: translateX(-50%);
+    /* Align moon center to match sun center on desktop */
+    top: var(--eclipse-center-top);
+    width: var(--moon-size);
+    height: var(--moon-size);
+    border-radius: 50%;
+    background: #000;
+    z-index: 60 !important; /* ensure moon is above everything */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    z-index: 100;
 }
 
-.theme-toggle-landing:hover {
-    transform: scale(1.1) rotate(15deg);
-    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.3);
+/* Ensure corona and glow sit behind the moon visually */
+.corona, .eclipse-glow, .solar-prominence {
+    z-index: 2;
+}
+
+/* Corona effect - centered on sun */
+.corona {
+    position: absolute;
+    left: 50%;
+    top: var(--eclipse-center-top);
+    transform: translateX(-50%);
+    width: calc(var(--sun-size) * 1.6);
+    height: calc(var(--sun-size) * 1.6);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,240,200,0.15) 0%, rgba(255,200,120,0.0) 60%);
+    filter: blur(calc(var(--sun-size) * 0.04));
+    z-index: 3; /* behind sun but above background */
+    pointer-events: none;
+}
+
+/* Atmospheric glow */
+.eclipse-glow {
+    position: absolute;
+    left: 50%;
+    top: var(--eclipse-center-top);
+    transform: translateX(-50%);
+    width: calc(var(--sun-size) * 1.4);
+    height: calc(var(--sun-size) * 1.4);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,240,200,0.06) 0%, rgba(255,200,120,0.0) 60%);
+    filter: blur(calc(var(--sun-size) * 0.06));
+    z-index: 2; /* behind corona */
+    pointer-events: none;
+}
+
+/* Solar prominences positioned relative to sun center */
+.solar-prominence {
+    position: absolute;
+    left: 50%;
+    top: var(--eclipse-center-top);
+    transform: translateX(-50%);
+    width: calc(var(--sun-size) * 1.25);
+    height: calc(var(--sun-size) * 1.25);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Om symbol kept visible within moon semicircle */
+.om-symbol {
+    font-size: clamp(1.6rem, 3vw, 3rem);
+    color: var(--gold);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :root { --eclipse-center-top: calc(40px - var(--sun-size) / 2); }
+
+    /* Make sun a bit smaller and ensure it doesn't shift too far up */
+    :root { --sun-size: 300px; }
+
+    /* Ensure the container is tall enough to show the glow + sun */
+    .eclipse-container {
+        height: calc(var(--sun-size) * 0.9 + 10vh);
+    }
+
+    /* Keep sun/moon centered but place their center near 40px from top so lower arc is visible */
+    .sun {
+        left: 50%;
+        transform: translateX(-50%);
+        top: var(--eclipse-center-top);
+        width: var(--sun-size);
+        height: var(--sun-size);
+    }
+    
+    .moon {
+        left: 50%;
+        transform: translateX(-50%);
+        /* align moon center to the same center used for the sun so it fully covers */
+        top: 0;
+        width: var(--moon-size);
+        height: var(--moon-size);
+    }
+
+    .corona {
+        width: 400px;
+        height: 400px;
+        top: var(--eclipse-center-top);
+    }
+
+    .eclipse-glow {
+        width: 500px;
+        height: 500px;
+        top: var(--eclipse-center-top);
+    }
+
+    .solar-prominence {
+        width: 380px;
+        height: 380px;
+        top: var(--eclipse-center-top);
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Eclipse Heading - Welcome to Prakirti's Space */
+    .eclipse-heading {
+        top: 60px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root { --eclipse-center-top: calc(36px - var(--sun-size) / 2); }
+
+    .landing-content { margin: 5rem auto; padding: 1rem; }
+    .landing-title { font-size: clamp(1.6rem, 8vw, 2.6rem); } /* keep it readable but still one line */
+    .landing-subtitle { justify-content: flex-start; }
+
+    /* reduce eclipse sizes on small screens using vars */
+    :root {
+        --sun-size: clamp(160px, 42vw, 320px);
+    }
+
+    /* ensure sun/moon offset is smaller on very small screens but keep bottom visible */
+    .sun, .moon {
+        top: var(--eclipse-center-top);
+    }
+
+}
+
+/* Enforce same vertical center for sun, moon and related effects */
+.eclipse-container .sun,
+.eclipse-container .moon,
+.eclipse-container .corona,
+.eclipse-container .eclipse-glow,
+.eclipse-container .solar-prominence {
+    top: var(--eclipse-center-top) !important;
+}
+
+/* Ensure moon always slightly larger than sun and centered */
+.eclipse-container .moon {
+    width: var(--moon-size) !important;
+    height: var(--moon-size) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 60 !important; /* ensure on top */
+}
+
+@media (max-width: 768px) {
+    /* ensure moon uses small-screen center too */
+    .eclipse-container .moon {
+        top: var(--eclipse-center-top) !important;
+    }
 }
 
 /* ==================== MAIN CONTENT ==================== */
-
 .landing-container {
     position: relative;
     z-index: 10;
@@ -265,127 +318,176 @@ body {
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    box-sizing: border-box;
 }
 
 .landing-content {
-    max-width: 800px;
+    max-width: 1000px;
+    width: 100%;
     text-align: center;
-    animation: fadeInUp 1.5s ease-out forwards;
+    animation: fadeInUp 1.2s ease-out forwards;
     opacity: 0;
+    animation-delay: 0.3s;
+    margin: clamp(4rem, 12vw, 10rem) auto; /* responsive margin */
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* ==================== SUBTITLE STYLES ==================== */
+.landing-subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    margin: 1.5rem auto 2.5rem;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0.5rem 0;
+}
+
+.subtitle-line {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0 0.25rem;
+    position: relative;
+}
+
+.separator {
+    color: var(--gold);
+    opacity: 0.7;
+    flex-shrink: 0;
+    margin: 0;
+    display: inline-block;
+    width: 0.5rem;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .landing-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-subtitle {
+        font-size: 1rem;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem;
+        scrollbar-width: none;
+    }
+    
+    .landing-subtitle::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .subtitle-line, .separator {
+        flex-shrink: 0;
+    }
 }
 
 @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-    from {
-        opacity: 0;
-        transform: translateY(30px);
     }
 }
 
 /* Om Symbol */
 .om-symbol {
     font-size: 3rem;
-    color: var(--primary-maroon, #8B0000);
+    color: var(--gold);
     margin-bottom: 1.5rem;
-    animation: omGlow 3s ease-in-out infinite;
+    animation: omGlow 4s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
 }
 
 @keyframes omGlow {
     0%, 100% {
-        text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         transform: scale(1);
     }
     50% {
-        text-shadow: 0 0 20px rgba(139, 0, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.4);
+        text-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 50px rgba(255, 153, 51, 0.5);
         transform: scale(1.05);
     }
 }
 
-[data-theme="dark"] .om-symbol {
-    color: var(--gold, #FFD700);
-}
-
 /* Landing Title */
 .landing-title {
-    font-family: var(--font-heading, 'Playfair Display', serif);
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 6vw, 4rem);
     font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    margin-bottom: 1rem;
+    line-height: 1.15;
     background: linear-gradient(
-        135deg,
-        var(--primary-maroon, #8B0000) 0%,
-        var(--saffron, #FF9933) 50%,
-        var(--gold, #FFD700) 100%
+            135deg,
+            var(--gold) 0%,
+            var(--saffron) 50%,
+            var(--primary-maroon) 100%
     );
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: titleShimmer 3s ease-in-out infinite;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    white-space: normal; /* allow wrapping */
+    overflow-wrap: anywhere; /* better breaking for long words */
 }
 
-@keyframes titleShimmer {
-    0%, 100% {
-        filter: brightness(1);
-    }
-    50% {
-        filter: brightness(1.2);
-    }
-}
-
-.landing-title .highlight {
-    color: var(--primary-maroon, #8B0000);
-    font-weight: 700;
-    position: relative;
-    z-index: 1;
-}
-
-[data-theme="dark"] .landing-title .highlight {
-    color: var(--gold, #FFD700);
-}
-
-/* Remove any moving gray rectangle animation */
-.landing-title .highlight::before,
-.landing-title .highlight::after {
-    display: none !important;
-}
-
-/* Subtitle */
+/* Subtitle: allow wrapping and scrolling fallback; hide scrollbars visually */
 .landing-subtitle {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0.75rem;
+    flex-wrap: wrap; /* allow items to wrap */
     font-size: clamp(0.9rem, 2vw, 1.2rem);
     font-weight: 300;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     color: var(--text-secondary);
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
-.subtitle-line {
-    font-style: italic;
+/* Make sure individual subtitle segments can shrink/wrap */
+.subtitle-line, .separator {
+    flex-shrink: 1;
+    min-width: 0;
+    white-space: normal;
 }
 
-.separator {
-    color: var(--saffron, #FF9933);
-    font-weight: 700;
-}
+/* Hide native scrollbars when overflow occurs visually but preserve scrolling on touch */
+.landing-subtitle::-webkit-scrollbar { display: none; }
+.landing-subtitle { scrollbar-width: none; }
 
 /* Intro Snippet */
 .intro-snippet {
     max-width: 600px;
     margin: 0 auto 3rem;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 215, 0, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: introFloat 6s ease-in-out infinite;
+}
+
+@keyframes introFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .intro-snippet p {
@@ -402,36 +504,38 @@ body {
 .intro-highlight {
     font-style: italic;
     font-weight: 500;
-    color: var(--primary-maroon, #8B0000);
+    color: var(--gold);
 }
 
-[data-theme="dark"] .intro-highlight {
-    color: var(--gold, #FFD700);
-}
-
-/* ==================== CTA BUTTONS ==================== */
-
+/* CTA Buttons */
 .cta-buttons {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
+    margin: 0 auto 4rem;
+    max-width: 100%;
+    padding: 0 1rem;
 }
 
 .cta-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    min-width: 200px;
+    text-align: center;
+    margin: 0.5rem 0;
 }
 
 .cta-button::before {
@@ -442,14 +546,14 @@ body {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.6s ease, height 0.6s ease;
 }
 
 .cta-button:hover::before {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .button-icon {
@@ -463,65 +567,51 @@ body {
     z-index: 1;
 }
 
-/* Primary Button */
 .cta-primary {
-    background: linear-gradient(135deg, var(--primary-maroon, #8B0000), var(--saffron, #FF9933));
-    color: white;
+    background: linear-gradient(135deg, var(--gold), var(--saffron));
+    color: #000;
     border: 2px solid transparent;
 }
 
 .cta-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
 }
 
-/* Secondary Button */
 .cta-secondary {
     background: transparent;
-    color: var(--primary-maroon, #8B0000);
-    border: 2px solid var(--primary-maroon, #8B0000);
+    color: var(--gold);
+    border: 2px solid var(--gold);
 }
 
 .cta-secondary:hover {
-    background: var(--primary-maroon, #8B0000);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(139, 0, 0, 0.3);
+    background: var(--gold);
+    color: #000;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
 }
 
-[data-theme="dark"] .cta-secondary {
-    color: var(--gold, #FFD700);
-    border-color: var(--gold, #FFD700);
-}
-
-[data-theme="dark"] .cta-secondary:hover {
-    background: var(--gold, #FFD700);
-    color: var(--bg-primary);
-}
-
-/* Tertiary Button */
 .cta-tertiary {
     background: transparent;
-    color: var(--saffron, #FF9933);
-    border: 2px solid var(--saffron, #FF9933);
+    color: var(--saffron);
+    border: 2px solid var(--saffron);
 }
 
 .cta-tertiary:hover {
-    background: var(--saffron, #FF9933);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 153, 51, 0.3);
+    background: var(--saffron);
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 153, 51, 0.4);
 }
 
-/* ==================== SCROLL INDICATOR ==================== */
-
+/* Scroll Indicator */
 .scroll-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    animation: scrollBounce 2s ease-in-out infinite;
-    opacity: 0.6;
+    animation: scrollBounce 2.5s ease-in-out infinite;
+    opacity: 0.7;
 }
 
 .scroll-text {
@@ -533,109 +623,161 @@ body {
 
 .scroll-arrow {
     font-size: 1.5rem;
-    color: var(--primary-maroon, #8B0000);
-}
-
-[data-theme="dark"] .scroll-arrow {
-    color: var(--gold, #FFD700);
+    color: var(--gold);
 }
 
 @keyframes scrollBounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(15px); }
 }
 
-/* ==================== RESPONSIVE DESIGN ==================== */
-
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
-    .eclipse-container {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .sun {
-        width: 140px;
-        height: 140px;
-    }
-    
-    .moon {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .corona {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .eclipse-glow {
-        width: 220px;
-        height: 220px;
-    }
-    
     .landing-content {
-        padding: 1rem;
+        margin-top: 15%;
     }
-    
-    .om-symbol {
-        font-size: 2rem;
+
+    /* Keep sun/moon full-circle sizing consistent; only adjust size via the root variable */
+    :root { --sun-size: 300px; }
+
+    .eclipse-container {
+        height: calc(var(--sun-size) * 0.9 + 10vh);
     }
-    
-    .intro-snippet {
-        padding: 1.5rem;
+
+    .sun, .moon {
+        left: 50%;
+        transform: translateX(-50%);
+        top: var(--eclipse-center-top); /* e.g. for 300px => -105px */
+        width: var(--sun-size);
+        height: var(--sun-size);
     }
-    
+
+    .corona {
+        width: 400px;
+        height: 400px;
+        top: var(--eclipse-center-top);
+    }
+
+    .eclipse-glow {
+        width: 500px;
+        height: 500px;
+        top: var(--eclipse-center-top);
+    }
+
+    .solar-prominence {
+        width: 380px;
+        height: 380px;
+        top: var(--eclipse-center-top);
+    }
+
     .cta-buttons {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .cta-button {
         width: 100%;
         max-width: 300px;
-        justify-content: center;
     }
-    
-    .theme-toggle-landing {
-        top: 1rem;
-        right: 1rem;
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+
+    /* Eclipse Heading - Welcome to Prakirti's Space */
+    .eclipse-heading {
+        top: 60px;
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .landing-subtitle {
-        flex-direction: column;
-        gap: 0.5rem;
+    .landing-content { margin: 5rem auto; padding: 1rem; }
+    .landing-title { font-size: clamp(1.6rem, 8vw, 2.6rem); } /* keep it readable but still one line */
+    .landing-subtitle { justify-content: flex-start; }
+
+    /* reduce eclipse sizes on small screens using vars */
+    :root {
+        --sun-size: clamp(160px, 42vw, 320px);
     }
-    
-    .separator {
-        display: none;
+
+    /* ensure sun/moon offset is smaller on very small screens but keep bottom visible */
+    .sun, .moon {
+        top: var(--eclipse-center-top);
     }
+
 }
 
-/* ==================== DARK THEME ENHANCEMENTS ==================== */
-
-[data-theme="dark"] {
-    background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+/* Eclipse Heading - Welcome to Prakirti's Space */
+.eclipse-heading {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 24px rgba(255, 220, 120, 0.5), 0 1px 2px #000;
+    z-index: 20;
+    pointer-events: none;
+    user-select: none;
+    white-space: normal; /* allow wrapping if needed */
+    max-width: calc(100% - 2rem);
+    box-sizing: border-box;
 }
 
-[data-theme="dark"] .intro-snippet {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: rgba(255, 215, 0, 0.15);
+/* Title: allow natural wrapping, keep visual gradient and sizing */
+.landing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+    background: linear-gradient(
+            135deg,
+            var(--gold) 0%,
+            var(--saffron) 50%,
+            var(--primary-maroon) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    white-space: normal; /* allow wrapping */
+    overflow-wrap: anywhere; /* better breaking for long words */
 }
 
-[data-theme="dark"] .theme-toggle-landing {
-    background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 215, 0, 0.3);
+/* Subtitle: allow wrapping and scrolling fallback; hide scrollbars visually */
+.landing-subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap; /* allow items to wrap */
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
-[data-theme="dark"] .cta-primary {
-    background: linear-gradient(135deg, var(--gold, #FFD700), var(--saffron, #FF9933));
+/* Make sure individual subtitle segments can shrink/wrap */
+.subtitle-line, .separator {
+    flex-shrink: 1;
+    min-width: 0;
+    white-space: normal;
+}
+
+/* Hide native scrollbars when overflow occurs visually but preserve scrolling on touch */
+.landing-subtitle::-webkit-scrollbar { display: none; }
+.landing-subtitle { scrollbar-width: none; }
+
+/* Keep the final responsive adjustments intact */
+@media (max-width: 768px) {
+    .eclipse-heading { font-size: 1.4rem; top: 100px; }
+}
+
+@media (max-width: 480px) {
+    .eclipse-heading { font-size: 1.15rem; top: 88px; }
 }
