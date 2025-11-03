@@ -13,7 +13,7 @@ const workData = [
             "#ISO 400\n" +
             "\n" +
             "I hope you will like my Timelapse video.\n",
-        image: "assets/images/night_startlapse.gif",
+        image: "assets/images/night_startlapse.webp",
         link: "https://www.youtube.com/watch?v=BUAdIo5CKNo",
     },
     {
@@ -25,7 +25,7 @@ const workData = [
     {
         title: "Me, My device and The Universe",
         size: "tall-small",
-        image: "assets/images/stars_dslr.jpg",
+        image: "assets/images/stars_dslr.webp",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
@@ -43,31 +43,31 @@ const workData = [
     {
         title: "Lunar Eclipse",
         size: "small",
-        image: "assets/images/lunar_eclipse.gif",
+        image: "assets/images/lunar_eclipse.webp",
         link: "https://www.instagram.com/reel/DOks4boEgrN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
         title: "Solar Eclipse",
         size: "tall-small",
-        image: "assets/images/solar_eclipse.gif",
+        image: "assets/images/solar_eclipse.webp",
         link: "https://www.instagram.com/reel/C5jMjaqLgmq/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
         title: "Wildlife",
         size: "small",
-        image: "assets/images/wildlife.gif",
+        image: "assets/images/wildlife.webp",
         link: "https://www.instagram.com/reel/Cv3tHXstDJJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
         title: "Day to Night Timelapse",
         size: "small",
-        image: "assets/images/day_to_night_timelapse.gif",
+        image: "assets/images/day_to_night_timelapse.webp",
         link: "https://www.instagram.com/reel/DMJ_m5xSMKG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
         title: "Orion Nebula",
         size: "wide-small",
-        image: "assets/images/orion_nebula.heic",
+        image: "assets/images/orion_nebula.webp",
         link: "https://www.instagram.com/p/DBkvJ2LPin-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
@@ -79,7 +79,7 @@ const workData = [
     {
         title: "Comet C/2023 A3 (Tsuchinshan–ATLAS)",
         size: "tall-small",
-        image: "assets/images/comet.jpeg",
+        image: "assets/images/comet.webp",
         link: "https://www.instagram.com/p/DApbUEEPiLd/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
     {
