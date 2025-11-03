@@ -67,28 +67,63 @@ class FamilyDetails {
   }
 
   populateFamilyDetails() {
-    if (!this.biodataData || !this.biodataData.familyDetails) {
-      console.error('Family details data not found');
+    if (!this.biodataData) {
+      console.error('Biodata not found');
       return;
     }
 
-    const infoGrid = document.querySelector('#family-details-container .info-grid');
-    if (!infoGrid) {
-      console.error('Info grid not found in family details container');
+    const container = document.getElementById('family-details-container');
+    if (!container) {
+      console.error('Family details container not found');
       return;
     }
 
-    // Populate with family details data using shared helper
+    // Clear existing content
+    container.innerHTML = '';
+
+    // Add paternal family section
+    if (this.biodataData.paternalFamilyDetails) {
+      this.renderFamilySection(container, this.biodataData.paternalFamilyDetails);
+    } else {
+      console.warn('Paternal family details not found');
+    }
+
+    // Add maternal family section
+    if (this.biodataData.maternalFamilyDetails) {
+      this.renderFamilySection(container, this.biodataData.maternalFamilyDetails);
+    } else {
+      console.warn('Maternal family details not found');
+    }
+  }
+
+  renderFamilySection(container, familyData) {
+    // Create section container
+    const section = document.createElement('div');
+    section.className = 'family-section';
+    
+    // Add section title
+    const title = document.createElement('h3');
+    title.className = 'section-title';
+    title.textContent = familyData.title;
+    section.appendChild(title);
+    
+    // Create info grid
+    const infoGrid = document.createElement('div');
+    infoGrid.className = 'info-grid';
+    
+    // Populate the grid
     if (window.InfoItems) {
-      InfoItems.renderGrid(infoGrid, this.biodataData.familyDetails.items);
+      InfoItems.renderGrid(infoGrid, familyData.items);
     } else {
       // Fallback
-      infoGrid.innerHTML = '';
-      this.biodataData.familyDetails.items.forEach(item => {
+      familyData.items.forEach(item => {
         const infoItem = this.createInfoItem(item);
         infoGrid.appendChild(infoItem);
       });
     }
+    
+    section.appendChild(infoGrid);
+    container.appendChild(section);
   }
 
   createInfoItem(item) {

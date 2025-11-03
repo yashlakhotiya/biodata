@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatibility Assessment Questionnaire | Prakirti Lakhotiya</title>
+    <meta name="description" content="Interactive compatibility assessment covering family values, lifestyle preferences, traditions, relationship dynamics, and life philosophy." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons & Animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-4oVfX0LlwM651c01qmPvvrLpzjAU6YewsG32IOzBSSMSmc5QwDFi1Cdm42Hcps225y7sY9qsK0R12gXDKbGaxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-b47aP0Vd0YQbIZy9lEi5Vf3L7hIwrKyYVJZZzKzbwQ6vurIWBLL8GMDJ9ZhuttS60VwFGWZGpUKT2CwC6jQm9Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Theme & Component Styles -->
+    <link rel="stylesheet" href="themes/light-theme.css">
+    <link rel="stylesheet" href="themes/dark-theme.css">
+    <link rel="stylesheet" href="components/header.css">
+    <link rel="stylesheet" href="components/footer.css">
+    <link rel="stylesheet" href="components/particles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/compatibility.css">
+</head>
+<body>
+<div id="particles-js"></div>
+<div class="container">
+    <div id="header-container"></div>
+
+    <div class="compatibility-card">
+        <div class="corner-decoration top-left">卐</div>
+        <div class="corner-decoration top-right">卐</div>
+        <div class="corner-decoration bottom-left">卐</div>
+        <div class="corner-decoration bottom-right">卐</div>
+
+        <div class="ethnic-border"></div>
+
+        <section class="intro-section">
+            <h1 class="animate__animated animate__fadeInDown">Compatibility Assessment Questionnaire</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">
+                This assessment explores core values, lifestyle preferences, and relationship philosophies to help you understand
+                alignment in partnership. There are no right or wrong answers—only honest reflections of who you are and what you seek.
+            </p>
+        </section>
+
+        <section class="guidance-section">
+            <h2 class="section-title">
+                <span class="icon">🧭</span>
+                Assessment Guidance
+            </h2>
+            <p>
+                Responses clustering toward option A often signal traditional, family-centered outlooks. Choices leaning toward C or D suggest
+                individualistic, contemporary preferences. A balanced mix may highlight complementary perspectives that merit deeper conversation.
+            </p>
+        </section>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <form id="compatibilityForm" class="questionnaire" aria-live="polite"></form>
+
+        <div class="navigation" role="group" aria-label="Question navigation">
+            <button id="prevBtn" class="btn btn-outline" type="button" disabled>
+                <span class="btn-label"><i class="fa-solid fa-arrow-left-long"></i> Previous</span>
+            </button>
+            <button id="nextBtn" class="btn btn-primary" type="button">
+                <span class="btn-label">Next <i class="fa-solid fa-arrow-right-long"></i></span>
+            </button>
+        </div>
+
+        <section id="resultContainer" class="result-container" aria-live="polite">
+            <div class="result-visual">
+                <div class="avatar avatar-left">👩‍🦰</div>
+                <div class="resonance-orb">
+                    <span class="orb-core"></span>
+                    <span class="orb-ring"></span>
+                    <span class="orb-ring"></span>
+                </div>
+                <div class="avatar avatar-right">👨‍💼</div>
+            </div>
+            <h2 class="result-title">Your Compatibility Snapshot</h2>
+            <p class="result-summary"></p>
+            <div class="result-pillars"></div>
+            <button id="contactBtn" class="contact-btn" type="button">
+                <span>Discover Contact Details</span>
+                <i class="fa-solid fa-heart"></i>
+            </button>
+        </section>
+
+        <section id="contactSection" class="contact-section" aria-live="polite">
+            <h2 class="section-title">
+                <span class="icon">📬</span>
+                Contact Information
+            </h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                    <div>
+                        <p class="contact-label">Email</p>
+                        <p class="contact-value"><a href="mailto:prakirti@wiggleframes.com">prakirti@wiggleframes.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+                    <div>
+                        <p class="contact-label">Phone</p>
+                        <p class="contact-value"><a href="tel:+917984104205">+91 79841 04205</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                    <div>
+                        <p class="contact-label">WhatsApp</p>
+                        <p class="contact-value"><a href="https://wa.me/917984104205" target="_blank" rel="noreferrer noopener">Message on WhatsApp</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-container"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="scripts/particles.js"></script>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script src="scripts/compatibility.js" type="module"></script>
+</body>
+</html>

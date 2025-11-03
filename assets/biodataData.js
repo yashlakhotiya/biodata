@@ -57,42 +57,60 @@ const biodataData = {
         ]
     },
 
-    familyDetails: {
-        title: "Family Details",
+    paternalFamilyDetails: {
+        title: "Paternal Family Details",
         items: [
             {
-                id: "grandfather_name",
+                id: "paternal_grandfather_name",
                 label: "Grandfather's Name",
                 value: "Late Shri. Nand Kishore Lakhotiya",
                 category: "grandparents"
             },
             {
-                id: "grandmother_name",
+                id: "paternal_grandfather_occupation",
+                label: "Grandfather's Occupation",
+                value: "PA to DJ, Bundi District Court",
+                category: "grandparents-education"
+            },
+            {
+                id: "paternal_grandmother_name",
                 label: "Grandmother's Name",
                 value: "Smt. Prem Lata Lakhotiya",
                 category: "grandparents"
             },
             {
-                "id": "badepapa-1",
-                label: "Bade Papa - 1",
+                id: "badepapa_elder",
+                label: "Bade Papa (Elder)",
                 value: "Shri Bhagwan Lakhotiya",
                 category: "uncle"
             },
             {
-                "id": "badimummy-1",
-                label: "Badi Mummy - 1",
+                id: "badepapa_elder_occupation",
+                label: "Elder Bade Papa Occupation",
+                value: "Business Firm (Hadoti Rice Mill)",
+                category: "uncle-occupation"
+            },
+            {
+                id: "badi_mummy_elder",
+                label: "Elder Badi Mummy",
                 value: "Smt. Leela Lakhotiya",
                 category: "aunt"
             },
             {
-                id: "badepapa-2",
-                label: "Bade Papa - 2",
+                id: "chachaji_2",
+                label: "Chachaji (Younger)",
                 value: "Shri Murli Manohar Lakhotiya",
                 category: "uncle"
             },
             {
-                "id": "badimummy-2",
-                label: "Badi Mummy - 2",
+                id: "chachaji_2_occupation",
+                label: "Chachaji's Occupation",
+                value: "Business Firm (Hadoti Rice Mill)",
+                category: "uncle-occupation"
+            },
+            {
+                id: "chachiji_2",
+                label: "Chachiji",
                 value: "Smt. Madhu Lakhotiya",
                 category: "aunt"
             },
@@ -105,7 +123,7 @@ const biodataData = {
             {
                 id: "father_occupation",
                 label: "Father's Occupation",
-                value: "Business",
+                value: "Business Firm (Shailuma Enterprises), Dealership in Edible Oil",
                 category: "parents"
             },
             {
@@ -117,12 +135,12 @@ const biodataData = {
             {
                 id: "mother_occupation",
                 label: "Mother's Occupation",
-                value: "Vice Principal @ Government School, Gudha.",
+                value: "Vice Principal @ Government School",
                 category: "parents"
             },
             {
                 id: "brother-1",
-                label: "Brother / Sister in Law",
+                label: "Brother / Sister-in-law",
                 value: "Kartik Lakhotiya (Pursuing Ph.D. from Cleveland Clinic, USA) / CA. Radhika Maheshwari (Ajmer)",
                 category: "siblings"
             },
@@ -131,6 +149,60 @@ const biodataData = {
                 label: "Native Place",
                 value: "Bundi, Rajasthan",
                 category: "origin"
+            }
+        ]
+    },
+
+    maternalFamilyDetails: {
+        title: "Maternal Family Details",
+        items: [
+            {
+                id: "maternal_grandfather_name",
+                label: "Nana Ji's Name",
+                value: "Late Shri Brij Mohan Ji Gupta, Kota",
+                category: "grandparents"
+            },
+            {
+                id: "maternal_grandfather_occupation",
+                label: "Nana Ji's Occupation",
+                value: "Retd. AAO RAPP, Rawatbhats",
+                category: "grandparents-education"
+            },
+            {
+                id: "maternal_grandmother_name",
+                label: "Nani Ji's Name",
+                value: "Smt. Lalita Devi",
+                category: "grandparents"
+            },
+            {
+                id: "mama",
+                label: "Mama Ji",
+                value: "Shri Mahesh Gupta",
+                category: "uncle"
+            },
+            {
+                id: "mama_1_occupation",
+                label: "Mama Ji's Occupation",
+                value: "Contractor, Kota",
+                category: "uncle-occupation"
+            },
+            {
+                id: "mami_1",
+                label: "Mami Ji",
+                value: "Smt. Meenakshi Maheshwari",
+                category: "aunt"
+            },
+            {
+                id: "mausi_1",
+                label: "Mausi Ji",
+                value: "Smt. Nisha Samriya, Chittorgarh",
+                category: "aunt"
+            },
+            {
+                id: "mausa_1",
+                label: "Mausa Ji",
+                value: "Shri Sunil Samriya",
+                category: "uncle"
             }
         ]
     },
@@ -147,13 +219,13 @@ const biodataData = {
             {
                 id: "college",
                 label: "College/University",
-                value: "Manipal Institute of Technology",
+                value: "Manipal Institute of Technology, Udupi, Karnataka",
                 category: "education"
             },
             {
                 id: "occupation",
                 label: "Occupation",
-                value: "Software Engineer",
+                value: "Software Engineer, (Backend)",
                 category: "professional"
             },
             {
