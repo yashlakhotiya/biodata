@@ -61,20 +61,15 @@ const biodataData = {
         title: "Paternal Family Details",
         items: [
             {
-                id: "paternal_grandfather_name",
-                label: "Grandfather's Name",
+                id: "paternal_grandfather",
+                label: "Grandfather",
                 value: "Late Shri. Nand Kishore Lakhotiya",
+                occupation: "PA to DJ, Bundi District Court",
                 category: "grandparents"
             },
             {
-                id: "paternal_grandfather_occupation",
-                label: "Grandfather's Occupation",
-                value: "PA to DJ, Bundi District Court",
-                category: "grandparents-education"
-            },
-            {
-                id: "paternal_grandmother_name",
-                label: "Grandmother's Name",
+                id: "paternal_grandmother",
+                label: "Grandmother",
                 value: "Smt. Prem Lata Lakhotiya",
                 category: "grandparents"
             },
@@ -82,66 +77,54 @@ const biodataData = {
                 id: "badepapa_elder",
                 label: "Bade Papa (Elder)",
                 value: "Shri Bhagwan Lakhotiya",
+                occupation: "Business Firm (Hadoti Rice Mill)",
                 category: "uncle"
             },
             {
-                id: "badepapa_elder_occupation",
-                label: "Elder Bade Papa Occupation",
-                value: "Business Firm (Hadoti Rice Mill)",
-                category: "uncle-occupation"
-            },
-            {
                 id: "badi_mummy_elder",
-                label: "Elder Badi Mummy",
+                label: "Badi Mummy (Elder)",
                 value: "Smt. Leela Lakhotiya",
                 category: "aunt"
             },
             {
-                id: "chachaji_2",
-                label: "Chachaji (Younger)",
+                id: "badepapa_younger",
+                label: "Bade Papa (Younger)",
                 value: "Shri Murli Manohar Lakhotiya",
+                occupation: "Business Firm (Hadoti Rice Mill)",
                 category: "uncle"
             },
             {
-                id: "chachaji_2_occupation",
-                label: "Chachaji's Occupation",
-                value: "Business Firm (Hadoti Rice Mill)",
-                category: "uncle-occupation"
-            },
-            {
-                id: "chachiji_2",
-                label: "Chachiji",
+                id: "badi_mummy_younger",
+                label: "Badi Mummy (Younger)",
                 value: "Smt. Madhu Lakhotiya",
                 category: "aunt"
             },
             {
-                id: "father_name",
-                label: "Father's Name",
+                id: "father",
+                label: "Father",
                 value: "Shailendra Lakhotiya",
+                occupation: "Business Firm (Shailuma Enterprises), Dealership in Edible Oil, Hadoti Rice Mill",
                 category: "parents"
             },
             {
-                id: "father_occupation",
-                label: "Father's Occupation",
-                value: "Business Firm (Shailuma Enterprises), Dealership in Edible Oil",
-                category: "parents"
-            },
-            {
-                id: "mother_name",
-                label: "Mother's Name",
+                id: "mother",
+                label: "Mother",
                 value: "Uma Maheshwari",
-                category: "parents"
-            },
-            {
-                id: "mother_occupation",
-                label: "Mother's Occupation",
-                value: "Vice Principal @ Government School",
+                occupation: "Vice Principal @ Government School",
                 category: "parents"
             },
             {
                 id: "brother-1",
-                label: "Brother / Sister-in-law",
-                value: "Kartik Lakhotiya (Pursuing Ph.D. from Cleveland Clinic, USA) / CA. Radhika Maheshwari (Ajmer)",
+                label: "Brother",
+                value: "Kartik Lakhotiya",
+                occupation: "Pursuing Ph.D. from Cleveland Clinic, USA",
+                category: "siblings"
+            },
+            {
+                id: "sister_in_law-1",
+                label: "Sister In Law (Bhabhi)",
+                value: "CA. Radhika Maheshwari",
+                description: "Native: Ajmer",
                 category: "siblings"
             },
             {
@@ -157,34 +140,24 @@ const biodataData = {
         title: "Maternal Family Details",
         items: [
             {
-                id: "maternal_grandfather_name",
-                label: "Nana Ji's Name",
+                id: "maternal_grandfather",
+                label: "Nana Ji",
                 value: "Late Shri Brij Mohan Ji Gupta, Kota",
+                occupation: "Retd. AAO RAPP, Rawatbhata",
                 category: "grandparents"
             },
             {
-                id: "maternal_grandfather_occupation",
-                label: "Nana Ji's Occupation",
-                value: "Retd. AAO RAPP, Rawatbhats",
-                category: "grandparents-education"
-            },
-            {
-                id: "maternal_grandmother_name",
-                label: "Nani Ji's Name",
+                id: "maternal_grandmother",
+                label: "Nani Ji",
                 value: "Smt. Lalita Devi",
                 category: "grandparents"
             },
             {
-                id: "mama",
+                id: "mama_ji",
                 label: "Mama Ji",
                 value: "Shri Mahesh Gupta",
+                occupation: "Contractor, Kota",
                 category: "uncle"
-            },
-            {
-                id: "mama_1_occupation",
-                label: "Mama Ji's Occupation",
-                value: "Contractor, Kota",
-                category: "uncle-occupation"
             },
             {
                 id: "mami_1",

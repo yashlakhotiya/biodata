@@ -129,9 +129,14 @@ class FamilyDetails {
   createInfoItem(item) {
     const infoItem = document.createElement('div');
     infoItem.className = 'info-item';
+    const occupationHtml = item.occupation ? `<div class="info-occupation">${item.occupation}</div>` : '';
+    const descriptionHtml = item.description ? `<div class="info-description">${item.description}</div>` : '';
+
     infoItem.innerHTML = `
-      <div class="info-label">${item.label}</div>
-      <div class="info-value">${item.value}</div>
+      <div class="info-label">${item.label ?? ''}</div>
+      <div class="info-value">${item.value ?? ''}</div>
+      ${occupationHtml}
+      ${descriptionHtml}
     `;
     return infoItem;
   }

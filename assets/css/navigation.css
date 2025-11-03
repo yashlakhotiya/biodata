@@ -1,0 +1,57 @@
+/* Navigation Icons */
+.nav-icon {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+/* Ensure nav items have proper spacing with icons */
+.header__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    color: var(--text-primary);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.header__nav-link .nav-text {
+    line-height: 1.1;
+}
+
+/* Hover effect for nav items */
+.header__nav-link:hover,
+.header__nav-link:focus-visible {
+    color: var(--primary-maroon);
+    background-color: transparent;
+}
+
+/* Active state for current page */
+.header__nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Mobile menu styles */
+.header__nav-list--secondary .header__nav-link {
+    padding: 0.75rem 1.5rem;
+}
+
+/* Ensure text doesn't wrap under icon */
+.header__nav-item {
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header__nav-link {
+        padding: 0.75rem 1.25rem;
+    }
+    
+    .nav-icon {
+        margin-right: 8px;
+        font-size: 1.2em;
+    }
+}

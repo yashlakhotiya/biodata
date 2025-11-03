@@ -52,6 +52,20 @@
   font-size: 1.1em;
 }
 
+.info-occupation {
+  margin-top: 6px;
+  font-size: 0.95em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.info-description {
+  margin-top: 8px;
+  font-size: 0.95em;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
   .info-grid {
