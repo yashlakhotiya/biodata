@@ -372,15 +372,21 @@ html, body {
     .landing-subtitle {
         font-size: 1.1rem;
     }
+    
+    .separator {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
     .landing-subtitle {
         font-size: 1rem;
-        justify-content: flex-start;
-        overflow-x: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        text-align: center;
+        padding: 0.5rem 0;
+        overflow-x: visible;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 1rem;
         scrollbar-width: none;
     }
     
@@ -393,7 +399,7 @@ html, body {
     }
 
     .separator {
-       visibility: hidden;
+       display: none;
     }
 }
 
