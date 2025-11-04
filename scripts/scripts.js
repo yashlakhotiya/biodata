@@ -1,6 +1,10 @@
+// Import WorkItemsGallery
+import WorkItemsGallery from '../components/work-item.js';
+
 // Debug logging
 console.log('=== Scripts.js loaded ===');
 console.log('workData available at load:', typeof workData !== 'undefined' ? workData : 'Not loaded yet');
+
 // ==================== WORK SHOWCASE & GALLERY SETUP ==================== //
 let isShowcaseInitialized = false;
 
@@ -94,7 +98,7 @@ function populateShowcase() {
 }
 
 // Update the initialization logic at the bottom of scripts.js
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     console.log('DOM fully loaded');
 
     // Only run populateShowcase if we're on the portfolio page

@@ -1,9 +1,12 @@
+import env from '../config/env.js';
+
 /**
  * Work Items Gallery Component
  * A modular, reusable gallery component for displaying work items in a masonry layout
  *
  * @class WorkItemsGallery
  */
+
 class WorkItemsGallery {
 
     /**
@@ -173,7 +176,14 @@ class WorkItemsGallery {
         itemElement.classList.add(`size-${size}`);
 
         // Generate YouTube thumbnail if needed
-        const imageUrl = workItem.image || this.generateYouTubeThumbnail(workItem.link);
+        let imageUrl = workItem.image || this.generateYouTubeThumbnail(workItem.link);
+
+        // In work-item.js, update the image URL handling:
+        if (imageUrl && !imageUrl.startsWith('http') && !imageUrl.startsWith('//') && !imageUrl.startsWith('data:')) {
+            const cleanPath = imageUrl.startsWith('/') ? imageUrl.substring(1) : imageUrl;
+            const baseUrl = env.IS_PRODUCTION ? env.CDN_URL : env.BASE_URL;
+            imageUrl = `${baseUrl}/${cleanPath}`;
+        }
 
         // Set image properties
         if (img) {
@@ -256,8 +266,8 @@ class WorkItemsGallery {
     }
 }
 
-// Make available globally
-window.WorkItemsGallery = WorkItemsGallery;
+// Export the WorkItemsGallery class
+export default WorkItemsGallery;
 
 // ==================== LIQUID GLASS LIGHT REFLECTIONS ====================
 // Add dynamic light reflections that respond to scroll and mouse movement
