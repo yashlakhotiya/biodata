@@ -771,7 +771,8 @@ html, body {
     color: var(--text-secondary);
 }
 
-.value-card li:before {
+.value-card li:before,
+.summary-points li:before {
     content: '✦';
     position: absolute;
     left: 0;
@@ -972,27 +973,46 @@ html, body {
     margin: 4rem 0;
     text-align: center;
 }
-
 .summary-card {
     max-width: 800px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 215, 0, 0.1);
-    border-radius: 10px;
     padding: 2.5rem;
+    padding-top: 3rem;
+    border-radius: 10px;
     position: relative;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-top: 3px solid var(--gold);
     overflow: hidden;
 }
 
-.summary-card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+.summary-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+.summary-points li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.summary-points li:before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+.summary-points li strong {
+    color: var(--gold);
+    margin-right: 5px;
+}
+
+/* Removed gradient line in favor of solid border */
 
 .summary-card h3 {
     color: var(--gold);
