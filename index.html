@@ -27,12 +27,12 @@
 <!-- Realistic Eclipse -->
 <div class="eclipse-container">
     <div class="eclipse-glow"></div>
-    <div class="sun"></div>
-    <div class="moon"></div>
     <div class="corona"></div>
     <div class="solar-prominence prominence-1"></div>
     <div class="solar-prominence prominence-2"></div>
     <div class="solar-prominence prominence-3"></div>
+    <div class="sun"></div>
+    <div class="moon"></div>
 </div>
 
 <!-- Main Content -->
@@ -54,9 +54,9 @@
 
         <div class="intro-snippet">
             <div class="landing-intro" role="region" aria-label="Landing introduction">
-                <p class="intro-lead">Hello – I'm <strong class="name-highlight">Prakirti Lakhotiya</strong>, a software engineer and creative artist who blends backend systems with cinematic visuals, astrophotography, and electronic music.</p>
+                <p class="intro-lead">Hello — I'm <strong class="name-highlight">Prakirti Lakhotiya</strong>, a software engineer and creative artist who blends backend systems with cinematic visuals, astrophotography, and electronic music.</p>
 
-                <p class="intro-rich">I get curious understanding animal behavior (more fascinating than Netflix), chase the beauty of nature through a lens, and design immersive EDM soundscapes. Each project is a story – where <span class="accent">technology meets curiosity</span>.</p>
+                <p class="intro-rich">I get curious understanding animal behavior (more fascinating than Netflix), chase the beauty of nature through a lens, and design immersive EDM soundscapes. Each project is a story — where <span class="accent">technology meets curiosity</span>.</p>
 
                 <p class="intro-philosophy">Made of stardust and code: I believe everything is connected. That perspective drives me to build, explore, and create with purpose and wonder.</p>
 
@@ -68,7 +68,6 @@
 
             <div class="hero-preview" aria-hidden="false">
                 <a href="#about-me" class="scroll-down hero-scroll" aria-label="Scroll down to learn more">
-                    <div class="hero-preview-visual" aria-hidden="true"></div>
                     <span>Scroll Down to know more about Me</span>
                     <div class="arrow-down"></div>
                 </a>
@@ -134,7 +133,7 @@
             <!-- Passions Section -->
             <div class="passions-section">
                 <h3 class="section-title">My Passions & Creative Pursuits</h3>
-                <p class="section-intro">Creativity energizes me. These pursuits aren't just hobbies – they're where I feel most myself and find balance in life. These are integral parts of who I am and require dedicated time and space to truly flourish.</p>
+                <p class="section-intro">Creativity energizes me. These pursuits aren't just hobbies — they're where I feel most myself and find balance in life. These are integral parts of who I am and require dedicated time and space to truly flourish.</p>
 
                 <div class="passion-grid">
                     <div class="passion-item">
@@ -162,7 +161,7 @@
                         <i class="fas fa-guitar"></i>
                         <div class="passion-content">
                             <h4>Musical Journey</h4>
-                            <p>Learning flute, guitar, and piano while aspiring to master Indian classical music – each instrument teaches me patience and connects me to tradition.</p>
+                            <p>Learning flute, guitar, and piano while aspiring to master Indian classical music — each instrument teaches me patience and connects me to tradition.</p>
                         </div>
                     </div>
                     <div class="passion-item">
@@ -192,7 +191,7 @@
 
             <!-- What I Seek Section -->
             <div class="seeking-section">
-                <h3>What I Seek in a Life Partner</h3>
+                <h3 class="section-title">What I Seek in a Life Partner</h3>
                 <p class="section-intro">I'm drawn to someone who finds joy in family togetherness, respects parents naturally, and celebrates Maheshwari traditions like karwa chauth and teej as meaningful connections to our heritage rather than obligations.</p>
 
                 <div class="values-grid">
@@ -254,7 +253,7 @@
 
             <!-- What I'm Not Looking For -->
             <div class="not-seeking-section">
-                <h3>We Might Not Connect If</h3>
+                <h3 class="section-title">We Might Not Connect If</h3>
                 <div class="not-seeking-grid">
                     <div class="not-seeking-item" style="text-align: left;">
                         <i class="fas fa-times"></i>
@@ -311,6 +310,48 @@
     </div>
 </main>
 
-<script src="scripts/eclipse-animation.js"></script>
+<script>
+    // Star field animation
+    function createStars(canvas, count, speed) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        for (let i = 0; i < count; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                alpha: Math.random()
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.fill();
+
+                star.alpha += (Math.random() - 0.5) * 0.02;
+                star.alpha = Math.max(0.1, Math.min(1, star.alpha));
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    }
+
+    // Initialize star layers
+    createStars(document.getElementById('stars1'), 200, 0.5);
+    createStars(document.getElementById('stars2'), 150, 0.3);
+    createStars(document.getElementById('stars3'), 100, 0.2);
+</script>
 </body>
 </html>
