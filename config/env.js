@@ -6,6 +6,6 @@ const isProduction = typeof window !== 'undefined' &&
 
 export default {
     IS_PRODUCTION: isProduction,
-    BASE_URL: isProduction ? 'https://www.wiggleframes.com' : 'http://localhost:8000',
-    CDN_URL: 'https://www.wiggleframes.com'
+    BASE_URL: isProduction ? window.location.hostname : 'http://localhost:8000',
+    CDN_URL: window.location.hostname
 };
