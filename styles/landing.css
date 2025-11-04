@@ -8,12 +8,13 @@
     --solar-flare-opacity: 0.6;
 
     /* Responsive sizing variables */
-    --sun-size: clamp(220px, 30vw, 500px);
+    --sun-size: clamp(50px, 30vw, 500px);
     /* Make moon slightly larger than sun to guarantee full coverage across devices */
     --moon-size: calc(var(--sun-size) * 1.02);
-    --eclipse-height: calc(var(--sun-size) * 0.9);
 
-    --eclipse-center-top: calc(-1 * var(--sun-size) / 2);
+    /* Distance from viewport top to the eclipse center (adjusted per breakpoint) */
+    --eclipse-offset: 40px; /* default offset from top to eclipse center */
+    --eclipse-center-top: calc(var(--eclipse-offset) - (var(--sun-size) / 2));
 }
 
 * {
@@ -97,7 +98,7 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     width: var(--sun-size);
-    height: var(--eclipse-height);
+    /*height: var(--eclipse-height);*/
     z-index: 1;
     pointer-events: none;
     overflow: visible;
@@ -132,9 +133,8 @@ html, body {
 .moon {
     position: absolute;
     left: 50%;
-    /* center horizontally the same as sun; don't translate vertically so top acts as the element's top */
     transform: translateX(-50%);
-    /* Align moon center to match sun center on desktop */
+    /* Align moon center to match sun center across all breakpoints */
     top: var(--eclipse-center-top);
     width: var(--moon-size);
     height: var(--moon-size);
@@ -202,17 +202,14 @@ html, body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    :root { --eclipse-center-top: calc(40px - var(--sun-size) / 2); }
-
-    /* Make sun a bit smaller and ensure it doesn't shift too far up */
-    :root { --sun-size: 300px; }
+    :root { --eclipse-offset: 36px; /* move center a little lower on smaller screens */ }
 
     /* Ensure the container is tall enough to show the glow + sun */
     .eclipse-container {
         height: calc(var(--sun-size) * 0.9 + 10vh);
     }
 
-    /* Keep sun/moon centered but place their center near 40px from top so lower arc is visible */
+    /* Keep sun/moon centered but place their center closer to the top so lower arc is visible */
     .sun {
         left: 50%;
         transform: translateX(-50%);
@@ -220,12 +217,12 @@ html, body {
         width: var(--sun-size);
         height: var(--sun-size);
     }
-    
+
     .moon {
         left: 50%;
         transform: translateX(-50%);
-        /* align moon center to the same center used for the sun so it fully covers */
-        top: 0;
+        /* Use same center as sun so the moon fully covers it */
+        top: var(--eclipse-center-top);
         width: var(--moon-size);
         height: var(--moon-size);
     }
@@ -266,31 +263,17 @@ html, body {
 }
 
 @media (max-width: 480px) {
-    :root { --eclipse-center-top: calc(36px - var(--sun-size) / 2); }
+    :root { --eclipse-offset: 28px; }
 
     .landing-content { margin: 5rem auto; padding: 1rem; }
     .landing-title { font-size: clamp(1.6rem, 8vw, 2.6rem); } /* keep it readable but still one line */
     .landing-subtitle { justify-content: flex-start; }
 
-    /* reduce eclipse sizes on small screens using vars */
-    :root {
-        --sun-size: clamp(160px, 42vw, 320px);
-    }
-
-    /* ensure sun/moon offset is smaller on very small screens but keep bottom visible */
+    /* ensure sun/moon use the smaller offset so lower arc remains visible on very small screens */
     .sun, .moon {
         top: var(--eclipse-center-top);
     }
 
-}
-
-/* Enforce same vertical center for sun, moon and related effects */
-.eclipse-container .sun,
-.eclipse-container .moon,
-.eclipse-container .corona,
-.eclipse-container .eclipse-glow,
-.eclipse-container .solar-prominence {
-    top: var(--eclipse-center-top) !important;
 }
 
 /* Ensure moon always slightly larger than sun and centered */
@@ -300,13 +283,7 @@ html, body {
     left: 50% !important;
     transform: translateX(-50%) !important;
     z-index: 60 !important; /* ensure on top */
-}
-
-@media (max-width: 768px) {
-    /* ensure moon uses small-screen center too */
-    .eclipse-container .moon {
-        top: var(--eclipse-center-top) !important;
-    }
+    top: var(--eclipse-center-top) !important;
 }
 
 /* ==================== MAIN CONTENT ==================== */
@@ -372,7 +349,7 @@ html, body {
     .landing-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .separator {
         display: none;
     }
@@ -389,11 +366,11 @@ html, body {
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
     }
-    
+
     .landing-subtitle::-webkit-scrollbar {
         display: none;
     }
-    
+
     .subtitle-line {
         flex-shrink: 0;
     }
@@ -482,312 +459,450 @@ html, body {
 .landing-subtitle::-webkit-scrollbar { display: none; }
 .landing-subtitle { scrollbar-width: none; }
 
-/* Intro Snippet */
+/* Intro Snippet - modern hero redesign */
 .intro-snippet {
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    animation: introFloat 6s ease-in-out infinite;
+    /* move from a boxed card to a modern glass-like hero section */
+    width: 100%;
+    max-width: 1100px;
+    margin: 1.25rem auto 3rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.04);
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 1.25rem;
+    align-items: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px) saturate(1.05);
+    overflow: hidden;
+    position: relative;
 }
 
-@keyframes introFloat {
+/* Decorative vertical accent on left */
+.intro-snippet::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, var(--saffron), var(--gold));
+    opacity: 0.9;
+}
+
+/* Right panel - decorative area (can later host an SVG or small preview) */
+.intro-snippet .landing-intro + .hero-preview,
+.hero-preview {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    background: radial-gradient(1200px 400px at 30% 20%, rgba(255,200,120,0.06), transparent 10%),
+                radial-gradient(800px 300px at 70% 80%, rgba(255,150,50,0.04), transparent 8%),
+                linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: inset 0 0 30px rgba(255, 150, 40, 0.02);
+}
+
+/* small circular motif to echo eclipse theme */
+.hero-preview::after {
+    content: '';
+    width: min(46%, 160px);
+    height: min(46%, 160px);
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(255,230,180,0.95), rgba(255,160,50,0.85) 40%, rgba(255,100,0,0.6) 70%);
+    box-shadow: 0 12px 40px rgba(255,140,40,0.15), 0 2px 12px rgba(0,0,0,0.6);
+    transform: translateY(6%);
+    filter: blur(0.6px);
+}
+
+/* Text column */
+.landing-intro {
+    padding: 0.15rem 0.6rem 0.15rem 1.15rem;
+}
+
+.intro-lead {
+    font-size: clamp(1.08rem, 2.6vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.12;
+    background: linear-gradient(90deg, #fff, #ffd680 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.intro-rich {
+    font-size: clamp(0.98rem, 1.6vw, 1.05rem);
+    color: var(--text-secondary);
+    margin: 0 0 0.6rem 0;
+    line-height: 1.6;
+    max-width: 60ch;
+    overflow-wrap: anywhere;
+}
+
+.intro-philosophy {
+    font-size: 0.95rem;
+    color: rgba(232,232,232,0.85);
+    font-style: italic;
+    margin: 0 0 0.8rem 0;
+}
+
+/* CTA group modernized */
+.landing-intro-ctas {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.landing-intro-ctas .cta-button {
+    padding: 0.5rem 0.9rem;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: none;
+    transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.landing-intro-ctas .cta-primary {
+    background: linear-gradient(90deg, #ffd86b, #ff9a2e);
+    color: #1b1200;
+    border: none;
+}
+
+.landing-intro-ctas .cta-secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid rgba(255,215,0,0.14);
+}
+
+.landing-intro-ctas .cta-button:focus {
+    outline: 3px solid rgba(255,215,0,0.12);
+    outline-offset: 2px;
+}
+
+.landing-intro-ctas .cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+/* Accent underline animation for headings */
+.intro-lead-wrap { display: inline-block; position: relative; }
+.intro-lead-wrap::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    height: 4px;
+    width: 48px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    transform-origin: left center;
+    transition: transform 420ms cubic-bezier(.2,.9,.2,1);
+}
+
+.intro-lead:hover + .intro-lead-wrap::after,
+.intro-lead-wrap:hover::after { transform: scaleX(1.12); }
+
+/* Ensure no content overflows on small screens and layout stacks */
+@media (max-width: 980px) {
+    .intro-snippet { grid-template-columns: 1fr; gap: 1rem; padding: 1rem; }
+    .hero-preview { height: 160px; order: 2; }
+    .intro-snippet::before { left: 12px; top: 12px; bottom: 12px; }
+}
+
+@media (max-width: 480px) {
+    .intro-snippet { padding: 0.8rem; border-radius: 12px; }
+    .intro-snippet::before { width: 5px; }
+    .intro-lead { font-size: 1.02rem; }
+    .hero-preview::after { width: 36%; height: 36%; }
+}
+
+/* small utility: safer measure for long words/names to wrap */
+.landing-intro, .intro-rich, .intro-lead { word-break: break-word; hyphens: auto; }
+
+/* Scroll Down Container */
+.scroll-down-container {
+    position: relative;
+    width: 100%;
+    margin: 40px 0;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Scroll Down Arrow */
+.scroll-down {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--gold);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: float 2s ease-in-out infinite;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.scroll-down.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.scroll-down span {
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.arrow-down {
+    width: 30px;
+    height: 30px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+    margin-top: 5px;
+    animation: arrowPulse 1.5s infinite;
+}
+
+@keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
-.intro-snippet p {
-    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
+@keyframes arrowPulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
-.intro-snippet p:last-child {
-    margin-bottom: 0;
-}
-
-.intro-highlight {
-    font-style: italic;
-    font-weight: 500;
-    color: var(--gold);
-}
-
-/* CTA Buttons */
-.cta-buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 0 auto 4rem;
-    max-width: 100%;
-    padding: 0 1rem;
-}
-
-.cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* About Me Section - Seamless Integration */
+.about-me-section {
+    padding: 60px 20px 100px;
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    text-align: center;
-    margin: 0.5rem 0;
+    z-index: 2;
+    color: var(--text-primary);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.cta-button::before {
+.about-me-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title:after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.cta-button:hover::before {
-    width: 400px;
-    height: 400px;
-}
-
-.button-icon {
-    font-size: 1.3rem;
-    position: relative;
-    z-index: 1;
-}
-
-.button-text {
-    position: relative;
-    z-index: 1;
-}
-
-.cta-primary {
-    background: linear-gradient(135deg, var(--gold), var(--saffron));
-    color: #000;
-    border: 2px solid transparent;
-}
-
-.cta-primary:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
-}
-
-.cta-secondary {
-    background: transparent;
-    color: var(--gold);
-    border: 2px solid var(--gold);
-}
-
-.cta-secondary:hover {
+    width: 80px;
+    height: 3px;
     background: var(--gold);
-    color: #000;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.intro-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.cta-tertiary {
-    background: transparent;
-    color: var(--saffron);
-    border: 2px solid var(--saffron);
+.intro-card h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
 }
 
-.cta-tertiary:hover {
-    background: var(--saffron);
-    color: #fff;
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(255, 153, 51, 0.4);
+.intro-card p {
+    line-height: 1.8;
+    color: var(--text-secondary);
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.value-card, .passion-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.value-card h3, .passion-card h3 {
+    color: var(--gold);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.value-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.value-card li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.value-card li:before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+}
+
+.passion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.passion-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
-    animation: scrollBounce 2.5s ease-in-out infinite;
-    opacity: 0.7;
-}
-
-.scroll-text {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text-secondary);
-}
-
-.scroll-arrow {
-    font-size: 1.5rem;
-    color: var(--gold);
-}
-
-@keyframes scrollBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(15px); }
-}
-
-/* ==================== RESPONSIVE ==================== */
-@media (max-width: 768px) {
-    .landing-content {
-        margin-top: 15%;
-    }
-
-    /* Keep sun/moon full-circle sizing consistent; only adjust size via the root variable */
-    :root { --sun-size: 300px; }
-
-    .eclipse-container {
-        height: calc(var(--sun-size) * 0.9 + 10vh);
-    }
-
-    .sun, .moon {
-        left: 50%;
-        transform: translateX(-50%);
-        top: var(--eclipse-center-top); /* e.g. for 300px => -105px */
-        width: var(--sun-size);
-        height: var(--sun-size);
-    }
-
-    .corona {
-        width: 400px;
-        height: 400px;
-        top: var(--eclipse-center-top);
-    }
-
-    .eclipse-glow {
-        width: 500px;
-        height: 500px;
-        top: var(--eclipse-center-top);
-    }
-
-    .solar-prominence {
-        width: 380px;
-        height: 380px;
-        top: var(--eclipse-center-top);
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .cta-button {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    /* Eclipse Heading - Welcome to Prakirti's Space */
-    .eclipse-heading {
-        top: 60px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .landing-content { margin: 5rem auto; padding: 1rem; }
-    .landing-title { font-size: clamp(1.6rem, 8vw, 2.6rem); } /* keep it readable but still one line */
-    .landing-subtitle { justify-content: flex-start; }
-
-    /* reduce eclipse sizes on small screens using vars */
-    :root {
-        --sun-size: clamp(160px, 42vw, 320px);
-    }
-
-    /* ensure sun/moon offset is smaller on very small screens but keep bottom visible */
-    .sun, .moon {
-        top: var(--eclipse-center-top);
-    }
-
-}
-
-/* Eclipse Heading - Welcome to Prakirti's Space */
-.eclipse-heading {
-    position: absolute;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
     text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.04em;
-    text-shadow: 0 2px 24px rgba(255, 220, 120, 0.5), 0 1px 2px #000;
-    z-index: 20;
-    pointer-events: none;
-    user-select: none;
-    white-space: normal; /* allow wrapping if needed */
-    max-width: calc(100% - 2rem);
-    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(255, 215, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-/* Title: allow natural wrapping, keep visual gradient and sizing */
-.landing-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 6vw, 4rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.15;
-    background: linear-gradient(
-            135deg,
-            var(--gold) 0%,
-            var(--saffron) 50%,
-            var(--primary-maroon) 100%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    padding: 0 1rem;
-    box-sizing: border-box;
-    white-space: normal; /* allow wrapping */
-    overflow-wrap: anywhere; /* better breaking for long words */
+.passion-item:hover {
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-3px);
 }
 
-/* Subtitle: allow wrapping and scrolling fallback; hide scrollbars visually */
-.landing-subtitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    flex-wrap: wrap; /* allow items to wrap */
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    font-weight: 300;
-    margin-bottom: 2rem;
+.passion-item i {
+    font-size: 24px;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.passion-item span {
+    font-size: 14px;
     color: var(--text-secondary);
-    padding: 0 1rem;
-    box-sizing: border-box;
 }
 
-/* Make sure individual subtitle segments can shrink/wrap */
-.subtitle-line, .separator {
-    flex-shrink: 1;
-    min-width: 0;
-    white-space: normal;
+.life-philosophy {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
 }
 
-/* Hide native scrollbars when overflow occurs visually but preserve scrolling on touch */
-.landing-subtitle::-webkit-scrollbar { display: none; }
-.landing-subtitle { scrollbar-width: none; }
+.life-philosophy blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--gold);
+    position: relative;
+    padding: 0 40px;
+}
 
-/* Keep the final responsive adjustments intact */
+.life-philosophy blockquote:before,
+.life-philosophy blockquote:after {
+    content: '"';
+    font-size: 4rem;
+    color: rgba(255, 215, 0, 0.2);
+    position: absolute;
+}
+
+.life-philosophy blockquote:before {
+    top: -20px;
+    left: 0;
+}
+
+.life-philosophy blockquote:after {
+    bottom: -40px;
+    right: 0;
+}
+
+.seeking-section {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.seeking-section h3 {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.seeking-section p {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
 @media (max-width: 768px) {
-    .eclipse-heading { font-size: 1.4rem; top: 100px; }
-}
+    .intro-grid, .values-grid {
+        grid-template-columns: 1fr;
+    }
 
-@media (max-width: 480px) {
-    .eclipse-heading { font-size: 1.15rem; top: 88px; }
+    .passion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .life-philosophy blockquote {
+        font-size: 1.2rem;
+        padding: 0 20px;
+    }
 }

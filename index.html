@@ -54,80 +54,105 @@
             <span class="subtitle-line">Music Producer</span>
         </div>
 
-<!--        <div class="intro-snippet">-->
-<!--            <p>Calm, introverted, and thoughtful. Building resilient systems by day, capturing the cosmos by night, crafting melodies that speak when words fall short.</p>-->
-<!--            <p class="intro-highlight">Choosing substance over spectacle. Building kindness quietly. Nurturing family peace.</p>-->
-<!--        </div>-->
+        <div class="intro-snippet">
+            <div class="landing-intro" role="region" aria-label="Landing introduction">
+                <p class="intro-lead">Hello — I'm <strong class="name-highlight">Prakirti Lakhotiya</strong>, a software engineer and creative artist who blends backend systems with cinematic visuals, astrophotography, and electronic music.</p>
 
-        <div class="cta-buttons">
-            <a href="about-me.html" class="cta-button cta-primary">
-                <span class="button-icon">👤</span>
-                <span class="button-text">Know More About Me</span>
-            </a>
-            <a href="biodata.html" class="cta-button cta-secondary">
-                <span class="button-icon">📜</span>
-                <span class="button-text">View Biodata</span>
-            </a>
-            <a href="portfolio.html" class="cta-button cta-tertiary">
-                <span class="button-icon">💼</span>
-                <span class="button-text">Portfolio</span>
+                <p class="intro-rich">I get curious in understanding animal behavior (more fascinating than Netflix), chase the beauty of nature through a lens, and design immersive EDM soundscapes. Each project is a story — where <span class="accent">technology meets curiosity</span>.</p>
+
+                <p class="intro-philosophy">Made of stardust and code: I believe everything is connected. That perspective drives me to build, explore, and create with purpose and wonder.</p>
+
+<!--                <div class="landing-intro-ctas">-->
+<!--                    <a href="portfolio.html" class="cta-button cta-primary">See my work</a>-->
+<!--                    <a href="#about-me" class="cta-button cta-secondary">About me</a>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="scroll-down-container">
+            <a href="#about-me" class="scroll-down" aria-label="Scroll down to learn more">
+                <span>Scroll to know more about me</span>
+                <div class="arrow-down"></div>
             </a>
         </div>
 
+<!--        <div class="cta-buttons">-->
+<!--            <a href="about-me.html" class="cta-button cta-primary">-->
+<!--                <span class="button-icon">👤</span>-->
+<!--                <span class="button-text">Know More About Me</span>-->
+<!--            </a>-->
+<!--            <a href="biodata.html" class="cta-button cta-secondary">-->
+<!--                <span class="button-icon">📜</span>-->
+    <div class="about-me-container">
+<!--        <h2 class="section-title">About Me</h2>-->
+        
+        <div class="intro-grid">
+            <div class="intro-card">
+                <h3>About Me</h3>
+                <p>I'm a 26-year-old software engineer with a creative soul. By day, I craft elegant code, and by night, I chase the cosmos through my camera lens and create electronic soundscapes that move the soul.</p>
+            </div>
+            <div class="intro-card">
+                <h3>My Roots</h3>
+                <p>Rooted in a close-knit Maheshwari family, I value traditions that connect us to our heritage while embracing the modern world. Family is my anchor, and I believe in nurturing relationships that stand the test of time.</p>
+            </div>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>Core Values</h3>
+                <ul>
+                    <li>Family First - Building a loving, supportive home</li>
+                    <li>Authenticity - Being genuine in all aspects of life</li>
+                    <li>Growth - Constantly learning and evolving</li>
+                    <li>Creativity - Expressing myself through multiple mediums</li>
+                </ul>
+            </div>
+
+            <div class="passion-card">
+                <h3>Creative Passions</h3>
+                <div class="passion-grid">
+                    <div class="passion-item">
+                        <i class="fas fa-music"></i>
+                        <span>EDM Music Production</span>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Astrophotography</span>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-film"></i>
+                        <span>Cinematography</span>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-paw"></i>
+                        <span>Flute</span>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-paw"></i>
+                        <span>Guitar</span>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-paw"></i>
+                        <span>Piano</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="life-philosophy">
+            <blockquote>
+                "Choose substance over spectacle. Build kindness quietly. Nurture family peace."
+            </blockquote>
+        </div>
+
+        <div class="seeking-section">
+            <h3>What I Seek</h3>
+            <p>I'm looking for someone who values deep connections, appreciates the beauty in simplicity, and finds joy in both quiet moments and creative pursuits. Someone who understands that the best relationships are built on mutual respect, honest communication, and shared values.</p>
+        </div>
+            </div>
+        </section>
     </div>
 </main>
 
-<script>
-    // Generate realistic stars on canvas
-    function generateStars(canvas, starCount, size) {
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const stars = [];
-
-        for (let i = 0; i < starCount; i++) {
-            stars.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * size,
-                opacity: Math.random() * 0.8 + 0.2,
-                twinkleSpeed: Math.random() * 0.02 + 0.005
-            });
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            stars.forEach(star => {
-                star.opacity += star.twinkleSpeed;
-                if (star.opacity >= 1 || star.opacity <= 0.2) {
-                    star.twinkleSpeed *= -1;
-                }
-
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-                ctx.fill();
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        // Responsive resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    }
-
-    // Initialize star layers with different densities
-    generateStars(document.getElementById('stars1'), 150, 1.5);
-    generateStars(document.getElementById('stars2'), 100, 1);
-    generateStars(document.getElementById('stars3'), 80, 0.8);
-</script>
 <script src="scripts/eclipse-animation.js"></script>
 </body>
 </html>
