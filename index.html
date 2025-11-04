@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles/landing.css">
 </head>
 <body>
@@ -25,12 +27,8 @@
 <!-- Realistic Eclipse -->
 <div class="eclipse-container">
     <div class="eclipse-glow"></div>
-        <div class="sun"></div>
-
-    <!-- Place the moon as a sibling so it can be absolutely positioned on top of the sun -->
-    <div class="moon">
-    </div>
-
+    <div class="sun"></div>
+    <div class="moon"></div>
     <div class="corona"></div>
     <div class="solar-prominence prominence-1"></div>
     <div class="solar-prominence prominence-2"></div>
@@ -56,9 +54,9 @@
 
         <div class="intro-snippet">
             <div class="landing-intro" role="region" aria-label="Landing introduction">
-                <p class="intro-lead">Hello — I'm <strong class="name-highlight">Prakirti Lakhotiya</strong>, a software engineer and creative artist who blends backend systems with cinematic visuals, astrophotography, and electronic music.</p>
+                <p class="intro-lead">Hello – I'm <strong class="name-highlight">Prakirti Lakhotiya</strong>, a software engineer and creative artist who blends backend systems with cinematic visuals, astrophotography, and electronic music.</p>
 
-                <p class="intro-rich">I get curious in understanding animal behavior (more fascinating than Netflix), chase the beauty of nature through a lens, and design immersive EDM soundscapes. Each project is a story — where <span class="accent">technology meets curiosity</span>.</p>
+                <p class="intro-rich">I get curious understanding animal behavior (more fascinating than Netflix), chase the beauty of nature through a lens, and design immersive EDM soundscapes. Each project is a story – where <span class="accent">technology meets curiosity</span>.</p>
 
                 <p class="intro-philosophy">Made of stardust and code: I believe everything is connected. That perspective drives me to build, explore, and create with purpose and wonder.</p>
 
@@ -68,9 +66,7 @@
                 </div>
             </div>
 
-            <!-- Right column: decorative preview / scroll affordance. -->
             <div class="hero-preview" aria-hidden="false">
-                <!-- Keep the visual motif and provide a prominent scroll CTA centered in this panel -->
                 <a href="#about-me" class="scroll-down hero-scroll" aria-label="Scroll down to learn more">
                     <div class="hero-preview-visual" aria-hidden="true"></div>
                     <span>Scroll Down to know more about Me</span>
@@ -78,179 +74,205 @@
                 </a>
             </div>
         </div>
+
+        <!-- About Me Section -->
         <div class="about-me-container" id="about-me">
-        <div class="intro-grid">
-            <div class="intro-card">
-                <h3>About Me</h3>
-                <p>I'm a 26-year-old software engineer rooted in a close-knit Maheshwari family. Respect, gratitude, and daily rituals anchor my life more than social appearances.</p>
-                <p>I deeply value staying connected with my parents after marriage. For me, a joint family brings joy, purpose, and the warmth of multiple generations sharing life together.</p>
-            </div>
-            <div class="intro-card">
-                <h3>Character & Temperament</h3>
-                <p>I'm naturally calm, introverted, and thoughtful. I believe in peaceful conversations, genuine kindness, and building trust through honesty rather than grand gestures.</p>
-                <p>I've focused on personal growth and self-improvement over dating. I value transparency and find it easier to connect with people who communicate directly and authentically.</p>
-            </div>
-        </div>
 
-        <div class="values-section">
-            <h3 class="section-title">My Core Values & Lifestyle</h3>
-            <div class="values-grid">
-                <div class="value-card">
-                    <h3>Family First</h3>
-                    <ul>
-                        <li>My mother, a vice principal, inspires me with her balance of work and family</li>
-                        <li>I believe in treating both families with equal respect and care</li>
-                        <li>Joint family living brings joy, purpose, and warmth of multiple generations</li>
-                    </ul>
+            <!-- Introduction Cards -->
+            <div class="intro-grid">
+                <div class="intro-card">
+                    <h3>About Me</h3>
+                    <p>I'm a 26-year-old software engineer rooted in a close-knit Maheshwari family. Respect, gratitude, and daily rituals anchor my life more than social appearances.</p>
+                    <p>I deeply value staying connected with my parents after marriage. For me, a joint family brings joy, purpose, and the warmth of multiple generations sharing life together.</p>
                 </div>
-                <div class="value-card">
-                    <h3>Financial Wisdom</h3>
-                    <ul>
-                        <li>We're building our family home together, investing in what lasts</li>
-                        <li>I appreciate thoughtful spending and creating stability for the future</li>
-                        <li>Focus on long-term security rather than short-term indulgence</li>
-                    </ul>
-                </div>
-                <div class="value-card">
-                    <h3>Simple Living</h3>
-                    <ul>
-                        <li>I follow a vegetarian lifestyle</li>
-                        <li>Prefer meaningful celebrations over expensive displays</li>
-                        <li>Quality and authenticity matter more to me than brands</li>
-                    </ul>
-                </div>
-                <div class="value-card">
-                    <h3>Peaceful Communication</h3>
-                    <ul>
-                        <li>I believe in resolving differences through understanding and patience</li>
-                        <li>Harmony at home creates the foundation for everything else in life</li>
-                        <li>Gentle, honest conversation builds stronger relationships</li>
-                    </ul>
+                <div class="intro-card">
+                    <h3>Character & Temperament</h3>
+                    <p>I'm naturally calm, introverted, and thoughtful. I believe in peaceful conversations, genuine kindness, and building trust through honesty rather than grand gestures.</p>
+                    <p>I've focused on personal growth and self-improvement over dating. I value transparency and find it easier to connect with people who communicate directly and authentically.</p>
                 </div>
             </div>
-        </div>
 
-        <div class="passions-section">
-            <h3 class="section-title">My Passions & Creative Pursuits</h3>
-            <p class="section-intro">Creativity energizes me. These pursuits aren't just hobbies — they're where I feel most myself and find balance in life.</p>
-            
-            <div class="passion-grid">
-                <div class="passion-item">
-                    <i class="fas fa-music"></i>
-                    <div class="passion-content">
-                        <h4>EDM Music Production</h4>
-                        <p>Creating melodies that express emotions beyond words.</p>
+            <!-- Core Values Section -->
+            <div class="values-section">
+                <h3 class="section-title">My Core Values & Lifestyle</h3>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4>Family First</h4>
+                        <ul style="text-align: left;">
+                            <li>My mother, a vice principal, inspires me with her balance of work and family. She taught me humility, resilience, and the importance of family bonds.</li>
+                            <li>I believe in treating both families with equal respect and care</li>
+                            <li>Joint family living brings joy, purpose, and warmth of multiple generations</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="passion-item">
-                    <i class="fas fa-film"></i>
-                    <div class="passion-content">
-                        <h4>Cinematography & Lighting</h4>
-                        <p>Exploring how light and composition tell compelling stories.</p>
+                    <div class="value-card">
+                        <h4>Financial Wisdom</h4>
+                        <ul style="text-align: left;">
+                            <li>We're currently building our family home together, investing in what lasts</li>
+                            <li>I appreciate thoughtful spending that prioritizes long-term stability over immediate luxuries</li>
+                            <li>Quality and value matter more than brands or social displays</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="passion-item">
-                    <i class="fas fa-moon"></i>
-                    <div class="passion-content">
-                        <h4>Astrophotography</h4>
-                        <p>Finding peace under the night sky, capturing the beauty of the cosmos.</p>
+                    <div class="value-card">
+                        <h4>Simple Living</h4>
+                        <ul style="text-align: left;">
+                            <li>I follow a strictly vegetarian lifestyle based on personal conviction</li>
+                            <li>I abstain completely from alcohol and smoking</li>
+                            <li>Prefer meaningful celebrations over expensive displays designed for social validation</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="passion-item">
-                    <i class="fas fa-guitar"></i>
-                    <div class="passion-content">
-                        <h4>Musical Journey</h4>
-                        <p>Learning flute, guitar, and piano while aspiring to master Indian classical music — each instrument teaches me patience and connects me to tradition.</p>
-                    </div>
-                </div>
-                <div class="passion-item">
-                    <i class="fas fa-paw"></i>
-                    <div class="passion-content">
-                        <h4>Understanding Animal Behavior</h4>
-                        <p>Observing nature keeps me grounded and curious about the world.</p>
+                    <div class="value-card">
+                        <h4>Peaceful Communication</h4>
+                        <ul style="text-align: left;">
+                            <li>I believe in resolving differences through understanding and patience rather than ego</li>
+                            <li>Harmony at home creates the foundation for everything else in life</li>
+                            <li>Gentle, honest conversation builds stronger relationships than stubbornness</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <p class="interests-note">Having space to create is important to me. I truly admire partners who nurture their own passions and interests as well.</p>
-        </div>
 
-        <div class="life-philosophy">
-            <blockquote>
-                "Choose substance over spectacle. Build kindness quietly. Nurture family peace."
-            </blockquote>
-        </div>
+            <!-- Passions Section -->
+            <div class="passions-section">
+                <h3 class="section-title">My Passions & Creative Pursuits</h3>
+                <p class="section-intro">Creativity energizes me. These pursuits aren't just hobbies – they're where I feel most myself and find balance in life. These are integral parts of who I am and require dedicated time and space to truly flourish.</p>
 
-        <div class="seeking-section">
-            <h3>What I Seek in a Life Partner</h3>
-            <p class="section-intro">I'm drawn to someone who finds joy in family togetherness, respects parents naturally, and celebrates traditions as meaningful connections to our heritage.</p>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <h4>Intellectual Depth</h4>
-                    <p>Someone curious about the world, thoughtful in conversations, and engaged with ideas that matter.</p>
+                <div class="passion-grid">
+                    <div class="passion-item">
+                        <i class="fas fa-music"></i>
+                        <div class="passion-content">
+                            <h4>EDM Music Production</h4>
+                            <p>Creating melodies that express emotions beyond words through complex technical skills and creative expression.</p>
+                        </div>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-film"></i>
+                        <div class="passion-content">
+                            <h4>Cinematography & Lighting</h4>
+                            <p>Studying how visual elements create emotional impact and narrative depth in cinematic storytelling.</p>
+                        </div>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-moon"></i>
+                        <div class="passion-content">
+                            <h4>Astrophotography</h4>
+                            <p>Finding peace under the night sky, capturing the beauty of the cosmos. I prefer stargazing over party culture.</p>
+                        </div>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-guitar"></i>
+                        <div class="passion-content">
+                            <h4>Musical Journey</h4>
+                            <p>Learning flute, guitar, and piano while aspiring to master Indian classical music – each instrument teaches me patience and connects me to tradition.</p>
+                        </div>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-paw"></i>
+                        <div class="passion-content">
+                            <h4>Understanding Animal Behavior</h4>
+                            <p>Observing nature keeps me grounded and curious about the world. More fascinating than passive entertainment.</p>
+                        </div>
+                    </div>
+                    <div class="passion-item">
+                        <i class="fas fa-book"></i>
+                        <div class="passion-content">
+                            <h4>Continuous Learning</h4>
+                            <p>I'm naturally introverted and comfortable with solitude, which gives me time to dive deep into subjects that fascinate me.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="value-card">
-                    <h4>Emotional Maturity</h4>
-                    <p>Values emotional connection and chooses understanding over ego in building a peaceful home.</p>
-                </div>
-                <div class="value-card">
-                    <h4>Shared Lifestyle Values</h4>
-                    <p>Vegetarian lifestyle, thoughtful with finances, and focused on substance over status.</p>
-                </div>
-                <div class="value-card">
-                    <h4>Family Respect</h4>
-                    <p>Genuine warmth toward elders and appreciation for strong, hardworking women.</p>
-                </div>
-                <div class="value-card">
-                    <h4>Honest Communication</h4>
-                    <p>Clear and direct in expressing thoughts, making it easy to understand each other.</p>
-                </div>
-                <div class="value-card">
-                    <h4>Comfortable with Quiet</h4>
-                    <p>Appreciates that meaningful relationships include both togetherness and comfortable silence.</p>
+                <p class="interests-note">Having space to create is important to me. I truly admire partners who nurture their own passions and interests as well. I need a partner who understands that creative and intellectual work requires focused individual time.</p>
+            </div>
+
+            <!-- Philosophy Quote -->
+            <div class="life-philosophy">
+                <blockquote>
+                    "Choose substance over spectacle. Build kindness quietly. Nurture family peace."
+                </blockquote>
+            </div>
+
+            <!-- What I Seek Section -->
+            <div class="seeking-section">
+                <h3>What I Seek in a Life Partner</h3>
+                <p class="section-intro">I'm drawn to someone who finds joy in family togetherness, respects parents naturally, and celebrates Maheshwari traditions like karwa chauth and teej as meaningful connections to our heritage rather than obligations.</p>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h4>Intellectual Depth</h4>
+                        <p>Someone curious about the world, thoughtful in conversations, and engaged with ideas that matter. She should have her own pursuits, interests, or business mindset that demonstrates substance and strategic thinking.</p>
+                    </div>
+                    <div class="value-card" >
+                        <h4>Emotional Maturity</h4>
+                        <p>Values emotional connection and chooses understanding over ego in building a peaceful home. Physical intimacy should flow from mutual emotional understanding and respect for each other's emotional states.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Shared Lifestyle Values</h4>
+                        <p>Strictly vegetarian lifestyle, abstaining from alcohol and smoking, thoughtful with finances, and focused on substance over status or material displays.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Family Respect</h4>
+                        <p>Genuine warmth toward elders and deep respect for my parents, especially my mother. Someone who admires strong, hardworking women and treats both families with equal care.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Honest Communication</h4>
+                        <p>Clear and direct in expressing thoughts, making it easy to understand each other. I naturally take people at face value and appreciate straightforward communication.</p>
+                    </div>
+                    <div class="value-card">
+                        <h4>Comfortable with Quiet</h4>
+                        <p>Appreciates that meaningful relationships include both togetherness and comfortable silence. Understands that partners can coexist lovingly while pursuing different interests.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="not-seeking-section">
-            <h3>We Might Not Connect If</h3>
-            <div class="not-seeking-grid">
-                <div class="not-seeking-item">
-                    <i class="fas fa-times"></i>
-                    <p>You prefer nuclear family living or view traditions as obligations rather than celebrations.</p>
-                </div>
-                <div class="not-seeking-item">
-                    <i class="fas fa-times"></i>
-                    <p>Your lifestyle centers around brands, social status, or keeping up with what others have.</p>
-                </div>
-                <div class="not-seeking-item">
-                    <i class="fas fa-times"></i>
-                    <p>Regular parties, nightlife, or alcohol consumption are important parts of your social life.</p>
-                </div>
-                <div class="not-seeking-item">
-                    <i class="fas fa-times"></i>
-                    <p>You find deep conversations draining and prefer staying at surface-level topics.</p>
-                </div>
-                <div class="not-seeking-item">
-                    <i class="fas fa-times"></i>
-                    <p>You approach disagreements by standing firm rather than seeking mutual understanding.</p>
-                </div>
-                <div class="not-seeking-item">
-                    <i class="fas fa-times"></i>
-                    <p>You'd find it difficult to support a partner who dedicates time to creative and solitary pursuits.</p>
+            <!-- What I'm Not Looking For -->
+            <div class="not-seeking-section">
+                <h3>We Might Not Connect If</h3>
+                <div class="not-seeking-grid">
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>You prefer nuclear family living or view cultural traditions as obligations rather than celebrations.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>Your lifestyle centers around brands, social status, or keeping up with what others have.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>Regular parties, nightlife, or alcohol consumption are important parts of your social life.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>You find deep conversations draining and prefer staying at surface-level topics or small talk.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>You approach disagreements by standing firm or asserting dominance rather than seeking mutual understanding.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>You'd find it difficult to support a partner who dedicates substantial time to creative and solitary pursuits.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>You need constant social stimulation or conversation and feel uncomfortable with silence or alone time.</p>
+                    </div>
+                    <div class="not-seeking-item" style="text-align: left;">
+                        <i class="fas fa-times"></i>
+                        <p>Career advancement and professional achievement are your primary priorities over family harmony and quality of life.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="summary-section">
-            <div class="summary-card">
-                <h3>In Summary</h3>
-                <p>I strive for strength with gentleness, ambition grounded in family values, and faith balanced with practicality.</p>
-                <p>I'm looking for a partner who resonates with this approach and is excited to build a peaceful, meaningful life together rooted in shared values.</p>
+            <!-- Summary Section -->
+            <div class="summary-section">
+                <div class="summary-card">
+                    <h3>In Summary</h3>
+                    <p>I strive for strength with gentleness, ambition grounded in family values, and faith balanced with practicality. I believe in bringing kindness into the world through my daily actions rather than through grand gestures.</p>
+                    <p>I'm looking for a partner who resonates with this approach and is excited to build a peaceful, meaningful life together rooted in shared values. I view marriage as friendship and partnership first, built on mutual respect and compatible worldviews that will sustain us through decades of life together.</p>
+                    <p class="final-note">If you value substance over appearance, depth over superficiality, family harmony over individual assertion, and long-term partnership built on shared principles, we may be genuinely compatible.</p>
+                </div>
             </div>
+
         </div>
-            </div>
-        </section>
     </div>
 </main>
 
