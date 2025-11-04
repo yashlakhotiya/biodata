@@ -888,10 +888,15 @@ html {
         justify-content: center;
     }
 
+    .intro-grid,
     .values-grid,
     .passion-grid,
     .not-seeking-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .intro-card {
+        margin: 0.5rem 0;
     }
 
     .summary-card {
