@@ -888,15 +888,91 @@ html {
         justify-content: center;
     }
 
+    /* Make grids horizontally scrollable on mobile with hidden scrollbar */
     .intro-grid,
     .values-grid,
     .passion-grid,
     .not-seeking-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 1rem 0 2rem 0;
+        margin: 0 -1rem;
+        scroll-padding: 0 1rem;
+        grid-template-columns: unset;
+        /* Hide scrollbar for WebKit browsers */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        position: relative;
     }
     
-    .intro-card {
-        margin: 0.5rem 0;
+    /* Hide scrollbar for WebKit browsers */
+    .intro-grid::-webkit-scrollbar,
+    .values-grid::-webkit-scrollbar,
+    .passion-grid::-webkit-scrollbar,
+    .not-seeking-grid::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Add gradient fade effect to indicate more content */
+    .intro-grid,
+    .values-grid,
+    .passion-grid,
+    .not-seeking-grid {
+        position: relative;
+    }
+    
+    /* Only show gradient when content overflows */
+    .intro-grid.scrollable::after,
+    .values-grid.scrollable::after,
+    .passion-grid.scrollable::after,
+    .not-seeking-grid.scrollable::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Show gradient when scrolled */
+    .intro-grid.scrollable.scroll-start::after {
+        opacity: 0;
+    }
+    
+    .intro-grid.scrollable:not(.scroll-start)::after,
+    .values-grid.scrollable:not(.scroll-start)::after,
+    .passion-grid.scrollable:not(.scroll-start)::after,
+    .not-seeking-grid.scrollable:not(.scroll-start)::after {
+        opacity: 1;
+    }
+    
+    .intro-card,
+    .value-card,
+    .passion-item,
+    .not-seeking-item {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+        margin: 0 0.5rem;
+    }
+    
+    .intro-card:first-child,
+    .value-card:first-child,
+    .passion-item:first-child,
+    .not-seeking-item:first-child {
+        margin-left: 1rem;
+    }
+    
+    .intro-card:last-child,
+    .value-card:last-child,
+    .passion-item:last-child,
+    .not-seeking-item:last-child {
+        margin-right: 1rem;
     }
 
     .summary-card {
