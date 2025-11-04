@@ -7,7 +7,7 @@
 
     /* Responsive sizing variables */
     --sun-size: clamp(280px, 35vw, 500px);
-    --moon-size: calc(var(--sun-size) * 1.01);
+    --moon-size: calc(var(--sun-size) * 0.997);
     --eclipse-offset: 50px;
     --eclipse-center-top: calc(var(--eclipse-offset) - (var(--sun-size) / 2));
 }
@@ -424,10 +424,19 @@ html {
     font-weight: 500;
 }
 
+.cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
 .landing-intro-ctas {
     display: flex;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .cta-button {
@@ -650,8 +659,8 @@ html {
 
 .passion-item {
     display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
+    flex-direction: column;
+    gap: 0.75rem;
     background: rgba(255, 255, 255, 0.03);
     padding: 1.75rem;
     border-radius: 14px;
@@ -665,22 +674,28 @@ html {
     border-color: rgba(255, 215, 0, 0.25);
 }
 
+.passion-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 .passion-item i {
     font-size: 1.75rem;
     color: var(--gold);
-    margin-top: 0.25rem;
     flex-shrink: 0;
 }
 
 .passion-content h4 {
-    margin: 0 0 0.75rem 0;
+    margin: 0;
     color: var(--gold);
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
 }
 
 .passion-content p {
-    margin: 0;
+    margin: 0 0 0 3rem;
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.7;
@@ -862,7 +877,14 @@ html {
         padding: 0 0.5rem;
     }
 
+    .cta-container {
+        align-items: center;
+        margin-top: 1.5rem;
+    }
+    
     .landing-intro-ctas {
+        width: 100%;
+        flex-wrap: wrap;
         justify-content: center;
     }
 
@@ -908,9 +930,16 @@ html {
         width: 4px;
     }
 
+    .cta-container {
+        margin-top: 1.25rem;
+        gap: 1.25rem;
+    }
+    
     .landing-intro-ctas {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         width: 100%;
+        justify-content: center;
     }
 
     .cta-button {
