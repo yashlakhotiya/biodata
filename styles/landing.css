@@ -33,6 +33,10 @@ body {
 }
 
 /* Prevent horizontal overflow at root (avoid scrollbars from small oversize elements) */
+html {
+    scroll-behavior: smooth;
+}
+
 html, body {
     max-width: 100%;
     overflow-x: hidden; /* ensure no horizontal scrollbar */

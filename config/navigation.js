@@ -3,6 +3,13 @@ const navigationConfig = {
     // Main navigation items
     items: [
         {
+            text: 'Home',
+            url: 'index.html',
+            priority: 1,
+            icon: '🏠️', // Optional icon
+            showInNav: true
+        },
+        {
             text: 'Biodata',
             url: 'biodata.html',
             priority: 1,
