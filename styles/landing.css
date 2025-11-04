@@ -508,18 +508,6 @@ html, body {
     box-shadow: inset 0 0 30px rgba(255, 150, 40, 0.02);
 }
 
-/* small circular motif to echo eclipse theme */
-.hero-preview::after {
-    content: '';
-    width: min(46%, 160px);
-    height: min(46%, 160px);
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, rgba(255,230,180,0.95), rgba(255,160,50,0.85) 40%, rgba(255,100,0,0.6) 70%);
-    box-shadow: 0 12px 40px rgba(255,140,40,0.15), 0 2px 12px rgba(0,0,0,0.6);
-    transform: translateY(6%);
-    filter: blur(0.6px);
-}
-
 /* Text column */
 .landing-intro {
     padding: 0.15rem 0.6rem 0.15rem 1.15rem;
@@ -702,28 +690,14 @@ html, body {
     margin: 0 auto;
     position: relative;
 }
-
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 60px;
-    color: var(--gold);
-    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.5rem;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.section-title:after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 3px;
-    background: var(--gold);
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .intro-grid {
@@ -800,10 +774,265 @@ html, body {
     color: var(--gold);
 }
 
-.passion-grid {
+/* New About Me Section Styles */
+.about-me-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    color: var(--text-primary);
+}
+
+.section-title, .sub-section-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0 0 1.2rem;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin: 3.5rem 0 3rem;
+}
+
+.sub-section-title {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin: 3rem 0 2.5rem;
+}
+
+/* Removed section title underline */
+
+.section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Values Section */
+.values-section {
+    margin: 4rem 0;
+}
+
+.values-section {
+    text-align: center;
+}
+
+.values-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+    padding: 0 1rem;
+}
+
+.value-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.value-card h3, .value-card h4 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.value-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.value-card li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+/* Passions Section */
+.passions-section {
+    margin: 4rem 0;
+}
+
+.passion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.passion-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.passion-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.2);
+}
+
+.passion-item i {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-top: 0.25rem;
+}
+
+.passion-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+}
+
+.passion-content p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.interests-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-top: 2rem;
+    font-size: 0.95rem;
+}
+
+/* Not Seeking Section */
+.not-seeking-section {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.not-seeking-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.not-seeking-item {
+    background: rgba(139, 0, 0, 0.1);
+    border: 1px solid rgba(139, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.not-seeking-item:hover {
+    transform: translateY(-3px);
+}
+
+.not-seeking-item i {
+    color: #ff6b6b;
+    margin-top: 0.25rem;
+}
+
+.not-seeking-item p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Summary Section */
+.summary-section {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.summary-card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.summary-card h3 {
+    color: var(--gold);
+    margin-top: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.summary-card p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.summary-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .passion-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .values-grid, .not-seeking-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .value-card, .passion-item, .not-seeking-item {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .passion-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-card {
+        padding: 1.5rem;
+    }
 }
 
 .passion-item {
