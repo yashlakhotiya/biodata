@@ -9,13 +9,13 @@ const navigationConfig = {
             icon: '📜️', // Optional icon
             showInNav: true
         },
-        {
-            text: 'About Me',
-            url: 'about-me.html',
-            priority: 2,
-            icon: '👤',
-            showInNav: true
-        },
+        // {
+        //     text: 'About Me',
+        //     url: 'about-me.html',
+        //     priority: 2,
+        //     icon: '👤',
+        //     showInNav: true
+        // },
         // {
         //     text: 'Experience',
         //     url: 'biodata.html#education-profession',

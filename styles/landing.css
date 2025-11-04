@@ -10,7 +10,7 @@
     /* Responsive sizing variables */
     --sun-size: clamp(50px, 30vw, 500px);
     /* Make moon slightly larger than sun to guarantee full coverage across devices */
-    --moon-size: calc(var(--sun-size) * 1.02);
+    --moon-size: calc(var(--sun-size) * 0.999);
 
     /* Distance from viewport top to the eclipse center (adjusted per breakpoint) */
     --eclipse-offset: 40px; /* default offset from top to eclipse center */
