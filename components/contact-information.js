@@ -40,13 +40,13 @@ class ContactInformation {
     if (contactSection) {
       // Add ethnic border at the top
       const ethnicBorderTop = document.createElement('div');
-      ethnicBorderTop.className = 'ethnic-border';
-      contactSection.insertBefore(ethnicBorderTop, contactSection.firstChild);
+      // ethnicBorderTop.className = 'ethnic-border';
+      // contactSection.insertBefore(ethnicBorderTop, contactSection.firstChild);
 
       // Add ethnic border at the bottom
       const ethnicBorderBottom = document.createElement('div');
-      ethnicBorderBottom.className = 'ethnic-border';
-      contactSection.appendChild(ethnicBorderBottom);
+      // ethnicBorderBottom.className = 'ethnic-border';
+      // contactSection.appendChild(ethnicBorderBottom);
     }
   }
 
@@ -102,7 +102,9 @@ class ContactInformation {
     contactItem.innerHTML = `
       <div class="contact-header">
         <i class="fas fa-${icon}"></i>
-        <h4>${item.relation} <span class="contact-name">${item.name}</span></h4>
+        <div class="contact-header-content">
+          <h4><span class="contact-relation">${item.relation}</span> <span class="contact-name">${item.name}</span></h4>
+        </div>
       </div>
       <div class="contact-details">
         <div class="detail-row">

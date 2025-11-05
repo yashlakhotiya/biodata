@@ -8,12 +8,41 @@
 
       const occupationHtml = item.occupation ? `<div class="info-occupation">${item.occupation}</div>` : '';
       const descriptionHtml = item.description ? `<div class="info-description">${item.description}</div>` : '';
+      
+      let spouseHtml = '';
+      if (item.spouse) {
+        const spouseOccupation = item.spouse.occupation ? `
+            <div class="spouse-occupation">${item.spouse.occupation}</div>` : '';
+        
+        const spouseNativePlace = item.spouse.nativePlace ? 
+            `<span class="spouse-native">(${item.spouse.nativePlace})</span>` : '';
+        
+        spouseHtml = `
+          <div class="spouse-info">
+            <div class="spouse-header">
+              <span class="spouse-label">Spouse:</span>
+              <div class="spouse-name-wrapper">
+                <span class="spouse-name">${item.spouse.name} ${spouseNativePlace}</span>
+              </div>
+            </div>`;
+            
+        // Add occupation if it exists
+        if (spouseOccupation) {
+          spouseHtml += `
+            <div class="spouse-details">
+              ${spouseOccupation}
+            </div>`;
+        }
+        spouseHtml += `
+          </div>`;
+      }
 
       el.innerHTML = `
         <div class="info-label">${item.label ?? ''}</div>
         <div class="info-value">${item.value ?? ''}</div>
         ${occupationHtml}
         ${descriptionHtml}
+        ${spouseHtml}
       `;
       return el;
     },

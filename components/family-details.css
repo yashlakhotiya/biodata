@@ -65,6 +65,91 @@
   color: var(--text-color);
   word-break: break-word;
   line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+/* Spouse Information Styles */
+.spouse-info {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.92em;
+  color: var(--text-color);
+}
+
+.spouse-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.spouse-name-wrapper {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  line-height: 1.5;
+}
+
+.spouse-label {
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.spouse-name {
+  color: var(--heading-color);
+  font-weight: 500;
+  font-size: 1.05em;
+  margin-right: 4px;
+}
+
+.spouse-native {
+  font-size: 0.85em;
+  color: var(--text-muted);
+  font-style: normal;
+  opacity: 0.9;
+}
+
+.spouse-occupation {
+  font-size: 0.88em;
+  color: var(--text-color);
+  margin: 6px 0 0 16px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.spouse-occupation::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+}
+
+.spouse-details {
+  margin-top: 8px;
+  padding-left: 4px;
+  border-left: 2px solid var(--accent-color-soft);
+}
+
+/* Add some spacing between items */
+.info-item {
+  padding: 15px;
+  background: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 @keyframes rotateIcon {

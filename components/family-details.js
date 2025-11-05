@@ -131,45 +131,27 @@ class FamilyDetails {
     infoItem.className = 'info-item';
     const occupationHtml = item.occupation ? `<div class="info-occupation">${item.occupation}</div>` : '';
     const descriptionHtml = item.description ? `<div class="info-description">${item.description}</div>` : '';
+    
+    // Create spouse HTML if spouse exists
+    let spouseHtml = '';
+    if (item.spouse) {
+      const spouseOccupation = item.spouse.occupation ? `, ${item.spouse.occupation}` : '';
+      const spouseNativePlace = item.spouse.nativePlace ? ` (${item.spouse.nativePlace})` : '';
+      spouseHtml = `
+        <div class="spouse-info">
+          <span class="spouse-label">Spouse:</span>
+          <span class="spouse-name">${item.spouse.name}${spouseOccupation}${spouseNativePlace}</span>
+        </div>`;
+    }
 
     infoItem.innerHTML = `
       <div class="info-label">${item.label ?? ''}</div>
       <div class="info-value">${item.value ?? ''}</div>
       ${occupationHtml}
       ${descriptionHtml}
+      ${spouseHtml}
     `;
     return infoItem;
-  }
-
-  // Public API methods
-  updateItem(itemId, newValue) {
-    if (!this.biodataData || !this.biodataData.familyDetails) return false;
-
-    const item = this.biodataData.familyDetails.items.find(item => item.id === itemId);
-    if (!item) return false;
-
-    item.value = newValue;
-    this.populateFamilyDetails(); // Refresh the display
-    return true;
-  }
-
-  addItem(item) {
-    if (!this.biodataData || !this.biodataData.familyDetails) return false;
-
-    this.biodataData.familyDetails.items.push(item);
-    this.populateFamilyDetails(); // Refresh the display
-    return true;
-  }
-
-  removeItem(itemId) {
-    if (!this.biodataData || !this.biodataData.familyDetails) return false;
-
-    const index = this.biodataData.familyDetails.items.findIndex(item => item.id === itemId);
-    if (index === -1) return false;
-
-    this.biodataData.familyDetails.items.splice(index, 1);
-    this.populateFamilyDetails(); // Refresh the display
-    return true;
   }
 }
 

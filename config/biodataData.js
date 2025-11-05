@@ -65,73 +65,137 @@ const biodataData = {
                 label: "Grandfather",
                 value: "Late Shri. Nand Kishore Lakhotiya",
                 occupation: "PA to DJ, Bundi District Court",
-                category: "grandparents"
-            },
-            {
-                id: "paternal_grandmother",
-                label: "Grandmother",
-                value: "Smt. Prem Lata Lakhotiya",
+                spouse: {
+                    name: "Smt. Prem Lata Lakhotiya",
+                    nativePlace: "Bundi"
+                },
                 category: "grandparents"
             },
             {
                 id: "badepapa_elder",
-                label: "Bade Papa (Elder)",
+                label: "Bade Papa and Badi Mummy (Elder)",
                 value: "Shri Bhagwan Lakhotiya",
                 occupation: "Business Firm (Hadoti Rice Mill)",
+                spouse: {
+                    name: "Smt. Leela Lakhotiya",
+                    nativePlace: "Gudha"
+                },
                 category: "uncle"
-            },
-            {
-                id: "badi_mummy_elder",
-                label: "Badi Mummy (Elder)",
-                value: "Smt. Leela Lakhotiya",
-                category: "aunt"
             },
             {
                 id: "badepapa_younger",
-                label: "Bade Papa (Younger)",
-                value: "Shri Murli Manohar Lakhotiya",
+                label: "Bade Papa and Badi Mummy (Younger)",
+                value: "Shri Murli Lakhotiya",
                 occupation: "Business Firm (Hadoti Rice Mill)",
+                spouse: {
+                    name: "Smt. Madhu Lakhotiya",
+                    nativePlace: "Jaipur"
+                },
                 category: "uncle"
             },
             {
-                id: "badi_mummy_younger",
-                label: "Badi Mummy (Younger)",
-                value: "Smt. Madhu Lakhotiya",
-                category: "aunt"
-            },
-            {
                 id: "father",
-                label: "Father",
+                label: "Parents",
                 value: "Shailendra Lakhotiya",
                 occupation: "Business Firm (Shailuma Enterprises), Dealership in Edible Oil, Hadoti Rice Mill",
+                spouse: {
+                    name: "Smt. Uma Maheshwari",
+                    nativePlace: "Kota",
+                    occupation: "Vice Principal @ Government School, Native: Kota"
+                },
                 category: "parents"
             },
-            {
-                id: "mother",
-                label: "Mother",
-                value: "Uma Maheshwari",
-                occupation: "Vice Principal @ Government School",
-                category: "parents"
-            },
+            // Brother and Sister-in-law
             {
                 id: "brother-1",
-                label: "Brother",
+                label: "Brother & Sister-in-law",
                 value: "Kartik Lakhotiya",
                 occupation: "Pursuing Ph.D. from Cleveland Clinic, USA",
+                spouse: {
+                    name: "CA. Radhika Maheshwari",
+                    occupation: "Chartered Accountant",
+                    nativePlace: "Ajmer"
+                },
                 category: "siblings"
             },
+            // Elder Uncle's Family - Son
             {
-                id: "sister_in_law-1",
-                label: "Sister In Law (Bhabhi)",
-                value: "CA. Radhika Maheshwari",
-                description: "Native: Ajmer",
-                category: "siblings"
+                id: "cousin_1",
+                label: "Cousin Brother and Sister in Law",
+                value: "Shri Pankaj Lakhotiya",
+                occupation: "Business Firm (Hadoti Rice Mill)",
+                spouse: {
+                    name: "Smt. Neha Lakhotiya",
+                    nativePlace: "Shahpura"
+                },
+                category: "cousins"
+            },
+            // Elder Uncle's Family - Daughter
+            {
+                id: "cousin_2",
+                label: "Cousin Brother and Sister in Law",
+                value: "Shri Prabal Lakhotiya",
+                occupation: "Business Startup, gliped.com",
+                spouse: {
+                    name: "Shri Neha Lakhotiya",
+                    nativePlace: "Jodhpur, Kochi"
+                },
+                category: "cousins"
+            },
+            // Younger Uncle's Family - Son
+            {
+                id: "cousin_3",
+                label: "Cousin Sister and Brother in Law",
+                value: "Smt. Monika Lahoty",
+                spouse: {
+                    name: "Shri Pratul Lahoty",
+                    occupation: "Plant Head, NPM, Bawal",
+                    nativePlace: "Jhalawar"
+                },
+                category: "cousins"
+            },
+            // Younger Uncle's Family - Daughter
+            {
+                id: "cousin_4",
+                label: "Cousin Sister and Brother in Law",
+                value: "Smt. Megha Maheshwari",
+                occupation: "Interior Designer",
+                spouse: {
+                    name: "Shri Prakhar Maheshwari",
+                    occupation: "Business, Jaipur Filling stn., Jaipur tyre house, Riddhi Siddhi Filling stn.",
+                    nativePlace: "Jaipur"
+                },
+                category: "cousins"
             },
             {
-                id: "native_place",
-                label: "Native Place",
-                value: "Bundi, Rajasthan",
-                category: "origin"
+                id: "cousin_5",
+                label: "Cousin Sister and Brother in Law",
+                value: "Smt. Jaya Maheshwari",
+                occupation: "Associate, KMK Ventures",
+                spouse: {
+                    name: "Shri Akshay Birla",
+                    occupation: "Manager @ NAV Jaipur",
+                    nativePlace: "Bundi"
+                },
+                category: "cousins"
+            },
+            {
+                id: "cousin_7",
+                label: "Cousin",
+                value: "Nimish Lakhotiya",
+                occupation: "B.Tech. Computer Science",
+                category: "cousins"
+            },
+            {
+                id: "bhua",
+                label: "Bhua and Fufaji",
+                value: "Smt. Vijay Lakshmi",
+                spouse: {
+                    name: "Dr. K.C. Gagrani",
+                    occupation: "Doctor, Child Specialist",
+                    nativePlace: "Bundi"
+                },
+                category: "bhua"
             }
         ]
     },
@@ -141,41 +205,38 @@ const biodataData = {
         items: [
             {
                 id: "maternal_grandfather",
-                label: "Nana Ji",
+                label: "Nana and Nani Ji",
                 value: "Late Shri Brij Mohan Ji Gupta, Kota",
                 occupation: "Retd. AAO RAPP, Rawatbhata",
-                category: "grandparents"
-            },
-            {
-                id: "maternal_grandmother",
-                label: "Nani Ji",
-                value: "Smt. Lalita Devi",
+                spouse: {
+                    name: 'Smt. Lalita Devi',
+                    nativePlace: 'Dehit'
+                },
                 category: "grandparents"
             },
             {
                 id: "mama_ji",
-                label: "Mama Ji",
+                label: "Mama and Mami Ji",
                 value: "Shri Mahesh Gupta",
                 occupation: "Contractor, Kota",
+                spouse: {
+                    name: 'Smt. Meenakshi Maheshwari',
+                    nativePlace: 'Chipabarod'
+                },
                 category: "uncle"
-            },
-            {
-                id: "mami_1",
-                label: "Mami Ji",
-                value: "Smt. Meenakshi Maheshwari",
-                category: "aunt"
             },
             {
                 id: "mausi_1",
-                label: "Mausi Ji",
-                value: "Smt. Nisha Samriya, Chittorgarh",
-                category: "aunt"
-            },
-            {
-                id: "mausa_1",
-                label: "Mausa Ji",
-                value: "Shri Sunil Samriya",
-                category: "uncle"
+                label: "Mausi & Mausa Ji",
+                value: "Smt. Nisha Samriya",
+                nativePlace: "Chittorgarh",
+                occupation: 'Mathematics Teacher @ BSK, Chittorgarh',
+                spouse: {
+                    name: "Shri Sunil Samriya",
+                    nativePlace: 'Chittorgarh',
+                    occupation: "Business"
+                },
+                category: "aunt-uncle"
             }
         ]
     },
