@@ -939,7 +939,7 @@ html {
         position: relative;
     }
     
-    /* Only show gradient when content overflows */
+    /* Scroll indicator styles */
     .intro-grid.scrollable::after,
     .values-grid.scrollable::after,
     .passion-grid.scrollable::after,
@@ -949,23 +949,63 @@ html {
         right: 0;
         top: 0;
         bottom: 0;
-        width: 30px;
-        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+        width: 60px;
+        background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
         pointer-events: none;
         opacity: 0;
         transition: opacity 0.3s ease;
+        z-index: 5;
     }
     
-    /* Show gradient when scrolled */
-    .intro-grid.scrollable.scroll-start::after {
+    /* Pulsing arrow indicator */
+    .intro-grid.scrollable::before,
+    .values-grid.scrollable::before,
+    .passion-grid.scrollable::before,
+    .not-seeking-grid.scrollable::before {
+        content: '→';
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--gold);
+        font-size: 28px;
+        font-weight: 900;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.5);
         opacity: 0;
+        animation: pulse 2s infinite;
+        z-index: 10;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
     }
     
-    .intro-grid.scrollable:not(.scroll-start)::after,
-    .values-grid.scrollable:not(.scroll-start)::after,
-    .passion-grid.scrollable:not(.scroll-start)::after,
-    .not-seeking-grid.scrollable:not(.scroll-start)::after {
+    @keyframes pulse {
+        0% { transform: translateY(-50%) scale(1); opacity: 0.7; }
+        50% { transform: translateY(-50%) scale(1.2); opacity: 1; }
+        100% { transform: translateY(-50%) scale(1); opacity: 0.7; }
+    }
+    
+    /* Show indicators when scrollable */
+    .intro-grid.scrollable.scroll-start::after,
+    .values-grid.scrollable.scroll-start::after,
+    .passion-grid.scrollable.scroll-start::after,
+    .not-seeking-grid.scrollable.scroll-start::after,
+    .intro-grid.scrollable.scroll-start::before,
+    .values-grid.scrollable.scroll-start::before,
+    .passion-grid.scrollable.scroll-start::before,
+    .not-seeking-grid.scrollable.scroll-start::before {
         opacity: 1;
+    }
+    
+    /* Hide indicators when scrolled to end */
+    .intro-grid.scroll-end::after,
+    .values-grid.scroll-end::after,
+    .passion-grid.scroll-end::after,
+    .not-seeking-grid.scroll-end::after,
+    .intro-grid.scroll-end::before,
+    .values-grid.scroll-end::before,
+    .passion-grid.scroll-end::before,
+    .not-seeking-grid.scroll-end::before {
+        opacity: 0 !important;
     }
     
     .intro-card,

@@ -357,6 +357,56 @@
     createStars(document.getElementById('stars1'), 200, 0.5);
     createStars(document.getElementById('stars2'), 150, 0.3);
     createStars(document.getElementById('stars3'), 100, 0.2);
+
+    // Scroll indicators functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all scrollable containers
+        const scrollContainers = document.querySelectorAll('.intro-grid, .values-grid, .passion-grid, .not-seeking-grid');
+        
+        // Function to check if element is scrollable
+        function isScrollable(element) {
+            return element.scrollWidth > element.clientWidth;
+        }
+        
+        // Function to update scroll state
+        function updateScrollState(container) {
+            const isAtStart = container.scrollLeft <= 0;
+            const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1; // 1px tolerance
+            
+            // Toggle scrollable class
+            container.classList.toggle('scrollable', isScrollable(container));
+            
+            // Update scroll position classes
+            container.classList.toggle('scroll-start', isAtStart);
+            container.classList.toggle('scroll-end', isAtEnd);
+        }
+        
+        // Initialize scroll indicators for each container
+        scrollContainers.forEach(container => {
+            // Initial check
+            updateScrollState(container);
+            
+            // Update on scroll
+            container.addEventListener('scroll', () => updateScrollState(container));
+        });
+        
+        // Update on window resize
+        const resizeObserver = new ResizeObserver(entries => {
+            for (let entry of entries) {
+                updateScrollState(entry.target);
+            }
+        });
+        
+        // Observe all scrollable containers
+        scrollContainers.forEach(container => {
+            resizeObserver.observe(container);
+        });
+        
+        // Also check on window resize (for older browsers)
+        window.addEventListener('resize', () => {
+            scrollContainers.forEach(updateScrollState);
+        });
+    });
 </script>
 </body>
 </html>
