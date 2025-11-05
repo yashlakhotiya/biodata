@@ -1,7 +1,5 @@
 /* ===== CONTACT INFORMATION COMPONENT ===== */
 
-/* No local variable definitions. All theme variables come from global theme files. */
-
 /* Contact container - matches biodata-card styling */
 #contact-container {
   background: transparent;
@@ -41,41 +39,163 @@
 }
 
 .contact-section .contact-info {
-  padding-left: var(--space-lg);
-  padding-right: var(--space-lg);
-  padding-bottom: var(--space-2xl);
+  padding: var(--space-xl) var(--space-lg);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ==================== CONTACT INFO GRID ==================== */
 .contact-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-lg);
-  margin: var(--space-xl) 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xl);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.contact-item {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .contact-item {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 
 /* Contact item cards */
 .contact-item {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-lg);
-  text-align: center;
+  padding: var(--space-xl);
+  text-align: left;
   transition: all var(--transition-normal) cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-gold);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 120px;
   position: relative;
   overflow: hidden;
 }
 
-/* Dark theme for contact items */
-[data-theme="dark"] .contact-item {
-  background: var(--bg-card);
-  border-color: var(--border-gold);
+/* Primary contact styling */
+.contact-item.primary-contact {
+  border: 2px solid var(--primary-maroon);
+}
+
+[data-theme="dark"] .contact-item.primary-contact {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+
+/* Secondary contact styling */
+.contact-item.secondary-contact {
+  border: 1px solid var(--border-color);
+}
+
+/* Contact header */
+.contact-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.contact-header i {
+  font-size: 1.25rem;
+  color: var(--primary-maroon);
+  margin-right: var(--space-sm);
+  min-width: 24px;
+  text-align: center;
+}
+
+[data-theme="dark"] .contact-header i {
+  color: var(--gold);
+}
+
+.contact-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-name {
+  font-weight: 600;
+  color: var(--primary-maroon);
+}
+
+[data-theme="dark"] .contact-name {
+  color: var(--gold);
+}
+
+/* Contact details */
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.detail-row i {
+  font-size: 1rem;
+  color: var(--primary-maroon);
+  min-width: 20px;
+  text-align: center;
+}
+
+[data-theme="dark"] .detail-row i {
+  color: var(--gold);
+}
+
+.detail-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 50px;
+}
+
+.detail-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.detail-relation {
+  color: var(--text-secondary);
+  font-size: 0.9em;
+  margin-left: var(--space-xs);
+}
+
+.contact-link {
+  color: var(--primary-maroon);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+[data-theme="dark"] .contact-link {
+  color: var(--gold);
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+  color: var(--primary-maroon-dark);
+}
+
+[data-theme="dark"] .contact-link:hover {
+  color: var(--saffron);
 }
 
 /* Accent line at top of card */
@@ -97,7 +217,8 @@
 
 /* Hover effects */
 .contact-item:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   box-shadow: var(--shadow-lg);
 }
 

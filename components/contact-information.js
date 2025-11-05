@@ -57,35 +57,29 @@ class ContactInformation {
       return;
     }
 
-    // Define contact information data with additional details
+    // Define contact information data with primary and secondary contacts
     const contactData = [
       {
+        type: 'primary',
         label: 'Primary Contact',
-        value: 'Uma Maheshwari',
-        description: 'Mother',
+        name: 'Uma Maheshwari',
+        relation: 'Mother',
+        mobile: '+91 94611 22111',
+        email: 'umamaheshwari100170@gmail.com',
+        address: 'Bundi, Rajasthan - 323001',
+        // description: 'Near City Palace, Bundi',
         icon: 'user-tie'
       },
       {
-        label: 'Mobile',
-        value: '+91 94611 22111',
-        isLink: true,
-        href: 'tel:+919461122111',
-        icon: 'phone-alt',
-        description: 'Available on WhatsApp'
-      },
-      {
-        label: 'Email',
-        value: 'umamaheshwari100170@gmail.com',
-        isLink: true,
-        href: 'mailto:umamaheshwari100170@gmail.com',
-        icon: 'envelope',
-        description: 'For formal inquiries'
-      },
-      {
-        label: 'Address',
-        value: 'Bundi, Rajasthan - 323001',
-        icon: 'map-marker-alt',
-        description: 'Near City Palace, Bundi'
+        type: 'secondary',
+        label: 'Secondary Contact',
+        name: 'Shailendra Lakhotiya',
+        relation: 'Father',
+        mobile: '+91 94130 87600',
+        email: 'shailulakhotiya@gmail.com',
+        address: 'Bundi, Rajasthan - 323001',
+        // description: 'Near City Palace, Bundi',
+        icon: 'user-tie'
       }
     ];
 
@@ -101,31 +95,30 @@ class ContactInformation {
 
   createContactItem(item) {
     const contactItem = document.createElement('div');
-    contactItem.className = 'contact-item';
+    contactItem.className = `contact-item ${item.type}-contact`;
     
-    // Map labels to Font Awesome icons
-    const iconMap = {
-      'Primary Contact': 'user-tie',
-      'Mobile': 'phone-alt',
-      'Email': 'envelope',
-      'Address': 'map-marker-alt'
-    };
+    const icon = item.icon || 'info-circle';
     
-    const icon = iconMap[item.label] || 'info-circle';
-    
-    if (item.isLink) {
-      contactItem.innerHTML = `
+    contactItem.innerHTML = `
+      <div class="contact-header">
         <i class="fas fa-${icon}"></i>
-        <strong>${item.label}</strong>
-        <a href="${item.href}" class="contact-link">${item.value}</a>
-      `;
-    } else {
-      contactItem.innerHTML = `
-        <i class="fas fa-${icon}"></i>
-        <strong>${item.label}</strong>
-        <span>${item.value}</span>
-      `;
-    }
+        <h4>${item.relation} <span class="contact-name">${item.name}</span></h4>
+      </div>
+      <div class="contact-details">
+        <div class="detail-row">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:${item.mobile.replace(/\s+/g, '')}" class="contact-link">${item.mobile}</a>
+        </div>
+        <div class="detail-row">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:${item.email}" class="contact-link">${item.email}</a>
+        </div>
+        <div class="detail-row">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="detail-address">${item.address}</span>
+        </div>
+      </div>
+    `;
 
     return contactItem;
   }
