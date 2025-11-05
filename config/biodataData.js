@@ -258,7 +258,13 @@ const biodataData = {
                     occupation: "Business"
                 },
                 category: "aunt-uncle"
-            }
+            },
+            {
+                id: "cousin_7",
+                label: "Cousins",
+                value: "Ronak, Joy, Vishwas, Saumya",
+                category: "cousins"
+            },
         ]
     },
 
