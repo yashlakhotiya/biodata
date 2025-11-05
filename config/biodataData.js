@@ -7,6 +7,12 @@ const biodataData = {
         title: "Personal Details",
         items: [
             {
+                id: "name",
+                label: "Name",
+                value: "Prakirti Lakhotiya",
+                category: "basic"
+            },
+            {
                 id: "dob",
                 label: "Date of Birth",
                 value: "15 April 1999",
@@ -67,6 +73,7 @@ const biodataData = {
                 occupation: "PA to DJ, Bundi District Court",
                 spouse: {
                     name: "Smt. Prem Lata Lakhotiya",
+                    gender: 'female',
                     nativePlace: "Bundi"
                 },
                 category: "grandparents"
@@ -78,6 +85,7 @@ const biodataData = {
                 occupation: "Business Firm (Hadoti Rice Mill)",
                 spouse: {
                     name: "Smt. Leela Lakhotiya",
+                    gender: 'female',
                     nativePlace: "Gudha"
                 },
                 category: "uncle"
@@ -89,6 +97,7 @@ const biodataData = {
                 occupation: "Business Firm (Hadoti Rice Mill)",
                 spouse: {
                     name: "Smt. Madhu Lakhotiya",
+                    gender: 'female',
                     nativePlace: "Jaipur"
                 },
                 category: "uncle"
@@ -100,6 +109,7 @@ const biodataData = {
                 occupation: "Business Firm (Shailuma Enterprises), Dealership in Edible Oil, Hadoti Rice Mill",
                 spouse: {
                     name: "Smt. Uma Maheshwari",
+                    gender: 'female',
                     nativePlace: "Kota",
                     occupation: "Vice Principal @ Government School, Native: Kota"
                 },
@@ -110,7 +120,7 @@ const biodataData = {
                 id: "brother-1",
                 label: "Brother & Sister-in-law",
                 value: "Kartik Lakhotiya",
-                occupation: "Pursuing Ph.D. from Cleveland Clinic, USA",
+                occupation: "Pursuing Ph.D. in Radiation Oncology from Cleveland Clinic, USA",
                 spouse: {
                     name: "CA. Radhika Maheshwari",
                     gender: "female",
@@ -127,6 +137,7 @@ const biodataData = {
                 occupation: "Business Firm (Hadoti Rice Mill)",
                 spouse: {
                     name: "Smt. Neha Lakhotiya",
+                    gender: 'female',
                     nativePlace: "Shahpura"
                 },
                 category: "cousins"
@@ -138,7 +149,8 @@ const biodataData = {
                 value: "Shri Prabal Lakhotiya",
                 occupation: "Business Startup, gliped.com",
                 spouse: {
-                    name: "Shri Neha Lakhotiya",
+                    name: "Smt. Neha Lakhotiya",
+                    gender: 'female',
                     nativePlace: "Jodhpur, Kochi"
                 },
                 category: "cousins"
@@ -150,6 +162,7 @@ const biodataData = {
                 value: "Smt. Monika Lahoty",
                 spouse: {
                     name: "Shri Pratul Lahoty",
+                    gender: 'male',
                     occupation: "Plant Head, NPM, Bawal",
                     nativePlace: "Jhalawar"
                 },
@@ -163,6 +176,7 @@ const biodataData = {
                 occupation: "Interior Designer",
                 spouse: {
                     name: "Shri Prakhar Maheshwari",
+                    gender: 'male',
                     occupation: "Business, Jaipur Filling stn., Jaipur tyre house, Riddhi Siddhi Filling stn.",
                     nativePlace: "Jaipur"
                 },
@@ -172,10 +186,11 @@ const biodataData = {
                 id: "cousin_5",
                 label: "Cousin Sister and Brother in Law",
                 value: "Smt. Jaya Maheshwari",
-                occupation: "Associate, KMK Ventures",
+                occupation: "Associate, KMK Ventures, Jaipur",
                 spouse: {
-                    name: "Shri Akshay Birla",
-                    occupation: "Manager @ NAV Jaipur",
+                    name: "CA. Akshay Birla",
+                    gender: 'male',
+                    occupation: "Manager @ NAV, Jaipur",
                     nativePlace: "Bundi"
                 },
                 category: "cousins"
@@ -184,6 +199,7 @@ const biodataData = {
                 id: "cousin_7",
                 label: "Cousin",
                 value: "Nimish Lakhotiya",
+                gender: 'male',
                 occupation: "B.Tech. Computer Science",
                 category: "cousins"
             },
@@ -194,7 +210,8 @@ const biodataData = {
                 spouse: {
                     name: "Dr. K.C. Gagrani",
                     occupation: "Doctor, Child Specialist",
-                    nativePlace: "Bundi"
+                    nativePlace: "Bundi",
+                    gender: 'male',
                 },
                 category: "bhua"
             }
