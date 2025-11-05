@@ -113,6 +113,7 @@ const biodataData = {
                 occupation: "Pursuing Ph.D. from Cleveland Clinic, USA",
                 spouse: {
                     name: "CA. Radhika Maheshwari",
+                    gender: "female",
                     occupation: "Chartered Accountant",
                     nativePlace: "Ajmer"
                 },

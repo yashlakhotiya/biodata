@@ -1,6 +1,132 @@
 /* ===== SHARED INFO ITEMS CSS ===== */
 /* Centralized styles for .info-grid, .info-item, .info-label, .info-value */
 
+/* Base Variables */
+:root {
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --border-radius: 6px;
+  --transition: all 0.2s ease-in-out;
+}
+
+/* Info Item Container */
+.info-item {
+  position: relative;
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Info Item Content */
+.info-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Spouse Section */
+.spouse-info {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--accent-color);
+  position: relative;
+  transition: var(--transition);
+}
+
+.spouse-info:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Spouse Header */
+.spouse-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.spouse-label {
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-color);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 2px 8px;
+  background: rgba(var(--accent-rgb), 0.1);
+  border-radius: 4px;
+}
+
+.spouse-name {
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-top: var(--spacing-xs);
+}
+
+/* Gender Specific Colors */
+.spouse-info.male .spouse-label {
+  color: var(--male-color);
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.spouse-info.female .spouse-label {
+  color: var(--female-color);
+  background: rgba(232, 67, 147, 0.1);
+}
+
+.spouse-info.other .spouse-label {
+  color: var(--other-color);
+  background: rgba(108, 92, 231, 0.1);
+}
+
+/* Spouse Details */
+.spouse-details {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px dashed var(--border-color);
+}
+
+.spouse-occupation,
+.spouse-native {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 0.9em;
+  color: var(--text-secondary);
+  margin: var(--spacing-xs) 0;
+}
+
+.spouse-occupation i,
+.spouse-native i {
+  width: 16px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .spouse-info {
+    padding: var(--spacing-sm);
+  }
+  
+  .spouse-header {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+
 /* Grid layout */
 .info-grid {
   display: grid;
