@@ -228,6 +228,7 @@ const biodataData = {
                 occupation: "Retd. AAO RAPP, Rawatbhata",
                 spouse: {
                     name: 'Smt. Lalita Devi',
+                    gender: 'female',
                     nativePlace: 'Dehit'
                 },
                 category: "grandparents"
@@ -239,6 +240,7 @@ const biodataData = {
                 occupation: "Contractor, Kota",
                 spouse: {
                     name: 'Smt. Meenakshi Maheshwari',
+                    gender: 'female',
                     nativePlace: 'Chipabarod'
                 },
                 category: "uncle"
@@ -251,6 +253,7 @@ const biodataData = {
                 occupation: 'Mathematics Teacher @ BSK, Chittorgarh',
                 spouse: {
                     name: "Shri Sunil Samriya",
+                    gender: 'male',
                     nativePlace: 'Chittorgarh',
                     occupation: "Business"
                 },
