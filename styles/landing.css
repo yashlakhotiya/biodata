@@ -535,8 +535,11 @@ html {
 /* ==================== ABOUT ME SECTION ==================== */
 .about-me-container {
     max-width: 1200px;
-    margin: 4rem auto;
-    padding: 2rem 1rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
 }
 
 .section-title {
@@ -867,6 +870,9 @@ html {
 
     .landing-content {
         margin: 5rem auto 2rem;
+        overflow: visible;
+        position: relative;
+        z-index: 2;
     }
 
     .intro-snippet {
@@ -895,16 +901,26 @@ html {
     .not-seeking-grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: visible;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         padding: 1rem 0 2rem 0;
         margin: 0 -1rem;
         scroll-padding: 0 1rem;
         grid-template-columns: unset;
-        /* Hide scrollbar for WebKit browsers */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         position: relative;
+        width: 100vw;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        transform: translateZ(0); /* Force hardware acceleration */
+        will-change: transform; /* Optimize for animations */
+        contain: content; /* Improve performance */
     }
     
     /* Hide scrollbar for WebKit browsers */
@@ -959,6 +975,15 @@ html {
         flex: 0 0 85%;
         scroll-snap-align: start;
         margin: 0 0.5rem;
+        min-height: 0;
+        height: auto;
+        overflow: visible;
+        position: relative;
+        z-index: 5;
+        transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
     
     .intro-card:first-child,
